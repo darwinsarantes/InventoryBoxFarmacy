@@ -1,0 +1,872 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C49F7695-50D7-4ED4-B1C1-F1D8C13B94B6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>InventoryBoxFarmacy</RootNamespace>
+    <AssemblyName>InventoryBoxFarmacy</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>I:\PublicacionesInventoryBoxFarmacy\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>LogSistemas.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>D3C2371A29B17250E69F91FE2267A2A9BFD07FD6</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>InventoryBoxFarmacy_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Funciones, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisContador\bin\Debug\Funciones.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.9.12.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmSeccionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSeccionOperacion.designer.cs">
+      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSeccion.designer.cs">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmConfiguracion.designer.cs">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLaboratorioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLaboratorioOperacion.designer.cs">
+      <DependentUpon>frmLaboratorioOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmEmpresa.designer.cs">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmImportarLaboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmImportarLaboratorio.Designer.cs">
+      <DependentUpon>frmImportarLaboratorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmExportarProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmExportarProveedores.Designer.cs">
+      <DependentUpon>frmExportarProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLoginMySQL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLoginMySQL.designer.cs">
+      <DependentUpon>frmLoginMySQL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodo.Designer.cs">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmPeriodoOperacion.Designer.cs">
+      <DependentUpon>frmPeriodoOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmContactoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmContactoOperacion.designer.cs">
+      <DependentUpon>frmContactoOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLaboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLaboratorio.designer.cs">
+      <DependentUpon>frmLaboratorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRespaldo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRespaldo.designer.cs">
+      <DependentUpon>frmRespaldo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRestaurar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRestaurar.designer.cs">
+      <DependentUpon>frmRestaurar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRol.designer.cs">
+      <DependentUpon>frmRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmRolOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmRolOperacion.designer.cs">
+      <DependentUpon>frmRolOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSplash.designer.cs">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambio.designer.cs">
+      <DependentUpon>frmTasaDeCambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTasaDeCambioOperacion.Designer.cs">
+      <DependentUpon>frmTasaDeCambioOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProveedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProveedores.designer.cs">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmContacto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmContacto.designer.cs">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCategoria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCategoria.designer.cs">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCategoriaOperacion.designer.cs">
+      <DependentUpon>frmCategoriaOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacen.designer.cs">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacenOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacenOperacion.designer.cs">
+      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUbicacionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUbicacionOperacion.designer.cs">
+      <DependentUpon>frmUbicacionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUbicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUbicacion.designer.cs">
+      <DependentUpon>frmUbicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeUbicacionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeUbicacionOperacion.designer.cs">
+      <DependentUpon>frmTipoDeUbicacionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeUbicacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeUbicacion.designer.cs">
+      <DependentUpon>frmTipoDeUbicacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeEntidad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeEntidad.designer.cs">
+      <DependentUpon>frmTipoDeEntidad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProveedoresOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProveedoresOperacion.designer.cs">
+      <DependentUpon>frmProveedoresOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeEntidadOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeEntidadOperacion.designer.cs">
+      <DependentUpon>frmTipoDeEntidadOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuario.designer.cs">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmUsuarioOperacion.designer.cs">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Principal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Principal.designer.cs">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\frmSeccionOperacion.resx">
+      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSeccion.resx">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmConfiguracion.resx">
+      <DependentUpon>frmConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLaboratorioOperacion.resx">
+      <DependentUpon>frmLaboratorioOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmEmpresa.resx">
+      <DependentUpon>frmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmImportarLaboratorio.resx">
+      <DependentUpon>frmImportarLaboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmExportarProveedores.resx">
+      <DependentUpon>frmExportarProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLoginMySQL.resx">
+      <DependentUpon>frmLoginMySQL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPeriodo.resx">
+      <DependentUpon>frmPeriodo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmPeriodoOperacion.resx">
+      <DependentUpon>frmPeriodoOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmContactoOperacion.resx">
+      <DependentUpon>frmContactoOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLaboratorio.resx">
+      <DependentUpon>frmLaboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRespaldo.resx">
+      <DependentUpon>frmRespaldo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRestaurar.resx">
+      <DependentUpon>frmRestaurar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRol.resx">
+      <DependentUpon>frmRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmRolOperacion.resx">
+      <DependentUpon>frmRolOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSplash.resx">
+      <DependentUpon>frmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTasaDeCambio.resx">
+      <DependentUpon>frmTasaDeCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTasaDeCambioOperacion.resx">
+      <DependentUpon>frmTasaDeCambioOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProveedores.resx">
+      <DependentUpon>frmProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmContacto.resx">
+      <DependentUpon>frmContacto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCategoria.resx">
+      <DependentUpon>frmCategoria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCategoriaOperacion.resx">
+      <DependentUpon>frmCategoriaOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAlmacen.resx">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAlmacenOperacion.resx">
+      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUbicacionOperacion.resx">
+      <DependentUpon>frmUbicacionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUbicacion.resx">
+      <DependentUpon>frmUbicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeUbicacionOperacion.resx">
+      <DependentUpon>frmTipoDeUbicacionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeUbicacion.resx">
+      <DependentUpon>frmTipoDeUbicacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeEntidad.resx">
+      <DependentUpon>frmTipoDeEntidad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProveedoresOperacion.resx">
+      <DependentUpon>frmProveedoresOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeEntidadOperacion.resx">
+      <DependentUpon>frmTipoDeEntidadOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuario.resx">
+      <DependentUpon>frmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmUsuarioOperacion.resx">
+      <DependentUpon>frmUsuarioOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Principal.resx">
+      <DependentUpon>Principal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="InventoryBoxFarmacy_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{23a8505c-8432-4fcb-84c6-b94c647eb9d7}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{4a7306ce-fb76-4eaa-b454-8de2955a4fc2}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ajustes16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAJA16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAJA24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAJA32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CAJA400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carnet-de-identidad16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carnet-de-identidad24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\carnet-de-identidad32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Catalgo16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Catalogo24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Catalogo32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\checked24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clear32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CUENTAS.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CUENTAS16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CUENTAS20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CUENTAS24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CUENTAS400.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-key %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-key %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\database-key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Edit24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Egresos32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Eliminar24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\filtrar24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_chart_512543.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_help-browser_118806.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Information_27854.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_keys_60186.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_969251 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_969251 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_SEO_content_management_969251.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %283%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509 %284%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_tools_1287509.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrow32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leftarrows16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginSisContador.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\New16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\new24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Nuevo24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\printer24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reanudar %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reanudar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh132x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rigtharrow32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Salir32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save32x321.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server base de datos.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serverbasedatos16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\serverbasededatos32x32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\server-connection.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Splash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\unchecked24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\view22x22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\viw20x20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="LogSistemas.ico" />
+    <Content Include="Origen XML\DTOrigenXML.xml" />
+    <None Include="Resources\if_printer_39263 %283%29.png" />
+    <None Include="Resources\if_printer_39263 %282%29.png" />
+    <None Include="Resources\if_printer_39263 %281%29.png" />
+    <None Include="Resources\if_Plus_1891033.png" />
+    <None Include="Resources\if_Plus_1891033 %281%29.png" />
+    <None Include="Resources\if_Synchronize_27883.png" />
+    <None Include="Resources\if_Synchronize_27883 %281%29.png" />
+    <None Include="Resources\if_edit-delete_118920.png" />
+    <None Include="Resources\if_edit-delete_118920 %282%29.png" />
+    <None Include="Resources\if_edit-delete_118920 %281%29.png" />
+    <None Include="Resources\if_edit_173002 %282%29.png" />
+    <None Include="Resources\if_edit_173002.png" />
+    <None Include="Resources\if_edit_173002 %281%29.png" />
+    <None Include="Resources\if_Log Out_27856.png" />
+    <None Include="Resources\if_floppy_285657.png" />
+    <None Include="Resources\if_laboratory_44676.png" />
+    <None Include="Resources\if_laboratory_44676 %282%29.png" />
+    <None Include="Resources\if_laboratory_44676 %281%29.png" />
+    <None Include="Resources\if_contact-01_374629.png" />
+    <None Include="Resources\if_contact-01_374629 %283%29.png" />
+    <None Include="Resources\if_contact-01_374629 %282%29.png" />
+    <None Include="Resources\if_contact-01_374629 %281%29.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_29936941.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %284%291.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %283%291.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %282%291.png" />
+    <None Include="Resources\if_logo_brand_brands_logos_excel_2993694 %281%291.png" />
+    <None Include="Resources\if_icon-33_667338 %284%29.png" />
+    <None Include="Resources\if_icon-33_667338 %283%29.png" />
+    <None Include="Resources\if_icon-33_667338 %282%29.png" />
+    <None Include="Resources\if_icon-33_667338 %281%29.png" />
+    <None Include="Resources\if_icon-33_667338.png" />
+    <None Include="Resources\if_old-edit-find_23490.png" />
+    <None Include="Resources\if_old-edit-find_23490 %284%29.png" />
+    <None Include="Resources\if_old-edit-find_23490 %283%29.png" />
+    <None Include="Resources\if_old-edit-find_23490 %282%29.png" />
+    <None Include="Resources\if_old-edit-find_23490 %281%29.png" />
+    <None Include="Resources\if_icon-74-document-search_315198.png" />
+    <None Include="Resources\Proveedores black.png" />
+    <None Include="Resources\Proveedores48x48.png" />
+    <None Include="Resources\Proveedores.png" />
+    <None Include="Resources\Proveedor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reportes\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

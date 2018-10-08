@@ -1,0 +1,11 @@
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.dll
+I:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.dll
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.pdb
+I:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.pdb
+I:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
+I:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+I:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
+I:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb

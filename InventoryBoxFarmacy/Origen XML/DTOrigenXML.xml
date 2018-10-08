@@ -1,0 +1,98 @@
+﻿<DSReportes>
+  <xs:schema id="OrigenXML" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+
+    <xs:element name="DataSetReportes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+      <xs:complexType>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+
+          <xs:element name="ListadoEmpresa">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="IdEmpresa" type="xs:decimal" minOccurs="0" />
+                <xs:element name="Nombre" type="xs:string" minOccurs="0" />
+                <xs:element name="Direccion" type="xs:string" minOccurs="0" />
+                <xs:element name="Telefonos" type="xs:string" minOccurs="0" />
+                <xs:element name="NRuc" type="xs:string" minOccurs="0" />
+                <xs:element name="Logo" type="xs:hexBinary" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+          <xs:element name="ListadoProveedores">
+            <xs:complexType>
+              <xs:sequence>                
+                <xs:element name="Foto" type="xs:hexBinary" minOccurs="0" />
+                <xs:element name="Estado" type="xs:string" minOccurs="0" />
+                <xs:element name="Facebook" type="xs:string" minOccurs="0" />
+                <xs:element name="Twitter" type="xs:string" minOccurs="0" />
+                <xs:element name="Skype" type="xs:string" minOccurs="0" />
+                <xs:element name="Messenger" type="xs:string" minOccurs="0" />
+                <xs:element name="FechaDeCumpleanos" type="xs:string" minOccurs="0" />
+                <xs:element name="Correo" type="xs:string" minOccurs="0" />
+                <xs:element name="Observaciones" type="xs:string" minOccurs="0" />
+                <xs:element name="Movil" type="xs:string" minOccurs="0" />
+                <xs:element name="Telefono" type="xs:string" minOccurs="0" />
+                <xs:element name="SitioWeb" type="xs:string" minOccurs="0" />
+                <xs:element name="NoRUC" type="xs:string" minOccurs="0" />
+                <xs:element name="Direccion" type="xs:string" minOccurs="0" />
+                <xs:element name="Nombre" type="xs:string" minOccurs="0" />
+                <xs:element name="Codigo" type="xs:string" minOccurs="0" />
+                <xs:element name="idProveedor" type="xs:decimal" minOccurs="0" />                
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+          <xs:element name="ListadoContacto">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Cedula" type="xs:string" minOccurs="0" />
+                <xs:element name="Sexo" type="xs:string" minOccurs="0" />
+                <xs:element name="Foto" type="xs:hexBinary" minOccurs="0" />
+                <xs:element name="Estado" type="xs:string" minOccurs="0" />
+                <xs:element name="Facebook" type="xs:string" minOccurs="0" />
+                <xs:element name="Twitter" type="xs:string" minOccurs="0" />
+                <xs:element name="Skype" type="xs:string" minOccurs="0" />
+                <xs:element name="Messenger" type="xs:string" minOccurs="0" />
+                <xs:element name="FechaDeCumpleanos" type="xs:string" minOccurs="0" />
+                <xs:element name="Correo" type="xs:string" minOccurs="0" />
+                <xs:element name="Observaciones" type="xs:string" minOccurs="0" />
+                <xs:element name="Movil" type="xs:string" minOccurs="0" />
+                <xs:element name="Telefono" type="xs:string" minOccurs="0" />                
+                <xs:element name="Direccion" type="xs:string" minOccurs="0" />
+                <xs:element name="Nombre" type="xs:string" minOccurs="0" />
+                <xs:element name="Codigo" type="xs:string" minOccurs="0" />
+                <xs:element name="idContacto" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+          <xs:element name="ListadoDeLaboratorios">
+            <xs:complexType>
+              <xs:sequence>
+                <xs:element name="Foto" type="xs:hexBinary" minOccurs="0" />
+                <xs:element name="Estado" type="xs:string" minOccurs="0" />
+                <xs:element name="Facebook" type="xs:string" minOccurs="0" />
+                <xs:element name="Twitter" type="xs:string" minOccurs="0" />
+                <xs:element name="Skype" type="xs:string" minOccurs="0" />
+                <xs:element name="Messenger" type="xs:string" minOccurs="0" />
+                <xs:element name="FechaDeCumpleanos" type="xs:string" minOccurs="0" />
+                <xs:element name="Correo" type="xs:string" minOccurs="0" />
+                <xs:element name="Observaciones" type="xs:string" minOccurs="0" />
+                <xs:element name="Movil" type="xs:string" minOccurs="0" />
+                <xs:element name="Telefono" type="xs:string" minOccurs="0" />
+                <xs:element name="SitioWeb" type="xs:string" minOccurs="0" />
+                <xs:element name="NoRUC" type="xs:string" minOccurs="0" />
+                <xs:element name="Direccion" type="xs:string" minOccurs="0" />
+                <xs:element name="Nombre" type="xs:string" minOccurs="0" />
+                <xs:element name="Codigo" type="xs:string" minOccurs="0" />
+                <xs:element name="idLaboratorio" type="xs:decimal" minOccurs="0" />
+              </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+
+        </xs:choice>
+      </xs:complexType>
+    </xs:element>
+  </xs:schema>
+
+</DSReportes>

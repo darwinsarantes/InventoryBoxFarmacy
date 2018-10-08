@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4A7306CE-FB76-4EAA-B454-8DE2955A4FC2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Logica</RootNamespace>
+    <AssemblyName>Logica</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="UbicacionSeccionLN.cs" />
+    <Compile Include="SeccionLN.cs" />
+    <Compile Include="CierreDePeriodoLN.cs" />
+    <Compile Include="ConfiguracionLN.cs" />
+    <Compile Include="EmpresaLN.cs" />
+    <Compile Include="InterfazLN.cs" />
+    <Compile Include="LoginLN.cs" />
+    <Compile Include="ModuloInterfazLN.cs" />
+    <Compile Include="ModuloInterfazRolLN.cs" />
+    <Compile Include="ModuloInterfazUsuariosLN.cs" />
+    <Compile Include="ModuloLN.cs" />
+    <Compile Include="PeriodoLN.cs" />
+    <Compile Include="PrivilegioLN.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ContactoLN.cs" />
+    <Compile Include="LaboratorioLN.cs" />
+    <Compile Include="ProveedorLaboratorioLN.cs" />
+    <Compile Include="RolLN.cs" />
+    <Compile Include="ProveedorLN.cs" />
+    <Compile Include="ProveedorContactoLN.cs" />
+    <Compile Include="CategoriaLN.cs" />
+    <Compile Include="MonedaLN.cs" />
+    <Compile Include="AlmacenLN.cs" />
+    <Compile Include="AlmacenUbicacionLN.cs" />
+    <Compile Include="TipoDeUbicacionLN.cs" />
+    <Compile Include="UbicacionLN.cs" />
+    <Compile Include="TipoDeEntidadLN.cs" />
+    <Compile Include="EntidadLN.cs" />
+    <Compile Include="TasaDeCambioLN.cs" />
+    <Compile Include="UsuarioLN.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Acceso\Acceso.csproj">
+      <Project>{7e13efad-2f99-46f7-ad0e-7ee67b8df1fa}</Project>
+      <Name>Acceso</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Entidad\Entidad.csproj">
+      <Project>{23a8505c-8432-4fcb-84c6-b94c647eb9d7}</Project>
+      <Name>Entidad</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

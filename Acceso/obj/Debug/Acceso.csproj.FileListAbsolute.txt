@@ -1,0 +1,9 @@
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.dll
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.pdb
+I:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
+I:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+I:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
+I:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb

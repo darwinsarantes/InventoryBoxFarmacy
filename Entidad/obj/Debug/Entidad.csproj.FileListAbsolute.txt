@@ -1,0 +1,5 @@
+I:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
+I:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
+I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
+I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
+I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
