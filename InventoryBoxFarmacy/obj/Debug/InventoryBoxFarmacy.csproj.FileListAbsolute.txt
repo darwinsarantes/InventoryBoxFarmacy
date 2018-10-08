@@ -77,3 +77,6 @@ I:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formula
 I:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmAlmacenOperacion.resources
 I:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmSeccion.resources
 I:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmSeccionOperacion.resources
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\bin\Debug\InventoryBoxFarmacy.exe.config
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.exe
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.pdb
