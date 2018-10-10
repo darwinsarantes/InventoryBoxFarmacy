@@ -40,6 +40,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductoConfiguracionEN.cs" />
+    <Compile Include="ProductoEN.cs" />
+    <Compile Include="ProductoImagenesEN.cs" />
+    <Compile Include="ProductoLaboratoriosEN.cs" />
+    <Compile Include="ProductoPrecioEN.cs" />
+    <Compile Include="ProductoPresentacionEN.cs" />
+    <Compile Include="ProductoPromocionEN.cs" />
+    <Compile Include="ProductoSustitutosEN.cs" />
+    <Compile Include="ProductoUnidadDeMedidaEN.cs" />
     <Compile Include="UbicacionSeccionEN.cs" />
     <Compile Include="SeccionEN.cs" />
     <Compile Include="CierreDePeriodoEN.cs" />
