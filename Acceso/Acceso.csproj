@@ -41,6 +41,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductoAD.cs" />
+    <Compile Include="ProductoImagenesAD.cs" />
+    <Compile Include="ProductoPrecioAD.cs" />
+    <Compile Include="ProductoPresentacionAD.cs" />
+    <Compile Include="ProductoUnidadDeMedidaAD.cs" />
     <Compile Include="UbicacionSeccionAD.cs" />
     <Compile Include="SeccionAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />
