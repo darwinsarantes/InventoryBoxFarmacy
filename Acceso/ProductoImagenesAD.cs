@@ -133,6 +133,7 @@ namespace AccesoDatos
 
                 Comando.CommandText = Consultas;
 
+                Comando.Parameters.Add(new MySqlParameter("@idProductoImagenes", MySqlDbType.Int32)).Value = oRegistroEN.idProductoImagenes;
                 Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@extension", MySqlDbType.VarChar, oRegistroEN.extension.Trim().Length)).Value = oRegistroEN.extension.Trim();

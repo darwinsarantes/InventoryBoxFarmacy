@@ -3,8 +3,3 @@ I:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
 I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
 I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
 I:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
-D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
-D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
-D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
-D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
-D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb

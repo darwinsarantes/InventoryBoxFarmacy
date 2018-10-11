@@ -207,6 +207,49 @@ namespace InventoryBoxFarmacy.Formularios
             
             switch (Tabla)
             {
+                case "ProductoPresentacion":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "Abreviatura":
+                            this.Descripcion = "Abreviatura";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Presentación del producto";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idProductoPresentacion":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "Seccion":
 
                     this.ValorEncontrado = true;

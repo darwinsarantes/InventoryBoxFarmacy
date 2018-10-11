@@ -36,6 +36,7 @@ namespace InventoryBoxFarmacy.Formularios
         frmCategoria ofrmCategoria = null;
         frmAlmacen ofrmAlmacen = null;
         frmSeccion ofrmSeccion = null;
+        frmProductoPresentacion oProductoPresentacion = null;
 
         static string ETiempo = "";
         
@@ -682,6 +683,23 @@ namespace InventoryBoxFarmacy.Formularios
         }
 
         private void tsbSeccion_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmSeccion == null || ofrmSeccion.IsDisposed)
+            {
+                ofrmSeccion = new frmSeccion();
+                ofrmSeccion.MdiParent = this;
+                ofrmSeccion.Show();
+            }
+            else
+                ofrmSeccion.BringToFront();
+
+            this.Cursor = Cursors.Default;
+
+        }
+
+        private void presentacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
 

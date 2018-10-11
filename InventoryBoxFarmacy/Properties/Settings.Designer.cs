@@ -200,5 +200,17 @@ namespace InventoryBoxFarmacy.Properties {
                 this["SeccionVentanaDespuesDeOperacion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ProductoPresentacionVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["ProductoPresentacionVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["ProductoPresentacionVentanaDespuesDeOperacion"] = value;
+            }
+        }
     }
 }

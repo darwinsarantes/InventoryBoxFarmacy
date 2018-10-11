@@ -41,15 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ProductoAD.cs" />
     <Compile Include="ProductoConfiguracionAD.cs" />
-    <Compile Include="ProductoImagenesAD.cs" />
     <Compile Include="ProductoLaboratoriosAD.cs" />
-    <Compile Include="ProductoPrecioAD.cs" />
-    <Compile Include="ProductoPresentacionAD.cs" />
-    <Compile Include="ProductoPromocionAD.cs" />
     <Compile Include="ProductoSustitutosAD.cs" />
+    <Compile Include="ProductoPromocionAD.cs" />
     <Compile Include="ProductoUnidadDeMedidaAD.cs" />
+    <Compile Include="ProductoPresentacionAD.cs" />
+    <Compile Include="ProductoAD.cs" />
+    <Compile Include="ProductoPrecioAD.cs" />
+    <Compile Include="ProductoImagenesAD.cs" />
     <Compile Include="UbicacionSeccionAD.cs" />
     <Compile Include="SeccionAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />

@@ -12,7 +12,8 @@ namespace Entidad
         public string Nombre { set; get; }
         public string extension { set; get; }
         public string Ruta { set; get; }
-        public decimal Size { set; get; }       
+        public decimal Size { set; get; }      
+        public int PorDefecto { set; get; } 
         /// <summary>
         /// Variable tipo objeto para el objeto de la imagen de la empresa
         /// </summary>

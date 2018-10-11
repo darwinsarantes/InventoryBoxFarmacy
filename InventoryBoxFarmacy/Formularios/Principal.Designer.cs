@@ -38,6 +38,7 @@
             this.tsbTipoDeEntidad = new System.Windows.Forms.ToolStripMenuItem();
             this.ubicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbTipoDeUbicacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbSeccion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbUbicacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,7 +70,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsbContacto = new System.Windows.Forms.ToolStripButton();
             this.tsbLaboratorio = new System.Windows.Forms.ToolStripButton();
-            this.tsbSeccion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbProductoPresentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -162,6 +163,14 @@
             this.tsbTipoDeUbicacion.Text = "Tipo de Ubicación";
             this.tsbTipoDeUbicacion.Click += new System.EventHandler(this.tsbTipoDeUbicacion_Click);
             // 
+            // tsbSeccion
+            // 
+            this.tsbSeccion.Name = "tsbSeccion";
+            this.tsbSeccion.Size = new System.Drawing.Size(170, 22);
+            this.tsbSeccion.Tag = "Seccion";
+            this.tsbSeccion.Text = "Sección";
+            this.tsbSeccion.Click += new System.EventHandler(this.tsbSeccion_Click);
+            // 
             // tsbUbicacion
             // 
             this.tsbUbicacion.Name = "tsbUbicacion";
@@ -181,7 +190,8 @@
             // productoToolStripMenuItem
             // 
             this.productoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbCategoria});
+            this.tsbCategoria,
+            this.tsbProductoPresentacion});
             this.productoToolStripMenuItem.Name = "productoToolStripMenuItem";
             this.productoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.productoToolStripMenuItem.Text = "Producto";
@@ -429,13 +439,13 @@
             this.tsbLaboratorio.ToolTipText = "Informacion de los laboratorios";
             this.tsbLaboratorio.Click += new System.EventHandler(this.tsbLaboratorio_Click);
             // 
-            // tsbSeccion
+            // tsbProductoPresentacion
             // 
-            this.tsbSeccion.Name = "tsbSeccion";
-            this.tsbSeccion.Size = new System.Drawing.Size(170, 22);
-            this.tsbSeccion.Tag = "Seccion";
-            this.tsbSeccion.Text = "Sección";
-            this.tsbSeccion.Click += new System.EventHandler(this.tsbSeccion_Click);
+            this.tsbProductoPresentacion.Name = "tsbProductoPresentacion";
+            this.tsbProductoPresentacion.Size = new System.Drawing.Size(152, 22);
+            this.tsbProductoPresentacion.Tag = "ProductoPresentacion";
+            this.tsbProductoPresentacion.Text = "Presentación";
+            this.tsbProductoPresentacion.Click += new System.EventHandler(this.presentacionToolStripMenuItem_Click);
             // 
             // Principal
             // 
@@ -510,6 +520,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbCategoria;
         private System.Windows.Forms.ToolStripMenuItem tsbAlmacen;
         private System.Windows.Forms.ToolStripMenuItem tsbSeccion;
+        private System.Windows.Forms.ToolStripMenuItem tsbProductoPresentacion;
     }
 }
 

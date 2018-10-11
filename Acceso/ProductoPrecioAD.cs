@@ -55,7 +55,7 @@ namespace AccesoDatos
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
-
+                
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIva", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIva;
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIvaEnProcentaje", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIvaEnProcentaje;
                 Comando.Parameters.Add(new MySqlParameter("@AplicarElIva", MySqlDbType.Int32)).Value = oRegistroEN.AplicarElIva;
