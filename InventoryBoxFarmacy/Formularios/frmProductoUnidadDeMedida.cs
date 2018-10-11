@@ -13,16 +13,16 @@ using Funciones;
 
 namespace InventoryBoxFarmacy.Formularios
 {
-    public partial class frmProductoPresentacion : Form
+    public partial class frmProductoUnidadDeMedida : Form
     {
-        public frmProductoPresentacion()
+        public frmProductoUnidadDeMedida()
         {
             InitializeComponent();
         }
 
-        private string NOMBRE_ENTIDAD_PRIVILEGIO = "ProductoPresentacion";
-        private string NOMBRE_ENTIDAD = "Administrar las diferentes presentaciones de los productos";
-        private string NOMBRE_LLAVE_PRIMARIA = "idProductoPresentacion";
+        private string NOMBRE_ENTIDAD_PRIVILEGIO = "ProductoUnidadDeMedida";
+        private string NOMBRE_ENTIDAD = "Administrar las diferentes undades de medidas del producto";
+        private string NOMBRE_LLAVE_PRIMARIA = "idProductoUnidadDeMedida";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
 
@@ -31,7 +31,7 @@ namespace InventoryBoxFarmacy.Formularios
         public bool ActivarFiltros { set; get; }
         public bool VariosRegistros { set; get; }
         public string TituloVentana { set; get; }
-        public ProductoPresentacionEN[] oProductoPresentacion = new ProductoPresentacionEN[0];
+        public ProductoUnidadDeMedidaEN[] oProductoUnidadDeMedida = new ProductoUnidadDeMedidaEN[0];
 
         public string Columnas { set; get; }
 
@@ -177,7 +177,7 @@ namespace InventoryBoxFarmacy.Formularios
         {
             if (Columnas == null) return;
 
-            if (oProductoPresentacion.Length > 0)
+            if (oProductoUnidadDeMedida.Length > 0)
             {
                 //DataTable DTClass = ConvertirClassADT();
                 DataTable DTClass = TraerInformacionDDGV();
@@ -227,9 +227,9 @@ namespace InventoryBoxFarmacy.Formularios
         {
             DataTable DTClass = new DataTable();
 
-            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(oProductoPresentacion.GetType());
+            System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(oProductoUnidadDeMedida.GetType());
             System.IO.StringWriter sw = new System.IO.StringWriter();
-            serializer.Serialize(sw, oProductoPresentacion);
+            serializer.Serialize(sw, oProductoUnidadDeMedida);
 
             DataSet ds = new DataSet(NOMBRE_ENTIDAD_PRIVILEGIO);
             System.IO.StringReader reader = new System.IO.StringReader(sw.ToString());
@@ -270,17 +270,17 @@ namespace InventoryBoxFarmacy.Formularios
             string Where = "";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
-                Where += string.Format(" and pps.idProductoPresentacion like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and pum.idProductoUnidadDeMedida like '%{0}%' ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkProductoPresentacion) == false && Controles.IsNullOEmptyElControl(txtProductoPresentacion) == false)
+            if (Controles.IsNullOEmptyElControl(chkProductoUnidadDeMedida) == false && Controles.IsNullOEmptyElControl(txtProductoUnidadDeMedida) == false)
             {
-                Where += string.Format(" and pps.Nombre like '%{0}%' ", txtProductoPresentacion.Text.Trim());
+                Where += string.Format(" and pum.Nombre like '%{0}%' ", txtProductoUnidadDeMedida.Text.Trim());
             }
 
             if (Controles.IsNullOEmptyElControl(chkAbreviatura) == false && Controles.IsNullOEmptyElControl(txtAbreviatura) == false)
             {
-                Where += string.Format(" and pps.Abreviatura like '%{0}%' ", txtAbreviatura.Text.Trim());
+                Where += string.Format(" and pum.Abreviatura like '%{0}%' ", txtAbreviatura.Text.Trim());
             }
 
             return Where;
@@ -297,14 +297,14 @@ namespace InventoryBoxFarmacy.Formularios
                 Titulo += string.Format(" Identificador: '{0}', ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkProductoPresentacion) == false && Controles.IsNullOEmptyElControl(txtProductoPresentacion) == false)
+            if (Controles.IsNullOEmptyElControl(chkProductoUnidadDeMedida) == false && Controles.IsNullOEmptyElControl(txtProductoUnidadDeMedida) == false)
             {
-                Titulo += string.Format(" Descripción: '{0}', ", txtProductoPresentacion.Text.Trim());
+                Titulo += string.Format(" Descripción: '{0}', ", txtProductoUnidadDeMedida.Text.Trim());
             }
 
             if (Controles.IsNullOEmptyElControl(chkAbreviatura) == false && Controles.IsNullOEmptyElControl(txtAbreviatura) == false)
             {
-                Titulo += string.Format(" Abreviatura: '{0}', ", txtProductoPresentacion.Text.Trim());
+                Titulo += string.Format(" Abreviatura: '{0}', ", txtAbreviatura.Text.Trim());
             }
 
             if (Titulo.Length > 0)
@@ -324,8 +324,8 @@ namespace InventoryBoxFarmacy.Formularios
 
                 this.Cursor = Cursors.WaitCursor;
 
-                ProductoPresentacionEN oRegistrosEN = new ProductoPresentacionEN();
-                ProductoPresentacionLN oRegistrosLN = new ProductoPresentacionLN();
+                ProductoUnidadDeMedidaEN oRegistrosEN = new ProductoUnidadDeMedidaEN();
+                ProductoUnidadDeMedidaLN oRegistrosLN = new ProductoUnidadDeMedidaLN();
 
                 oRegistrosEN.Where = WhereDinamico();
 
@@ -445,7 +445,7 @@ namespace InventoryBoxFarmacy.Formularios
                             FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "ProductoPresentacion");
+                                oFormato = new FormatoDGV(c1.Name.Trim(), "ProductoUnidadDeMedida");
                             }
 
                             if (oFormato != null)
@@ -520,13 +520,13 @@ namespace InventoryBoxFarmacy.Formularios
         private void MostrarFormularioParaOperacion(string OperacionesARealizar)
         {
 
-            frmProductoPresentacionOperacion ofrmProductoPresentacionOperacion = new frmProductoPresentacionOperacion();
-            ofrmProductoPresentacionOperacion.OperacionARealizar = OperacionesARealizar;
-            ofrmProductoPresentacionOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
-            ofrmProductoPresentacionOperacion.NombreEntidad = NOMBRE_ENTIDAD;
-            ofrmProductoPresentacionOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
-            ofrmProductoPresentacionOperacion.MdiParent = this.ParentForm;
-            ofrmProductoPresentacionOperacion.Show();
+            frmProductoUnidadDeMedidaOperacion ofrmProductoUnidadDeMedidaOperacion = new frmProductoUnidadDeMedidaOperacion();
+            ofrmProductoUnidadDeMedidaOperacion.OperacionARealizar = OperacionesARealizar;
+            ofrmProductoUnidadDeMedidaOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
+            ofrmProductoUnidadDeMedidaOperacion.NombreEntidad = NOMBRE_ENTIDAD;
+            ofrmProductoUnidadDeMedidaOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
+            ofrmProductoUnidadDeMedidaOperacion.MdiParent = this.ParentForm;
+            ofrmProductoUnidadDeMedidaOperacion.Show();
 
         }
 
@@ -537,7 +537,7 @@ namespace InventoryBoxFarmacy.Formularios
 
         #endregion
 
-        private void frmProductoPresentacion_Shown(object sender, EventArgs e)
+        private void frmProductoUnidadDeMedida_Shown(object sender, EventArgs e)
         {
             dgvLista.ContextMenuStrip = mcsMenu;
             CargarPrivilegiosDelUsuario();
@@ -577,12 +577,12 @@ namespace InventoryBoxFarmacy.Formularios
                         if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                         {
                             a++;
-                            Array.Resize(ref oProductoPresentacion, a);
+                            Array.Resize(ref oProductoUnidadDeMedida, a);
 
-                            oProductoPresentacion[a - 1] = new ProductoPresentacionEN();
-                            oProductoPresentacion[a - 1].idProductoPresentacion = Convert.ToInt32(Fila.Cells["idProductoPresentacion"].Value);
-                            oProductoPresentacion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
-                            oProductoPresentacion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+                            oProductoUnidadDeMedida[a - 1] = new ProductoUnidadDeMedidaEN();
+                            oProductoUnidadDeMedida[a - 1].idProductoUnidadDeMedida = Convert.ToInt32(Fila.Cells["idProductoUnidadDeMedida"].Value);
+                            oProductoUnidadDeMedida[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
+                            oProductoUnidadDeMedida[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
 
                         }
                     }
@@ -641,12 +641,12 @@ namespace InventoryBoxFarmacy.Formularios
                     if (Convert.ToBoolean(Fila.Cells["Seleccionar"].Value) == true)
                     {
                         a++;
-                        Array.Resize(ref oProductoPresentacion, a);
+                        Array.Resize(ref oProductoUnidadDeMedida, a);
                         
-                        oProductoPresentacion[a - 1] = new ProductoPresentacionEN();
-                        oProductoPresentacion[a - 1].idProductoPresentacion = Convert.ToInt32(Fila.Cells["idProductoPresentacion"].Value);
-                        oProductoPresentacion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
-                        oProductoPresentacion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+                        oProductoUnidadDeMedida[a - 1] = new ProductoUnidadDeMedidaEN();
+                        oProductoUnidadDeMedida[a - 1].idProductoUnidadDeMedida = Convert.ToInt32(Fila.Cells["idProductoUnidadDeMedida"].Value);
+                        oProductoUnidadDeMedida[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
+                        oProductoUnidadDeMedida[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
 
 
                     }
@@ -709,7 +709,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private void frmProductoPresentacion_KeyUp(object sender, KeyEventArgs e)
+        private void frmProductoUnidadDeMedida_KeyUp(object sender, KeyEventArgs e)
         {
             if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.F2) && nuevoToolStripMenuItem.Enabled == true)
             {
@@ -818,15 +818,15 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private void txtDesProductoPresentacion_KeyUp(object sender, KeyEventArgs e)
+        private void txtDesProductoUnidadDeMedida_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtProductoPresentacion))
+            if (Controles.IsNullOEmptyElControl(txtProductoUnidadDeMedida))
             {
-                chkProductoPresentacion.CheckState = CheckState.Unchecked;
+                chkProductoUnidadDeMedida.CheckState = CheckState.Unchecked;
             }
-            else { chkProductoPresentacion.CheckState = CheckState.Checked; }
+            else { chkProductoUnidadDeMedida.CheckState = CheckState.Checked; }
 
-            if (chkProductoPresentacion.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            if (chkProductoUnidadDeMedida.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LLenarListado();
             }

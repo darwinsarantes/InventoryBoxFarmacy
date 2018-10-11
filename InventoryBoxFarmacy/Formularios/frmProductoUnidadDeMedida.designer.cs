@@ -1,6 +1,6 @@
 ﻿namespace InventoryBoxFarmacy.Formularios
 {
-    partial class frmProductoPresentacion
+    partial class frmProductoUnidadDeMedida
     {
         /// <summary>
         /// Required designer variable.
@@ -33,8 +33,8 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtAbreviatura = new System.Windows.Forms.TextBox();
             this.chkAbreviatura = new System.Windows.Forms.CheckBox();
-            this.txtProductoPresentacion = new System.Windows.Forms.TextBox();
-            this.chkProductoPresentacion = new System.Windows.Forms.CheckBox();
+            this.txtProductoUnidadDeMedida = new System.Windows.Forms.TextBox();
+            this.chkProductoUnidadDeMedida = new System.Windows.Forms.CheckBox();
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.chkIdentificador = new System.Windows.Forms.CheckBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
@@ -94,8 +94,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.txtAbreviatura);
             this.groupBox1.Controls.Add(this.chkAbreviatura);
-            this.groupBox1.Controls.Add(this.txtProductoPresentacion);
-            this.groupBox1.Controls.Add(this.chkProductoPresentacion);
+            this.groupBox1.Controls.Add(this.txtProductoUnidadDeMedida);
+            this.groupBox1.Controls.Add(this.chkProductoUnidadDeMedida);
             this.groupBox1.Controls.Add(this.txtIdentificador);
             this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -103,13 +103,13 @@
             this.groupBox1.Size = new System.Drawing.Size(673, 119);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Presentación del producto";
+            this.groupBox1.Text = "Filtrado de información del tipo de ubicación.";
             // 
             // txtAbreviatura
             // 
-            this.txtAbreviatura.Location = new System.Drawing.Point(185, 87);
+            this.txtAbreviatura.Location = new System.Drawing.Point(197, 87);
             this.txtAbreviatura.Name = "txtAbreviatura";
-            this.txtAbreviatura.Size = new System.Drawing.Size(279, 20);
+            this.txtAbreviatura.Size = new System.Drawing.Size(390, 20);
             this.txtAbreviatura.TabIndex = 3;
             this.txtAbreviatura.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtAbreviatura_KeyUp);
             // 
@@ -122,28 +122,28 @@
             this.chkAbreviatura.Text = "Abreviatura:";
             this.chkAbreviatura.UseVisualStyleBackColor = true;
             // 
-            // txtProductoPresentacion
+            // txtProductoUnidadDeMedida
             // 
-            this.txtProductoPresentacion.Location = new System.Drawing.Point(185, 61);
-            this.txtProductoPresentacion.Name = "txtProductoPresentacion";
-            this.txtProductoPresentacion.Size = new System.Drawing.Size(279, 20);
-            this.txtProductoPresentacion.TabIndex = 1;
-            this.txtProductoPresentacion.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesProductoPresentacion_KeyUp);
+            this.txtProductoUnidadDeMedida.Location = new System.Drawing.Point(197, 61);
+            this.txtProductoUnidadDeMedida.Name = "txtProductoUnidadDeMedida";
+            this.txtProductoUnidadDeMedida.Size = new System.Drawing.Size(390, 20);
+            this.txtProductoUnidadDeMedida.TabIndex = 1;
+            this.txtProductoUnidadDeMedida.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesProductoUnidadDeMedida_KeyUp);
             // 
-            // chkProductoPresentacion
+            // chkProductoUnidadDeMedida
             // 
-            this.chkProductoPresentacion.Location = new System.Drawing.Point(21, 59);
-            this.chkProductoPresentacion.Name = "chkProductoPresentacion";
-            this.chkProductoPresentacion.Size = new System.Drawing.Size(158, 24);
-            this.chkProductoPresentacion.TabIndex = 0;
-            this.chkProductoPresentacion.Text = "Presentación del producto:";
-            this.chkProductoPresentacion.UseVisualStyleBackColor = true;
+            this.chkProductoUnidadDeMedida.Location = new System.Drawing.Point(21, 59);
+            this.chkProductoUnidadDeMedida.Name = "chkProductoUnidadDeMedida";
+            this.chkProductoUnidadDeMedida.Size = new System.Drawing.Size(197, 24);
+            this.chkProductoUnidadDeMedida.TabIndex = 0;
+            this.chkProductoUnidadDeMedida.Text = "Unidad de Medida del Producto:";
+            this.chkProductoUnidadDeMedida.UseVisualStyleBackColor = true;
             // 
             // txtIdentificador
             // 
-            this.txtIdentificador.Location = new System.Drawing.Point(185, 35);
+            this.txtIdentificador.Location = new System.Drawing.Point(197, 35);
             this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(279, 20);
+            this.txtIdentificador.Size = new System.Drawing.Size(390, 20);
             this.txtIdentificador.TabIndex = 1;
             this.txtIdentificador.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtIdentificador_KeyUp);
             // 
@@ -334,16 +334,16 @@
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
-            // frmProductoPresentacion
+            // frmProductoUnidadDeMedida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 533);
             this.Controls.Add(this.splitContainer1);
-            this.Name = "frmProductoPresentacion";
-            this.Text = "Tipo de Ubicación";
-            this.Shown += new System.EventHandler(this.frmProductoPresentacion_Shown);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmProductoPresentacion_KeyUp);
+            this.Name = "frmProductoUnidadDeMedida";
+            this.Text = "Unidad de Medida";
+            this.Shown += new System.EventHandler(this.frmProductoUnidadDeMedida_Shown);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmProductoUnidadDeMedida_KeyUp);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -371,8 +371,8 @@
         private System.Windows.Forms.ToolStripButton tsbFiltrar;
         private System.Windows.Forms.ToolStripButton tsbFiltroAutomatico;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txtProductoPresentacion;
-        private System.Windows.Forms.CheckBox chkProductoPresentacion;
+        private System.Windows.Forms.TextBox txtProductoUnidadDeMedida;
+        private System.Windows.Forms.CheckBox chkProductoUnidadDeMedida;
         private System.Windows.Forms.TextBox txtIdentificador;
         private System.Windows.Forms.CheckBox chkIdentificador;
         private System.Windows.Forms.ToolStripButton tsbImprimir;

@@ -43,6 +43,7 @@
             this.tsbAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCategoria = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbProductoPresentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRespaldarBaseDeDatos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRestaurar = new System.Windows.Forms.ToolStripMenuItem();
@@ -70,7 +71,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsbContacto = new System.Windows.Forms.ToolStripButton();
             this.tsbLaboratorio = new System.Windows.Forms.ToolStripButton();
-            this.tsbProductoPresentacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbUnidadDeMedida = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -191,7 +192,8 @@
             // 
             this.productoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCategoria,
-            this.tsbProductoPresentacion});
+            this.tsbProductoPresentacion,
+            this.tsbUnidadDeMedida});
             this.productoToolStripMenuItem.Name = "productoToolStripMenuItem";
             this.productoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.productoToolStripMenuItem.Text = "Producto";
@@ -200,11 +202,19 @@
             // tsbCategoria
             // 
             this.tsbCategoria.Name = "tsbCategoria";
-            this.tsbCategoria.Size = new System.Drawing.Size(152, 22);
+            this.tsbCategoria.Size = new System.Drawing.Size(171, 22);
             this.tsbCategoria.Tag = "Categoria";
             this.tsbCategoria.Text = "Categoria";
             this.tsbCategoria.ToolTipText = "Informacion de la categoria del producto";
             this.tsbCategoria.Click += new System.EventHandler(this.tsbCategoria_Click);
+            // 
+            // tsbProductoPresentacion
+            // 
+            this.tsbProductoPresentacion.Name = "tsbProductoPresentacion";
+            this.tsbProductoPresentacion.Size = new System.Drawing.Size(171, 22);
+            this.tsbProductoPresentacion.Tag = "ProductoPresentacion";
+            this.tsbProductoPresentacion.Text = "Presentación";
+            this.tsbProductoPresentacion.Click += new System.EventHandler(this.presentacionToolStripMenuItem_Click);
             // 
             // tsmHerramientas
             // 
@@ -439,13 +449,13 @@
             this.tsbLaboratorio.ToolTipText = "Informacion de los laboratorios";
             this.tsbLaboratorio.Click += new System.EventHandler(this.tsbLaboratorio_Click);
             // 
-            // tsbProductoPresentacion
+            // tsbUnidadDeMedida
             // 
-            this.tsbProductoPresentacion.Name = "tsbProductoPresentacion";
-            this.tsbProductoPresentacion.Size = new System.Drawing.Size(152, 22);
-            this.tsbProductoPresentacion.Tag = "ProductoPresentacion";
-            this.tsbProductoPresentacion.Text = "Presentación";
-            this.tsbProductoPresentacion.Click += new System.EventHandler(this.presentacionToolStripMenuItem_Click);
+            this.tsbUnidadDeMedida.Name = "tsbUnidadDeMedida";
+            this.tsbUnidadDeMedida.Size = new System.Drawing.Size(171, 22);
+            this.tsbUnidadDeMedida.Tag = "ProductoUnidadDeMedida";
+            this.tsbUnidadDeMedida.Text = "Unidad de Medida";
+            this.tsbUnidadDeMedida.Click += new System.EventHandler(this.tsbUnidadDeMedida_Click);
             // 
             // Principal
             // 
@@ -521,6 +531,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbAlmacen;
         private System.Windows.Forms.ToolStripMenuItem tsbSeccion;
         private System.Windows.Forms.ToolStripMenuItem tsbProductoPresentacion;
+        private System.Windows.Forms.ToolStripMenuItem tsbUnidadDeMedida;
     }
 }
 

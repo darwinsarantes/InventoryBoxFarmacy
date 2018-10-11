@@ -89,6 +89,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmProductoUnidadDeMedidaOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductoUnidadDeMedidaOperacion.designer.cs">
+      <DependentUpon>frmProductoUnidadDeMedidaOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProductoUnidadDeMedida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductoUnidadDeMedida.designer.cs">
+      <DependentUpon>frmProductoUnidadDeMedida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmSeccionOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -319,6 +331,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\frmProductoUnidadDeMedidaOperacion.resx">
+      <DependentUpon>frmProductoUnidadDeMedidaOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProductoUnidadDeMedida.resx">
+      <DependentUpon>frmProductoUnidadDeMedida.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSeccionOperacion.resx">
       <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
     </EmbeddedResource>
