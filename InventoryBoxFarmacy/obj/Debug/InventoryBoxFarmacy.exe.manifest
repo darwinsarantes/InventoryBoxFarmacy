@@ -48,14 +48,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Acceso.dll" size="388608">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Acceso.dll" size="521216">
       <assemblyIdentity name="Acceso" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dSTX1y1xvHfhHnrKZ+sG5TZvEljDln3ekLz1Zh7rvAQ=</dsig:DigestValue>
+        <dsig:DigestValue>cSUaJ+wjJIbn+6FF64Ic2Rr/jB6NPw6XvG74CZpDgn4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -240,14 +240,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidad.dll" size="52224">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidad.dll" size="70144">
       <assemblyIdentity name="Entidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cmXnphIqiLFbU/wNUOXs4bC6tFR9OE2qLgvUdlidflg=</dsig:DigestValue>
+        <dsig:DigestValue>o0yZm9zVKaq3rt19+c0CblfwkWAlafdL8lMI67IDNLE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -271,19 +271,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>R4+olLE58a18i7368Hex/wVbyMwkqdYe3Xdxt3Ll5TM=</dsig:DigestValue>
+        <dsig:DigestValue>MbTygEzb2mheJ2Py54ldkG13iHQ9EYyF+TgWDPPupn8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Logica.dll" size="53248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Logica.dll" size="65536">
       <assemblyIdentity name="Logica" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>U3FmgstJmRlu+Bmqj46Fm1x/sfVRbKDiCIakzj1Tr/c=</dsig:DigestValue>
+        <dsig:DigestValue>EgWGJKJvshOe4IjeicVDq0CgzCUpqD62Hx6axBqqvzk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

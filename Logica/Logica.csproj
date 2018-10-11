@@ -40,10 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ProductoConfiguracionLN.cs" />
     <Compile Include="ProductoImagenesLN.cs" />
+    <Compile Include="ProductoLaboratoriosLN.cs" />
     <Compile Include="ProductoLN.cs" />
     <Compile Include="ProductoPrecioLN.cs" />
     <Compile Include="ProductoPresentacionLN.cs" />
+    <Compile Include="ProductoPromocionLN.cs" />
+    <Compile Include="ProductoSustitutosLN.cs" />
     <Compile Include="ProductoUnidadDeMedidaLN.cs" />
     <Compile Include="UbicacionSeccionLN.cs" />
     <Compile Include="SeccionLN.cs" />
