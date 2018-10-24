@@ -224,5 +224,29 @@ namespace InventoryBoxFarmacy.Properties {
                 this["ProductoUnidadDeMedidaVentanaDespuesDeOperacion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ProductoVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["ProductoVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["ProductoVentanaDespuesDeOperacion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TipoDeSalidaVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["TipoDeSalidaVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["TipoDeSalidaVentanaDespuesDeOperacion"] = value;
+            }
+        }
     }
 }

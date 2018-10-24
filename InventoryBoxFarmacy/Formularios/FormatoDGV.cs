@@ -207,6 +207,270 @@ namespace InventoryBoxFarmacy.Formularios
             
             switch (Tabla)
             {
+                case "TipoDeSalida":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Tipo de Salida";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idTipoDeSalida":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
+                case "Producto":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "ValorDelIva":
+                            this.Descripcion = "Valor del IVA";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "ValorDelIvaEnProcentaje":
+                            this.Descripcion = "%IVA";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "AplicarElIva":
+                            this.Descripcion = "IVA";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Precio5":
+                            this.Descripcion = "Precio 5";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+                            
+                        case "Precio4":
+                            this.Descripcion = "Precio 4";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Precio3":
+                            this.Descripcion = "Precio 3";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Precio2":
+                            this.Descripcion = "Precio 2";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Precio1":
+                            this.Descripcion = "Precio 1";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PorcentajeDelPrecio5":
+                            this.Descripcion = "%Precio5";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Presentacion":
+                            this.Descripcion = "Presentación";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PorcentajeDelPrecio4":
+                            this.Descripcion = "%Precio4";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PorcentajeDelPrecio3":
+                            this.Descripcion = "%Precio3";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PorcentajeDelPrecio2":
+                            this.Descripcion = "%Precio2";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PorcentajeDelPrecio1":
+                            this.Descripcion = "%Precio1";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Costo":
+                            this.Descripcion = "Costo";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+                            
+                        case "UnidadDeMedida":
+                            this.Descripcion = "UM";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Maximo":
+                            this.Descripcion = "Máximo";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Minimo":
+                            this.Descripcion = "Mínimo";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Existencias":
+                            this.Descripcion = "Existencias";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Observaciones":
+                            this.Descripcion = "Observación del Producto";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción del Producto";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "CodigoDeBarra":
+                            this.Descripcion = "Código de Barra";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "NombreComun":
+                            this.Descripcion = "Nombre Común";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "NombreGenerico":
+                            this.Descripcion = "Nombre Genérico";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Producto";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idProducto":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "ProductoUnidadDeMedida":
 
                     this.ValorEncontrado = true;

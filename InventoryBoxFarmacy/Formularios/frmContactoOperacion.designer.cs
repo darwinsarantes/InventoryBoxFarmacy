@@ -58,6 +58,7 @@
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.txtDireccion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lbListaDeProveedores = new System.Windows.Forms.ListBox();
             this.cmbProveedor = new System.Windows.Forms.ComboBox();
             this.lbEtiquetaProveedor = new System.Windows.Forms.Label();
             this.dtpkFecha = new System.Windows.Forms.DateTimePicker();
@@ -87,7 +88,6 @@
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
-            this.lbListaDeProveedores = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tbControl.SuspendLayout();
@@ -111,7 +111,7 @@
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(915, 497);
+            this.panel1.Size = new System.Drawing.Size(915, 484);
             this.panel1.TabIndex = 0;
             // 
             // InformacionEntidadOperacion
@@ -133,7 +133,7 @@
             this.panel2.Controls.Add(this.tbControl);
             this.panel2.Location = new System.Drawing.Point(13, 43);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(884, 380);
+            this.panel2.Size = new System.Drawing.Size(884, 367);
             this.panel2.TabIndex = 1;
             // 
             // tbControl
@@ -148,7 +148,7 @@
             this.tbControl.Location = new System.Drawing.Point(9, 10);
             this.tbControl.Name = "tbControl";
             this.tbControl.SelectedIndex = 0;
-            this.tbControl.Size = new System.Drawing.Size(864, 363);
+            this.tbControl.Size = new System.Drawing.Size(864, 350);
             this.tbControl.TabIndex = 15;
             // 
             // tabPage1
@@ -178,7 +178,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(856, 334);
+            this.tabPage1.Size = new System.Drawing.Size(856, 321);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Información General";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -432,6 +432,15 @@
             this.tabPage2.Text = "Mas información";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lbListaDeProveedores
+            // 
+            this.lbListaDeProveedores.FormattingEnabled = true;
+            this.lbListaDeProveedores.ItemHeight = 16;
+            this.lbListaDeProveedores.Location = new System.Drawing.Point(21, 225);
+            this.lbListaDeProveedores.Name = "lbListaDeProveedores";
+            this.lbListaDeProveedores.Size = new System.Drawing.Size(284, 84);
+            this.lbListaDeProveedores.TabIndex = 32;
+            // 
             // cmbProveedor
             // 
             this.cmbProveedor.FormattingEnabled = true;
@@ -618,7 +627,7 @@
             this.tsbNuevo,
             this.tsbSeparador,
             this.tsbImprimir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 426);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 413);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(915, 71);
             this.toolStrip1.TabIndex = 0;
@@ -735,28 +744,19 @@
             // 
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCerrarVentana.AutoSize = true;
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 519);
+            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 506);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
             this.chkCerrarVentana.Size = new System.Drawing.Size(204, 17);
             this.chkCerrarVentana.TabIndex = 2;
             this.chkCerrarVentana.Text = "Cerrar ventana de manera automatica";
             this.chkCerrarVentana.UseVisualStyleBackColor = true;
             // 
-            // lbListaDeProveedores
-            // 
-            this.lbListaDeProveedores.FormattingEnabled = true;
-            this.lbListaDeProveedores.ItemHeight = 16;
-            this.lbListaDeProveedores.Location = new System.Drawing.Point(21, 225);
-            this.lbListaDeProveedores.Name = "lbListaDeProveedores";
-            this.lbListaDeProveedores.Size = new System.Drawing.Size(284, 84);
-            this.lbListaDeProveedores.TabIndex = 32;
-            // 
             // frmContactoOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(939, 540);
+            this.ClientSize = new System.Drawing.Size(939, 527);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
             this.Name = "frmContactoOperacion";

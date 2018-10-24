@@ -53,5 +53,11 @@
     <Setting Name="ProductoUnidadDeMedidaVentanaDespuesDeOperacion" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="ProductoVentanaDespuesDeOperacion" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TipoDeSalidaVentanaDespuesDeOperacion" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

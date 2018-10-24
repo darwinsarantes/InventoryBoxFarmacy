@@ -38,6 +38,7 @@ namespace InventoryBoxFarmacy.Formularios
         frmSeccion ofrmSeccion = null;
         frmProductoPresentacion ofrmProductoPresentacion = null;
         frmProductoUnidadDeMedida ofrmProductoUnidadDeMedida = null;
+        frmCompras ofrmCompras = null;
 
         static string ETiempo = "";
         
@@ -732,6 +733,22 @@ namespace InventoryBoxFarmacy.Formularios
 
             this.Cursor = Cursors.Default;
 
+        }
+
+        private void toolStripButton2_Click_1(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmCompras == null || ofrmCompras.IsDisposed)
+            {
+                ofrmCompras = new frmCompras();
+                ofrmCompras.MdiParent = this;
+                ofrmCompras.Show();
+            }
+            else
+                ofrmCompras.BringToFront();
+
+            this.Cursor = Cursors.Default;
         }
     }
 }

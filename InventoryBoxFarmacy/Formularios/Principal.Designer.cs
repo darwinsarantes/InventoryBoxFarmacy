@@ -44,6 +44,7 @@
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbProductoPresentacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbUnidadDeMedida = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRespaldarBaseDeDatos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRestaurar = new System.Windows.Forms.ToolStripMenuItem();
@@ -71,7 +72,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsbContacto = new System.Windows.Forms.ToolStripButton();
             this.tsbLaboratorio = new System.Windows.Forms.ToolStripButton();
-            this.tsbUnidadDeMedida = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -215,6 +216,14 @@
             this.tsbProductoPresentacion.Tag = "ProductoPresentacion";
             this.tsbProductoPresentacion.Text = "Presentación";
             this.tsbProductoPresentacion.Click += new System.EventHandler(this.presentacionToolStripMenuItem_Click);
+            // 
+            // tsbUnidadDeMedida
+            // 
+            this.tsbUnidadDeMedida.Name = "tsbUnidadDeMedida";
+            this.tsbUnidadDeMedida.Size = new System.Drawing.Size(171, 22);
+            this.tsbUnidadDeMedida.Tag = "ProductoUnidadDeMedida";
+            this.tsbUnidadDeMedida.Text = "Unidad de Medida";
+            this.tsbUnidadDeMedida.Click += new System.EventHandler(this.tsbUnidadDeMedida_Click);
             // 
             // tsmHerramientas
             // 
@@ -408,7 +417,8 @@
             this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripButton1,
             this.tsbContacto,
-            this.tsbLaboratorio});
+            this.tsbLaboratorio,
+            this.toolStripButton2});
             this.tsMenu.Location = new System.Drawing.Point(0, 24);
             this.tsMenu.Name = "tsMenu";
             this.tsMenu.Size = new System.Drawing.Size(109, 503);
@@ -449,13 +459,16 @@
             this.tsbLaboratorio.ToolTipText = "Informacion de los laboratorios";
             this.tsbLaboratorio.Click += new System.EventHandler(this.tsbLaboratorio_Click);
             // 
-            // tsbUnidadDeMedida
+            // toolStripButton2
             // 
-            this.tsbUnidadDeMedida.Name = "tsbUnidadDeMedida";
-            this.tsbUnidadDeMedida.Size = new System.Drawing.Size(171, 22);
-            this.tsbUnidadDeMedida.Tag = "ProductoUnidadDeMedida";
-            this.tsbUnidadDeMedida.Text = "Unidad de Medida";
-            this.tsbUnidadDeMedida.Click += new System.EventHandler(this.tsbUnidadDeMedida_Click);
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(106, 36);
+            this.toolStripButton2.Tag = "Laboratorio";
+            this.toolStripButton2.Text = "Compras";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
             // Principal
             // 
@@ -532,6 +545,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbSeccion;
         private System.Windows.Forms.ToolStripMenuItem tsbProductoPresentacion;
         private System.Windows.Forms.ToolStripMenuItem tsbUnidadDeMedida;
+        private System.Windows.Forms.ToolStripButton toolStripButton2;
     }
 }
 

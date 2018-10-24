@@ -50,6 +50,10 @@
     <Compile Include="ProductoAD.cs" />
     <Compile Include="ProductoPrecioAD.cs" />
     <Compile Include="ProductoImagenesAD.cs" />
+    <Compile Include="TipoDeSalidaAD.cs" />
+    <Compile Include="BancosAD.cs" />
+    <Compile Include="CuentaDeBancosAD.cs" />
+    <Compile Include="TiposDeEntradasAD.cs" />
     <Compile Include="UbicacionSeccionAD.cs" />
     <Compile Include="SeccionAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />

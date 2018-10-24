@@ -87,7 +87,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
-            this.splitContainer1.Size = new System.Drawing.Size(956, 533);
+            this.splitContainer1.Size = new System.Drawing.Size(789, 404);
             this.splitContainer1.SplitterDistance = 155;
             this.splitContainer1.TabIndex = 0;
             // 
@@ -107,7 +107,7 @@
             this.groupBox1.Controls.Add(this.chkCodigo);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(932, 132);
+            this.groupBox1.Size = new System.Drawing.Size(765, 132);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrar información del laboratorio";
@@ -197,7 +197,7 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 31);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(956, 321);
+            this.dgvLista.Size = new System.Drawing.Size(789, 192);
             this.dgvLista.TabIndex = 2;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -267,9 +267,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 352);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 223);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(956, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(789, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -293,7 +293,7 @@
             this.tsbSeleccionarTodos});
             this.tsMenu.Location = new System.Drawing.Point(0, 0);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(956, 31);
+            this.tsMenu.Size = new System.Drawing.Size(789, 31);
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "Filtrar";
             // 
@@ -382,7 +382,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(956, 533);
+            this.ClientSize = new System.Drawing.Size(789, 404);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmLaboratorio";
             this.Text = "Laboratorio";

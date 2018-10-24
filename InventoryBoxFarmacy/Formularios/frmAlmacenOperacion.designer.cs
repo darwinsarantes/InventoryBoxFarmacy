@@ -81,7 +81,7 @@
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(589, 357);
+            this.panel1.Size = new System.Drawing.Size(578, 359);
             this.panel1.TabIndex = 0;
             // 
             // statusStrip1
@@ -116,7 +116,7 @@
             this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Location = new System.Drawing.Point(13, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(558, 251);
+            this.panel2.Size = new System.Drawing.Size(547, 253);
             this.panel2.TabIndex = 1;
             // 
             // tabControl1
@@ -126,10 +126,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.Location = new System.Drawing.Point(3, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(552, 245);
+            this.tabControl1.Size = new System.Drawing.Size(541, 247);
             this.tabControl1.TabIndex = 10;
             // 
             // tabPage1
@@ -141,10 +142,10 @@
             this.tabPage1.Controls.Add(this.txtAlmacen);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.txtDescripcion);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(544, 219);
+            this.tabPage1.Size = new System.Drawing.Size(533, 218);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Almacen - Información";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -164,7 +165,7 @@
             this.chkPorDefecto.AutoSize = true;
             this.chkPorDefecto.Location = new System.Drawing.Point(163, 185);
             this.chkPorDefecto.Name = "chkPorDefecto";
-            this.chkPorDefecto.Size = new System.Drawing.Size(81, 17);
+            this.chkPorDefecto.Size = new System.Drawing.Size(96, 20);
             this.chkPorDefecto.TabIndex = 9;
             this.chkPorDefecto.Text = "Por defecto";
             this.chkPorDefecto.UseVisualStyleBackColor = true;
@@ -219,10 +220,10 @@
             // 
             this.tabPage2.Controls.Add(this.dgvListar);
             this.tabPage2.Controls.Add(this.toolStrip2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(544, 219);
+            this.tabPage2.Size = new System.Drawing.Size(533, 218);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Almacen - Ubicaciones";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -234,7 +235,7 @@
             this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListar.Location = new System.Drawing.Point(3, 42);
             this.dgvListar.Name = "dgvListar";
-            this.dgvListar.Size = new System.Drawing.Size(538, 174);
+            this.dgvListar.Size = new System.Drawing.Size(527, 173);
             this.dgvListar.TabIndex = 1;
             this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
             this.dgvListar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellEndEdit);
@@ -249,7 +250,7 @@
             this.toolStripButton1});
             this.toolStrip2.Location = new System.Drawing.Point(3, 3);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(538, 39);
+            this.toolStrip2.Size = new System.Drawing.Size(527, 39);
             this.toolStrip2.TabIndex = 0;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -275,9 +276,9 @@
             this.tsbRecarRegistro,
             this.toolStripSeparator1,
             this.tsbImprimir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 286);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 288);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(589, 71);
+            this.toolStrip1.Size = new System.Drawing.Size(578, 71);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -375,7 +376,7 @@
             // 
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCerrarVentana.AutoSize = true;
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 403);
+            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 405);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
             this.chkCerrarVentana.Size = new System.Drawing.Size(204, 17);
             this.chkCerrarVentana.TabIndex = 1;
@@ -402,7 +403,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(613, 432);
+            this.ClientSize = new System.Drawing.Size(602, 434);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);

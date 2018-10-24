@@ -49,6 +49,10 @@
     <Compile Include="ProductoPrecioEN.cs" />
     <Compile Include="ProductoUnidadDeMedidaEN.cs" />
     <Compile Include="ProductoPresentacionEN.cs" />
+    <Compile Include="BancosEN.cs" />
+    <Compile Include="CuentaDeBancosEN.cs" />
+    <Compile Include="TiposDeEntradasEN.cs" />
+    <Compile Include="TipoDeSalidaEN.cs" />
     <Compile Include="UbicacionSeccionEN.cs" />
     <Compile Include="SeccionEN.cs" />
     <Compile Include="CierreDePeriodoEN.cs" />

@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -89,6 +89,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCompras.Designer.cs">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmProductoUnidadDeMedidaOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,30 @@
     <Compile Include="Formularios\frmProductoPresentacionOperacion.designer.cs">
       <DependentUpon>frmProductoPresentacionOperacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProducto.designer.cs">
+      <DependentUpon>frmProducto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProductoOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductoOperacion.designer.cs">
+      <DependentUpon>frmProductoOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeSalidaOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeSalidaOperacion.designer.cs">
+      <DependentUpon>frmTipoDeSalidaOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTipoDeSalida.designer.cs">
+      <DependentUpon>frmTipoDeSalida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmUbicacionOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -331,6 +361,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\frmCompras.resx">
+      <DependentUpon>frmCompras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoUnidadDeMedidaOperacion.resx">
       <DependentUpon>frmProductoUnidadDeMedidaOperacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -420,6 +453,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoPresentacionOperacion.resx">
       <DependentUpon>frmProductoPresentacionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProducto.resx">
+      <DependentUpon>frmProducto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProductoOperacion.resx">
+      <DependentUpon>frmProductoOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeSalidaOperacion.resx">
+      <DependentUpon>frmTipoDeSalidaOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTipoDeSalida.resx">
+      <DependentUpon>frmTipoDeSalida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmUbicacionOperacion.resx">
       <DependentUpon>frmUbicacionOperacion.cs</DependentUpon>

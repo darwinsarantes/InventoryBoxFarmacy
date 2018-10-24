@@ -48,6 +48,10 @@
     <Compile Include="ProductoPresentacionLN.cs" />
     <Compile Include="ProductoLN.cs" />
     <Compile Include="ProductoImagenesLN.cs" />
+    <Compile Include="BancosLN.cs" />
+    <Compile Include="CuentaDeBancosLN.cs" />
+    <Compile Include="TiposDeEntradasLN.cs" />
+    <Compile Include="TipoDeSalidaLN.cs" />
     <Compile Include="TipoDeUbicacionLN.cs" />
     <Compile Include="UbicacionSeccionLN.cs" />
     <Compile Include="SeccionLN.cs" />
