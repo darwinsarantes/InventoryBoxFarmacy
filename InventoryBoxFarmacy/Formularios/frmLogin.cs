@@ -45,6 +45,7 @@ namespace InventoryBoxFarmacy.Formularios
                     Program.oConfiguracionEN.PathMySQL = Fila["PathMySQL"].ToString();
                     Program.oConfiguracionEN.NombreDelSistema = Fila["NombreDelSistema"].ToString();
                     Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32(Fila["TiempoDeRespaldo"].ToString());
+                    Program.oConfiguracionEN.PrecioPorDefecto = Convert.ToInt32(Fila["PrecioPorDefecto"].ToString());
 
                 }
 

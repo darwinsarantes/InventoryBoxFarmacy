@@ -9,175 +9,175 @@ using System.Data;
 
 namespace Logica
 {
-    public class UbicacionSeccionLN
+    public class LocacionSeccionLN
     {
 
         public string Error { set; get; }
 
-        private UbicacionSeccionAD oUbicacionSeccionAD = new UbicacionSeccionAD();
+        private LocacionSeccionAD oLocacionSeccionAD = new LocacionSeccionAD();
 
-        public bool Agregar(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool Agregar(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.Agregar(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.Agregar(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool Actualizar(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool Actualizar(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (string.IsNullOrEmpty(oREgistroEN.idUbicacionSeccion.ToString()) || oREgistroEN.idUbicacionSeccion == 0) {
+            if (string.IsNullOrEmpty(oREgistroEN.idLocacionSeccion.ToString()) || oREgistroEN.idLocacionSeccion == 0) {
 
                 this.Error = @"Se debe de seleccionar un elemento de la lista";
                 return false;
             }
 
-            if (oUbicacionSeccionAD.Actualizar(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.Actualizar(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool Eliminar(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool Eliminar(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (string.IsNullOrEmpty(oREgistroEN.idUbicacionSeccion.ToString()) || oREgistroEN.idUbicacionSeccion == 0)
+            if (string.IsNullOrEmpty(oREgistroEN.idLocacionSeccion.ToString()) || oREgistroEN.idLocacionSeccion == 0)
             {
 
                 this.Error = @"Se debe de seleccionar un elemento de la lista";
                 return false;
             }
 
-            if (oUbicacionSeccionAD.Eliminar(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.Eliminar(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool Listado(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool Listado(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.Listado(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.Listado(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool ListadoPorIdentificador(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdentificador(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.ListadoPorIdentificador(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.ListadoPorIdentificador(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool ListadoPorIdentificadorDelaUbicacion(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdDeLocacion(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.ListadoPorIdentificadorDelaUbicacion(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.ListadoPorIdDeLocacion(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
 
-        public bool ListadoPorID_UbicacionInformacion(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdDeSeccion(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.ListadoPorID_UbicacionInformacion(oREgistroEN, oDatos))
+            if (oLocacionSeccionAD.ListadoPorIdDeSeccion(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
             }
             else
             {
-                Error = oUbicacionSeccionAD.Error;
-                return false;
-            }
-
-        }
-        
-        public bool ListadoParaCombos(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oUbicacionSeccionAD.ListadoParaCombos(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oUbicacionSeccionAD.Error;
-                return false;
-            }
-
-        }
-
-        public bool ListadoParaReportes(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oUbicacionSeccionAD.ListadoParaReportes(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return false;
             }
 
         }
         
-        public bool ValidarRegistroDuplicado(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ListadoParaCombos(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionSeccionAD.ValidarRegistroDuplicado(oREgistroEN, oDatos, TipoDeOperacion))
+            if (oLocacionSeccionAD.ListadoParaCombos(oREgistroEN, oDatos))
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oLocacionSeccionAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoParaReportes(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oLocacionSeccionAD.ListadoParaReportes(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oLocacionSeccionAD.Error;
+                return false;
+            }
+
+        }
+        
+        public bool ValidarRegistroDuplicado(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oLocacionSeccionAD.ValidarRegistroDuplicado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oLocacionSeccionAD.Error;
                 return true;
             }
             else
@@ -188,12 +188,12 @@ namespace Logica
 
         }
 
-        public bool ValidarSiElRegistroEstaVinculado(UbicacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarSiElRegistroEstaVinculado(LocacionSeccionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
 
-            if (oUbicacionSeccionAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
+            if (oLocacionSeccionAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
             {
-                Error = oUbicacionSeccionAD.Error;
+                Error = oLocacionSeccionAD.Error;
                 return true;
             }
             else
@@ -206,15 +206,13 @@ namespace Logica
 
         public DataTable TraerDatos() {
 
-            return oUbicacionSeccionAD.TraerDatos();
+            return oLocacionSeccionAD.TraerDatos();
 
         }
 
         public int TotalRegistros() {
-            return oUbicacionSeccionAD.TraerDatos().Rows.Count;
-        }
-
-
+            return oLocacionSeccionAD.TraerDatos().Rows.Count;
+        }        
 
     }
 }

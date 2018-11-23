@@ -56,6 +56,8 @@
             this.txtRutaExportacionArchivosExcel = new System.Windows.Forms.TextBox();
             this.txtId = new System.Windows.Forms.TextBox();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.cmbPrecioPorDefecto = new System.Windows.Forms.ComboBox();
             this.tsBarraHarramientas.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -111,7 +113,7 @@
             this.groupBox5.Controls.Add(this.textBox4);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox5.Location = new System.Drawing.Point(3, 304);
+            this.groupBox5.Location = new System.Drawing.Point(3, 333);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(721, 67);
             this.groupBox5.TabIndex = 27;
@@ -155,7 +157,7 @@
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.groupBox4.Location = new System.Drawing.Point(3, 193);
+            this.groupBox4.Location = new System.Drawing.Point(3, 222);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(721, 111);
             this.groupBox4.TabIndex = 26;
@@ -226,13 +228,15 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.cmbPrecioPorDefecto);
+            this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Controls.Add(this.txtTiempoDeRespaldo);
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Highlight;
             this.groupBox3.Location = new System.Drawing.Point(3, 127);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(721, 66);
+            this.groupBox3.Size = new System.Drawing.Size(721, 95);
             this.groupBox3.TabIndex = 25;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información del Sistema:";
@@ -342,6 +346,30 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label2.Location = new System.Drawing.Point(15, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(174, 13);
+            this.label2.TabIndex = 24;
+            this.label2.Text = "Precio por defecto para facturación";
+            // 
+            // cmbPrecioPorDefecto
+            // 
+            this.cmbPrecioPorDefecto.FormattingEnabled = true;
+            this.cmbPrecioPorDefecto.Items.AddRange(new object[] {
+            "Precio 1",
+            "Precio 2",
+            "Precio 3",
+            "Precio 4",
+            "Precio 5"});
+            this.cmbPrecioPorDefecto.Location = new System.Drawing.Point(213, 50);
+            this.cmbPrecioPorDefecto.Name = "cmbPrecioPorDefecto";
+            this.cmbPrecioPorDefecto.Size = new System.Drawing.Size(100, 21);
+            this.cmbPrecioPorDefecto.TabIndex = 26;
+            // 
             // frmConfiguracion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -398,5 +426,7 @@
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox txtTiempoDeRespaldo;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbPrecioPorDefecto;
+        private System.Windows.Forms.Label label2;
     }
 }

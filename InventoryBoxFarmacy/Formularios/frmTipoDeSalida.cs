@@ -275,7 +275,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             if (Controles.IsNullOEmptyElControl(chkTipoDeSalida) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
             {
-                Where += string.Format(" and Nombre like '%{0}%' ", txtNombre.Text.Trim());
+                Where += string.Format(" and ts.Nombre like '%{0}%' ", txtNombre.Text.Trim());
             }
             
             return Where;

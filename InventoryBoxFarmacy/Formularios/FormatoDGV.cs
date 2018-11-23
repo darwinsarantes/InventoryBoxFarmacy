@@ -207,6 +207,138 @@ namespace InventoryBoxFarmacy.Formularios
             
             switch (Tabla)
             {
+                case "BodegaLocacion":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Sección";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idBodegaLocacion":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
+                case "LocacionSeccion":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Sección";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idLocacionSeccion":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
+                case "SeccionContenedor":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Contenedor";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idSeccionContenedor":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "TipoDeSalida":
 
                     this.ValorEncontrado = true;
@@ -229,7 +361,7 @@ namespace InventoryBoxFarmacy.Formularios
                             this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
                             break;
-
+                            
                         case "idTipoDeSalida":
                             this.Descripcion = "ID";
                             this.Tamano = 50;
@@ -593,6 +725,101 @@ namespace InventoryBoxFarmacy.Formularios
 
                     break;
 
+                case "Bodega":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "PorDefectoParaFacturacion":
+                            this.Descripcion = "Por defecto para Facturación";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 260;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Bodega";
+                            this.Tamano = 230;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idBodega":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
+                case "Contenedor":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 260;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Sección";
+                            this.Tamano = 230;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idContenedor":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "Almacen":
 
                     this.ValorEncontrado = true;
@@ -618,6 +845,14 @@ namespace InventoryBoxFarmacy.Formularios
                         case "Nombre":
                             this.Descripcion = "Almacen";
                             this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 100;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
                             this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
@@ -671,20 +906,13 @@ namespace InventoryBoxFarmacy.Formularios
 
                     break;
 
-                case "Ubicacion":
+                case "Locacion":
 
                     this.ValorEncontrado = true;
 
                     switch (Columna)
                     {
-                        case "TipoDeUbicacion":
-                            this.Descripcion = "Tipo de Ubicación";
-                            this.Tamano = 200;
-                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
-                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
-                            this.SoloLectura = true;
-                            break;
-
+                       
                         case "Descripcion":
                             this.Descripcion = "Descripción";
                             this.Tamano = 200;
@@ -694,14 +922,14 @@ namespace InventoryBoxFarmacy.Formularios
                             break;
 
                         case "Nombre":
-                            this.Descripcion = "Ubicación";
+                            this.Descripcion = "Locación del producto";
                             this.Tamano = 200;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
                             this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
                             break;
 
-                        case "idUbicacion":
+                        case "idLocacion":
                             this.Descripcion = "ID";
                             this.Tamano = 50;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;

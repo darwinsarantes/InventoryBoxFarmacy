@@ -29,7 +29,10 @@ namespace Entidad
         public LoginEN oLoginEN = new LoginEN();
         public ProductoUnidadDeMedidaEN oUnidadDeMedida = new ProductoUnidadDeMedidaEN();
         public ProductoPresentacionEN oPresentacion = new ProductoPresentacionEN();
-        public CategoriaEN oCategoria = new CategoriaEN();   
+        public CategoriaEN oCategoria = new CategoriaEN();
+        
+        public decimal idAlmacenEntidad { set; get; }
+        public decimal idPLEntidad { set; get; }
 
         public string Where { set; get; }
         public string OrderBy { set; get; }

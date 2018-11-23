@@ -186,74 +186,110 @@ namespace AccesoDatos
                 foreach (string item in ArregloDeCadena)
                 {
 
-                    switch (item.Trim())
+                    switch (item.Trim().ToUpper())
                     {
-                        case "proveedor":
+                        case "PROVEEDOR":
                             CadenaFormateada += ", Proveedor / Empresa";
                             break;
 
-                        case "configuracion":
+                        case "CONFIGURACION":
                             CadenaFormateada += ", Configuración";
                             break;
 
-                        case "Entidad":
+                        case "ENTIDAD":
                             CadenaFormateada += ", Entidad";
                             break;
                             
-                        case "empresa":
+                        case "EMPRESA":
                             CadenaFormateada += ", Empresa";
                             break;
 
-                        case "contacto":
+                        case "CONTACTO":
                             CadenaFormateada += ", contacto";
                             break;
 
-                        case "interfaz":
+                        case "INTERFAZ":
                             CadenaFormateada += ", Interfaz";
                             break;
 
-                        case "modulo":
+                        case "MODULO":
                             CadenaFormateada += ", Modulo";
                             break;
 
-                        case "modulointerfaz":
+                        case "MODULOINTERFAZ":
                             CadenaFormateada += ", Modulo interfaz";
                             break;
 
-                        case "modulointerfazrol":
+                        case "MODULOINTERFAZROL":
                             CadenaFormateada += ", Modulo interfaz rol";
                             break;
 
-                        case "modulointerfazusuario":
+                        case "MODULOINTERFAZUSUARIO":
                             CadenaFormateada += ", Modulo interfaz usuario";
                             break;
 
-                        case "moneda":
+                        case "MONEDA":
                             CadenaFormateada += ", Mondea";
                             break;
 
-                        case "privilegio":
+                        case "PRIVILEGIO":
                             CadenaFormateada += ", Privilegio";
                             break;
 
-                        case "rol":
+                        case "ROL":
                             CadenaFormateada += ", Rol";
                             break;
 
-                        case "tasadecambio":
+                        case "TASADECAMBIO":
                             CadenaFormateada += ", Tasa de cambio";
                             break;
 
-                        case "tipodeentidad":
+                        case "TIPODEENTIDAD":
                             CadenaFormateada += ", Tipo de entidad";
                             break;
 
-                        case "usuario":
+                        case "USUARIO":
                             CadenaFormateada += ", Usuario";
                             break;
 
-                        case "proveedorcontacto":
+                        case "PROVEEDORCONTACTO":
                             CadenaFormateada += ", Proveedor_Contacto";
+                            break;
+
+                        case "ALMACEN":
+                            CadenaFormateada += ", Almacen";
+                            break;
+
+                        case "BODEGA":
+                            CadenaFormateada += ", Bodega";
+                            break;
+
+                        case "LOCACION":
+                            CadenaFormateada += ", Ubicacion del producto";
+                            break;
+
+                        case "SECCION":
+                            CadenaFormateada += ", Sección";
+                            break;
+
+                        case "CONTENEDOR":
+                            CadenaFormateada += ", Contenedor de productos";
+                            break;
+
+                        case "SECCIONCONTENEDOR":
+                            CadenaFormateada += ", Contenedores de la sección";
+                            break;
+
+                        case "LOCACIONSECCION":
+                            CadenaFormateada += ", Secciones dentro de la locación";
+                            break;
+
+                        case "BODEGALOCACION":
+                            CadenaFormateada += ", Locaciones de productos dentro de la bodega";
+                            break;
+
+                        case "BODEGAALMACEN":
+                            CadenaFormateada += ", Bodegas dentro de los almacenes";
                             break;
 
                         default:

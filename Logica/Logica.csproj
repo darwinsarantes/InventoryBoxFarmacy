@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BodegaLN.cs" />
+    <Compile Include="BodegaAlmacenLN.cs" />
     <Compile Include="ProductoLaboratoriosLN.cs" />
     <Compile Include="ProductoSustitutosLN.cs" />
     <Compile Include="ProductoConfiguracionLN.cs" />
@@ -50,6 +52,8 @@
     <Compile Include="ProductoImagenesLN.cs" />
     <Compile Include="BancosLN.cs" />
     <Compile Include="CuentaDeBancosLN.cs" />
+    <Compile Include="ContenedorLN.cs" />
+    <Compile Include="SeccionContenedorLN.cs" />
     <Compile Include="TiposDeEntradasLN.cs" />
     <Compile Include="TipoDeSalidaLN.cs" />
     <Compile Include="TipoDeUbicacionLN.cs" />
@@ -76,9 +80,9 @@
     <Compile Include="CategoriaLN.cs" />
     <Compile Include="MonedaLN.cs" />
     <Compile Include="AlmacenLN.cs" />
-    <Compile Include="AlmacenUbicacionLN.cs" />
+    <Compile Include="BodegaLocacionLN.cs" />
     <Compile Include="ProductoPrecioLN.cs" />
-    <Compile Include="UbicacionLN.cs" />
+    <Compile Include="LocacionLN.cs" />
     <Compile Include="TipoDeEntidadLN.cs" />
     <Compile Include="EntidadLN.cs" />
     <Compile Include="TasaDeCambioLN.cs" />

@@ -9,6 +9,7 @@ namespace Entidad
     public class SeccionEN
     {
         public int idSeccion { set; get; }
+        public string Codigo { set; get; }
         public string Nombre { set; get; }
         public string Descripcion { set; get; }
         

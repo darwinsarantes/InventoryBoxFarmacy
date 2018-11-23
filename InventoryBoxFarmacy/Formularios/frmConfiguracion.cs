@@ -45,6 +45,7 @@ namespace InventoryBoxFarmacy.Formularios
                     txtPathMySQL.Text = Fila["PathMySQL"].ToString();
                     txtNombreDelSistema.Text = Fila["NombreDelSistema"].ToString();
                     txtTiempoDeRespaldo.Text = Fila["TiempoDeRespaldo"].ToString();
+                    cmbPrecioPorDefecto.Text = string.Format("Precio ", Fila["PrecioPorDefecto"].ToString());
                     
 
                 }
@@ -78,8 +79,8 @@ namespace InventoryBoxFarmacy.Formularios
                     Program.oConfiguracionEN.PathMySQL = Fila["PathMySQL"].ToString();
                     Program.oConfiguracionEN.NombreDelSistema = Fila["NombreDelSistema"].ToString();
                     Program.oConfiguracionEN.TiempoDeRespaldo = Convert.ToInt32( Fila["TiempoDeRespaldo"].ToString());
+                    Program.oConfiguracionEN.PrecioPorDefecto = Convert.ToInt32(Fila["PrecioPorDefecto"].ToString());
                     
-
                 }
 
             }
@@ -96,6 +97,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             try
             {
+                MessageBox.Show(int.Parse(cmbPrecioPorDefecto.Text).ToString());
                 oRegistroEN = new ConfiguracionEN();
                 oRegistroEN.IdConfiguracion = IdConfiguracion;
                 oRegistroEN.RutaRespaldos = txtRutaRespaldosBD.Text.Trim();
@@ -104,10 +106,11 @@ namespace InventoryBoxFarmacy.Formularios
                 oRegistroEN.PathMySQL = txtPathMySQL.Text.Trim();
                 oRegistroEN.NombreDelSistema = txtNombreDelSistema.Text;
                 oRegistroEN.TiempoDeRespaldo = Convert.ToInt32(txtTiempoDeRespaldo.Text);
-                oRegistroEN.oLoginEN = Program.oLoginEN;                
-
-
+                oRegistroEN.oLoginEN = Program.oLoginEN;
+                oRegistroEN.PrecioPorDefecto = Convert.ToInt32(int.Parse(cmbPrecioPorDefecto.Text));           
+                
                 return oRegistroEN;
+
             }
             catch (Exception ex)
             {

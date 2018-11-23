@@ -12,7 +12,8 @@ namespace Entidad
         public decimal PrecioDelProducto { set; get; }
         public DateTime FechaDeInicio { set; get; }
         public DateTime FechaDeFinalizacion { set; get; }
-        public string Estado { set; get; }       
+        public string Estado { set; get; }  
+        public String Descripcion { set; get; }     
         
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }

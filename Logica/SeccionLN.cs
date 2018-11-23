@@ -31,6 +31,22 @@ namespace Logica
 
         }
 
+        public bool AgregarUtilizandoLaMismaConexion(SeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oSeccionAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oSeccionAD.Error;
+                return false;
+            }
+
+        }
+
         public bool Actualizar(SeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -76,10 +92,49 @@ namespace Logica
 
         }
 
+        public bool EliminarUtilizandoLaMismaConexion(SeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (string.IsNullOrEmpty(oREgistroEN.idSeccion.ToString()) || oREgistroEN.idSeccion == 0)
+            {
+
+                this.Error = @"Se debe de seleccionar un elemento de la lista";
+                return false;
+            }
+
+            if (oSeccionAD.EliminarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oSeccionAD.Error;
+                return false;
+            }
+
+        }
+
         public bool Listado(SeccionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
             if (oSeccionAD.Listado(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oSeccionAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoDeContenedoresPorSeccion(SeccionEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oSeccionAD.ListadoDeContenedoresPorSeccion(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -144,6 +199,22 @@ namespace Logica
         {
 
             if (oSeccionAD.ValidarRegistroDuplicado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oSeccionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool ValidarCodigo(SeccionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oSeccionAD.ValidarCodigo(oREgistroEN, oDatos, TipoDeOperacion))
             {
                 Error = oSeccionAD.Error;
                 return true;

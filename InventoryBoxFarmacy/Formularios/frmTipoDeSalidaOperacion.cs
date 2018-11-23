@@ -351,11 +351,14 @@ namespace InventoryBoxFarmacy.Formularios
             TipoDeSalidaEN oRegistroEN = new TipoDeSalidaEN();
 
             oRegistroEN.idTipoDeSalida = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
-            oRegistroEN.Nombre = txtDescripcion.Text.Trim();
+            oRegistroEN.Nombre = txtNombre.Text.Trim();
             oRegistroEN.Descripcion = txtDescripcion.Text.Trim();
-
-            //partes generales.            
+       
             oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
             return oRegistroEN;
 
         }

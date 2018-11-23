@@ -37,14 +37,18 @@
             this.tsbTasaDeCambio = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbTipoDeEntidad = new System.Windows.Forms.ToolStripMenuItem();
             this.ubicaciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbTipoDeUbicacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbContenedor = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbSeccion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbUbicacion = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbBodega = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.productoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbCategoria = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbProductoPresentacion = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbUnidadDeMedida = new System.Windows.Forms.ToolStripMenuItem();
+            this.productoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.laboratorioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbLaborat = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmHerramientas = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRespaldarBaseDeDatos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRestaurar = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,6 +89,7 @@
             this.tsmGeneral,
             this.ubicaciónToolStripMenuItem,
             this.productoToolStripMenuItem,
+            this.laboratorioToolStripMenuItem,
             this.tsmHerramientas,
             this.configuracionesToolStripMenuItem,
             this.tsmAyuda,
@@ -148,27 +153,28 @@
             // ubicaciónToolStripMenuItem
             // 
             this.ubicaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbTipoDeUbicacion,
+            this.tsbContenedor,
             this.tsbSeccion,
             this.tsbUbicacion,
+            this.tsbBodega,
             this.tsbAlmacen});
             this.ubicaciónToolStripMenuItem.Name = "ubicaciónToolStripMenuItem";
             this.ubicaciónToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.ubicaciónToolStripMenuItem.Text = "Ubicación";
             this.ubicaciónToolStripMenuItem.ToolTipText = "Información referente a la ubicación del producto";
             // 
-            // tsbTipoDeUbicacion
+            // tsbContenedor
             // 
-            this.tsbTipoDeUbicacion.Name = "tsbTipoDeUbicacion";
-            this.tsbTipoDeUbicacion.Size = new System.Drawing.Size(170, 22);
-            this.tsbTipoDeUbicacion.Tag = "Tipo de ubicacion";
-            this.tsbTipoDeUbicacion.Text = "Tipo de Ubicación";
-            this.tsbTipoDeUbicacion.Click += new System.EventHandler(this.tsbTipoDeUbicacion_Click);
+            this.tsbContenedor.Name = "tsbContenedor";
+            this.tsbContenedor.Size = new System.Drawing.Size(152, 22);
+            this.tsbContenedor.Tag = "Contenedor";
+            this.tsbContenedor.Text = "Contenedor";
+            this.tsbContenedor.Click += new System.EventHandler(this.tsbContenedor_Click);
             // 
             // tsbSeccion
             // 
             this.tsbSeccion.Name = "tsbSeccion";
-            this.tsbSeccion.Size = new System.Drawing.Size(170, 22);
+            this.tsbSeccion.Size = new System.Drawing.Size(152, 22);
             this.tsbSeccion.Tag = "Seccion";
             this.tsbSeccion.Text = "Sección";
             this.tsbSeccion.Click += new System.EventHandler(this.tsbSeccion_Click);
@@ -176,17 +182,28 @@
             // tsbUbicacion
             // 
             this.tsbUbicacion.Name = "tsbUbicacion";
-            this.tsbUbicacion.Size = new System.Drawing.Size(170, 22);
+            this.tsbUbicacion.Size = new System.Drawing.Size(152, 22);
             this.tsbUbicacion.Tag = "Ubicacion";
-            this.tsbUbicacion.Text = "Ubicación";
+            this.tsbUbicacion.Text = "Locación";
+            this.tsbUbicacion.ToolTipText = "Localización del producto";
             this.tsbUbicacion.Click += new System.EventHandler(this.tsbUbicacion_Click);
+            // 
+            // tsbBodega
+            // 
+            this.tsbBodega.Name = "tsbBodega";
+            this.tsbBodega.Size = new System.Drawing.Size(152, 22);
+            this.tsbBodega.Tag = "Bodega";
+            this.tsbBodega.Text = "Bodega";
+            this.tsbBodega.ToolTipText = "Información de las bodegas";
+            this.tsbBodega.Click += new System.EventHandler(this.tsbBodega_Click);
             // 
             // tsbAlmacen
             // 
             this.tsbAlmacen.Name = "tsbAlmacen";
-            this.tsbAlmacen.Size = new System.Drawing.Size(170, 22);
+            this.tsbAlmacen.Size = new System.Drawing.Size(152, 22);
             this.tsbAlmacen.Tag = "Almacen";
             this.tsbAlmacen.Text = "Almacen";
+            this.tsbAlmacen.ToolTipText = "informacion del almacen";
             this.tsbAlmacen.Click += new System.EventHandler(this.tsbAlmacen_Click);
             // 
             // productoToolStripMenuItem
@@ -194,7 +211,8 @@
             this.productoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbCategoria,
             this.tsbProductoPresentacion,
-            this.tsbUnidadDeMedida});
+            this.tsbUnidadDeMedida,
+            this.productoToolStripMenuItem1});
             this.productoToolStripMenuItem.Name = "productoToolStripMenuItem";
             this.productoToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.productoToolStripMenuItem.Text = "Producto";
@@ -224,6 +242,28 @@
             this.tsbUnidadDeMedida.Tag = "ProductoUnidadDeMedida";
             this.tsbUnidadDeMedida.Text = "Unidad de Medida";
             this.tsbUnidadDeMedida.Click += new System.EventHandler(this.tsbUnidadDeMedida_Click);
+            // 
+            // productoToolStripMenuItem1
+            // 
+            this.productoToolStripMenuItem1.Name = "productoToolStripMenuItem1";
+            this.productoToolStripMenuItem1.Size = new System.Drawing.Size(171, 22);
+            this.productoToolStripMenuItem1.Text = "Producto";
+            this.productoToolStripMenuItem1.Click += new System.EventHandler(this.productoToolStripMenuItem1_Click);
+            // 
+            // laboratorioToolStripMenuItem
+            // 
+            this.laboratorioToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbLaborat});
+            this.laboratorioToolStripMenuItem.Name = "laboratorioToolStripMenuItem";
+            this.laboratorioToolStripMenuItem.Size = new System.Drawing.Size(80, 20);
+            this.laboratorioToolStripMenuItem.Text = "Laboratorio";
+            // 
+            // tsbLaborat
+            // 
+            this.tsbLaborat.Name = "tsbLaborat";
+            this.tsbLaborat.Size = new System.Drawing.Size(135, 22);
+            this.tsbLaborat.Text = "Laboratorio";
+            this.tsbLaborat.Click += new System.EventHandler(this.tsbLaborat_Click);
             // 
             // tsmHerramientas
             // 
@@ -487,6 +527,7 @@
             this.Text = "Principal";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Principal_FormClosing);
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.Shown += new System.EventHandler(this.Principal_Shown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
@@ -537,15 +578,19 @@
         private System.Windows.Forms.ToolStripButton tsbContacto;
         private System.Windows.Forms.ToolStripButton tsbLaboratorio;
         private System.Windows.Forms.ToolStripMenuItem ubicaciónToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tsbTipoDeUbicacion;
+        private System.Windows.Forms.ToolStripMenuItem tsbContenedor;
         private System.Windows.Forms.ToolStripMenuItem tsbUbicacion;
         private System.Windows.Forms.ToolStripMenuItem productoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tsbCategoria;
-        private System.Windows.Forms.ToolStripMenuItem tsbAlmacen;
+        private System.Windows.Forms.ToolStripMenuItem tsbBodega;
         private System.Windows.Forms.ToolStripMenuItem tsbSeccion;
         private System.Windows.Forms.ToolStripMenuItem tsbProductoPresentacion;
         private System.Windows.Forms.ToolStripMenuItem tsbUnidadDeMedida;
         private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripMenuItem productoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsbAlmacen;
+        private System.Windows.Forms.ToolStripMenuItem laboratorioToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsbLaborat;
     }
 }
 

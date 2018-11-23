@@ -21,10 +21,12 @@ namespace InventoryBoxFarmacy.Formularios
         }
 
         private string NOMBRE_ENTIDAD_PRIVILEGIO = "Seccion";
-        private string NOMBRE_ENTIDAD = "Administrar la información de las Secciones de los productos";
+        private string NOMBRE_ENTIDAD = "Administrar los diferentes espacios para guardar los productos";
         private string NOMBRE_LLAVE_PRIMARIA = "idSeccion";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
+        public bool AplicarFiltroDeWhereExterno { set; get; }
+        public string WhereExterno { get; set; }
 
         #region "Funciones del programador"
 
@@ -32,8 +34,6 @@ namespace InventoryBoxFarmacy.Formularios
         public bool VariosRegistros { set; get; }
         public string TituloVentana { set; get; }
         public SeccionEN[] oSeccion = new SeccionEN[0];
-        public bool AplicarFiltroDeWhereExterno { set; get; }
-        public string WhereExterno { set; get; }
 
         public string Columnas { set; get; }
 
@@ -272,19 +272,24 @@ namespace InventoryBoxFarmacy.Formularios
             string Where = "";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
-                Where += string.Format(" and idSeccion like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and s.idSeccion like '%{0}%' ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkSeccion) == false && Controles.IsNullOEmptyElControl(txtSeccion) == false)
+            if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
-                Where += string.Format(" and s.Nombre like '%{0}%' ", txtSeccion.Text.Trim());
+                Where += string.Format(" and s.Codigo like '%{0}%' ", txtCodigo.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkSeccion) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
+            {
+                Where += string.Format(" and s.Nombre like '%{0}%' ", txtNombre.Text.Trim());
             }
 
             if (AplicarFiltroDeWhereExterno == true)
             {
                 Where += WhereExterno;
             }
-            
+
             return Where;
 
         }
@@ -299,9 +304,14 @@ namespace InventoryBoxFarmacy.Formularios
                 Titulo += string.Format(" Identificador: '{0}', ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkSeccion) == false && Controles.IsNullOEmptyElControl(txtSeccion) == false)
+            if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
-                Titulo += string.Format(" Descripción: '{0}', ", txtSeccion.Text.Trim());
+                Titulo += string.Format(" Código: '{0}', ", txtCodigo.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkSeccion) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
+            {
+                Titulo += string.Format(" Sección: '{0}', ", txtNombre.Text.Trim());
             }
                        
             if (Titulo.Length > 0)
@@ -388,7 +398,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idSeccion,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -447,11 +457,14 @@ namespace InventoryBoxFarmacy.Formularios
 
                             if (oFormato != null)
                             {
-                                c1.HeaderText = oFormato.Descripcion;
-                                c1.Width = oFormato.Tamano;
-                                c1.DefaultCellStyle.Alignment = oFormato.Alineacion;
-                                c1.HeaderCell.Style.Alignment = oFormato.AlineacionDelEncabezado;
-                                c1.ReadOnly = oFormato.SoloLectura;
+                                if (oFormato.ValorEncontrado == true)
+                                {
+                                    c1.HeaderText = oFormato.Descripcion;
+                                    c1.Width = oFormato.Tamano;
+                                    c1.DefaultCellStyle.Alignment = oFormato.Alineacion;
+                                    c1.HeaderCell.Style.Alignment = oFormato.AlineacionDelEncabezado;
+                                    c1.ReadOnly = oFormato.SoloLectura;
+                                }
                             }
                         }
                     }
@@ -580,6 +593,7 @@ namespace InventoryBoxFarmacy.Formularios
                             oSeccion[a - 1].idSeccion = Convert.ToInt32(Fila.Cells["idSeccion"].Value);
                             oSeccion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                             oSeccion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+                            oSeccion[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
 
                         }
                     }
@@ -644,8 +658,8 @@ namespace InventoryBoxFarmacy.Formularios
                         oSeccion[a - 1].idSeccion = Convert.ToInt32(Fila.Cells["idSeccion"].Value);
                         oSeccion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                         oSeccion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
-
-
+                        oSeccion[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                        
                     }
                 }
 
@@ -817,7 +831,7 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void txtDesSeccion_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtSeccion))
+            if (Controles.IsNullOEmptyElControl(txtNombre))
             {
                 chkSeccion.CheckState = CheckState.Unchecked;
             }

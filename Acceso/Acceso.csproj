@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BodegaAD.cs" />
+    <Compile Include="BodegaAlmacenAD.cs" />
     <Compile Include="ProductoConfiguracionAD.cs" />
     <Compile Include="ProductoLaboratoriosAD.cs" />
     <Compile Include="ProductoSustitutosAD.cs" />
@@ -50,11 +52,13 @@
     <Compile Include="ProductoAD.cs" />
     <Compile Include="ProductoPrecioAD.cs" />
     <Compile Include="ProductoImagenesAD.cs" />
+    <Compile Include="ContenedorAD.cs" />
+    <Compile Include="SeccionContenedorAD.cs" />
     <Compile Include="TipoDeSalidaAD.cs" />
     <Compile Include="BancosAD.cs" />
     <Compile Include="CuentaDeBancosAD.cs" />
     <Compile Include="TiposDeEntradasAD.cs" />
-    <Compile Include="UbicacionSeccionAD.cs" />
+    <Compile Include="LocacionSeccionAD.cs" />
     <Compile Include="SeccionAD.cs" />
     <Compile Include="CierreDePeriodoAD.cs" />
     <Compile Include="ConfiguracionAD.cs" />
@@ -78,9 +82,9 @@
     <Compile Include="CategoriaAD.cs" />
     <Compile Include="MonedaAD.cs" />
     <Compile Include="AlmacenAD.cs" />
-    <Compile Include="AlmacenUbicacionAD.cs" />
+    <Compile Include="BodegaLocacionAD.cs" />
     <Compile Include="TipoDeUbicacionAD.cs" />
-    <Compile Include="UbicacionAD.cs" />
+    <Compile Include="LocacionAD.cs" />
     <Compile Include="TipoDeEntidadAD.cs" />
     <Compile Include="TasaDeCambioAD.cs" />
     <Compile Include="TransaccionesAD.cs" />

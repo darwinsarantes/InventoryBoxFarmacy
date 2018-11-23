@@ -21,7 +21,7 @@ namespace InventoryBoxFarmacy.Formularios
         }
 
         private string NOMBRE_ENTIDAD_PRIVILEGIO = "Almacen";
-        private string NOMBRE_ENTIDAD = "Administrar la información de almacen";
+        private string NOMBRE_ENTIDAD = "Administrar los diferentes Almacenes y espacios donde caeran las secciones del para almacenar el producto";
         private string NOMBRE_LLAVE_PRIMARIA = "idAlmacen";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
@@ -270,14 +270,19 @@ namespace InventoryBoxFarmacy.Formularios
             string Where = "";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
-                Where += string.Format(" and idAlmacen like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and a.idAlmacen like '%{0}%' ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(txtAlmacen) == false)
+            if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
-                Where += string.Format(" and a.Nombre like '%{0}%' ", txtAlmacen.Text.Trim());
+                Where += string.Format(" and a.Codigo like '%{0}%' ", txtCodigo.Text.Trim());
             }
-            
+
+            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
+            {
+                Where += string.Format(" and a.Nombre like '%{0}%' ", txtNombre.Text.Trim());
+            }
+
             return Where;
 
         }
@@ -292,9 +297,14 @@ namespace InventoryBoxFarmacy.Formularios
                 Titulo += string.Format(" Identificador: '{0}', ", txtIdentificador.Text.Trim());
             }
 
-            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(txtAlmacen) == false)
+            if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
-                Titulo += string.Format(" Descripción: '{0}', ", txtAlmacen.Text.Trim());
+                Titulo += string.Format(" Código: '{0}', ", txtCodigo.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
+            {
+                Titulo += string.Format(" almacen: '{0}', ", txtNombre.Text.Trim());
             }
                        
             if (Titulo.Length > 0)
@@ -381,7 +391,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idAlmacen,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -440,11 +450,14 @@ namespace InventoryBoxFarmacy.Formularios
 
                             if (oFormato != null)
                             {
-                                c1.HeaderText = oFormato.Descripcion;
-                                c1.Width = oFormato.Tamano;
-                                c1.DefaultCellStyle.Alignment = oFormato.Alineacion;
-                                c1.HeaderCell.Style.Alignment = oFormato.AlineacionDelEncabezado;
-                                c1.ReadOnly = oFormato.SoloLectura;
+                                if (oFormato.ValorEncontrado == true)
+                                {
+                                    c1.HeaderText = oFormato.Descripcion;
+                                    c1.Width = oFormato.Tamano;
+                                    c1.DefaultCellStyle.Alignment = oFormato.Alineacion;
+                                    c1.HeaderCell.Style.Alignment = oFormato.AlineacionDelEncabezado;
+                                    c1.ReadOnly = oFormato.SoloLectura;
+                                }
                             }
                         }
                     }
@@ -573,7 +586,8 @@ namespace InventoryBoxFarmacy.Formularios
                             oAlmacen[a - 1].idAlmacen = Convert.ToInt32(Fila.Cells["idAlmacen"].Value);
                             oAlmacen[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                             oAlmacen[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
-                            oAlmacen[a - 1].PorDefecto = Convert.ToInt32( Fila.Cells["PorDefecto"].Value.ToString());
+                            oAlmacen[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                            oAlmacen[a - 1].PorDefecto = Convert.ToInt32(Fila.Cells["PorDefecto"]);
 
                         }
                     }
@@ -638,8 +652,8 @@ namespace InventoryBoxFarmacy.Formularios
                         oAlmacen[a - 1].idAlmacen = Convert.ToInt32(Fila.Cells["idAlmacen"].Value);
                         oAlmacen[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                         oAlmacen[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
-                        oAlmacen[a - 1].PorDefecto = Convert.ToInt32(Fila.Cells["PorDefecto"].Value.ToString());
-
+                        oAlmacen[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                        
                     }
                 }
 
@@ -811,7 +825,7 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void txtDesAlmacen_KeyUp(object sender, KeyEventArgs e)
         {
-            if (Controles.IsNullOEmptyElControl(txtAlmacen))
+            if (Controles.IsNullOEmptyElControl(txtNombre))
             {
                 chkAlmacen.CheckState = CheckState.Unchecked;
             }

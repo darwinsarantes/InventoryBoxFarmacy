@@ -47,12 +47,12 @@ namespace AccesoDatos
 
                 Consultas = @"insert into configuracion
                 (RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL, 
-                NombreDelSistema, TiempoDeRespaldo
+                NombreDelSistema, TiempoDeRespaldo,@PrecioPorDefecto
                 )
                 values
                 (@RutaRespaldos, @RutaRespaldosDeExcel, @PathMysSQLDump, 
                 @PathMySQL, @NombreDelSistema, 
-                @TiempoDeRespaldo);
+                @TiempoDeRespaldo,@PrecioPorDefecto);
 
                 Select last_insert_id() as 'ID';";
 
@@ -63,7 +63,8 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@PathMysSQLDump", MySqlDbType.VarChar, oRegistroEN.PathMysSQLDump.Trim().Length)).Value = oRegistroEN.PathMysSQLDump.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@PathMySQL", MySqlDbType.VarChar, oRegistroEN.PathMySQL.Trim().Length)).Value = oRegistroEN.PathMySQL.Trim();                
                 Comando.Parameters.Add(new MySqlParameter("@NombreDelSistema", MySqlDbType.VarChar, oRegistroEN.NombreDelSistema.Trim().Length)).Value = oRegistroEN.NombreDelSistema.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;                
+                Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;
+                Comando.Parameters.Add(new MySqlParameter("@PrecioPorDefecto", MySqlDbType.Int32)).Value = oRegistroEN.PrecioPorDefecto;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -128,7 +129,8 @@ namespace AccesoDatos
                     PathMysSQLDump = @PathMysSQLDump, 
                     PathMySQL= @PathMySQL, 
                     NombreDelSistema = @NombreDelSistema,                    
-                    TiempoDeRespaldo = @TiempoDeRespaldo
+                    TiempoDeRespaldo = @TiempoDeRespaldo,
+                    PrecioPorDefecto = @PrecioPorDefecto
                     
 
                 WHERE IdConfiguracion = @IdConfiguracion;";
@@ -142,7 +144,7 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@PathMySQL", MySqlDbType.VarChar, oRegistroEN.PathMySQL.Trim().Length)).Value = oRegistroEN.PathMySQL.Trim();                
                 Comando.Parameters.Add(new MySqlParameter("@NombreDelSistema", MySqlDbType.VarChar, oRegistroEN.NombreDelSistema.Trim().Length)).Value = oRegistroEN.NombreDelSistema.Trim();                
                 Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;
-                
+                Comando.Parameters.Add(new MySqlParameter("@PrecioPorDefecto", MySqlDbType.Int32)).Value = oRegistroEN.PrecioPorDefecto;
 
                 Comando.ExecuteNonQuery();
                 
@@ -259,7 +261,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL, NombreDelSistema, TiempoDeRespaldo from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL, NombreDelSistema, TiempoDeRespaldo, PrecioPorDefecto from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
                 
                 Adaptador = new MySqlDataAdapter();
@@ -313,7 +315,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema,TiempoDeRespaldo from configuracion where IdConfiguracion = {0} ", oRegistroEN.IdConfiguracion);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema,TiempoDeRespaldo,PrecioPorDefecto from configuracion where IdConfiguracion = {0} ", oRegistroEN.IdConfiguracion);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -367,7 +369,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema, TiempoDeRespaldo from configuracion where IdConfiguracion > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema, TiempoDeRespaldo,PrecioPorDefecto from configuracion where IdConfiguracion > 0 {0} {1}; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -421,7 +423,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema, TiempoDeRespaldo from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select IdConfiguracion, RutaRespaldos, RutaRespaldosDeExcel,PathMysSQLDump,PathMySQL,NombreDelSistema, TiempoDeRespaldo,PrecioPorDefecto from configuracion where IdConfiguracion > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -468,8 +470,8 @@ namespace AccesoDatos
 
         private string InformacionDelRegistro(ConfiguracionEN oRegistroEN) {
 
-            string Cadena = @"IdConfiguracion: {0}, RutaRespaldos: {1}, RutaRespaldosDeExcel: {2}, PathMysSQLDump: {3}, PathMySQL: {4},NombreDelSistema: {5}";
-            Cadena = string.Format(Cadena, oRegistroEN.IdConfiguracion, oRegistroEN.RutaRespaldos, oRegistroEN.RutaRespaldosDeExcel,oRegistroEN.PathMysSQLDump, oRegistroEN.PathMySQL, oRegistroEN.NombreDelSistema);
+            string Cadena = @"IdConfiguracion: {0}, RutaRespaldos: {1}, RutaRespaldosDeExcel: {2}, PathMysSQLDump: {3}, PathMySQL: {4},NombreDelSistema: {5}, PrecioPorDefecto: {6}";
+            Cadena = string.Format(Cadena, oRegistroEN.IdConfiguracion, oRegistroEN.RutaRespaldos, oRegistroEN.RutaRespaldosDeExcel,oRegistroEN.PathMysSQLDump, oRegistroEN.PathMySQL, oRegistroEN.NombreDelSistema, oRegistroEN.PrecioPorDefecto);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
 

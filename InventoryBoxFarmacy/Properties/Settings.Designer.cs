@@ -248,5 +248,65 @@ namespace InventoryBoxFarmacy.Properties {
                 this["TipoDeSalidaVentanaDespuesDeOperacion"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool TiposDeEntradasVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["TiposDeEntradasVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["TiposDeEntradasVentanaDespuesDeOperacion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BancosVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["BancosVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["BancosVentanaDespuesDeOperacion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ContenedorVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["ContenedorVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["ContenedorVentanaDespuesDeOperacion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LocacionVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["LocacionVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["LocacionVentanaDespuesDeOperacion"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool BodegaVentanaDespuesDeOperacion {
+            get {
+                return ((bool)(this["BodegaVentanaDespuesDeOperacion"]));
+            }
+            set {
+                this["BodegaVentanaDespuesDeOperacion"] = value;
+            }
+        }
     }
 }

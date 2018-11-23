@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BodegaEN.cs" />
+    <Compile Include="BodegaAlmacenEN.cs" />
     <Compile Include="ProductoLaboratoriosEN.cs" />
     <Compile Include="ProductoSustitutosEN.cs" />
     <Compile Include="ProductoEN.cs" />
@@ -51,9 +53,11 @@
     <Compile Include="ProductoPresentacionEN.cs" />
     <Compile Include="BancosEN.cs" />
     <Compile Include="CuentaDeBancosEN.cs" />
+    <Compile Include="ContenedorEN.cs" />
+    <Compile Include="SeccionContenedorEN.cs" />
     <Compile Include="TiposDeEntradasEN.cs" />
     <Compile Include="TipoDeSalidaEN.cs" />
-    <Compile Include="UbicacionSeccionEN.cs" />
+    <Compile Include="LocacionSeccionEN.cs" />
     <Compile Include="SeccionEN.cs" />
     <Compile Include="CierreDePeriodoEN.cs" />
     <Compile Include="ConfiguracionEN.cs" />
@@ -78,9 +82,9 @@
     <Compile Include="CategoriaEN.cs" />
     <Compile Include="MonedaEN.cs" />
     <Compile Include="AlmacenEN.cs" />
-    <Compile Include="AlmacenUbicacionEN.cs" />
+    <Compile Include="BodegaLocacionEN.cs" />
     <Compile Include="TipoDeUbicacionEN.cs" />
-    <Compile Include="UbicacionEN.cs" />
+    <Compile Include="LocacionEN.cs" />
     <Compile Include="TipoDeEntidadEN.cs" />
     <Compile Include="RolEN.cs" />
     <Compile Include="TasaDeCambioEN.cs" />

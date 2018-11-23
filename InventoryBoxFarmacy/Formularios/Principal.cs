@@ -30,15 +30,17 @@ namespace InventoryBoxFarmacy.Formularios
         frmTipoDeEntidad ofrmTipoDeEntidad = null;
         frmProveedores ofrmProveedores = null;
         frmContacto ofrmContacto = null;
-        frmLaboratorio ofrmLaboratorio = null;
-        frmTipoDeUbicacion ofrmTipoDeUbicacion = null;
-        frmUbicacion ofrmUbicacion = null;
-        frmCategoria ofrmCategoria = null;
-        frmAlmacen ofrmAlmacen = null;
-        frmSeccion ofrmSeccion = null;
+        frmLaboratorio ofrmLaboratorio = null;        
+        frmCategoria ofrmCategoria = null;        
         frmProductoPresentacion ofrmProductoPresentacion = null;
         frmProductoUnidadDeMedida ofrmProductoUnidadDeMedida = null;
         frmCompras ofrmCompras = null;
+        frmProducto ofrmProducto = null;
+        frmContenedor ofrmContenedor = null;
+        frmSeccion ofrmSeccion = null;
+        frmLocacion ofrmLocacion = null;
+        frmBodega ofrmBodega = null;
+        frmAlmacen ofrmAlmacen = null;
 
         static string ETiempo = "";
         
@@ -619,39 +621,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             this.Cursor = Cursors.Default;
         }
-
-        private void tsbTipoDeUbicacion_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-
-            if (ofrmTipoDeUbicacion == null || ofrmTipoDeUbicacion.IsDisposed)
-            {
-                ofrmTipoDeUbicacion = new frmTipoDeUbicacion();
-                ofrmTipoDeUbicacion.MdiParent = this;
-                ofrmTipoDeUbicacion.Show();
-            }
-            else
-                ofrmTipoDeUbicacion.BringToFront();
-
-            this.Cursor = Cursors.Default;
-        }
-
-        private void tsbUbicacion_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-
-            if (ofrmUbicacion == null || ofrmUbicacion.IsDisposed)
-            {
-                ofrmUbicacion = new frmUbicacion();
-                ofrmUbicacion.MdiParent = this;
-                ofrmUbicacion.Show();
-            }
-            else
-                ofrmUbicacion.BringToFront();
-
-            this.Cursor = Cursors.Default;
-        }
-
+        
         private void tsbCategoria_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -667,40 +637,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             this.Cursor = Cursors.Default;
         }
-
-        private void tsbAlmacen_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-
-            if (ofrmAlmacen == null || ofrmAlmacen.IsDisposed)
-            {
-                ofrmAlmacen = new frmAlmacen();
-                ofrmAlmacen.MdiParent = this;
-                ofrmAlmacen.Show();
-            }
-            else
-                ofrmAlmacen.BringToFront();
-
-            this.Cursor = Cursors.Default;
-        }
-
-        private void tsbSeccion_Click(object sender, EventArgs e)
-        {
-            this.Cursor = Cursors.WaitCursor;
-
-            if (ofrmSeccion == null || ofrmSeccion.IsDisposed)
-            {
-                ofrmSeccion = new frmSeccion();
-                ofrmSeccion.MdiParent = this;
-                ofrmSeccion.Show();
-            }
-            else
-                ofrmSeccion.BringToFront();
-
-            this.Cursor = Cursors.Default;
-
-        }
-
+        
         private void presentacionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
@@ -747,6 +684,123 @@ namespace InventoryBoxFarmacy.Formularios
             }
             else
                 ofrmCompras.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void productoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmProducto == null || ofrmProducto.IsDisposed)
+            {
+                ofrmProducto = new frmProducto();
+                ofrmProducto.MdiParent = this;
+                ofrmProducto.Show();
+            }
+            else
+                ofrmProducto.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void tsbContenedor_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmContenedor == null || ofrmContenedor.IsDisposed)
+            {
+                ofrmContenedor = new frmContenedor();
+                ofrmContenedor.MdiParent = this;
+                ofrmContenedor.Show();
+            }
+            else
+                ofrmContenedor.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void tsbSeccion_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmSeccion == null || ofrmSeccion.IsDisposed)
+            {
+                ofrmSeccion = new frmSeccion();
+                ofrmSeccion.MdiParent = this;
+                ofrmSeccion.Show();
+            }
+            else
+                ofrmSeccion.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void tsbUbicacion_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmLocacion == null || ofrmLocacion.IsDisposed)
+            {
+                ofrmLocacion = new frmLocacion();
+                ofrmLocacion.MdiParent = this;
+                ofrmLocacion.Show();
+            }
+            else
+                ofrmLocacion.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void Principal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tsbBodega_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmBodega == null || ofrmBodega.IsDisposed)
+            {
+                ofrmBodega = new frmBodega();
+                ofrmBodega.MdiParent = this;
+                ofrmBodega.Show();
+            }
+            else
+                ofrmBodega.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void tsbLaborat_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmLaboratorio == null || ofrmLaboratorio.IsDisposed)
+            {
+                ofrmLaboratorio = new frmLaboratorio();
+                ofrmLaboratorio.MdiParent = this;
+                ofrmLaboratorio.Show();
+            }
+            else
+                ofrmLaboratorio.BringToFront();
+
+            this.Cursor = Cursors.Default;
+        }
+
+        private void tsbAlmacen_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+
+            if (ofrmAlmacen == null || ofrmAlmacen.IsDisposed)
+            {
+                ofrmAlmacen = new frmAlmacen();
+                ofrmAlmacen.MdiParent = this;
+                ofrmAlmacen.Show();
+            }
+            else
+                ofrmAlmacen.BringToFront();
 
             this.Cursor = Cursors.Default;
         }

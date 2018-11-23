@@ -23,6 +23,7 @@ namespace Entidad
         public decimal AplicarElIva { set; get; }
         public decimal ValorDelIvaEnProcentaje { set; get; }
         public decimal ValorDelIva { set; get; }
+        public string Estado { set; get; }
 
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }

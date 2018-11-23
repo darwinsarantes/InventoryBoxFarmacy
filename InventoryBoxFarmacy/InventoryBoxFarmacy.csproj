@@ -13,7 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>I:\PublicacionesInventoryBoxFarmacy\</PublishUrl>
+    <PublishUrl>F:\PublicacionesInventoryBoxFarmacy\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -23,7 +23,7 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -64,12 +64,16 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BarcodeLib, Version=1.0.0.18, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BarcodeLib.dll</HintPath>
+    </Reference>
     <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="Funciones, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Perfiles\STDeveloper\Documents\Projectos Servicios Trigers\SisContador\SisContador\bin\Debug\Funciones.dll</HintPath>
+      <HintPath>..\..\Funciones\Funciones\bin\Debug\Funciones.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Office.Interop.Excel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
@@ -89,6 +93,60 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Formularios\FormatoDGV.cs" />
+    <Compile Include="Formularios\frmAlmacen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacen.designer.cs">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBodega.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBodega.designer.cs">
+      <DependentUpon>frmBodega.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacenOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmAlmacenOperacion.designer.cs">
+      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLocacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLocacion.designer.cs">
+      <DependentUpon>frmLocacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBodegaOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBodegaOperacion.designer.cs">
+      <DependentUpon>frmBodegaOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLocacionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLocacionOperacion.designer.cs">
+      <DependentUpon>frmLocacionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSeccionOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSeccionOperacion.designer.cs">
+      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmSeccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmSeccion.designer.cs">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmCuentaDeBancos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmCuentaDeBancos.designer.cs">
+      <DependentUpon>frmCuentaDeBancos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,18 +164,6 @@
     </Compile>
     <Compile Include="Formularios\frmProductoUnidadDeMedida.designer.cs">
       <DependentUpon>frmProductoUnidadDeMedida.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmSeccionOperacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmSeccionOperacion.designer.cs">
-      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmSeccion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmSeccion.designer.cs">
-      <DependentUpon>frmSeccion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmConfiguracion.cs">
       <SubType>Form</SubType>
@@ -251,18 +297,6 @@
     <Compile Include="Formularios\frmCategoriaOperacion.designer.cs">
       <DependentUpon>frmCategoriaOperacion.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\frmAlmacen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmAlmacen.designer.cs">
-      <DependentUpon>frmAlmacen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmAlmacenOperacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmAlmacenOperacion.designer.cs">
-      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\frmProductoPresentacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -287,6 +321,42 @@
     <Compile Include="Formularios\frmProductoOperacion.designer.cs">
       <DependentUpon>frmProductoOperacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmBancos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBancos.designer.cs">
+      <DependentUpon>frmBancos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmBancosOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmBancosOperacion.designer.cs">
+      <DependentUpon>frmBancosOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmContenedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmContenedor.designer.cs">
+      <DependentUpon>frmContenedor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmContenedorOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmContenedorOperacion.designer.cs">
+      <DependentUpon>frmContenedorOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTiposDeEntradasOperacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTiposDeEntradasOperacion.designer.cs">
+      <DependentUpon>frmTiposDeEntradasOperacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmTiposDeEntradas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmTiposDeEntradas.designer.cs">
+      <DependentUpon>frmTiposDeEntradas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmTipoDeSalidaOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,30 +368,6 @@
     </Compile>
     <Compile Include="Formularios\frmTipoDeSalida.designer.cs">
       <DependentUpon>frmTipoDeSalida.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmUbicacionOperacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmUbicacionOperacion.designer.cs">
-      <DependentUpon>frmUbicacionOperacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmUbicacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmUbicacion.designer.cs">
-      <DependentUpon>frmUbicacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmTipoDeUbicacionOperacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmTipoDeUbicacionOperacion.designer.cs">
-      <DependentUpon>frmTipoDeUbicacionOperacion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\frmTipoDeUbicacion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\frmTipoDeUbicacion.designer.cs">
-      <DependentUpon>frmTipoDeUbicacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Formularios\frmTipoDeEntidad.cs">
       <SubType>Form</SubType>
@@ -361,6 +407,33 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\frmAlmacen.resx">
+      <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBodega.resx">
+      <DependentUpon>frmBodega.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmAlmacenOperacion.resx">
+      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLocacion.resx">
+      <DependentUpon>frmLocacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBodegaOperacion.resx">
+      <DependentUpon>frmBodegaOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLocacionOperacion.resx">
+      <DependentUpon>frmLocacionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSeccionOperacion.resx">
+      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmSeccion.resx">
+      <DependentUpon>frmSeccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmCuentaDeBancos.resx">
+      <DependentUpon>frmCuentaDeBancos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmCompras.resx">
       <DependentUpon>frmCompras.cs</DependentUpon>
     </EmbeddedResource>
@@ -369,12 +442,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoUnidadDeMedida.resx">
       <DependentUpon>frmProductoUnidadDeMedida.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmSeccionOperacion.resx">
-      <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmSeccion.resx">
-      <DependentUpon>frmSeccion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmConfiguracion.resx">
       <DependentUpon>frmConfiguracion.cs</DependentUpon>
@@ -442,12 +509,6 @@
     <EmbeddedResource Include="Formularios\frmCategoriaOperacion.resx">
       <DependentUpon>frmCategoriaOperacion.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAlmacen.resx">
-      <DependentUpon>frmAlmacen.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmAlmacenOperacion.resx">
-      <DependentUpon>frmAlmacenOperacion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoPresentacion.resx">
       <DependentUpon>frmProductoPresentacion.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,23 +521,29 @@
     <EmbeddedResource Include="Formularios\frmProductoOperacion.resx">
       <DependentUpon>frmProductoOperacion.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBancos.resx">
+      <DependentUpon>frmBancos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmBancosOperacion.resx">
+      <DependentUpon>frmBancosOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmContenedor.resx">
+      <DependentUpon>frmContenedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmContenedorOperacion.resx">
+      <DependentUpon>frmContenedorOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTiposDeEntradasOperacion.resx">
+      <DependentUpon>frmTiposDeEntradasOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmTiposDeEntradas.resx">
+      <DependentUpon>frmTiposDeEntradas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTipoDeSalidaOperacion.resx">
       <DependentUpon>frmTipoDeSalidaOperacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTipoDeSalida.resx">
       <DependentUpon>frmTipoDeSalida.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmUbicacionOperacion.resx">
-      <DependentUpon>frmUbicacionOperacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmUbicacion.resx">
-      <DependentUpon>frmUbicacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmTipoDeUbicacionOperacion.resx">
-      <DependentUpon>frmTipoDeUbicacionOperacion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\frmTipoDeUbicacion.resx">
-      <DependentUpon>frmTipoDeUbicacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmTipoDeEntidad.resx">
       <DependentUpon>frmTipoDeEntidad.cs</DependentUpon>
@@ -881,6 +948,7 @@
   <ItemGroup>
     <Content Include="LogSistemas.ico" />
     <Content Include="Origen XML\DTOrigenXML.xml" />
+    <None Include="Resources\if_image_delete_48_10320.png" />
     <None Include="Resources\if_printer_39263 %283%29.png" />
     <None Include="Resources\if_printer_39263 %282%29.png" />
     <None Include="Resources\if_printer_39263 %281%29.png" />

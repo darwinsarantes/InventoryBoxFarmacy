@@ -509,7 +509,7 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void MostrarFormularioParaOperacion(string OperacionesARealizar)
         {
-            /*
+            
             frmProductoOperacion ofrmProductoOperacion = new frmProductoOperacion();
             ofrmProductoOperacion.OperacionARealizar = OperacionesARealizar;
             ofrmProductoOperacion.NOMBRE_ENTIDAD_PRIVILEGIO = NOMBRE_ENTIDAD_PRIVILEGIO;
@@ -517,8 +517,7 @@ namespace InventoryBoxFarmacy.Formularios
             ofrmProductoOperacion.ValorLlavePrimariaEntidad = this.ValorLlavePrimariaEntidad;
             ofrmProductoOperacion.MdiParent = this.ParentForm;
             ofrmProductoOperacion.Show();
-            */
-
+            
         }
 
         private void AsignarLlavePrimaria()

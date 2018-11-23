@@ -9,6 +9,7 @@ namespace Entidad
     public class AlmacenEN
     {
         public int idAlmacen { set; get; }
+        public string Codigo { set; get; }
         public string Nombre { set; get; }
         public string Descripcion { set; get; }
         public int PorDefecto { set; get; }

@@ -2836,9 +2836,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                 if (dgvListarLaboratorios.Rows[e.RowIndex].Cells["idProveedorLaboratorio"].Value == null)
                     return;
-
-
-
+                
                 if (idProveedorLaboratorio > 0 && dgvListarLaboratorios.Columns[e.ColumnIndex].Name != "Eliminar")
                 {
                     dgvListarLaboratorios.Rows[e.RowIndex].Cells["Actualizar"].Value = true;

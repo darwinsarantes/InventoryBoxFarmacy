@@ -15,6 +15,7 @@ namespace Entidad
         public string PathMysSQLDump { set; get; }
         public string PathMySQL { set; get; }
         public int TiempoDeRespaldo { set; get; }
+        public int PrecioPorDefecto { set; get; }
         public string NombreDelSistema { set; get; }
 
         public LoginEN oLoginEN = new LoginEN();

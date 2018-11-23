@@ -31,12 +31,24 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.txtSeccion = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
             this.txtIdentificador = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtSeccion = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
@@ -49,102 +61,237 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
+            this.tsbRegistroLocal = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).BeginInit();
+            this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(570, 280);
+            this.panel1.Size = new System.Drawing.Size(662, 456);
             this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.txtDescripcion);
-            this.panel2.Controls.Add(this.txtSeccion);
-            this.panel2.Controls.Add(this.txtIdentificador);
-            this.panel2.Location = new System.Drawing.Point(13, 10);
+            this.panel2.Controls.Add(this.statusStrip1);
+            this.panel2.Controls.Add(this.tabControl1);
+            this.panel2.Location = new System.Drawing.Point(5, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(539, 196);
+            this.panel2.Size = new System.Drawing.Size(654, 379);
             this.panel2.TabIndex = 1;
             // 
-            // label3
+            // statusStrip1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(96, 20);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Descripción:";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbaBarradeprogreso,
+            this.Barradeprogreso});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 357);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(654, 22);
+            this.statusStrip1.TabIndex = 10;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
+            // 
+            // lbaBarradeprogreso
+            // 
+            this.lbaBarradeprogreso.Name = "lbaBarradeprogreso";
+            this.lbaBarradeprogreso.Size = new System.Drawing.Size(38, 17);
+            this.lbaBarradeprogreso.Text = "0 de 0";
+            // 
+            // Barradeprogreso
+            // 
+            this.Barradeprogreso.Name = "Barradeprogreso";
+            this.Barradeprogreso.Size = new System.Drawing.Size(300, 16);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(648, 351);
+            this.tabControl1.TabIndex = 9;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.txtIdentificador);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.txtCodigo);
+            this.tabPage1.Controls.Add(this.label4);
+            this.tabPage1.Controls.Add(this.txtSeccion);
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.txtDescripcion);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(640, 320);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Información de la sección";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // txtIdentificador
+            // 
+            this.txtIdentificador.Location = new System.Drawing.Point(14, 31);
+            this.txtIdentificador.Name = "txtIdentificador";
+            this.txtIdentificador.Size = new System.Drawing.Size(147, 24);
+            this.txtIdentificador.TabIndex = 4;
+            this.txtIdentificador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 49);
+            this.label2.Location = new System.Drawing.Point(14, 159);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(91, 18);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Seccion:";
+            this.label2.Text = "Descripción:";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Location = new System.Drawing.Point(14, 79);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(147, 24);
+            this.txtCodigo.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(14, 111);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(147, 18);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Nombre del Seccion:";
+            // 
+            // txtSeccion
+            // 
+            this.txtSeccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSeccion.Location = new System.Drawing.Point(14, 132);
+            this.txtSeccion.Name = "txtSeccion";
+            this.txtSeccion.Size = new System.Drawing.Size(600, 24);
+            this.txtSeccion.TabIndex = 4;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 58);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(60, 18);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Código:";
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescripcion.Location = new System.Drawing.Point(14, 180);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(600, 122);
+            this.txtDescripcion.TabIndex = 3;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(18, 17);
+            this.label1.Location = new System.Drawing.Point(14, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 20);
+            this.label1.Size = new System.Drawing.Size(87, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "Identificador";
             // 
-            // txtDescripcion
+            // tabPage2
             // 
-            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(128, 78);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtDescripcion.Size = new System.Drawing.Size(381, 98);
-            this.txtDescripcion.TabIndex = 3;
+            this.tabPage2.Controls.Add(this.dgvListar);
+            this.tabPage2.Controls.Add(this.toolStrip2);
+            this.tabPage2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(640, 320);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Contenedores de la sección";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // txtSeccion
+            // dgvListar
             // 
-            this.txtSeccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeccion.Location = new System.Drawing.Point(128, 46);
-            this.txtSeccion.Name = "txtSeccion";
-            this.txtSeccion.Size = new System.Drawing.Size(381, 26);
-            this.txtSeccion.TabIndex = 3;
+            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListar.Location = new System.Drawing.Point(3, 34);
+            this.dgvListar.Name = "dgvListar";
+            this.dgvListar.Size = new System.Drawing.Size(634, 283);
+            this.dgvListar.TabIndex = 1;
+            this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
+            this.dgvListar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellEndEdit);
+            this.dgvListar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvListar_CurrentCellDirtyStateChanged);
+            this.dgvListar.SelectionChanged += new System.EventHandler(this.dgvListar_SelectionChanged);
+            this.dgvListar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListar_MouseDown);
             // 
-            // txtIdentificador
+            // toolStrip2
             // 
-            this.txtIdentificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtIdentificador.Location = new System.Drawing.Point(128, 14);
-            this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(119, 26);
-            this.txtIdentificador.TabIndex = 4;
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbBuscar,
+            this.tsbNuevo});
+            this.toolStrip2.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(634, 31);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tsbBuscar
+            // 
+            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbBuscar.Image = global::InventoryBoxFarmacy.Properties.Resources.filtrar24x24;
+            this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbBuscar.Name = "tsbBuscar";
+            this.tsbBuscar.Size = new System.Drawing.Size(28, 28);
+            this.tsbBuscar.Text = "toolStripButton1";
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::InventoryBoxFarmacy.Properties.Resources.new22x22;
+            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(26, 28);
+            this.tsbNuevo.Text = "toolStripButton2";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbGuardar,
+            this.tsbRegistroLocal,
             this.tsbActualizar,
             this.tsbEliminar,
             this.tsbLimpiarCampos,
@@ -152,9 +299,9 @@
             this.tsbRecarRegistro,
             this.toolStripSeparator1,
             this.tsbImprimir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 209);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 385);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(570, 71);
+            this.toolStrip1.Size = new System.Drawing.Size(662, 71);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -252,7 +399,7 @@
             // 
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCerrarVentana.AutoSize = true;
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 326);
+            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 502);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
             this.chkCerrarVentana.Size = new System.Drawing.Size(204, 17);
             this.chkCerrarVentana.TabIndex = 1;
@@ -274,12 +421,24 @@
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
             // 
+            // tsbRegistroLocal
+            // 
+            this.tsbRegistroLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRegistroLocal.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
+            this.tsbRegistroLocal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRegistroLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRegistroLocal.Name = "tsbRegistroLocal";
+            this.tsbRegistroLocal.Size = new System.Drawing.Size(68, 68);
+            this.tsbRegistroLocal.Text = "Guardar Nuevo";
+            this.tsbRegistroLocal.ToolTipText = "Guardar Nuevo de manera local";
+            this.tsbRegistroLocal.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
+            // 
             // frmSeccionOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(594, 355);
+            this.ClientSize = new System.Drawing.Size(686, 531);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
@@ -291,6 +450,16 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).EndInit();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
@@ -313,13 +482,26 @@
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbCerrarVentan;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txtSeccion;
+        private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtIdentificador;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider EP;
         private System.Windows.Forms.Label InformacionEntidadOperacion;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.TextBox txtCodigo;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtSeccion;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataGridView dgvListar;
+        private System.Windows.Forms.ToolStrip toolStrip2;
+        private System.Windows.Forms.ToolStripButton tsbBuscar;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lbaBarradeprogreso;
+        private System.Windows.Forms.ToolStripProgressBar Barradeprogreso;
+        private System.Windows.Forms.ToolStripButton tsbRegistroLocal;
     }
 }

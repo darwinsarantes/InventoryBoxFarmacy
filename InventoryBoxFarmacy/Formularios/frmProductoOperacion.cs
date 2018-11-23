@@ -90,7 +90,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
                 {
-                    
+
                     tsbActualizar.Enabled = oRegistroLN.VerificarSiTengoAcceso("Actualizar");
 
                     if (tsbActualizar.Enabled == true) {
@@ -103,12 +103,12 @@ namespace InventoryBoxFarmacy.Formularios
                         MessageBox.Show("No tiene privilegio para modificar el registro, la ventana se cerrara", "Privilegios de Usuarios", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         this.Close();
                     }
-                    
+
 
                 }
                 else
                 {
-                                        
+
                     throw new ArgumentException(oRegistroLN.Error);
 
                 }
@@ -177,8 +177,8 @@ namespace InventoryBoxFarmacy.Formularios
                     tsbRecarRegistro.Visible = false;
 
                     txtIdentificador.ReadOnly = true;
-                    txtDesProducto.Text = string.Empty;                                    
-                   
+                    txtCodigoDeBarra.Text = string.Empty;
+
                     break;
 
                 case "MODIFICAR":
@@ -189,7 +189,7 @@ namespace InventoryBoxFarmacy.Formularios
                     tsbRecarRegistro.Visible = true;
 
                     txtIdentificador.ReadOnly = true;
-                                        
+
                     break;
 
                 case "ELIMINAR":
@@ -203,8 +203,8 @@ namespace InventoryBoxFarmacy.Formularios
                     chkCerrarVentana.Enabled = false;
                     txtIdentificador.ReadOnly = true;
 
-                    txtDesProducto.ReadOnly = true;
-                    
+                    txtCodigoDeBarra.ReadOnly = true;
+
                     break;
 
                 case "CONSULTAR":
@@ -214,14 +214,14 @@ namespace InventoryBoxFarmacy.Formularios
                     tsbEliminar.Visible = false;
                     tsbRecarRegistro.Visible = true;
                     txtIdentificador.ReadOnly = true;
-                    
+
                     chkCerrarVentana.CheckState = CheckState.Checked;
                     chkCerrarVentana.Enabled = false;
-                    txtDesProducto.ReadOnly = true;
-                   
+                    txtCodigoDeBarra.ReadOnly = true;
+
 
                     break;
-                    
+
                 default:
                     MessageBox.Show("La operación solicitada no está disponible.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     break;
@@ -272,8 +272,8 @@ namespace InventoryBoxFarmacy.Formularios
                 {
                     //idProducto, DesProducto, Debitos, Creditos
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
-                    txtDesProducto.Text = Fila["Producto"].ToString();                    
-                    
+                    txtCodigoDeBarra.Text = Fila["Producto"].ToString();
+
                     oRegistrosEN = null;
                     oRegistrosLN = null;
 
@@ -315,8 +315,8 @@ namespace InventoryBoxFarmacy.Formularios
         private void LimpiarCampos()
         {
             //txtId.Text = string.Empty;
-            txtDesProducto.Text = string.Empty;            
-           
+            txtCodigoDeBarra.Text = string.Empty;
+
         }
 
         private void GuardarValoresDeConfiguracion()
@@ -334,13 +334,13 @@ namespace InventoryBoxFarmacy.Formularios
         {
             LimpiarEP();
 
-            if (Controles.IsNullOEmptyElControl(txtDesProducto))
+            if (Controles.IsNullOEmptyElControl(txtCodigoDeBarra))
             {
-                EP.SetError(txtDesProducto, "Este campo no puede quedar vacío");
-                txtDesProducto.Focus();
+                EP.SetError(txtCodigoDeBarra, "Este campo no puede quedar vacío");
+                txtCodigoDeBarra.Focus();
                 return false;
             }
-            
+
 
             return true;
 
@@ -351,17 +351,161 @@ namespace InventoryBoxFarmacy.Formularios
             ProductoEN oRegistroEN = new ProductoEN();
 
             oRegistroEN.idProducto = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
-            oRegistroEN.Nombre = txtDesProducto.Text.Trim();
+            oRegistroEN.Nombre = txtCodigoDeBarra.Text.Trim();
             oRegistroEN.NombreComun = txtNombreComun.Text.Trim();
+            oRegistroEN.Codigo = txtCodigo.Text.Trim();
+            oRegistroEN.CodigoDeBarra = txtCodigoDeBarra.Text.Trim();
+            oRegistroEN.Descripcion = txtDescripcion.Text.Trim();
+            oRegistroEN.NombreGenerico = txtNombreGenerico.Text.Trim();
+            decimal Minimo;
+            decimal.TryParse(txtMinimo.Text, out Minimo);
+            oRegistroEN.Minimo = Minimo;
+            decimal Maximo;
+            decimal.TryParse(txtMaximo.Text, out Maximo);
+            oRegistroEN.Maximo = Maximo;
+            decimal Existencia;
+            decimal.TryParse(txtExistencias.Text, out Existencia);
+            oRegistroEN.Existencias = Existencia;
+            oRegistroEN.oCategoria.idCategoria = Convert.ToInt32(cmbCategoria.SelectedValue);
+            oRegistroEN.oCategoria.Nombre = cmbCategoria.Text.Trim();
+            oRegistroEN.oPresentacion.idProductoPresentacion = Convert.ToInt32(cmbPresentacion.SelectedValue);
+            oRegistroEN.oPresentacion.Nombre = cmbPresentacion.Text.Trim();
+            oRegistroEN.oUnidadDeMedida.idProductoUnidadDeMedida = Convert.ToInt32(cmbUnidadDeMedida.SelectedValue);
+            oRegistroEN.oUnidadDeMedida.Nombre = cmbUnidadDeMedida.Text.Trim();
+
+            oRegistroEN.idAlmacenEntidad = Convert.ToInt32(txtAlmacenIdentidad.Text);
+            oRegistroEN.idPLEntidad = Convert.ToInt32(txtPLEntidad.Text);
+            oRegistroEN.Observaciones = txtObservacion.Text.Trim();
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+
+            return oRegistroEN;
+
+        }
+
+        private ProductoPrecioEN InformacionDelPrecioDelProducto()
+        {
+            ProductoPrecioEN oRegistroEN = new ProductoPrecioEN();
+
+            oRegistroEN.idProductoPrecio = Convert.ToInt32(txtIdPrecio.Text);
+            decimal Costo;
+            decimal.TryParse(txtCosto.Text, out Costo);
+            decimal Porcentaje1;
+            decimal.TryParse(txtPorcentaje1.Text, out Porcentaje1);
+            decimal Porcentaje2;
+            decimal.TryParse(txtPorcentaje2.Text, out Porcentaje2);
+            decimal Porcentaje3;
+            decimal.TryParse(txtPorcentaje3.Text, out Porcentaje3);
+            decimal Porcentaje4;
+            decimal.TryParse(txtPorcentaje4.Text, out Porcentaje4);
+            decimal Porcentaje5;
+            decimal.TryParse(txtPorcentaje5.Text, out Porcentaje5);
+            decimal Precio1;
+            decimal.TryParse(txtPrecio1.Text, out Precio1);
+            decimal Precio2;
+            decimal.TryParse(txtPrecio2.Text, out Precio2);
+            decimal Precio3;
+            decimal.TryParse(txtPrecio3.Text, out Precio3);
+            decimal Precio4;
+            decimal.TryParse(txtPrecio4.Text, out Precio4);
+            decimal Precio5;
+            decimal.TryParse(txtPrecio5.Text, out Precio5);
+
+            oRegistroEN.AplicarElIva = 0;
+            if (chkAplicarIVA.CheckState == CheckState.Checked)
+            {
+                oRegistroEN.AplicarElIva = 1;
+            }
+
+            decimal ValorDelIVA;
+            decimal.TryParse(txtIVA.Text, out ValorDelIVA);
+            oRegistroEN.ValorDelIvaEnProcentaje = ValorDelIVA;
+            oRegistroEN.Estado = "ACTIVO";
+            oRegistroEN.oProductoEN = InformacionDelRegistro();
+
+            //partes generales.            
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+            return oRegistroEN;
+
+        }
+        
+        private ProductoConfiguracionEN InformacionDeLaConfiguracionDelProducto()
+        {
+
+            ProductoConfiguracionEN oRegistroEN = new ProductoConfiguracionEN();
+            oRegistroEN.idProductoConfiguracion = Convert.ToInt32(txtidProductoConfiguracion.Text);
+            oRegistroEN.oProductoEN = InformacionDelRegistro();
+            oRegistroEN.AplicarComisiones = chkAplicarComision.CheckState == CheckState.Checked ? 1 : 0;
+            oRegistroEN.MostrarContenidoDeObservacionesENFactura = chkMostrarObservacionesDelProducto.CheckState == CheckState.Checked ? 1: 0;
+            oRegistroEN.MontoFijoPorVenta = rbMontoFijoPorVenta.Checked == true ? 1 : 0;
+            oRegistroEN.PorcentajeDeLaGanacia = rbPorcentajeDeLaGanancia.Checked == true ? 1 : 0;
+            oRegistroEN.PorcentajeDeLaVenta = rbPorcentajeDeLaVenta.Checked == true ? 1 : 0;
+            oRegistroEN.PreguntarFechaDeVencimientoAlFacturar = chkPreguntarPorLaFechaDeVencimientoAlFacturar.CheckState == CheckState.Checked ? 1 : 0;
+            oRegistroEN.PreguntarNumeroDeSerieAlFacturar = chkPreguntarPorElNumeroDeSerieALFacturar.CheckState == CheckState.Checked ? 1: 0;
+            oRegistroEN.PreguntarPorResetaAlFacturar = chkProductoControlado.CheckState == CheckState.Checked ? 1 : 0;
+            oRegistroEN.NoUsarComisionesParaEsteProducto = rbNoUsarComisionesParaEsteProducto.Checked == true ? 1 : 0;
+            oRegistroEN.MostrarImagenAlFacturar = chkMostarImagenAlFacturar.CheckState == CheckState.Checked ? 1: 0;
+            oRegistroEN.UsarComisionesDefinidasEnElregistroDelVendedor = rbUsarLaComisionDefinidaEnElRegistroDelVendedor.Checked == true ? 1 : 0;
+            decimal Comision;
+            decimal.TryParse(txtComisionPorcentual.Text, out Comision);
+            oRegistroEN.Comision = Comision;
+
+            decimal ComisionMaxima;
+            decimal.TryParse(txtComisionMaxima.Text, out ComisionMaxima);
+            oRegistroEN.ComisionMaxima = ComisionMaxima;
+            oRegistroEN.ActivarPromocion = chkAplicarPromocion.CheckState == CheckState.Checked ? 1 : 0;
+            
+            //partes generales.            
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+            return oRegistroEN;
+
+        }
+
+        private ProductoPromocionEN InformacionDeLaPromocionDelProducto()
+        {
+            ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
+
+            oRegistroEN.idProductoPromocion = Convert.ToInt32(txtidProductoPromocion.Text);
+            oRegistroEN.oProductoEN = InformacionDelRegistro();
+            decimal PrecioDelProducto;
+            decimal.TryParse(txtPrecioPromocional.Text, out PrecioDelProducto);
+            oRegistroEN.PrecioDelProducto = PrecioDelProducto;
+            oRegistroEN.FechaDeInicio = dtpkDesdePromocion.Value;
+            oRegistroEN.FechaDeFinalizacion = dtpkHastaPromocional.Value;
+            oRegistroEN.Estado = cmbEstadoDeLaPromocion.Text.Trim();
+            oRegistroEN.Descripcion = txtDescripcionDeLaPromocion.Text.Trim();
+
+            //partes generales.            
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
             return oRegistroEN;
 
         }
 
         #endregion
 
+        #region "Eventos del Formulario"
+        
         private void tsbCerrarVentan_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -441,7 +585,8 @@ namespace InventoryBoxFarmacy.Formularios
             {
                 MessageBox.Show(ex.Message, "Guardar la información del registro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            finally {
+            finally
+            {
                 this.Cursor = Cursors.Default;
             }
         }
@@ -595,9 +740,516 @@ namespace InventoryBoxFarmacy.Formularios
             LlenarCamposDesdeBaseDatosSegunID();
         }
 
-        private void tabPage1_Click(object sender, EventArgs e)
+        private void txtPrecioPromocional_KeyPress(object sender, KeyPressEventArgs e)
         {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
 
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
         }
+
+        private void txtMinimo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtExistencias_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtMaximo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtCosto_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtIVA_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPorcentaje1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPorcentaje2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPorcentaje3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPorcentaje4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPorcentaje5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPrecio1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPrecio2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPrecio3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPrecio4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtPrecio5_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtComisionPorcentual_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void txtComisionMaxima_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((TextBox)sender).Text.Contains('.'))
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+            else
+            {
+                if (!char.IsDigit(e.KeyChar))
+                {
+                    e.Handled = true;
+                }
+
+                if (e.KeyChar == '.' || e.KeyChar == '\b')
+                {
+                    e.Handled = false;
+                }
+            }
+        }
+
+        #endregion
+
+        private void txtCodigoDeBarra_TextChanged(object sender, EventArgs e)
+        {
+            pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim());
+        }
+
     }
 }

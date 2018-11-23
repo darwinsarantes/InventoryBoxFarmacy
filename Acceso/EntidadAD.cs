@@ -167,7 +167,8 @@ namespace AccesoDatos
                 return false;
             }
             finally
-            {  
+            {
+
                 Comando = null;
                 Adaptador = null;
                 oTransaccionesAD = null;
@@ -307,6 +308,57 @@ namespace AccesoDatos
                 }
 
                 Cnn = null;
+                Comando = null;
+                Adaptador = null;
+                oTransaccionesAD = null;
+
+            }
+
+        }
+
+        public bool Eliminar(EntidadEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+                
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn_Existente;
+                Comando.Transaction = Transaccion_Existente;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = @"Delete from Entidad Where idEntidad = @idEntidad;";
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@idEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idEntidad;
+
+                Comando.ExecuteNonQuery();
+
+                DescripcionDeOperacion = string.Format("El registro fue Eliminado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al eliminar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return false;
+            }
+            finally
+            {
+                
                 Comando = null;
                 Adaptador = null;
                 oTransaccionesAD = null;
