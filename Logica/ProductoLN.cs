@@ -31,6 +31,22 @@ namespace Logica
 
         }
 
+        public bool AgregarUtilizandoLaMismaConexion(ProductoCompletoEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oProductoAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oProductoAD.Error;
+                return false;
+            }
+
+        }
+
         public bool Actualizar(ProductoEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 

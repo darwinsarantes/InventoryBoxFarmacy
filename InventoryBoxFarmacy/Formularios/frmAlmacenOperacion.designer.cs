@@ -179,6 +179,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(164, 24);
             this.txtCodigo.TabIndex = 4;
+            this.txtCodigo.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -282,6 +283,7 @@
             this.tsbBuscar.Name = "tsbBuscar";
             this.tsbBuscar.Size = new System.Drawing.Size(28, 28);
             this.tsbBuscar.Text = "Buscar Registro";
+            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
             // 
             // tsbNuevo
             // 
@@ -293,6 +295,7 @@
             this.tsbNuevo.Size = new System.Drawing.Size(26, 28);
             this.tsbNuevo.Text = "toolStripButton2";
             this.tsbNuevo.ToolTipText = "Nuevo Registro";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // toolStrip1
             // 

@@ -710,7 +710,7 @@ namespace InventoryBoxFarmacy.Formularios
                 oFrmRegistro.TituloVentana = "Seleccionar Contacto";
 
                 oFrmRegistro.AplicarFiltroDeWhereExterno = true;
-                oFrmRegistro.WhereExterno = WhereContacto();
+                oFrmRegistro.WhereExterno = WhereDinamicoDelContenedor();
 
                 oFrmRegistro.ShowDialog();
 
@@ -732,7 +732,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private string WhereContacto()
+        private string WhereDinamicoDelContenedor()
         {
             string Where = "";
             try
@@ -761,7 +761,13 @@ namespace InventoryBoxFarmacy.Formularios
                         }
                     }
 
-                    Where = string.Format(" and cr.idContenedor Not in ({0}) ", IdContenedor);
+                    if (IdContenedor.Trim().Length > 0)
+                    {
+                        Where = string.Format(" and cr.idContenedor Not in ({0}) ", IdContenedor);
+                    }else
+                    {
+                        Where = "";
+                    }
                 }
 
                 return Where;

@@ -64,7 +64,7 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@PathMySQL", MySqlDbType.VarChar, oRegistroEN.PathMySQL.Trim().Length)).Value = oRegistroEN.PathMySQL.Trim();                
                 Comando.Parameters.Add(new MySqlParameter("@NombreDelSistema", MySqlDbType.VarChar, oRegistroEN.NombreDelSistema.Trim().Length)).Value = oRegistroEN.NombreDelSistema.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@TiempoDeRespaldo", MySqlDbType.Int32)).Value = oRegistroEN.TiempoDeRespaldo;
-                Comando.Parameters.Add(new MySqlParameter("@PrecioPorDefecto", MySqlDbType.Int32)).Value = oRegistroEN.PrecioPorDefecto;
+                Comando.Parameters.Add(new MySqlParameter("@PrecioPorDefecto", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioPorDefecto;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

@@ -39,23 +39,24 @@ namespace AccesoDatos
 
                 Consultas = @"
                                 
-                INSERT INTO productoprecio
+                insert into productoprecio
                 (idProducto, Costo, PorcentajeDelPrecio1, PorcentajeDelPrecio2, 
-                PorcentajeDelPrecio3, PorcentajeDelPrecio4, PorcentajeDelPrecio5, Precio1, 
-                Precio2, Precio3, Precio4, Precio5, AplicarElIva, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                ValorDelIvaEnProcentaje, ValorDelIva)
-                VALUES
+                PorcentajeDelPrecio3, PorcentajeDelPrecio4, PorcentajeDelPrecio5, 
+                Precio1, Precio2, Precio3, Precio4, Precio5, AplicarElIva, 
+                idUsuarioDeCreacion, FechaDeCreacion, 
+                idUsuarioModificacion, FechaDeModificacion, ValorDelIvaEnProcentaje, ValorDelIva, Estado)
+                values
                 (@idProducto, @Costo, @PorcentajeDelPrecio1, @PorcentajeDelPrecio2, 
-                @PorcentajeDelPrecio3, @PorcentajeDelPrecio4, @PorcentajeDelPrecio5, @Precio1, 
-                @Precio2, @Precio3, @Precio4, @Precio5, @AplicarElIva, 
-                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @ValorDelIvaEnProcentaje, @ValorDelIva)
+                @PorcentajeDelPrecio3, @PorcentajeDelPrecio4, @PorcentajeDelPrecio5, 
+                @Precio1, @Precio2, @Precio3, @Precio4, @Precio5, @AplicarElIva, 
+                @idUsuarioDeCreacion, current_timestamp(), 
+                @idUsuarioModificacion, current_timestamp(), @ValorDelIvaEnProcentaje, @ValorDelIva, @Estado);
 
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
-                
+
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado;
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIva", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIva;
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIvaEnProcentaje", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIvaEnProcentaje;
                 Comando.Parameters.Add(new MySqlParameter("@AplicarElIva", MySqlDbType.Int32)).Value = oRegistroEN.AplicarElIva;
@@ -71,7 +72,7 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio1", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio1;
                 Comando.Parameters.Add(new MySqlParameter("@Costo", MySqlDbType.Decimal)).Value = oRegistroEN.Costo;
                 Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                
+
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
 
@@ -125,7 +126,100 @@ namespace AccesoDatos
             }
 
         }
-        
+
+        public bool Agregar(ProductoPrecioEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
+        {
+
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn_Existente;
+                Comando.Transaction = Transaccion_Existente;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = @"
+                                
+                insert into productoprecio
+                (idProducto, Costo, PorcentajeDelPrecio1, PorcentajeDelPrecio2, 
+                PorcentajeDelPrecio3, PorcentajeDelPrecio4, PorcentajeDelPrecio5, 
+                Precio1, Precio2, Precio3, Precio4, Precio5, AplicarElIva, 
+                idUsuarioDeCreacion, FechaDeCreacion, 
+                idUsuarioModificacion, FechaDeModificacion, ValorDelIvaEnProcentaje, ValorDelIva, Estado)
+                values
+                (@idProducto, @Costo, @PorcentajeDelPrecio1, @PorcentajeDelPrecio2, 
+                @PorcentajeDelPrecio3, @PorcentajeDelPrecio4, @PorcentajeDelPrecio5, 
+                @Precio1, @Precio2, @Precio3, @Precio4, @Precio5, @AplicarElIva, 
+                @idUsuarioDeCreacion, current_timestamp(), 
+                @idUsuarioModificacion, current_timestamp(), @ValorDelIvaEnProcentaje, @ValorDelIva, @Estado);
+
+                Select last_insert_id() as 'ID';";
+
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar,oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado;
+                Comando.Parameters.Add(new MySqlParameter("@ValorDelIva", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIva;
+                Comando.Parameters.Add(new MySqlParameter("@ValorDelIvaEnProcentaje", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIvaEnProcentaje;
+                Comando.Parameters.Add(new MySqlParameter("@AplicarElIva", MySqlDbType.Int32)).Value = oRegistroEN.AplicarElIva;
+                Comando.Parameters.Add(new MySqlParameter("@Precio5", MySqlDbType.Decimal)).Value = oRegistroEN.Precio5;
+                Comando.Parameters.Add(new MySqlParameter("@Precio4", MySqlDbType.Decimal)).Value = oRegistroEN.Precio4;
+                Comando.Parameters.Add(new MySqlParameter("@Precio3", MySqlDbType.Decimal)).Value = oRegistroEN.Precio3;
+                Comando.Parameters.Add(new MySqlParameter("@Precio2", MySqlDbType.Decimal)).Value = oRegistroEN.Precio2;
+                Comando.Parameters.Add(new MySqlParameter("@Precio1", MySqlDbType.Decimal)).Value = oRegistroEN.Precio1;
+                Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio5", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio5;
+                Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio4", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio4;
+                Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio3", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio3;
+                Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio2", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio2;
+                Comando.Parameters.Add(new MySqlParameter("@PorcentajeDelPrecio1", MySqlDbType.Decimal)).Value = oRegistroEN.PorcentajeDelPrecio1;
+                Comando.Parameters.Add(new MySqlParameter("@Costo", MySqlDbType.Decimal)).Value = oRegistroEN.Costo;
+                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                oRegistroEN.idProductoPrecio = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
+
+                DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return true;
+
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return false;
+            }
+            finally
+            {
+                
+                Comando = null;
+                Adaptador = null;
+                oTransaccionesAD = null;
+
+            }
+
+        }
+
         public bool Actualizar(ProductoPrecioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             oTransaccionesAD = new TransaccionesAD();

@@ -25,6 +25,7 @@ namespace InventoryBoxFarmacy.Formularios
         private string NOMBRE_LLAVE_PRIMARIA = "idProveedor";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
+        private frmVisor oFrmVisor = null;
 
         #region "Funciones del programador"
 
@@ -1091,6 +1092,39 @@ namespace InventoryBoxFarmacy.Formularios
             if (chkOtro.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LLenarListado();
+            }
+        }
+
+        private void tsbListadoDeReportes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (oFrmVisor == null || oFrmVisor.IsDisposed)
+                {
+                    oFrmVisor = new frmVisor();
+
+                    oFrmVisor.NombreReporte = "Proveedores - Listado";
+                    oFrmVisor.AplicarBorder = 0;
+                    ProveedorEN oRegistroEN = new ProveedorEN();
+                    oRegistroEN.Where = WhereDinamico();
+                    oRegistroEN.OrderBy = " Order by p.Nombre asc  ";
+                    oRegistroEN.TituloDelReporte = "LISTADO DE PROVEEDORES";
+                    oRegistroEN.SubTituloDelReporte = TituloDinamico();
+                    oFrmVisor.Entidad = oRegistroEN;
+
+                    oFrmVisor.MdiParent = this.ParentForm;
+                    oFrmVisor.Show();
+                }
+                else
+                    oFrmVisor.BringToFront();
+
+
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Imprimir listado de proveedores", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

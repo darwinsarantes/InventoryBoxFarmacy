@@ -24,6 +24,7 @@ namespace InventoryBoxFarmacy.Formularios
         public string NOMBRE_ENTIDAD_PRIVILEGIO { set; get; }
         public string NombreEntidad { set; get; }
         public int ValorLlavePrimariaEntidad { set; get; }
+        private ImageList ListaDeImagenes = null; 
 
         private bool CerrarVentana = false;
 
@@ -231,7 +232,11 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void Nuevo()
         {
+            CrearColnmasEnElListview();
+            AgregarImagenPorDefecto();
+            AgregarImagenDelproductoPorDefecto();
 
+            CrearColumnasDGVRegistros();
         }
 
         private void Modificar()
@@ -274,6 +279,9 @@ namespace InventoryBoxFarmacy.Formularios
                     DataRow Fila = oRegistrosLN.TraerDatos().Rows[0];
                     txtCodigoDeBarra.Text = Fila["Producto"].ToString();
 
+
+                    CrearyYPoblarColumnasDGVLaboratorio();
+
                     oRegistrosEN = null;
                     oRegistrosLN = null;
 
@@ -314,10 +322,273 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void LimpiarCampos()
         {
-            //txtId.Text = string.Empty;
             txtCodigoDeBarra.Text = string.Empty;
+            txtAlmacenaje.Text = string.Empty;
+            txtAlmacenIdentidad.Text = string.Empty;
+            txtCodigo.Text = string.Empty;
+            txtCodigoDeBarra.Text = string.Empty;
+            pbxCodigoGenerado.Image = null;
+            txtComisionMaxima.Text = "0.00";
+            txtComisionPorcentual.Text = "0.00";
+            txtCosto.Text = "0.00";
+            txtDescripcion.Text = string.Empty;
+            txtObservacion.Text = string.Empty;
+            txtNombre.Text = string.Empty;
+            txtNombreComun.Text = string.Empty;
+            txtNombreGenerico.Text = string.Empty;
+            txtNumeroDeCerie.Text = string.Empty;
+            txtModelo.Text = string.Empty;
+            txtMarcaDelProducto.Text = string.Empty;
+            txtPorcentaje1.Text = "0.00";
+            txtPorcentaje2.Text = "0.00";
+            txtPorcentaje3.Text = "0.00";
+            txtPorcentaje4.Text = "0.00";
+            txtPorcentaje5.Text = "0.00";
+            txtPrecio1.Text = "0.00";
+            txtPrecio2.Text = "0.00";
+            txtPrecio3.Text = "0.00";
+            txtPrecio4.Text = "0.00";
+            txtPrecio5.Text = "0.00";
+            txtPrecioPromocional.Text = "0.00";
+            txtPrecioXUnidad.Text = "";
+            txtTablaDeReferencia.Text = string.Empty;
+            txtTablaOrigen.Text = string.Empty;
+            txtExistencias.Text = string.Empty;
+            txtIdentificador.Text = string.Empty;
+            txtIdPrecio.Text = string.Empty;
+            txtidProductoConfiguracion.Text = string.Empty;
+            txtidProductoPromocion.Text = string.Empty;
+            txtIVA.Text = string.Empty;
+            txtLaboratorio.Text = string.Empty;
+            txtUnidadesXPresentacion.Text = "0.00";
+            cmbCategoria.SelectedIndex = -1;
+            cmbEstadoDeLaPromocion.SelectedIndex = -1;
+            cmbPresentacion.SelectedIndex = -1;
+            cmbUnidadDeMedida.SelectedIndex = -1;
+            chkAplicarComision.CheckState = CheckState.Unchecked;
+            chkAplicarIVA.CheckState = CheckState.Unchecked;
+            chkAplicarPromocion.CheckState = CheckState.Unchecked;
+            chkMostarImagenAlFacturar.CheckState = CheckState.Unchecked;
+            chkMostrarObservacionesDelProducto.CheckState = CheckState.Unchecked;
+            chkPreguntarPorElNumeroDeSerieALFacturar.CheckState = CheckState.Unchecked;
+            chkPreguntarPorLaFechaDeVencimientoAlFacturar.CheckState = CheckState.Unchecked;
+            chkProductoControlado.CheckState = CheckState.Unchecked;
+            chkProductoDescontinuado.CheckState = CheckState.Unchecked;
+            rbMontoFijoPorVenta.Checked = false;
+            rbNoUsarComisionesParaEsteProducto.Checked = false;
+            rbPorcentajeDeLaGanancia.Checked = false;
+            rbPorcentajeDeLaVenta.Checked = false;
+            rbUsarLaComisionDefinidaEnElRegistroDelVendedor.Checked = false;
+            lvImagenes.Items.Clear();            
+            dgvListar.Rows.Clear();
 
         }
+
+        #region "Trabajando con el Listview"
+
+        private void CrearColnmasEnElListview()
+        {
+            try
+            {
+                ColumnHeader c = new ColumnHeader();
+                c.Name = "idProductoImagenes";
+                c.TextAlign = HorizontalAlignment.Left;
+                c.Width = 0;
+                //idProductoImagenes,PorDefecto, Nombre, extension, Ruta, Size, Foto                
+                lvImagenes.Columns.Add("PorDefecto", 80, HorizontalAlignment.Left).Text = "Por Defecto";
+                lvImagenes.Columns.Add("Nombre", 250, HorizontalAlignment.Left).Text = "Nombre de la Imagen";
+                lvImagenes.Columns.Add("Extension", 80, HorizontalAlignment.Left).Text = "Extensión";
+                lvImagenes.Columns.Add(c);
+                lvImagenes.CheckBoxes = true;
+                lvImagenes.View = View.SmallIcon;
+                lvImagenes.FullRowSelect = true;
+                lvImagenes.LabelEdit = false;
+                lvImagenes.AllowColumnReorder = true;
+                lvImagenes.GridLines = true;
+                lvImagenes.MultiSelect = false;
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Crear colunmas en el listview", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void AgregarImagenPorDefecto()
+        {
+            try
+            {
+                if(ListaDeImagenes == null)
+                {
+                    ListaDeImagenes = new ImageList();
+                    ListaDeImagenes.ImageSize = new Size(250, 250);
+                    ListaDeImagenes.Images.Add(InventoryBoxFarmacy.Properties.Resources.iconfinder_product_49608);
+                }else
+                {
+                    ListaDeImagenes.Images.Add(InventoryBoxFarmacy.Properties.Resources.iconfinder_product_49608);
+                }
+
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Agregar imagenen por defecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void AgregarImagenDelproductoPorDefecto()
+        {
+            try
+            {
+                lvImagenes.LargeImageList = ListaDeImagenes;
+                lvImagenes.SmallImageList = ListaDeImagenes;
+
+                ListViewItem item = new ListViewItem(" ");                
+                item.SubItems.Add("Foto por Defecto");
+                item.SubItems.Add(InventoryBoxFarmacy.Properties.Resources.iconfinder_product_49608.GetType().ToString());
+                item.SubItems.Add("0");
+                item.ImageIndex = 0;
+                lvImagenes.Items.Add(item);
+                
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Agregar imagen del producto por defecto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+        
+        private void tsbAgregarImagen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog Abrir = new OpenFileDialog();
+            Image ImagenLogo;
+
+            //Abrir.InitialDirectory = "c:\\";
+            Abrir.Filter = "Archivos de imágenes (*.jpg)|*.jpg|Archivos de imágenes (*.png)|*.png|Archivos de imágenes (*.gif)|*.gif";
+            Abrir.FilterIndex = 1;
+            Abrir.RestoreDirectory = true;
+            Abrir.Title = "Buscar archivos de imágenes compatibles";
+
+            if (Abrir.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    if ((Abrir.OpenFile()) != null)
+                    {
+                        ImagenLogo = new Bitmap(Abrir.FileName);
+                        //Pendiente de agregar...
+                        if (ListaDeImagenes == null)
+                        {
+                            ListaDeImagenes = new ImageList();
+                            ListaDeImagenes.ImageSize = new Size(250, 250);
+                            ListaDeImagenes.Images.Add(resizeImage(ImagenLogo, 250, 250));
+
+                            lvImagenes.LargeImageList = ListaDeImagenes;
+                            lvImagenes.SmallImageList = ListaDeImagenes;
+
+                        }
+                        else
+                        {
+                            ListaDeImagenes.Images.Add(ImagenLogo);
+                        }
+
+                        ListViewItem item = new ListViewItem(" ");
+                        item.SubItems.Add(Abrir.FileName);
+                        item.SubItems.Add(System.IO.Path.GetExtension(Abrir.FileName));
+                        item.SubItems.Add("0");
+                        item.ImageIndex = ListaDeImagenes.Images.Count - 1;
+                        lvImagenes.Items.Add(item);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ha ocurrido un error al intentar abrir el archivo: " + ex.Message, "cmdBuscar_Click", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        public Image resizeImage(Image img, int width, int height)
+        {
+            Bitmap b = new Bitmap(width, height);
+            Graphics g = Graphics.FromImage((Image)b);
+
+            g.DrawImage(img, 0, 0, width, height);
+            g.Dispose();
+
+            return (Image)b;
+        }
+
+        private void lvImagenes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lvImagenes.SelectedItems.Count > 0)
+                {
+                    ListViewItem Item = lvImagenes.SelectedItems[0];
+
+                    if (Item.Checked == true)
+                    {
+
+                        foreach (ListViewItem Fila in lvImagenes.Items)
+                        {
+                            if (Fila.Index != Item.Index)
+                            {
+                                Fila.Checked = false;
+                            }
+                        }
+
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Evento clic del listview", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tsbEliminarEliminar_Click(object sender, EventArgs e)
+        {
+            if (lvImagenes.SelectedItems.Count > 0)
+            {
+                ListViewItem item = lvImagenes.SelectedItems[0];
+
+                if (MessageBox.Show("Desea quitar la imagen seleccionada de la lista", "Quitar imagen de la Lista", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == DialogResult.OK)
+                {
+                    int idProductoImagenes = Convert.ToInt32(item.SubItems[3].Text);
+                    if (idProductoImagenes == 0)
+                    {
+                        item.Remove();
+                    }
+                    else
+                    {
+                        ProductoImagenesEN oRegistroEN = new ProductoImagenesEN();
+                        ProductoImagenesLN oRegistroLN = new ProductoImagenesLN();
+
+                        oRegistroEN.idProductoImagenes = idProductoImagenes;
+                        oRegistroEN.Nombre = item.SubItems[1].Text;
+                        oRegistroEN.PorDefecto = item.Checked == true ? 1 : 0;
+                        oRegistroEN.Ruta = item.SubItems[1].Text;
+                        oRegistroEN.extension = "bitmap";
+                        oRegistroEN.AFoto = Imagenes.ProcesarImagenToByte((Bitmap)(ListaDeImagenes.Images[item.ImageIndex]));
+
+                        oRegistroEN.oLoginEN = Program.oLoginEN;
+                        oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+                        oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+                        oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+                        oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+                        if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
+                        {
+                            item.Remove();
+                        }
+                    }
+                }
+
+            }
+        }
+
+        #endregion
 
         private void GuardarValoresDeConfiguracion()
         {
@@ -334,13 +605,91 @@ namespace InventoryBoxFarmacy.Formularios
         {
             LimpiarEP();
 
-            if (Controles.IsNullOEmptyElControl(txtCodigoDeBarra))
+            if (Controles.IsNullOEmptyElControl(txtNombre))
             {
-                EP.SetError(txtCodigoDeBarra, "Este campo no puede quedar vacío");
-                txtCodigoDeBarra.Focus();
+                EP.SetError(txtNombre, "Este campo no puede quedar vacío");
+                txtNombre.Focus();
                 return false;
             }
 
+            decimal Minimo;
+            decimal.TryParse(txtMinimo.Text, out Minimo);
+
+            if(Minimo <= 0)
+            {
+                EP.SetError(txtMinimo, "El valor ingresado no es válido");
+                txtMinimo.Focus();
+                return false;
+            }
+
+            decimal Maximo;
+            decimal.TryParse(txtMaximo.Text, out Maximo);
+
+            if (Maximo <= 0)
+            {
+                EP.SetError(txtMaximo, "El valor ingresado no es válido");
+                txtMaximo.Focus();
+                return false;
+            }
+
+            if(Maximo < Minimo)
+            {
+                EP.SetError(txtMaximo, "El valor máximo no puede ser menor que el minimo");
+                txtMaximo.Focus();
+                return false;
+            }
+
+            if (Maximo == Minimo)
+            {
+                EP.SetError(txtMaximo, "El valor máximo no puede ser igual que el minimo");
+                txtMaximo.Focus();
+                return false;
+            }
+
+            int Unidad;
+            int.TryParse(txtUnidadesXPresentacion.Text, out Unidad);
+
+            if(Unidad <= 0)
+            {
+                EP.SetError(txtUnidadesXPresentacion, "El valor ingresado no es válido");
+                txtUnidadesXPresentacion.Focus();
+                return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(cmbCategoria))
+            {
+                EP.SetError(cmbCategoria, "Se debe de agregar el producto a algunas de nuestras categorias");
+                cmbCategoria.Focus();
+                return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(cmbUnidadDeMedida))
+            {
+                EP.SetError(cmbUnidadDeMedida, "Se debe de agregar el producto a alguna unidad de medida de nuestra lista");
+                cmbUnidadDeMedida.Focus();
+                return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(cmbPresentacion))
+            {
+                EP.SetError(cmbPresentacion, "Se debe agregar un tipo de presentación para el producto");
+                cmbPresentacion.Focus();
+                return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(txtAlmacenIdentidad))
+            {
+                EP.SetError(btnBuscarAlmacen, "Devemos especificar el lugar de almacenaje");
+                btnBuscarAlmacen.Focus();
+                return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(txtPLEntidad))
+            {
+                EP.SetError(btnBuscarLaboratorio, "Devemos especificar el laboratorio al que pertenece el producto");
+                btnBuscarLaboratorio.Focus();
+                return false;
+            }
 
             return true;
 
@@ -534,11 +883,15 @@ namespace InventoryBoxFarmacy.Formularios
 
                 if (LosDatosIngresadosSonCorrectos())
                 {
+                    ProductoCompletoEN oProductoCompletoEN = new ProductoCompletoEN();
+                    oProductoCompletoEN.oProductoEN = InformacionDelRegistro();
+                    oProductoCompletoEN.oPrecioEN = InformacionDelPrecioDelProducto();
+                    oProductoCompletoEN.oPromocionEN = InformacionDeLaPromocionDelProducto();
+                    oProductoCompletoEN.oConfiguracionEN = InformacionDeLaConfiguracionDelProducto();
 
-                    ProductoEN oRegistroEN = InformacionDelRegistro();
                     ProductoLN oRegistroLN = new ProductoLN();
 
-                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
+                    if (oRegistroLN.ValidarRegistroDuplicado(oProductoCompletoEN.oProductoEN, Program.oDatosDeConexion, "AGREGAR"))
                     {
 
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -546,15 +899,15 @@ namespace InventoryBoxFarmacy.Formularios
 
                     }
 
-                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oProductoCompletoEN, Program.oDatosDeConexion))
                     {
 
-                        txtIdentificador.Text = oRegistroEN.idProducto.ToString();
-                        ValorLlavePrimariaEntidad = oRegistroEN.idProducto;
+                        txtIdentificador.Text = oProductoCompletoEN.oProductoEN.idProducto.ToString();
+                        ValorLlavePrimariaEntidad = oProductoCompletoEN.oProductoEN.idProducto;
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
 
-                        oRegistroEN = null;
+                        oProductoCompletoEN = null;
                         oRegistroLN = null;
 
                         this.Cursor = Cursors.Default;
@@ -1243,13 +1596,894 @@ namespace InventoryBoxFarmacy.Formularios
                 }
             }
         }
+        
+        private void txtCodigoDeBarra_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Funciones.Numeros.IsNumeric(txtCodigoDeBarra.Text.Trim()))
+                {
+
+                    if (txtCodigoDeBarra.Text.Trim().Length > 11 && txtCodigoDeBarra.Text.Trim().Length <= 12)
+                    {
+                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "UPC-A");
+                    }
+                    else if (txtCodigoDeBarra.Text.Trim().Length == 13)
+                    {
+                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "EAN-13");
+                    }else
+                    {
+                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
+                    }
+
+                }
+                else
+                {   
+                    pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Generar codigo de barra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Funciones.Numeros.IsNumeric(txtCodigoDeBarra.Text.Trim()))
+                {
+
+                    if (txtCodigoDeBarra.Text.Trim().Length > 11 && txtCodigoDeBarra.Text.Trim().Length <= 12)
+                    {
+                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "UPC-A");
+                    }
+                    else if (txtCodigoDeBarra.Text.Trim().Length == 13)
+                    {
+                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "EAN-13");
+                    }
+
+                }
+                else
+                {
+                    MessageBox.Show("dentro");
+                    pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Generar codigo de barra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
 
         #endregion
 
-        private void txtCodigoDeBarra_TextChanged(object sender, EventArgs e)
+        #region "Trabajando con el datagridview"
+
+        private void CrearColumnasDGVRegistros()
         {
-            pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim());
+            try
+            {
+
+                string columnas = @"idProductoSustitutos,idSustituto, Codigo, CodigoDeBarra, Nombre, NombreGenerico";
+
+                string[] arrayColumnas = columnas.Split(',');
+
+                dgvListar.Columns.Clear();
+                dgvListar.ColumnCount = arrayColumnas.Length;
+
+                DataGridViewCheckBoxColumn col1 = new DataGridViewCheckBoxColumn();
+                dgvListar.Columns.Insert(0, col1);
+                dgvListar.Columns[0].Name = "Eliminar";
+
+                int j = 1;
+                foreach (string item in arrayColumnas)
+                {
+                    dgvListar.Columns[j].Name = item.Trim();
+                    j++;
+                }
+
+                DataGridViewCheckBoxColumn col2 = new DataGridViewCheckBoxColumn();
+                dgvListar.Columns.Insert(j, col2);
+                dgvListar.Columns[j].Name = "Actualizar";
+
+                FormatearDGVContenedor();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al llenar la lista. \n" + ex.Message, "Poblar columnas dgvListar con los productos sustitutos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
+        private void OcultarColumnasEnELDGV(String ColumnasDelDGV)
+        {
+            if (dgvListar.Columns.Count > 0)
+            {
+                if (ColumnasDelDGV.Trim().Length > 0)
+                {
+
+                    String[] ArrayColumnasDGV = ColumnasDelDGV.Split(',');
+                    foreach (String c in ArrayColumnasDGV)
+                    {
+
+                        foreach (DataGridViewColumn c1 in dgvListar.Columns)
+                        {
+                            if (c1.Name.Trim().ToUpper() == c.Trim().ToUpper())
+                            {
+                                c1.Visible = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void FormatearDGVContenedor()
+        {
+            try
+            {
+                this.dgvListar.AllowUserToResizeRows = false;
+                this.dgvListar.AllowUserToAddRows = false;
+                this.dgvListar.AllowUserToDeleteRows = false;
+                this.dgvListar.DefaultCellStyle.BackColor = Color.White;
+
+                this.dgvListar.MultiSelect = false;
+                this.dgvListar.RowHeadersVisible = true;
+
+                this.dgvListar.DefaultCellStyle.Font = new Font("Segoe UI", 8);
+                this.dgvListar.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 8);
+                this.dgvListar.DefaultCellStyle.SelectionBackColor = Color.LightSteelBlue;
+                this.dgvListar.BackgroundColor = System.Drawing.SystemColors.Window;
+                this.dgvListar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
+                string OcultarColumnas = "idProductoSustitutos,idSustituto,Actualizar";
+                OcultarColumnasEnELDGV(OcultarColumnas);
+
+                FormatearColumnasDGVListar();
+
+                if (OperacionARealizar == "Eliminar")
+                {
+                    dgvListar.DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Strikeout);
+                    dgvListar.DefaultCellStyle.ForeColor = Color.Red;
+                    dgvListar.DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+                else
+                {
+                    dgvListar.DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Regular);
+                    dgvListar.DefaultCellStyle.ForeColor = Color.Black;
+                    dgvListar.DefaultCellStyle.SelectionForeColor = Color.Black;
+                }
+
+                if (OperacionARealizar.ToUpper() == "ELIMINAR".ToUpper() || OperacionARealizar.ToUpper() == "CONSULTAR".ToUpper())
+                {
+                    dgvListar.Columns["Eliminar"].ReadOnly = true;
+                }
+
+                this.dgvListar.RowHeadersWidth = 25;
+
+                this.dgvListar.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                this.dgvListar.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+                this.dgvListar.StandardTab = true;
+                this.dgvListar.ReadOnly = false;
+                this.dgvListar.CellBorderStyle = DataGridViewCellBorderStyle.Single;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "FormatoDGV", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FormatearColumnasDGVListar()
+        {
+            if (dgvListar.Columns.Count > 0)
+            {
+
+                foreach (DataGridViewColumn c1 in dgvListar.Columns)
+                {
+                    if (c1.Visible == true)
+                    {
+                        if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
+                        {
+                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
+                            if (oFormato.ValorEncontrado == false)
+                            {
+                                oFormato = new FormatoDGV(c1.Name.Trim(), "ProductoSustitutos");
+                            }
+
+                            if (oFormato != null)
+                            {
+                                if (oFormato.ValorEncontrado == true)
+                                {
+
+                                    c1.HeaderText = oFormato.Descripcion;
+                                    c1.Width = oFormato.Tamano;
+                                    c1.DefaultCellStyle.Alignment = oFormato.Alineacion;
+                                    c1.HeaderCell.Style.Alignment = oFormato.AlineacionDelEncabezado;
+                                    c1.ReadOnly = oFormato.SoloLectura;
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+
+        private string DescripcionDetallaDelContenedor(DataGridView dgv)
+        {
+            string Mensaje = "";
+
+            if (dgv.Rows.Count > 0)
+            {
+
+                List<DataGridViewRow> rows = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                              let Actualizar = Convert.ToBoolean(item.Cells["Actualizar"].Value ?? false)
+                                              let idProductoSustitutos = Convert.ToInt32(item.Cells["idProductoSustitutos"].Value)
+                                              where Actualizar.Equals(true) && idProductoSustitutos == 0
+                                              select item).ToList<DataGridViewRow>();
+                if (rows.Count > 0)
+                {
+                    Mensaje += string.Format(" Se va a agregar: {1} Registros {0}", Environment.NewLine, rows.Count);
+                }
+
+                List<DataGridViewRow> rows1 = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                               let Actualizar = Convert.ToBoolean(item.Cells["Actualizar"].Value ?? false)
+                                               let idProductoSustitutos = Convert.ToInt32(item.Cells["idProductoSustitutos"].Value)
+                                               where Actualizar.Equals(true) && idProductoSustitutos > 0
+                                               select item).ToList<DataGridViewRow>();
+                if (rows1.Count > 0)
+                {
+                    Mensaje += string.Format(" Se va a actualizar: {1} Registros {0}", Environment.NewLine, rows1.Count);
+                }
+
+                List<DataGridViewRow> rows2 = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                               let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)
+                                               where Eliminar.Equals(true)
+                                               select item).ToList<DataGridViewRow>();
+
+                if (rows2.Count > 0)
+                {
+                    Mensaje += string.Format(" Se va a Eliminar: {1} Registros {0}", Environment.NewLine, rows2.Count);
+                }
+
+            }
+            else
+            {
+                Mensaje = "";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje) == false || Mensaje.Trim().Length > 0)
+            {
+                Mensaje = string.Format("Información de los contenedores: {0}", Mensaje);
+            }
+
+            return Mensaje;
+
+        }
+
+        private void dgvListar_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvListar.RowCount > 0 && dgvListar.SelectedRows.Count > 0)
+                {
+                    if (Convert.ToBoolean(dgvListar.Rows[dgvListar.SelectedRows[0].Index].Cells["Eliminar"].Value) == true)
+                    {
+                        dgvListar.Rows[dgvListar.SelectedRows[0].Index].DefaultCellStyle.SelectionForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        dgvListar.Rows[dgvListar.SelectedRows[0].Index].DefaultCellStyle.SelectionForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "Formato de fila", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right && dgvListar.CurrentCell != null)
+                {
+                    //Este código permite seleccionar una fila del DatagridView al presionar click derecho
+                    DataGridView.HitTestInfo Hitest = dgvListar.HitTest(e.X, e.Y);
+
+                    if (Hitest.Type == DataGridViewHitTestType.Cell)
+                    {
+                        dgvListar.CurrentCell = dgvListar.Rows[Hitest.RowIndex].Cells[Hitest.ColumnIndex];
+                        dgvListar.Rows[dgvListar.CurrentCell.RowIndex].Selected = true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mouse down del Listado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvListar.IsCurrentCellDirty)
+            {
+                dgvListar.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dgvListar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int idProductoSustitutos;
+                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idProductoSustitutos"].Value.ToString(), out idProductoSustitutos);
+
+                if (dgvListar.Rows[e.RowIndex].Cells["idProductoSustitutos"].Value == null)
+                    return;
+
+                if (idProductoSustitutos > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
+                {
+                    dgvListar.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar dato en la celda 'dgvLista_CellEndEdit'. \n" + ex.Message, "Listas de contactos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvListar.CurrentCell != null && dgvListar.Columns[dgvListar.CurrentCell.ColumnIndex].Name == "Eliminar")
+            {
+                if (Convert.ToBoolean(dgvListar.Rows[dgvListar.CurrentCell.RowIndex].Cells["Eliminar"].Value) == true)
+                {
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Strikeout);
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+                else
+                {
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Regular);
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+                }
+
+            }
+        }
+        
+        private DataTable InformacionDeLosContendoresPorSeccion()
+        {
+            DataTable ODatos = null;
+            try
+            {
+
+                ProductoSustitutosEN oRegistroEN = new ProductoSustitutosEN();
+                ProductoSustitutosLN oRegistroLN = new ProductoSustitutosLN();
+
+                oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
+                oRegistroEN.OrderBy = " Order by ps.Nombre asc ";
+
+                if (oRegistroLN.ListadoDeProductosXIdProducto(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    ODatos = oRegistroLN.TraerDatos();
+                    return ODatos;
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información de los productos asociados", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return ODatos;
+            }
+
+        }
+
+        private void CrearyYPoblarColumnasDGVLaboratorio()
+        {
+            try
+            {
+
+                CrearColumnasDGVRegistros();
+
+                DataTable DTOrden = InformacionDeLosContendoresPorSeccion();
+
+                if (DTOrden != null)
+                {
+
+                    if (DTOrden.Rows.Count > 0)
+                    {
+                        int i = 1;
+                        Boolean valor = false;
+                        if (OperacionARealizar == "Eliminar") { valor = true; } else { valor = false; }
+
+                        int idProductoSustitutos = 0;
+                        int idSustituto = 0;
+
+                        foreach (DataRow row in DTOrden.Rows)
+                        {
+
+                            if (OperacionARealizar.ToUpper() == "NUEVO A PARTIR DE REGISTRO SELECCIONADO".ToUpper())
+                            {
+                                idProductoSustitutos = 0;
+                                idSustituto = Convert.ToInt32(row["idSustituto"]);
+                            }
+                            else
+                            {
+                                idSustituto = Convert.ToInt32(row["idSustituto"]);
+                                idProductoSustitutos = Convert.ToInt32(row["idProductoSustitutos"]);
+                            }
+
+                            dgvListar.Rows.Add(
+                                valor,
+                                idProductoSustitutos,
+                                idSustituto,
+                                row["Codigo"],
+                                row["CodigoDeBarra"],
+                                row["Producto"],
+                                row["NombreGenerico"],
+                                valor
+                                );
+
+                            i++;
+
+                        }
+
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Crear y Poblar Columnas, con los diferentes contenedores", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        private bool LosDatosIngresadosEnGrillaSonCorrectos(DataGridViewRow Fila)
+        {
+            try
+            {
+                if (Convert.ToBoolean(Fila.Cells["Eliminar"].Value) == false)
+                {
+                    object ValorAEvaluar = null;
+                    DataGridViewCell CeldaAEvaluar = null;
+                    string NombreCampoId, NombreCampoNombre;
+
+                    //evaluar si agrego una marca                    
+                    NombreCampoNombre = "Nombre";
+
+                    ValorAEvaluar = Fila.Cells[NombreCampoNombre].Value;
+                    if (ValorAEvaluar == null || string.IsNullOrEmpty(ValorAEvaluar.ToString()))
+                    {
+                        Fila.Selected = true;
+                        dgvListar.CurrentCell = CeldaAEvaluar;
+                        dgvListar.CurrentCell.ErrorText = "Es Necesario agregar un Nombre";
+                        MessageBox.Show("Informacion de Contenedor \n\n Es necesario ingresar un Nombre", "Validación", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return false;
+                    }
+
+
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Fila.Selected = true;
+                dgvListar.CurrentCell = Fila.Cells["idProductoSustitutos"];
+                MessageBox.Show("Error al validar datos del Contacto: " + Fila.Cells["Nombre"].Value.ToString() + "\n" + ex.Message, "Buscar Contenedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+        }
+
+        private bool InsertarActualizarOEliminarContenedor()
+        {
+            try
+            {
+                this.Cursor = Cursors.WaitCursor;
+
+                if (EvaluarDataGridView(dgvListar) == false)
+                {
+                    MessageBox.Show("No se encontró registros a procesar", "Evaluación de registros en la lista", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return true;
+                }
+                else { MessageBox.Show(DescripcionDetallaDelContenedor(dgvListar), "Registros a procesar", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+
+                int RowsContacto = dgvListar.Rows.Count;
+
+                if (RowsContacto > 0)
+                {
+
+                    MostrarBarraDeProgreso();
+                    InicializarBarraDeProgreso(RowsContacto, 0);
+                    int indice = 0;
+                    int IndiceProgreso = 0;
+                    int TotalDeFilasMarcadasParaEliminar = TotalDeFilasMarcadas(dgvListar, "Eliminar");
+                    //Aqui Volvemos dinamica El codigo poniendo el valor de la llave primaria 
+                    string NombreLavePrimariaDetalle = "idProductoSustitutos";
+
+                    ProductoEN oProductoEN = InformacionDelRegistro();
+
+                    while (indice <= dgvListar.Rows.Count - 1)
+                    {
+                        this.Cursor = Cursors.WaitCursor;
+
+
+                        IncrementarBarraDeProgreso(IndiceProgreso + 1);
+                        DataGridViewRow Fila = dgvListar.Rows[indice];
+
+                        int ValorDelaLLavePrimaria;
+
+                        int.TryParse(Fila.Cells[NombreLavePrimariaDetalle].Value.ToString(), out ValorDelaLLavePrimaria);
+                        Boolean Actualizar = Convert.ToBoolean(Fila.Cells["Actualizar"].Value);
+                        Boolean Eliminar = Convert.ToBoolean(Fila.Cells["Eliminar"].Value);
+
+                        if (ValorDelaLLavePrimaria == 0 && Actualizar == false)
+                        {
+                            if (Eliminar == true)
+                            {
+                                Fila.DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Regular);
+                                Fila.DefaultCellStyle.ForeColor = Color.Black;
+                                Fila.DefaultCellStyle.SelectionForeColor = Color.Black;
+                                Fila.Cells["Eliminar"].Value = false;
+                            }
+
+                            indice++;
+                            IndiceProgreso++;
+                            continue;
+
+                        }
+
+
+                        if (LosDatosIngresadosEnGrillaSonCorrectos(Fila) == false)
+                        {
+                            if (indice < dgvListar.Rows.Count - 1)
+                            {
+                                if (MessageBox.Show("¿Desea continuar con los restantes registros a procesar?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.No)
+                                {
+                                    OcultarBarraDeProgreso();
+                                    return false;
+                                }
+                                else
+                                {
+                                    indice++;
+                                    IndiceProgreso++;
+                                    continue;
+                                }
+                            }
+                            else
+                            {
+                                OcultarBarraDeProgreso();
+                                return false;
+                            }
+                        }
+
+                        ProductoSustitutosEN oRegistroEN = InformacionDelProductoSustituto(Fila);
+                        ProductoSustitutosLN oRegistroLN = new ProductoSustitutosLN();
+
+                        oRegistroEN.oProductoEN = oProductoEN;
+
+                        //DETERMINAMOS LA OPERACION A REALIZAR
+                        string Operacion = "";
+                        int idSustituto;
+                        int.TryParse(Fila.Cells["idSustituto"].Value.ToString(), out idSustituto);
+
+                        //El orden es importante porque si un usuario agrego una nueva persona pero lo marco para eliminar, no hacemos nada, solo lo quitamos de la lista.
+                        if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }                        
+                        //VALIDAREMOS QUE LA LLAVE PRIMARIA SEA CERO Y EL CONTARO SEA MAYOR A CERO PARA UN NUEVO VINCULO ENTRE PROVEEDOR Y CONTACTO
+                        else if (ValorDelaLLavePrimaria == 0 && idSustituto > 0) { Operacion = "AGREGAR"; }
+                        //VALIDAREMOS PARA PODER ELIMINAR EL REGISTRO....
+                        else if (ValorDelaLLavePrimaria > 0 && Eliminar == true) { Operacion = "ELIMINAR"; }
+                        //VALIDAREMOS PARA PODER ACTUALIZAR EL REGISTRO
+                        else if (ValorDelaLLavePrimaria > 0 && Actualizar == true) { Operacion = "ACTUALIZAR"; }
+                        //NO EXISTE NINGUNA OPERACION
+                        else if (ValorDelaLLavePrimaria >= 0 && Actualizar == false && Eliminar == false) { Operacion = "NINGUNA"; }
+
+                        //Validaciones 
+                        if (Operacion == "ELIMINAR FILA EN GRILLA")
+                        {
+                            dgvListar.Rows.Remove(Fila);
+                            if (dgvListar.RowCount <= 0) { indice++; IndiceProgreso++; }
+                            continue;
+                        }
+
+                        if (Operacion == "NINGUNA")
+                        {
+                            indice++;
+                            IndiceProgreso++;
+                            continue;
+                        }
+
+                        if (Operacion == "AGREGAR")
+                        {
+                            if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, Operacion))
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return false;
+                            }
+                        }
+
+                        if (Operacion == "ACTUALIZAR")
+                        {
+                            if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, Operacion))
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return false;
+                            }
+                        }
+
+                        if (Operacion == "ELIMINAR")
+                        {
+                            //if (oRegistrosLN.ExisteEmpleadoVinculadoAAuxiliaresDePlanillaGeneralDetalle(oRegistrosEN, Program.oDatosConexionesEN, "ELIMINAR"))
+                            //{
+                            //    this.Cursor = Cursors.Default;
+                            //    DialogResult Respuesta = MessageBox.Show(oRegistrosLN.Error + "\n\n¿Desea continuar con el proceso de eliminación para los empleados restantes?", this.OperacionARealizar, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                            //    if (Respuesta == DialogResult.No)
+                            //    {
+                            //        OcultarBarraDeProgreso();
+                            //        return false;
+                            //    }
+                            //    else
+                            //    {
+                            //        indice++;
+                            //        indice_progreso++;
+                            //        continue;
+                            //    }
+                            //}
+                        }
+                        
+                        //OPERACIONES
+                        if (Operacion == "AGREGAR")
+                        {
+                            if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
+                            {
+                                Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistroEN.idProductoSustitutos;
+                                Fila.Cells["Actualizar"].Value = false;
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                indice++;
+                                IndiceProgreso++;
+                                continue;
+                            }
+                            else
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                return false;
+                            }
+                        }
+
+                        if (Operacion == "ACTUALIZAR")
+                        {
+
+                            if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexion))
+                            {
+
+                                dgvListar.Rows[Fila.Index].Cells["Actualizar"].Value = false;
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                indice++;
+                                IndiceProgreso++;
+                                continue;
+
+                            }
+                            else
+                            {
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                OcultarBarraDeProgreso();
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                return false;
+                            }
+                        }
+
+                        if (Operacion == "ELIMINAR")
+                        {
+
+                            if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
+                            {
+                                dgvListar.Rows.Remove(Fila);
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                if (dgvListar.RowCount <= 0) { indice++; }
+                                IndiceProgreso++;
+                                continue;
+
+                            }
+                            else
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                oRegistroEN = null;
+                                oRegistroLN = null;
+                                return false;
+                            }
+                        }
+                        
+                        this.Cursor = Cursors.Default;
+                    }
+
+                    OcultarBarraDeProgreso();
+                    return true;
+
+                }
+                else
+                {
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Información del Contenedor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+            finally
+            {
+                this.Cursor = Cursors.Default;
+            }
+        }
+        
+        private ProductoSustitutosEN InformacionDelProductoSustituto(DataGridViewRow Fila)
+        {
+            ProductoSustitutosEN oRegistroEN = new ProductoSustitutosEN();
+
+            int idProducto;
+            int.TryParse(Fila.Cells[""].Value.ToString(), out idProducto);
+
+            oRegistroEN.oSutitutoEN.idProducto = idProducto;
+            oRegistroEN.oSutitutoEN.Codigo = Fila.Cells["Codigo"].Value.ToString();
+            oRegistroEN.oSutitutoEN.CodigoDeBarra = Fila.Cells["CodigoDeBarra"].Value.ToString();
+            oRegistroEN.oSutitutoEN.Nombre = Fila.Cells["Nombre"].Value.ToString();
+            oRegistroEN.oSutitutoEN.NombreGenerico = Fila.Cells["NombreGenerico"].Value.ToString();
+
+            int idProductoSustitutos;
+            int.TryParse(Fila.Cells["idProductoSustitutos"].Value.ToString(), out idProductoSustitutos);
+            oRegistroEN.idProductoSustitutos = idProductoSustitutos;
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+            return oRegistroEN;
+        }
+        
+        private int TotalDeFilasMarcadas(DataGridView odgvGrid, String Columna)
+        {
+            try
+            {
+                int numero = 0;
+                foreach (DataGridViewRow Fila in odgvGrid.Rows)
+                {
+                    if (Convert.ToBoolean(Fila.Cells[Columna].Value) == true)
+                    {
+                        numero++;
+                    }
+                }
+                return (numero);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al contabilizar las columnas (" + Columna + ") marcadas. \n" + ex.Message, "TotalDeFilasMarcadas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (0);
+            }
+        }
+
+        private bool EvaluarDataGridView(DataGridView dgv)
+        {
+
+            if (OperacionARealizar.Trim().ToUpper() == "MODIFICAR".ToUpper())
+            {
+                if (dgv.Rows.Count > 0)
+                {
+
+                    List<DataGridViewRow> rows = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                                  let Actualizar = Convert.ToBoolean(item.Cells["Actualizar"].Value ?? false)
+                                                  let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)
+                                                  where Actualizar.Equals(true) || Eliminar.Equals(true)
+                                                  select item).ToList<DataGridViewRow>();
+
+                    if (rows.Count > 0)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+
+
+                }
+                else
+                {
+
+                    return false;
+                }
+
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        #region "Barra de Progreso"
+
+        private void InicializarBarraDeProgreso(int Maximo, int Minimo)
+        {
+            Barradeprogreso.Minimum = Minimo;
+            Barradeprogreso.Maximum = Maximo;
+        }
+
+        private void MostrarBarraDeProgreso()
+        {
+            statusStrip1.Visible = true;
+            Barradeprogreso.Visible = true;
+            lbaBarradeprogreso.Visible = true;
+        }
+
+        private void OcultarBarraDeProgreso()
+        {
+            statusStrip1.Visible = false;
+            Barradeprogreso.Visible = false;
+            lbaBarradeprogreso.Visible = false;
+        }
+
+        private void IncrementarBarraDeProgreso(int incremento)
+        {
+            Barradeprogreso.Value = incremento;
+            lbaBarradeprogreso.Text = Barradeprogreso.Value.ToString() + " de " + Barradeprogreso.Maximum;
+            Application.DoEvents();
+        }
+
+        #endregion
+
+        #endregion
+
+        private void txtUnidadesXPresentacion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsNumber(e.KeyChar))
+            {
+                e.Handled = false;
+            }
+            else if (Char.IsControl(e.KeyChar)) //Al pulsar teclas como Borrar y eso.
+            {
+                e.Handled = false; //Se acepta (todo OK)
+            }
+            else //Para todo lo demas
+            {
+                e.Handled = true; //No se acepta (si pulsas cualquier otra cosa pues no se envia)
+            }
+        }
     }
 }

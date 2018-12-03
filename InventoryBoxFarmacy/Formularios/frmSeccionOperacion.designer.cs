@@ -51,6 +51,7 @@
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
+            this.tsbRegistroLocal = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
             this.tsbLimpiarCampos = new System.Windows.Forms.ToolStripButton();
@@ -61,7 +62,6 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
-            this.tsbRegistroLocal = new System.Windows.Forms.ToolStripButton();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -317,6 +317,18 @@
             this.tsbGuardar.ToolTipText = "Guardar registro";
             this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
             // 
+            // tsbRegistroLocal
+            // 
+            this.tsbRegistroLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRegistroLocal.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
+            this.tsbRegistroLocal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRegistroLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRegistroLocal.Name = "tsbRegistroLocal";
+            this.tsbRegistroLocal.Size = new System.Drawing.Size(68, 68);
+            this.tsbRegistroLocal.Text = "Guardar Nuevo";
+            this.tsbRegistroLocal.ToolTipText = "Guardar Nuevo de manera local";
+            this.tsbRegistroLocal.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
+            // 
             // tsbActualizar
             // 
             this.tsbActualizar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -420,18 +432,6 @@
             this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
-            // 
-            // tsbRegistroLocal
-            // 
-            this.tsbRegistroLocal.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRegistroLocal.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
-            this.tsbRegistroLocal.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRegistroLocal.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRegistroLocal.Name = "tsbRegistroLocal";
-            this.tsbRegistroLocal.Size = new System.Drawing.Size(68, 68);
-            this.tsbRegistroLocal.Text = "Guardar Nuevo";
-            this.tsbRegistroLocal.ToolTipText = "Guardar Nuevo de manera local";
-            this.tsbRegistroLocal.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
             // 
             // frmSeccionOperacion
             // 

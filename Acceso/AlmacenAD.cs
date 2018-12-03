@@ -562,7 +562,7 @@ namespace AccesoDatos
 
                 EntidadAD oEntidadAD = new EntidadAD();
 
-                if (Agregar(oRegistroEN, oDatos, ref Cnn, ref oMySqlTransaction))
+                if (Eliminar(oRegistroEN, oDatos, ref Cnn, ref oMySqlTransaction))
                 {                    
                     Errores = EvaluarTextoError(Errores, "ELIMINAR", oEntidadAD.Error);
                 }
@@ -926,7 +926,7 @@ namespace AccesoDatos
 
                 Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idAlmacen";
                 Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacen;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad'";
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad', 'bodegaalmacen'";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

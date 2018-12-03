@@ -905,7 +905,7 @@ namespace AccesoDatos
 
                 Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idSeccion";
                 Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idSeccion;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad'";
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad','SeccionContenedor'";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

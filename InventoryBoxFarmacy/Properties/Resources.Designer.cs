@@ -473,6 +473,56 @@ namespace InventoryBoxFarmacy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_box_49364 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_box_49364", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_box_49364__1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_box_49364 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_box_49364__2_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_box_49364 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_box_49364__3_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_box_49364 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_product_49608 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_product_49608", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap if_chart_512543 {
             get {
                 object obj = ResourceManager.GetObject("if_chart_512543", resourceCulture);
@@ -1216,6 +1266,16 @@ namespace InventoryBoxFarmacy.Properties {
         internal static System.Drawing.Bitmap loginInventoryBoxFarmacy {
             get {
                 object obj = ResourceManager.GetObject("loginInventoryBoxFarmacy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LogoRedondoInventario {
+            get {
+                object obj = ResourceManager.GetObject("LogoRedondoInventario", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -733,7 +733,7 @@ namespace InventoryBoxFarmacy.Formularios
                     oFrmRegistro.TituloVentana = "Seleccionar las sección";
 
                     oFrmRegistro.AplicarFiltroDeWhereExterno = true;
-                    oFrmRegistro.WhereExterno = WhereContacto();
+                    oFrmRegistro.WhereExterno = WhereDimacioDeSecciones();
 
                     oFrmRegistro.ShowDialog();
 
@@ -1538,7 +1538,7 @@ namespace InventoryBoxFarmacy.Formularios
                 }
             }
 
-            private string WhereContacto()
+            private string WhereDimacioDeSecciones()
         {
             string Where = "";
             try
@@ -1567,7 +1567,10 @@ namespace InventoryBoxFarmacy.Formularios
                         }
                     }
 
-                    Where = string.Format(" and s.idSeccion Not in ({0}) ", IdSeccion);
+                    if (IdSeccion.Trim().Length > 0)
+                    {
+                        Where = string.Format(" and s.idSeccion Not in ({0}) ", IdSeccion);
+                    }else { Where = "";  }
                 }
 
                 return Where;

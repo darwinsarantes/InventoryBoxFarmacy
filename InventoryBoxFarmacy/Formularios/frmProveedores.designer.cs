@@ -54,11 +54,12 @@
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbImportDeExcel = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
-            this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.tsbImprimir = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbListadoDeReportes = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -331,16 +332,6 @@
             this.tsbFiltroAutomatico.Text = "Filtro Automatico";
             this.tsbFiltroAutomatico.Click += new System.EventHandler(this.tsbFiltroAutomatico_Click);
             // 
-            // tsbImprimir
-            // 
-            this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbImprimir.Image = global::InventoryBoxFarmacy.Properties.Resources.printer24x24;
-            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImprimir.Name = "tsbImprimir";
-            this.tsbImprimir.Size = new System.Drawing.Size(28, 28);
-            this.tsbImprimir.Text = "Imprimir";
-            this.tsbImprimir.Visible = false;
-            // 
             // tsbNuevoRegistro
             // 
             this.tsbNuevoRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -378,6 +369,26 @@
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(23, 28);
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
+            // 
+            // tsbImprimir
+            // 
+            this.tsbImprimir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbImprimir.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbListadoDeReportes});
+            this.tsbImprimir.Image = global::InventoryBoxFarmacy.Properties.Resources.printer24x24;
+            this.tsbImprimir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbImprimir.Name = "tsbImprimir";
+            this.tsbImprimir.Size = new System.Drawing.Size(37, 28);
+            this.tsbImprimir.Text = "Imprimir";
+            // 
+            // tsbListadoDeReportes
+            // 
+            this.tsbListadoDeReportes.Image = global::InventoryBoxFarmacy.Properties.Resources.printer16x16;
+            this.tsbListadoDeReportes.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbListadoDeReportes.Name = "tsbListadoDeReportes";
+            this.tsbListadoDeReportes.Size = new System.Drawing.Size(177, 22);
+            this.tsbListadoDeReportes.Text = "Listado de Reportes";
+            this.tsbListadoDeReportes.Click += new System.EventHandler(this.tsbListadoDeReportes_Click);
             // 
             // frmProveedores
             // 
@@ -420,7 +431,6 @@
         private System.Windows.Forms.CheckBox chkProveedor;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.CheckBox chkCodigo;
-        private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbNuevoRegistro;
         private System.Windows.Forms.ContextMenuStrip mcsMenu;
         private System.Windows.Forms.ToolStripMenuItem nuevoToolStripMenuItem;
@@ -438,5 +448,7 @@
         private System.Windows.Forms.TextBox txtDireccion;
         private System.Windows.Forms.CheckBox chkDireccion;
         private System.Windows.Forms.ToolStripButton tsbImportDeExcel;
+        private System.Windows.Forms.ToolStripDropDownButton tsbImprimir;
+        private System.Windows.Forms.ToolStripMenuItem tsbListadoDeReportes;
     }
 }

@@ -705,10 +705,10 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select idProveedor, Codigo, Nombre, Direccion, NoRUC, 
-                SitioWeb, Telefono, Movil, Observaciones, Correo, 
-                FechaDeCumpleanos, Messenger, Skype, Twitter, 
-                Facebook, Estado, Foto, 
+                Consultas = string.Format(@"Select p.idProveedor, p.Codigo, p.Nombre, p.Direccion, p.NoRUC, 
+                p.SitioWeb, p.Telefono, p.Movil, p.Observaciones, p.Correo, 
+                p.FechaDeCumpleanos, p.Messenger, p.Skype, p.Twitter, 
+                p.Facebook, p.Estado, p.Foto, 
                 p.idUsuarioDeCreacion, p.FechaDeCreacion, u.Nombre as 'UsuarioDecreacion',
                 p.idUsuarioModificacion, p.FechaDeModificacion , u1.Nombre as 'UsuarioDeModificacion'
                 from proveedor as p

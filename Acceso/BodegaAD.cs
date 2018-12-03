@@ -849,7 +849,7 @@ where a.idBodega = {0} ", oRegistroEN.idBodega);
 
                 Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idBodega";
                 Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idBodega;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad', 'bodegalocacion'";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

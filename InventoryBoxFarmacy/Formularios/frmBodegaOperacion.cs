@@ -712,7 +712,7 @@ namespace InventoryBoxFarmacy.Formularios
                     oFrmRegistro.TituloVentana = "Seleccionar Localizaciones del producto";
 
                     oFrmRegistro.AplicarFiltroDeWhereExterno = true;
-                    oFrmRegistro.WhereExterno = WhereContacto();
+                    oFrmRegistro.WhereExterno = WhereDinamicoDeLocacion();
 
                     oFrmRegistro.ShowDialog();
 
@@ -1528,7 +1528,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private string WhereContacto()
+        private string WhereDinamicoDeLocacion()
         {
             string Where = "";
             try
@@ -1557,7 +1557,10 @@ namespace InventoryBoxFarmacy.Formularios
                         }
                     }
 
-                    Where = string.Format(" and s.idLocacion Not in ({0}) ", IdLocacion);
+                    if (IdLocacion.Trim().Length > 0)
+                    {
+                        Where = string.Format(" and s.idLocacion Not in ({0}) ", IdLocacion);
+                    }else { Where = ""; }
                 }
 
                 return Where;

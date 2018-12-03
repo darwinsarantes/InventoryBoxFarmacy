@@ -64,8 +64,8 @@
             this.txtPorcentaje1 = new System.Windows.Forms.TextBox();
             this.txtCosto = new System.Windows.Forms.TextBox();
             this.gbLaboratorio = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnBuscarLaboratorio = new System.Windows.Forms.Button();
+            this.txtLaboratorio = new System.Windows.Forms.TextBox();
             this.txtPLEntidad = new System.Windows.Forms.TextBox();
             this.txtTablaOrigen = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -106,6 +106,7 @@
             this.txtMinimo = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.tbComision = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.txtNumeroDeCerie = new System.Windows.Forms.TextBox();
@@ -141,11 +142,16 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.txtObservacion = new System.Windows.Forms.TextBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.tsbAsociarProducto = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.cmbEstadoDeLaPromocion = new System.Windows.Forms.ComboBox();
+            this.txtidProductoPromocion = new System.Windows.Forms.TextBox();
             this.txtDescripcionDeLaPromocion = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
             this.chkAplicarPromocion = new System.Windows.Forms.CheckBox();
@@ -154,6 +160,7 @@
             this.label40 = new System.Windows.Forms.Label();
             this.dtpkDesdePromocion = new System.Windows.Forms.DateTimePicker();
             this.label39 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.txtPrecioPromocional = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -168,9 +175,6 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
-            this.txtidProductoPromocion = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cmbEstadoDeLaPromocion = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.tbOperaciones.SuspendLayout();
@@ -189,6 +193,7 @@
             this.toolStrip2.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).BeginInit();
             this.tsbAsociarProducto.SuspendLayout();
             this.tabPage4.SuspendLayout();
@@ -596,8 +601,8 @@
             // 
             // gbLaboratorio
             // 
-            this.gbLaboratorio.Controls.Add(this.button1);
-            this.gbLaboratorio.Controls.Add(this.textBox1);
+            this.gbLaboratorio.Controls.Add(this.btnBuscarLaboratorio);
+            this.gbLaboratorio.Controls.Add(this.txtLaboratorio);
             this.gbLaboratorio.Controls.Add(this.txtPLEntidad);
             this.gbLaboratorio.Controls.Add(this.txtTablaOrigen);
             this.gbLaboratorio.Location = new System.Drawing.Point(604, 79);
@@ -607,21 +612,22 @@
             this.gbLaboratorio.TabStop = false;
             this.gbLaboratorio.Text = "Laboratorio del producto";
             // 
-            // button1
+            // btnBuscarLaboratorio
             // 
-            this.button1.Location = new System.Drawing.Point(421, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(37, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "....";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBuscarLaboratorio.Location = new System.Drawing.Point(421, 24);
+            this.btnBuscarLaboratorio.Name = "btnBuscarLaboratorio";
+            this.btnBuscarLaboratorio.Size = new System.Drawing.Size(37, 23);
+            this.btnBuscarLaboratorio.TabIndex = 4;
+            this.btnBuscarLaboratorio.Text = "....";
+            this.btnBuscarLaboratorio.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtLaboratorio
             // 
-            this.textBox1.Location = new System.Drawing.Point(6, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(412, 22);
-            this.textBox1.TabIndex = 3;
+            this.txtLaboratorio.Location = new System.Drawing.Point(6, 24);
+            this.txtLaboratorio.Name = "txtLaboratorio";
+            this.txtLaboratorio.ReadOnly = true;
+            this.txtLaboratorio.Size = new System.Drawing.Size(412, 22);
+            this.txtLaboratorio.TabIndex = 3;
             // 
             // txtPLEntidad
             // 
@@ -665,6 +671,7 @@
             // 
             this.txtAlmacenaje.Location = new System.Drawing.Point(9, 21);
             this.txtAlmacenaje.Name = "txtAlmacenaje";
+            this.txtAlmacenaje.ReadOnly = true;
             this.txtAlmacenaje.Size = new System.Drawing.Size(412, 22);
             this.txtAlmacenaje.TabIndex = 3;
             // 
@@ -783,6 +790,7 @@
             this.txtUnidadesXPresentacion.Name = "txtUnidadesXPresentacion";
             this.txtUnidadesXPresentacion.Size = new System.Drawing.Size(70, 22);
             this.txtUnidadesXPresentacion.TabIndex = 14;
+            this.txtUnidadesXPresentacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidadesXPresentacion_KeyPress);
             // 
             // groupBox1
             // 
@@ -808,6 +816,7 @@
             this.groupBox1.Controls.Add(this.txtMinimo);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(592, 351);
@@ -839,6 +848,7 @@
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.Location = new System.Drawing.Point(12, 35);
             this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
             this.txtCodigo.Size = new System.Drawing.Size(227, 22);
             this.txtCodigo.TabIndex = 3;
             // 
@@ -921,6 +931,7 @@
             this.txtExistencias.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtExistencias.Location = new System.Drawing.Point(101, 315);
             this.txtExistencias.Name = "txtExistencias";
+            this.txtExistencias.ReadOnly = true;
             this.txtExistencias.Size = new System.Drawing.Size(138, 31);
             this.txtExistencias.TabIndex = 14;
             this.txtExistencias.Text = "0.00";
@@ -1021,6 +1032,17 @@
             this.label7.Size = new System.Drawing.Size(83, 16);
             this.label7.TabIndex = 13;
             this.label7.Text = "Descripción:";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(540, 36);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(26, 23);
+            this.button2.TabIndex = 17;
+            this.button2.Text = "....";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // tbComision
             // 
@@ -1334,6 +1356,7 @@
             this.lvImagenes.Size = new System.Drawing.Size(1270, 417);
             this.lvImagenes.TabIndex = 1;
             this.lvImagenes.UseCompatibleStateImageBehavior = false;
+            this.lvImagenes.Click += new System.EventHandler(this.lvImagenes_Click);
             // 
             // toolStrip2
             // 
@@ -1351,11 +1374,12 @@
             // tsbAgregarImagen
             // 
             this.tsbAgregarImagen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAgregarImagen.Image = global::InventoryBoxFarmacy.Properties.Resources.if_icon_33_667338__4_;
+            this.tsbAgregarImagen.Image = global::InventoryBoxFarmacy.Properties.Resources.if_icon_33_667338__2_;
             this.tsbAgregarImagen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAgregarImagen.Name = "tsbAgregarImagen";
             this.tsbAgregarImagen.Size = new System.Drawing.Size(28, 28);
             this.tsbAgregarImagen.Text = "toolStripButton1";
+            this.tsbAgregarImagen.Click += new System.EventHandler(this.tsbAgregarImagen_Click);
             // 
             // tsbEliminarEliminar
             // 
@@ -1365,6 +1389,7 @@
             this.tsbEliminarEliminar.Name = "tsbEliminarEliminar";
             this.tsbEliminarEliminar.Size = new System.Drawing.Size(28, 28);
             this.tsbEliminarEliminar.Text = "toolStripButton2";
+            this.tsbEliminarEliminar.Click += new System.EventHandler(this.tsbEliminarEliminar_Click);
             // 
             // toolStripButton3
             // 
@@ -1398,6 +1423,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.statusStrip1);
             this.tabPage3.Controls.Add(this.dgvListar);
             this.tabPage3.Controls.Add(this.tsbAsociarProducto);
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
@@ -1407,15 +1433,45 @@
             this.tabPage3.Text = "Sustitutos";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lbaBarradeprogreso,
+            this.Barradeprogreso});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 426);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1270, 22);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
+            // 
+            // lbaBarradeprogreso
+            // 
+            this.lbaBarradeprogreso.Name = "lbaBarradeprogreso";
+            this.lbaBarradeprogreso.Size = new System.Drawing.Size(38, 17);
+            this.lbaBarradeprogreso.Text = "0 de 0";
+            // 
+            // Barradeprogreso
+            // 
+            this.Barradeprogreso.Name = "Barradeprogreso";
+            this.Barradeprogreso.Size = new System.Drawing.Size(300, 16);
+            // 
             // dgvListar
             // 
+            this.dgvListar.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvListar.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListar.Location = new System.Drawing.Point(0, 31);
             this.dgvListar.Name = "dgvListar";
-            this.dgvListar.Size = new System.Drawing.Size(1270, 417);
+            this.dgvListar.Size = new System.Drawing.Size(1270, 394);
             this.dgvListar.TabIndex = 1;
+            this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
+            this.dgvListar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellEndEdit);
+            this.dgvListar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvListar_CurrentCellDirtyStateChanged);
+            this.dgvListar.SelectionChanged += new System.EventHandler(this.dgvListar_SelectionChanged);
+            this.dgvListar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListar_MouseDown);
             // 
             // tsbAsociarProducto
             // 
@@ -1466,6 +1522,25 @@
             this.groupBox9.Size = new System.Drawing.Size(647, 424);
             this.groupBox9.TabIndex = 2;
             this.groupBox9.TabStop = false;
+            // 
+            // cmbEstadoDeLaPromocion
+            // 
+            this.cmbEstadoDeLaPromocion.FormattingEnabled = true;
+            this.cmbEstadoDeLaPromocion.Items.AddRange(new object[] {
+            "ACTIVA",
+            "INACTIVA"});
+            this.cmbEstadoDeLaPromocion.Location = new System.Drawing.Point(344, 93);
+            this.cmbEstadoDeLaPromocion.Name = "cmbEstadoDeLaPromocion";
+            this.cmbEstadoDeLaPromocion.Size = new System.Drawing.Size(279, 24);
+            this.cmbEstadoDeLaPromocion.TabIndex = 31;
+            // 
+            // txtidProductoPromocion
+            // 
+            this.txtidProductoPromocion.Location = new System.Drawing.Point(625, 21);
+            this.txtidProductoPromocion.Name = "txtidProductoPromocion";
+            this.txtidProductoPromocion.Size = new System.Drawing.Size(16, 22);
+            this.txtidProductoPromocion.TabIndex = 30;
+            this.txtidProductoPromocion.Visible = false;
             // 
             // txtDescripcionDeLaPromocion
             // 
@@ -1542,6 +1617,16 @@
             this.label39.Size = new System.Drawing.Size(52, 16);
             this.label39.TabIndex = 22;
             this.label39.Text = "Desde:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(341, 73);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(152, 16);
+            this.label19.TabIndex = 22;
+            this.label19.Text = "Estado de la Promoción";
             // 
             // label38
             // 
@@ -1698,35 +1783,6 @@
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
             // 
-            // txtidProductoPromocion
-            // 
-            this.txtidProductoPromocion.Location = new System.Drawing.Point(625, 21);
-            this.txtidProductoPromocion.Name = "txtidProductoPromocion";
-            this.txtidProductoPromocion.Size = new System.Drawing.Size(16, 22);
-            this.txtidProductoPromocion.TabIndex = 30;
-            this.txtidProductoPromocion.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(341, 73);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(152, 16);
-            this.label19.TabIndex = 22;
-            this.label19.Text = "Estado de la Promoción";
-            // 
-            // cmbEstadoDeLaPromocion
-            // 
-            this.cmbEstadoDeLaPromocion.FormattingEnabled = true;
-            this.cmbEstadoDeLaPromocion.Items.AddRange(new object[] {
-            "ACTIVA",
-            "INACTIVA"});
-            this.cmbEstadoDeLaPromocion.Location = new System.Drawing.Point(344, 93);
-            this.cmbEstadoDeLaPromocion.Name = "cmbEstadoDeLaPromocion";
-            this.cmbEstadoDeLaPromocion.Size = new System.Drawing.Size(279, 24);
-            this.cmbEstadoDeLaPromocion.TabIndex = 31;
-            // 
             // frmProductoOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1771,6 +1827,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).EndInit();
             this.tsbAsociarProducto.ResumeLayout(false);
             this.tsbAsociarProducto.PerformLayout();
@@ -1910,8 +1968,8 @@
         private System.Windows.Forms.Button btnBuscarAlmacen;
         private System.Windows.Forms.TextBox txtAlmacenaje;
         private System.Windows.Forms.TextBox txtAlmacenIdentidad;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnBuscarLaboratorio;
+        private System.Windows.Forms.TextBox txtLaboratorio;
         private System.Windows.Forms.TextBox txtPLEntidad;
         private System.Windows.Forms.TextBox txtTablaOrigen;
         private System.Windows.Forms.TextBox txtTablaDeReferencia;
@@ -1929,5 +1987,9 @@
         private System.Windows.Forms.TextBox txtidProductoPromocion;
         private System.Windows.Forms.ComboBox cmbEstadoDeLaPromocion;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lbaBarradeprogreso;
+        private System.Windows.Forms.ToolStripProgressBar Barradeprogreso;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -330,7 +330,7 @@ namespace AccesoDatos
                 from bodegaalmacen as ba
                 inner join bodega as bg on bg.idBodega = ba.idBodega
                 inner join almacen as al on al.idAlmacen = ba.idAlmacen
-                where ba.idBodegaAlmacen > 0 and bg.idAlmacen = {0} ", oRegistroEN.oAlmacenEN.idAlmacen);
+                where ba.idBodegaAlmacen > 0 and ba.idAlmacen = {0} ", oRegistroEN.oAlmacenEN.idAlmacen);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();

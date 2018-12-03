@@ -307,6 +307,68 @@ namespace AccesoDatos
 
         }
 
+        public bool ListadoDeProductosXIdProducto(ProductoSustitutosEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"SELECT ps.idProductoSustitutos, ps.idProducto, ps.idSustituto, 
+	                p.Nombre as 'Producto', NombreGenerico, NombreComun, Descripcion,
+                    ps.idUsuarioDeCreacion, ps.FechaDeCreacion, u.Nombre as 'UsuarioDeCreacion',
+	                ps.idUsuarioModificacion, ps.FechaDeModificacion, u1.Nombre as 'UsuarioDeModificacion'
+                 FROM  productosustitutos as ps
+                 inner join producto as p on p.idProducto = ps.idSustituto
+                inner join usuario as u on u.idUsuario = ps.idUsuarioDeCreacion
+                left join usuario as u1 on u1.idUsuario = ps.idUsuarioModificacion
+                Where ps.idProducto = {0} {1} ", oRegistroEN.oProductoEN.idProducto, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         public bool ListadoPorIdentificador(ProductoSustitutosEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -532,15 +594,17 @@ namespace AccesoDatos
 
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoSustitutos from ProductoSustitutos where idProducto = @idProducto) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoSustitutos from ProductoSustitutos where idProducto = @idProducto AND idSustituto = @idSustituto) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Comando.Parameters.Add(new MySqlParameter("@idSustituto", MySqlDbType.Int32)).Value = oRegistroEN.oSutitutoEN.idProducto;
 
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoSustitutos from ProductoSustitutos where idProducto = @idProducto and idProductoSustitutos <> @idProductoSustitutos) THEN 1 ELSE 0 END AS 'RES'";
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoSustitutos from ProductoSustitutos where idProducto = @idProducto AND idSustituto = @idSustituto and idProductoSustitutos <> @idProductoSustitutos) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Comando.Parameters.Add(new MySqlParameter("@idSustituto", MySqlDbType.Int32)).Value = oRegistroEN.oSutitutoEN.idProducto;
                         Comando.Parameters.Add(new MySqlParameter("@idProductoSustitutos", MySqlDbType.Int32)).Value = oRegistroEN.idProductoSustitutos;
 
                         break;

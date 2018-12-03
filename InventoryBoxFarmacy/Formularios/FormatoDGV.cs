@@ -205,8 +205,57 @@ namespace InventoryBoxFarmacy.Formularios
 
             this.Columna = NombreDelaColumna;
             
-            switch (Tabla)
+            switch (Tabla)//ProductoSustitutos
             {
+                case "ProductoSustitutos":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+
+                        case "NombreGenerico":
+                            this.Descripcion = "Nombre Generico";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Nombre":
+                            this.Descripcion = "Producto";
+                            this.Tamano = 160;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+                        case "CodigoDeBarra":
+                            this.Descripcion = "Código de Barra";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+                        case "Codigo":
+                            this.Descripcion = "Código";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idBodegaLocacion":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
                 case "BodegaLocacion":
 
                     this.ValorEncontrado = true;

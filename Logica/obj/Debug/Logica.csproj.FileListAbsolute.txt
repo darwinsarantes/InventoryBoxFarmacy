@@ -31,3 +31,14 @@ F:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
 F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
 F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb

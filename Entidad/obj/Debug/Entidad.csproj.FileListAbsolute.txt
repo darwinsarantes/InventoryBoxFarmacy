@@ -12,3 +12,9 @@ F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
 F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
 F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
 F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
+C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
+F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache

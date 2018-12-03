@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="BodegaEN.cs" />
     <Compile Include="BodegaAlmacenEN.cs" />
+    <Compile Include="ProductoCompletoEN.cs" />
     <Compile Include="ProductoLaboratoriosEN.cs" />
     <Compile Include="ProductoSustitutosEN.cs" />
     <Compile Include="ProductoEN.cs" />

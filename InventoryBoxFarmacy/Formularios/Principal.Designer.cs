@@ -76,7 +76,7 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.tsbContacto = new System.Windows.Forms.ToolStripButton();
             this.tsbLaboratorio = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
+            this.tsbProducto = new System.Windows.Forms.ToolStripButton();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -96,7 +96,7 @@
             this.ventanaToolStripMenuItem});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(825, 24);
+            this.menuStrip.Size = new System.Drawing.Size(1338, 24);
             this.menuStrip.TabIndex = 0;
             this.menuStrip.TabStop = true;
             this.menuStrip.Text = "MenuStrip";
@@ -166,7 +166,7 @@
             // tsbContenedor
             // 
             this.tsbContenedor.Name = "tsbContenedor";
-            this.tsbContenedor.Size = new System.Drawing.Size(152, 22);
+            this.tsbContenedor.Size = new System.Drawing.Size(137, 22);
             this.tsbContenedor.Tag = "Contenedor";
             this.tsbContenedor.Text = "Contenedor";
             this.tsbContenedor.Click += new System.EventHandler(this.tsbContenedor_Click);
@@ -174,7 +174,7 @@
             // tsbSeccion
             // 
             this.tsbSeccion.Name = "tsbSeccion";
-            this.tsbSeccion.Size = new System.Drawing.Size(152, 22);
+            this.tsbSeccion.Size = new System.Drawing.Size(137, 22);
             this.tsbSeccion.Tag = "Seccion";
             this.tsbSeccion.Text = "Sección";
             this.tsbSeccion.Click += new System.EventHandler(this.tsbSeccion_Click);
@@ -182,7 +182,7 @@
             // tsbUbicacion
             // 
             this.tsbUbicacion.Name = "tsbUbicacion";
-            this.tsbUbicacion.Size = new System.Drawing.Size(152, 22);
+            this.tsbUbicacion.Size = new System.Drawing.Size(137, 22);
             this.tsbUbicacion.Tag = "Ubicacion";
             this.tsbUbicacion.Text = "Locación";
             this.tsbUbicacion.ToolTipText = "Localización del producto";
@@ -191,7 +191,7 @@
             // tsbBodega
             // 
             this.tsbBodega.Name = "tsbBodega";
-            this.tsbBodega.Size = new System.Drawing.Size(152, 22);
+            this.tsbBodega.Size = new System.Drawing.Size(137, 22);
             this.tsbBodega.Tag = "Bodega";
             this.tsbBodega.Text = "Bodega";
             this.tsbBodega.ToolTipText = "Información de las bodegas";
@@ -200,7 +200,7 @@
             // tsbAlmacen
             // 
             this.tsbAlmacen.Name = "tsbAlmacen";
-            this.tsbAlmacen.Size = new System.Drawing.Size(152, 22);
+            this.tsbAlmacen.Size = new System.Drawing.Size(137, 22);
             this.tsbAlmacen.Tag = "Almacen";
             this.tsbAlmacen.Text = "Almacen";
             this.tsbAlmacen.ToolTipText = "informacion del almacen";
@@ -401,7 +401,7 @@
             this.tsbEtiquetaDeRespaldo});
             this.statusStrip.Location = new System.Drawing.Point(0, 527);
             this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(825, 22);
+            this.statusStrip.Size = new System.Drawing.Size(1338, 22);
             this.statusStrip.TabIndex = 2;
             this.statusStrip.Text = "StatusStrip";
             // 
@@ -424,7 +424,7 @@
             this.statusStrip1.Dock = System.Windows.Forms.DockStyle.None;
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbHorayFecha});
-            this.statusStrip1.Location = new System.Drawing.Point(638, 527);
+            this.statusStrip1.Location = new System.Drawing.Point(1151, 527);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(187, 22);
             this.statusStrip1.TabIndex = 6;
@@ -458,10 +458,10 @@
             this.toolStripButton1,
             this.tsbContacto,
             this.tsbLaboratorio,
-            this.toolStripButton2});
+            this.tsbProducto});
             this.tsMenu.Location = new System.Drawing.Point(0, 24);
             this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(109, 503);
+            this.tsMenu.Size = new System.Drawing.Size(77, 503);
             this.tsMenu.TabIndex = 8;
             this.tsMenu.Text = "toolStrip1";
             // 
@@ -470,9 +470,11 @@
             this.toolStripButton1.Image = global::InventoryBoxFarmacy.Properties.Resources.Proveedores48x48;
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(106, 36);
+            this.toolStripButton1.Size = new System.Drawing.Size(74, 51);
             this.toolStripButton1.Tag = "Proveedores";
             this.toolStripButton1.Text = "Proveedores";
+            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsbContacto
@@ -481,44 +483,53 @@
             this.tsbContacto.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbContacto.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbContacto.Name = "tsbContacto";
-            this.tsbContacto.Size = new System.Drawing.Size(106, 36);
+            this.tsbContacto.Size = new System.Drawing.Size(74, 51);
             this.tsbContacto.Tag = "Contacto";
             this.tsbContacto.Text = "Contacto";
+            this.tsbContacto.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbContacto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbContacto.ToolTipText = "Información del Contacto";
             this.tsbContacto.Click += new System.EventHandler(this.tsbContacto_Click);
             // 
             // tsbLaboratorio
             // 
             this.tsbLaboratorio.Image = global::InventoryBoxFarmacy.Properties.Resources.if_laboratory_44676__2_;
-            this.tsbLaboratorio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.tsbLaboratorio.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbLaboratorio.Name = "tsbLaboratorio";
-            this.tsbLaboratorio.Size = new System.Drawing.Size(106, 36);
+            this.tsbLaboratorio.Size = new System.Drawing.Size(74, 51);
             this.tsbLaboratorio.Tag = "Laboratorio";
             this.tsbLaboratorio.Text = "Laboratorio";
+            this.tsbLaboratorio.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbLaboratorio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.tsbLaboratorio.ToolTipText = "Informacion de los laboratorios";
             this.tsbLaboratorio.Click += new System.EventHandler(this.tsbLaboratorio_Click);
             // 
-            // toolStripButton2
+            // tsbProducto
             // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(106, 36);
-            this.toolStripButton2.Tag = "Laboratorio";
-            this.toolStripButton2.Text = "Compras";
-            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click_1);
+            this.tsbProducto.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_box_49364__1_;
+            this.tsbProducto.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.tsbProducto.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProducto.Name = "tsbProducto";
+            this.tsbProducto.Size = new System.Drawing.Size(74, 51);
+            this.tsbProducto.Tag = "Producto";
+            this.tsbProducto.Text = "Producto";
+            this.tsbProducto.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.tsbProducto.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsbProducto.Click += new System.EventHandler(this.toolStripButton2_Click_1);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(825, 549);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::InventoryBoxFarmacy.Properties.Resources.LogoRedondoInventario;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.ClientSize = new System.Drawing.Size(1338, 549);
             this.Controls.Add(this.tsMenu);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
+            this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
@@ -586,7 +597,7 @@
         private System.Windows.Forms.ToolStripMenuItem tsbSeccion;
         private System.Windows.Forms.ToolStripMenuItem tsbProductoPresentacion;
         private System.Windows.Forms.ToolStripMenuItem tsbUnidadDeMedida;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
+        private System.Windows.Forms.ToolStripButton tsbProducto;
         private System.Windows.Forms.ToolStripMenuItem productoToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem tsbAlmacen;
         private System.Windows.Forms.ToolStripMenuItem laboratorioToolStripMenuItem;

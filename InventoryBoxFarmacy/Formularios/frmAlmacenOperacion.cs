@@ -644,6 +644,86 @@ namespace InventoryBoxFarmacy.Formularios
             LlenarCamposDesdeBaseDatosSegunID();
         }
 
+        private void tsbBuscar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmBodega oFrmRegistro = new frmBodega();
+                oFrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                oFrmRegistro.VariosRegistros = true;
+                oFrmRegistro.ActivarFiltros = true;
+                oFrmRegistro.TituloVentana = "Seleccionar Localizaciones del producto";
+
+                oFrmRegistro.AplicarFiltroDeWhereExterno = true;
+                oFrmRegistro.WhereExterno = WhereDinamicoBodega();
+
+                oFrmRegistro.ShowDialog();
+
+                BodegaEN[] oRegistroEN = new BodegaEN[0];
+                oRegistroEN = oFrmRegistro.oBodega;
+
+                if (oRegistroEN.Length > 0)
+                {
+                    foreach (BodegaEN oRegistro in oRegistroEN)
+                    {
+                        dgvListar.Rows.Add(false, 0, oRegistro.idBodega, oRegistro.Codigo, oRegistro.Nombre, oRegistro.Descripcion, true);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private string WhereDinamicoBodega()
+        {
+            string Where = "";
+            try
+            {
+                if (dgvListar.Rows.Count > 0)
+                {
+                    String IdBodega = "";
+                    foreach (DataGridViewRow Fila in dgvListar.Rows)
+                    {
+                        int idBodega;
+                        int.TryParse(Fila.Cells["idBodega"].Value.ToString(), out idBodega);
+
+                        if (IdBodega.Trim().Length == 0)
+                        {
+                            if (idBodega > 0)
+                            {
+                                IdBodega = idBodega.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (idBodega > 0)
+                            {
+                                IdBodega = string.Format("{0}, {1}", IdBodega, idBodega.ToString());
+                            }
+                        }
+                    }
+
+                    if (IdBodega.Trim().Length > 0)
+                    {
+                        Where = string.Format(" and b.idBodega Not in ({0}) ", IdBodega);
+                    }
+                    else { Where = ""; }
+                }
+
+                return Where;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Where dinamico buscar locaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return Where;
+
+            }
+        }
+
         #endregion
 
         #region "Trabajando con datagridview"
@@ -858,12 +938,12 @@ namespace InventoryBoxFarmacy.Formularios
             try
             {
 
-                BodegaLocacionEN oRegistroEN = new BodegaLocacionEN();
-                BodegaLocacionLN oRegistroLN = new BodegaLocacionLN();
+                BodegaAlmacenEN oRegistroEN = new BodegaAlmacenEN();
+                BodegaAlmacenLN oRegistroLN = new BodegaAlmacenLN();
 
-                oRegistroEN.oBodegaEN.idBodega = ValorLlavePrimariaEntidad;
+                oRegistroEN.oAlmacenEN.idAlmacen = ValorLlavePrimariaEntidad;
 
-                if (oRegistroLN.ListadoDeLocacionesPorBodega(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoDeBodegasPorAlmacen(oRegistroEN, Program.oDatosDeConexion))
                 {
 
                     ODatos = oRegistroLN.TraerDatos();
@@ -1586,5 +1666,30 @@ namespace InventoryBoxFarmacy.Formularios
 
         #endregion
 
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+
+                frmBodegaOperacion ofrmRegistro = new frmBodegaOperacion();
+                ofrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                ofrmRegistro.OperacionARealizar = "Local";
+                ofrmRegistro.NombreEntidad = "Agregar información de la bodega";
+                ofrmRegistro.ShowDialog();
+
+                if (ofrmRegistro.VariableLocal == true)
+                {
+                    BodegaEN oRegistroEN = ofrmRegistro.oBodega;
+
+                    dgvListar.Rows.Add(false, 0, 0, oRegistroEN.Codigo, oRegistroEN.Nombre, oRegistroEN.Descripcion, true);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "agregar registro de la locación del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }
