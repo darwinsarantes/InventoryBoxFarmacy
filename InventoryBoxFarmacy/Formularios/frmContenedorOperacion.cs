@@ -31,6 +31,11 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void frmContenedorOperacion_Shown(object sender, EventArgs e)
         {
+            LLenarComboDelAlmacen();
+            LLenarComboBodega();
+            LLenarComboLocacion();
+            LLenarComboSeccion();
+
             ObtenerValoresDeConfiguracion();
             LlamarMetodoSegunOperacion();
             EstablecerTituloDeVentana();
@@ -46,6 +51,190 @@ namespace InventoryBoxFarmacy.Formularios
         }
 
         #region "Funciones"
+        
+        private void LLenarComboDelAlmacen()
+        {
+            try
+            {
+                AlmacenEN oRegistroEN = new AlmacenEN();
+                AlmacenLN oRegistroLN = new AlmacenLN();
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    cmbAlmacen.DataSource = oRegistroLN.TraerDatos();
+                    cmbAlmacen.DisplayMember = "Almacen";
+                    cmbAlmacen.ValueMember = "idAlmacen";
+                    cmbAlmacen.DropDownWidth = 268;
+
+                    if (oRegistroLN.TraerDatos().Rows.Count == 1)
+                    {
+                        cmbAlmacen.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbAlmacen.SelectedIndex = -1;
+                    }
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Informacion del Almacen", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LLenarComboBodega()
+        {
+            try
+            {
+                BodegaEN oRegistroEN = new BodegaEN();
+
+                if (cmbAlmacen.SelectedIndex > -1)
+                {
+                    oRegistroEN.Where = string.Format(" and a.idAlmacen = {0} ", cmbAlmacen.SelectedValue);
+                }
+                else
+                {
+                    oRegistroEN.Where = "";
+                }
+
+                oRegistroEN.OrderBy = " Order by a.Nombre asc ";
+
+                BodegaLN oRegistroLN = new BodegaLN();
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    cmbBodega.DataSource = oRegistroLN.TraerDatos();
+                    cmbBodega.DisplayMember = "Bodega";
+                    cmbBodega.ValueMember = "idBodega";
+                    cmbBodega.DropDownWidth = 268;
+
+                    if (oRegistroLN.TraerDatos().Rows.Count == 1)
+                    {
+                        cmbBodega.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbBodega.SelectedIndex = -1;
+                    }
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Informacion de la bodega", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LLenarComboLocacion()
+        {
+            try
+            {
+                LocacionEN oRegistroEN = new LocacionEN();
+
+                if (cmbBodega.SelectedIndex > -1)
+                {
+                    oRegistroEN.Where = string.Format(" and idBodega = {0} ", cmbBodega.SelectedValue);
+                }
+                else
+                {
+                    oRegistroEN.Where = "";
+                }
+
+                oRegistroEN.OrderBy = " Order by Nombre asc ";
+
+                LocacionLN oRegistroLN = new LocacionLN();
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    cmbLocacion.DataSource = oRegistroLN.TraerDatos();
+                    cmbLocacion.DisplayMember = "Locacion";
+                    cmbLocacion.ValueMember = "idLocacion";
+                    cmbLocacion.DropDownWidth = 268;
+
+                    if (oRegistroLN.TraerDatos().Rows.Count == 1)
+                    {
+                        cmbLocacion.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbLocacion.SelectedIndex = -1;
+                    }
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Informacion del estante/vitrina/caja", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void LLenarComboSeccion()
+        {
+            try
+            {
+                SeccionEN oRegistroEN = new SeccionEN();
+
+                if (cmbLocacion.SelectedIndex > -1)
+                {
+                    oRegistroEN.Where = string.Format(" and s.idLocacion = {0} ", cmbLocacion.SelectedValue);
+                }
+                else
+                {
+                    oRegistroEN.Where = "";
+                }
+
+                oRegistroEN.OrderBy = " Order by s.Nombre asc ";
+
+                SeccionLN oRegistroLN = new SeccionLN();
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    cmbSeccion.DataSource = oRegistroLN.TraerDatos();
+                    cmbSeccion.DisplayMember = "Seccion";
+                    cmbSeccion.ValueMember = "idSeccion";
+                    cmbSeccion.DropDownWidth = 268;
+
+                    if (oRegistroLN.TraerDatos().Rows.Count == 1)
+                    {
+                        cmbSeccion.SelectedIndex = 0;
+                    }
+                    else
+                    {
+                        cmbSeccion.SelectedIndex = -1;
+                    }
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Informacion de la sección", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
 
         private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
         {
@@ -216,8 +405,10 @@ namespace InventoryBoxFarmacy.Formularios
                     txtIdentificador.ReadOnly = true;
                     txtDescripcion.ReadOnly = true;
                     txtCodigo.ReadOnly = true;
-                    txtContenedor.ReadOnly = true;                    
-                    
+                    txtContenedor.ReadOnly = true;
+
+                    gbGeneral.Enabled = false;
+
                     break;
 
                 case "CONSULTAR":
@@ -234,6 +425,7 @@ namespace InventoryBoxFarmacy.Formularios
                     txtDescripcion.ReadOnly = true;
                     txtCodigo.ReadOnly = true;
                     txtContenedor.ReadOnly = true;
+                    gbGeneral.Enabled = false;
 
 
                     break;
@@ -251,6 +443,10 @@ namespace InventoryBoxFarmacy.Formularios
                     txtCodigo.Text = string.Empty;
                     txtContenedor.Text = string.Empty;
                     txtDescripcion.Text = string.Empty;
+
+                    splitContainer1.Panel1Collapsed = true;
+                    this.Width = 513;
+                    this.Height = 462;
 
                     break;
 
@@ -312,6 +508,10 @@ namespace InventoryBoxFarmacy.Formularios
                     txtDescripcion.Text = Fila["Descripcion"].ToString();
                     txtCodigo.Text = Fila["Codigo"].ToString();
                     txtContenedor.Text = Fila["Nombre"].ToString();
+                    cmbAlmacen.SelectedValue = Convert.ToInt32(Fila["idAlmacen"]);
+                    cmbBodega.SelectedValue = Convert.ToInt32(Fila["idBodega"]);
+                    cmbLocacion.SelectedValue = Convert.ToInt32(Fila["idLocacion"]);
+                    cmbSeccion.SelectedValue = Convert.ToInt32(Fila["idSeccion"]);
 
                     oRegistrosEN = null;
                     oRegistrosLN = null;
@@ -390,6 +590,13 @@ namespace InventoryBoxFarmacy.Formularios
                 return false;
             }
 
+            if (Controles.IsNullOEmptyElControl(cmbSeccion))
+            {
+                EP.SetError(cmbSeccion, "Se debe seleccionar una sección");
+                cmbSeccion.Focus();
+                return false;
+            }
+
 
             return true;
 
@@ -403,9 +610,29 @@ namespace InventoryBoxFarmacy.Formularios
             oRegistroEN.Codigo = txtCodigo.Text.Trim();
             oRegistroEN.Nombre = txtContenedor.Text.Trim();
             oRegistroEN.Descripcion = txtDescripcion.Text.Trim();
+            oRegistroEN.oSeccionEN.idSeccion = Convert.ToInt32(cmbSeccion.SelectedValue);
+            oRegistroEN.oSeccionEN.Nombre = cmbSeccion.Text;
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            return oRegistroEN;
+
+        }
+
+        private ContenedorEN InformacionDelRegistroLocal()
+        {
+
+            ContenedorEN oRegistroEN = new ContenedorEN();
+
+            oRegistroEN.idContenedor = Convert.ToInt32((txtIdentificador.Text.Length > 0 ? txtIdentificador.Text : "0"));
+            oRegistroEN.Codigo = txtCodigo.Text.Trim();
+            oRegistroEN.Nombre = txtContenedor.Text.Trim();
+            oRegistroEN.Descripcion = txtDescripcion.Text.Trim();            
+            
             return oRegistroEN;
 
         }
@@ -477,7 +704,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                     }
 
-                    if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                     {
                         txtIdentificador.Text = oRegistroEN.idContenedor.ToString();
                         ValorLlavePrimariaEntidad = oRegistroEN.idContenedor;
@@ -543,6 +770,13 @@ namespace InventoryBoxFarmacy.Formularios
 
                     ContenedorEN oRegistroEN = InformacionDelRegistro();
                     ContenedorLN oRegistroLN = new ContenedorLN();
+
+                    if (oRegistroLN.VerificarSiLaEntidadEstaAsociadaAProducto(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                    {
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
@@ -610,8 +844,7 @@ namespace InventoryBoxFarmacy.Formularios
                         MessageBox.Show("No se puede continuar. Ha ocurrido un error y el registro no ha sido cargado correctamente.", OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         return;
                     }
-
-
+                    
                     if (MessageBox.Show("¿Está seguro que desea eliminar el registro?", "Eliminar la Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button3) == System.Windows.Forms.DialogResult.No)
                     {
                         return;
@@ -620,6 +853,13 @@ namespace InventoryBoxFarmacy.Formularios
                     ContenedorEN oRegistroEN = InformacionDelRegistro();
                     ContenedorLN oRegistroLN = new ContenedorLN();
 
+                    if (oRegistroLN.VerificarSiLaEntidadEstaAsociadaAProducto(oRegistroEN, Program.oDatosDeConexion, "ELIMINAR"))
+                    {
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ELIMINAR"))
                     {
                         this.Cursor = Cursors.Default;
@@ -627,7 +867,7 @@ namespace InventoryBoxFarmacy.Formularios
                         return;
                     }
 
-                    if (oRegistroLN.EliminarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
                     {
 
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Eliminar");
@@ -668,7 +908,7 @@ namespace InventoryBoxFarmacy.Formularios
         {
             try
             {
-                oContenedor = InformacionDelRegistro();
+                oContenedor = InformacionDelRegistroLocal();
                 VariableLocal = true;
                 this.Close();
             }
@@ -680,5 +920,10 @@ namespace InventoryBoxFarmacy.Formularios
 
         #endregion
 
+        private void txtCodigo_KeyUp(object sender, KeyEventArgs e)
+        {
+            if(Controles.IsNullOEmptyElControl(txtContenedor))
+                txtContenedor.Text = txtCodigo.Text;
+        }
     }
 }

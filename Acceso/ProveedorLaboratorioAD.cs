@@ -312,6 +312,59 @@ namespace AccesoDatos
 
         }
 
+        public bool ListadoDeProveedoresLaboratorio(ProveedorLaboratorioEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.StoredProcedure;
+                Comando.CommandText = "ListadoDeProveedoresLaboratorio";
+                Comando.Parameters.Add(new MySqlParameter("@SWhere", MySqlDbType.VarChar, oRegistroEN.Where.Length)).Value = oRegistroEN.Where;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
         public bool ListadoPorIdentificador(ProveedorLaboratorioEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 

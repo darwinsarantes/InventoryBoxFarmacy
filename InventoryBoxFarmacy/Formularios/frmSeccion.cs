@@ -398,7 +398,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idSeccion,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idSeccion,idLocacion,idBodega,idAlmacen,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -449,10 +449,10 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
                         {
-                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
+                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "Seccion");
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "Seccion");
+                                oFormato = new FormatoDGV(c1.Name.Trim());
                             }
 
                             if (oFormato != null)
@@ -594,6 +594,7 @@ namespace InventoryBoxFarmacy.Formularios
                             oSeccion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                             oSeccion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
                             oSeccion[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                            oSeccion[a - 1].CodigoDeAlmacenaje = Fila.Cells["CodigoDeAlmacenaje"].Value.ToString();
 
                         }
                     }
@@ -653,13 +654,14 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         a++;
                         Array.Resize(ref oSeccion, a);
-                        
+
                         oSeccion[a - 1] = new SeccionEN();
                         oSeccion[a - 1].idSeccion = Convert.ToInt32(Fila.Cells["idSeccion"].Value);
                         oSeccion[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                         oSeccion[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
                         oSeccion[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
-                        
+                        oSeccion[a - 1].CodigoDeAlmacenaje = Fila.Cells["CodigoDeAlmacenaje"].Value.ToString();
+
                     }
                 }
 

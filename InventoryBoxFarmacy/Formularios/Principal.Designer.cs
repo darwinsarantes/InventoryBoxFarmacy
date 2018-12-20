@@ -153,11 +153,11 @@
             // ubicaciónToolStripMenuItem
             // 
             this.ubicaciónToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbContenedor,
-            this.tsbSeccion,
-            this.tsbUbicacion,
+            this.tsbAlmacen,
             this.tsbBodega,
-            this.tsbAlmacen});
+            this.tsbUbicacion,
+            this.tsbSeccion,
+            this.tsbContenedor});
             this.ubicaciónToolStripMenuItem.Name = "ubicaciónToolStripMenuItem";
             this.ubicaciónToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.ubicaciónToolStripMenuItem.Text = "Ubicación";
@@ -166,7 +166,7 @@
             // tsbContenedor
             // 
             this.tsbContenedor.Name = "tsbContenedor";
-            this.tsbContenedor.Size = new System.Drawing.Size(137, 22);
+            this.tsbContenedor.Size = new System.Drawing.Size(152, 22);
             this.tsbContenedor.Tag = "Contenedor";
             this.tsbContenedor.Text = "Contenedor";
             this.tsbContenedor.Click += new System.EventHandler(this.tsbContenedor_Click);
@@ -174,7 +174,7 @@
             // tsbSeccion
             // 
             this.tsbSeccion.Name = "tsbSeccion";
-            this.tsbSeccion.Size = new System.Drawing.Size(137, 22);
+            this.tsbSeccion.Size = new System.Drawing.Size(152, 22);
             this.tsbSeccion.Tag = "Seccion";
             this.tsbSeccion.Text = "Sección";
             this.tsbSeccion.Click += new System.EventHandler(this.tsbSeccion_Click);
@@ -182,7 +182,7 @@
             // tsbUbicacion
             // 
             this.tsbUbicacion.Name = "tsbUbicacion";
-            this.tsbUbicacion.Size = new System.Drawing.Size(137, 22);
+            this.tsbUbicacion.Size = new System.Drawing.Size(152, 22);
             this.tsbUbicacion.Tag = "Ubicacion";
             this.tsbUbicacion.Text = "Locación";
             this.tsbUbicacion.ToolTipText = "Localización del producto";
@@ -191,7 +191,7 @@
             // tsbBodega
             // 
             this.tsbBodega.Name = "tsbBodega";
-            this.tsbBodega.Size = new System.Drawing.Size(137, 22);
+            this.tsbBodega.Size = new System.Drawing.Size(152, 22);
             this.tsbBodega.Tag = "Bodega";
             this.tsbBodega.Text = "Bodega";
             this.tsbBodega.ToolTipText = "Información de las bodegas";
@@ -200,7 +200,7 @@
             // tsbAlmacen
             // 
             this.tsbAlmacen.Name = "tsbAlmacen";
-            this.tsbAlmacen.Size = new System.Drawing.Size(137, 22);
+            this.tsbAlmacen.Size = new System.Drawing.Size(152, 22);
             this.tsbAlmacen.Tag = "Almacen";
             this.tsbAlmacen.Text = "Almacen";
             this.tsbAlmacen.ToolTipText = "informacion del almacen";

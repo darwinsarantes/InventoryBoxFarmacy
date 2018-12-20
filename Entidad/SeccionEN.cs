@@ -12,6 +12,7 @@ namespace Entidad
         public string Codigo { set; get; }
         public string Nombre { set; get; }
         public string Descripcion { set; get; }
+        public string CodigoDeAlmacenaje { set; get; }
         
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
@@ -19,6 +20,7 @@ namespace Entidad
         public DateTime FechaDeModificacion { set; get; }
         
         public LoginEN oLoginEN = new LoginEN();
+        public LocacionEN oLocacionEN = new LocacionEN();
 
         public string Where { set; get; }
         public string OrderBy { set; get; }

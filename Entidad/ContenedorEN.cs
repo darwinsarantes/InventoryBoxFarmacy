@@ -19,6 +19,7 @@ namespace Entidad
         public DateTime FechaDeModificacion { set; get; }
         
         public LoginEN oLoginEN = new LoginEN();
+        public SeccionEN oSeccionEN = new SeccionEN();
 
         public string Where { set; get; }
         public string OrderBy { set; get; }

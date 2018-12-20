@@ -351,6 +351,9 @@ F:\InventoryBoxFarmacy\InventoryBoxFarmacy\bin\Debug\CrystalDecisions.Windows.Fo
 F:\InventoryBoxFarmacy\InventoryBoxFarmacy\bin\Debug\FlashControlV71.dll
 F:\InventoryBoxFarmacy\InventoryBoxFarmacy\bin\Debug\ShockwaveFlashObjects.dll
 F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmVisor.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmLocalizacionDelProducto.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmGenerarSeccionOContenedores.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmlProveedorLaboratorio.resources
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\bin\Debug\InventoryBoxFarmacy.exe.config
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.exe
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.pdb

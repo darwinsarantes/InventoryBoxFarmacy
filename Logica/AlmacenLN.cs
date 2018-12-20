@@ -30,22 +30,7 @@ namespace Logica
             }
 
         }
-
-        public bool AgregarUtilizandoLaMismaConexion(AlmacenEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oAlmacenAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oAlmacenAD.Error;
-                return false;
-            }
-
-        }
+               
 
         public bool Actualizar(AlmacenEN oREgistroEN, DatosDeConexionEN oDatos)
         {
@@ -114,30 +99,7 @@ namespace Logica
             }
 
         }
-
-        public bool EliminarUtilizandoLaMismaConexion(AlmacenEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (string.IsNullOrEmpty(oREgistroEN.idAlmacen.ToString()) || oREgistroEN.idAlmacen == 0)
-            {
-
-                this.Error = @"Se debe de seleccionar un elemento de la lista";
-                return false;
-            }
-
-            if (oAlmacenAD.EliminarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oAlmacenAD.Error;
-                return false;
-            }
-
-        }
-
+        
         public bool Listado(AlmacenEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -238,6 +200,22 @@ namespace Logica
         {
 
             if (oAlmacenAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oAlmacenAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool VerificarSiLaEntidadEstaAsociadaAProducto(AlmacenEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oAlmacenAD.VerificarSiLaEntidadEstaAsociadaAProducto(oREgistroEN, oDatos, TipoDeOperacion))
             {
                 Error = oAlmacenAD.Error;
                 return true;

@@ -24,12 +24,15 @@ namespace InventoryBoxFarmacy.Formularios
         public string NOMBRE_ENTIDAD_PRIVILEGIO { set; get; }
         public string NombreEntidad { set; get; }
         public int ValorLlavePrimariaEntidad { set; get; }
-        private ImageList ListaDeImagenes = null; 
+        private ImageList ListaDeImagenes = null;
 
         private bool CerrarVentana = false;
 
         private void frmProductoOperacion_Shown(object sender, EventArgs e)
         {
+            LlenarComboPresentacion();
+            LlenarComboUnidadDeMedida();
+            LlenarComboCategoria();
             ObtenerValoresDeConfiguracion();
             LlamarMetodoSegunOperacion();
             EstablecerTituloDeVentana();
@@ -45,6 +48,101 @@ namespace InventoryBoxFarmacy.Formularios
         }
 
         #region "Funciones"
+
+        private void LlenarComboPresentacion()
+        {
+            try
+            {
+
+                ProductoPresentacionEN oRegistroEN = new ProductoPresentacionEN();
+                ProductoPresentacionLN oRegistroLN = new ProductoPresentacionLN();
+
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = " Order by pps.Nombre asc ";
+
+                if(oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+                    cmbPresentacion.DataSource = oRegistroLN.TraerDatos();
+                    cmbPresentacion.DisplayMember = "Nombre";
+                    cmbPresentacion.ValueMember = "idProductoPresentacion";
+
+                    cmbPresentacion.SelectedIndex = -1;
+                    
+                }else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+                
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Presentación", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void LlenarComboUnidadDeMedida()
+        {
+            try
+            {
+
+                ProductoUnidadDeMedidaEN oRegistroEN = new ProductoUnidadDeMedidaEN();
+                ProductoUnidadDeMedidaLN oRegistroLN = new ProductoUnidadDeMedidaLN();
+
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = " Order by pum.Nombre asc ";
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+                    cmbUnidadDeMedida.DataSource = oRegistroLN.TraerDatos();
+                    cmbUnidadDeMedida.DisplayMember = "Nombre";
+                    cmbUnidadDeMedida.ValueMember = "idProductoUnidadDeMedida";
+
+                    cmbUnidadDeMedida.SelectedIndex = -1;
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Unidad de Medida", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LlenarComboCategoria()
+        {
+            try
+            {
+
+                CategoriaEN oRegistroEN = new CategoriaEN();
+                CategoriaLN oRegistroLN = new CategoriaLN();
+
+                oRegistroEN.Where = "";
+                oRegistroEN.OrderBy = " Order by ub.Nombre asc ";
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+                    cmbCategoria.DataSource = oRegistroLN.TraerDatos();
+                    cmbCategoria.DisplayMember = "Nombre";
+                    cmbCategoria.ValueMember = "idCategoria";
+
+                    cmbCategoria.SelectedIndex = -1;
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Categoria", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         private void EvaluarErrorParaMensajeAPantalla(String Error, string TipoOperacion)
         {
@@ -352,14 +450,14 @@ namespace InventoryBoxFarmacy.Formularios
             txtPrecioPromocional.Text = "0.00";
             txtPrecioXUnidad.Text = "";
             txtTablaDeReferencia.Text = string.Empty;
-            txtTablaOrigen.Text = string.Empty;
+            txtTablaDeReferenciaPL.Text = string.Empty;
             txtExistencias.Text = string.Empty;
             txtIdentificador.Text = string.Empty;
             txtIdPrecio.Text = string.Empty;
             txtidProductoConfiguracion.Text = string.Empty;
             txtidProductoPromocion.Text = string.Empty;
             txtIVA.Text = string.Empty;
-            txtLaboratorio.Text = string.Empty;
+            txtProveedorLaboratorio.Text = string.Empty;
             txtUnidadesXPresentacion.Text = "0.00";
             cmbCategoria.SelectedIndex = -1;
             cmbEstadoDeLaPromocion.SelectedIndex = -1;
@@ -684,11 +782,74 @@ namespace InventoryBoxFarmacy.Formularios
                 return false;
             }
 
-            if (Controles.IsNullOEmptyElControl(txtPLEntidad))
+            if (Controles.IsNullOEmptyElControl(txtIdProveedorLaboratorio))
             {
                 EP.SetError(btnBuscarLaboratorio, "Devemos especificar el laboratorio al que pertenece el producto");
                 btnBuscarLaboratorio.Focus();
                 return false;
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkAplicarComision) == false)
+            {
+
+                decimal comisionporcentual;
+                decimal.TryParse(txtComisionPorcentual.Text, out comisionporcentual);
+
+                if(comisionporcentual == 0)
+                {
+                    EP.SetError(txtComisionPorcentual, "Este valor no puede ser cero o menor que cero");
+                    txtComisionPorcentual.Focus();
+                    return false;
+                }
+
+                decimal ComisionMaxima;
+                decimal.TryParse(txtComisionMaxima.Text, out ComisionMaxima);
+
+                if (ComisionMaxima == 0)
+                {
+                    EP.SetError(txtComisionMaxima, "Este valor no puede ser cero o menor que cero");
+                    txtComisionMaxima.Focus();
+                    return false;
+                }
+
+            }
+
+            if(Controles.IsNullOEmptyElControl(chkAplicarPromocion) == false)
+            {
+
+                decimal PrecioDePromocion;
+                decimal.TryParse(txtPrecioPromocional.Text, out PrecioDePromocion);
+                if(PrecioDePromocion == 0)
+                {
+                    EP.SetError(txtPrecioPromocional, "Este valor no puede ser cero o menor que cero");
+                    txtPrecioPromocional.Focus();
+                    return false;
+                }
+
+
+                DateTime FechaActual = System.DateTime.Now;
+                
+                if( dtpkDesdePromocion.Value < FechaActual)
+                {
+                    EP.SetError(dtpkDesdePromocion, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
+                    dtpkDesdePromocion.Focus();
+                    return false;
+                }
+
+                if(dtpkHastaPromocional.Value < dtpkDesdePromocion.Value)
+                {
+                    EP.SetError(dtpkHastaPromocional, string.Format( "La fecha Ingresada de finalización de la promoción no puede ser {0} menor que la fecha de inicio de la promocion", Environment.NewLine));
+                    dtpkHastaPromocional.Focus();
+                    return false;
+                }
+
+                if (Controles.IsNullOEmptyElControl(txtDescripcionDeLaPromocion))
+                {
+                    EP.SetError(txtDescripcionDeLaPromocion,"Agrege una descripcíon de la promoción que se le va aplicar al producto");
+                    txtDescripcionDeLaPromocion.Focus();
+                    return false;
+                }
+
             }
 
             return true;
@@ -723,7 +884,7 @@ namespace InventoryBoxFarmacy.Formularios
             oRegistroEN.oUnidadDeMedida.Nombre = cmbUnidadDeMedida.Text.Trim();
 
             oRegistroEN.idAlmacenEntidad = Convert.ToInt32(txtAlmacenIdentidad.Text);
-            oRegistroEN.idPLEntidad = Convert.ToInt32(txtPLEntidad.Text);
+            oRegistroEN.idPLEntidad = Convert.ToInt32(txtIdProveedorLaboratorio.Text);
             oRegistroEN.Observaciones = txtObservacion.Text.Trim();
 
             //partes generales.            
@@ -1596,42 +1757,15 @@ namespace InventoryBoxFarmacy.Formularios
                 }
             }
         }
-        
-        private void txtCodigoDeBarra_TextChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Funciones.Numeros.IsNumeric(txtCodigoDeBarra.Text.Trim()))
-                {
-
-                    if (txtCodigoDeBarra.Text.Trim().Length > 11 && txtCodigoDeBarra.Text.Trim().Length <= 12)
-                    {
-                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "UPC-A");
-                    }
-                    else if (txtCodigoDeBarra.Text.Trim().Length == 13)
-                    {
-                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "EAN-13");
-                    }else
-                    {
-                        pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
-                    }
-
-                }
-                else
-                {   
-                    pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
-                }
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Generar codigo de barra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
         private void button2_Click(object sender, EventArgs e)
         {
+            
+
+        }
+
+        private void GenerarCodigoDeBarra()
+        {
             try
             {
                 if (Funciones.Numeros.IsNumeric(txtCodigoDeBarra.Text.Trim()))
@@ -1649,7 +1783,6 @@ namespace InventoryBoxFarmacy.Formularios
                 }
                 else
                 {
-                    MessageBox.Show("dentro");
                     pbxCodigoGenerado.Image = CodigoDeBarras.GenerarCodigoDeBarra_345x50(txtCodigoDeBarra.Text.Trim(), "Code 128");
                 }
 
@@ -1659,7 +1792,6 @@ namespace InventoryBoxFarmacy.Formularios
             {
                 MessageBox.Show(ex.Message, "Generar codigo de barra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         #endregion
@@ -2483,6 +2615,174 @@ namespace InventoryBoxFarmacy.Formularios
             else //Para todo lo demas
             {
                 e.Handled = true; //No se acepta (si pulsas cualquier otra cosa pues no se envia)
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmProducto oFrmRegistro = new frmProducto();
+                oFrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                oFrmRegistro.VariosRegistros = true;
+                oFrmRegistro.ActivarFiltros = true;
+                oFrmRegistro.TituloVentana = string.Format( "Seleccionar los productos asociados al '{0}'", txtNombre.Text.Trim());
+
+                oFrmRegistro.AplicarFiltroDeWhereExterno = true;
+                oFrmRegistro.WhereExterno = WhereDinamicoDelSustito();
+
+                oFrmRegistro.ShowDialog();
+
+                ProductoEN[] oRegistroEN = new ProductoEN[0];
+                oRegistroEN = oFrmRegistro.oProducto;
+
+                if (oRegistroEN.Length > 0)
+                {
+                    foreach (ProductoEN oRegistro in oRegistroEN)
+                    {
+                        dgvListar.Rows.Add(false, 0, oRegistro.idProducto, oRegistro.Codigo, oRegistro.CodigoDeBarra, oRegistro.Nombre, oRegistro.NombreGenerico, true);
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private string WhereDinamicoDelSustito()
+        {
+            string Where = "";
+            try
+            {
+                if (dgvListar.Rows.Count > 0)
+                {
+                    String IdProductoSustituto = "";
+                    foreach (DataGridViewRow Fila in dgvListar.Rows)
+                    {
+                        int idSustituto;
+                        int.TryParse(Fila.Cells["idSustituto"].Value.ToString(), out idSustituto);
+
+                        if (IdProductoSustituto.Trim().Length == 0)
+                        {
+                            if (idSustituto > 0)
+                            {
+                                IdProductoSustituto = idSustituto.ToString();
+                            }
+                        }
+                        else
+                        {
+                            if (idSustituto > 0)
+                            {
+                                IdProductoSustituto = string.Format("{0}, {1}", IdProductoSustituto, idSustituto.ToString());
+                            }
+                        }
+                    }
+
+                    if (IdProductoSustituto.Trim().Length > 0)
+                    {
+                        Where = string.Format(" and  p.idProducto Not in ({0}) ", IdProductoSustituto);
+                    }
+                    else { Where = ""; }
+                }
+
+                return Where;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Where dinamico buscar productos sustitutos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return Where;
+
+            }
+        }
+
+        private void btnBuscarAlmacen_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmLocalizacionDelProducto oFrmRegistro = new frmLocalizacionDelProducto();
+                oFrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                oFrmRegistro.VariosRegistros = false;
+                oFrmRegistro.ActivarFiltros = true;
+                oFrmRegistro.TituloVentana = string.Format("Localización del producto");
+
+                oFrmRegistro.AplicarFiltroDeWhereExterno = true;
+                oFrmRegistro.WhereExterno = WhereDinamicoDelSustito();
+
+                oFrmRegistro.ShowDialog();
+
+                LocalizacionDelProductoEN[] oRegistroEN = new LocalizacionDelProductoEN[0];
+                oRegistroEN = oFrmRegistro.oLocalizacionDelProductoEN;
+
+                if (oRegistroEN.Length > 0)
+                {
+                    LocalizacionDelProductoEN oRegistro = oRegistroEN[0];
+                    txtAlmacenaje.Text = oRegistro.Codigo;
+                    txtTablaDeReferencia.Text = oRegistro.TablaDeReferencia;
+                    txtAlmacenIdentidad.Text = oRegistro.idLocalizacionDelProducto.ToString();
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtCodigoDeBarra_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {
+                if (e.KeyChar == (char)13)
+                {
+                    GenerarCodigoDeBarra();
+                    TextBox oText = (TextBox)sender;
+                    oText.SelectAll();
+                }else
+                {
+                    GenerarCodigoDeBarra();
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Generar codigo de barra", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnBuscarLaboratorio_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                frmlProveedorLaboratorio oFrmRegistro = new frmlProveedorLaboratorio();
+                oFrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                oFrmRegistro.VariosRegistros = false;
+                oFrmRegistro.ActivarFiltros = true;
+                oFrmRegistro.TituloVentana = string.Format("Localización del producto");
+
+                oFrmRegistro.AplicarFiltroDeWhereExterno = true;
+                oFrmRegistro.WhereExterno = WhereDinamicoDelSustito();
+
+                oFrmRegistro.ShowDialog();
+
+                ProveedorLaboratorioEN[] oRegistroEN = new ProveedorLaboratorioEN[0];
+                oRegistroEN = oFrmRegistro.oProveedorLaboratorioEN;
+
+                if (oRegistroEN.Length > 0)
+                {
+                    ProveedorLaboratorioEN oRegistro = oRegistroEN[0];
+                    txtTablaDeReferenciaPL.Text = oRegistro.TablaDeReferencia;
+                    txtIdProveedorLaboratorio.Text = oRegistro.idProveedorLaboratorio.ToString();
+                    txtProveedorLaboratorio.Text = oRegistro.ProveedorLaboratorio;
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

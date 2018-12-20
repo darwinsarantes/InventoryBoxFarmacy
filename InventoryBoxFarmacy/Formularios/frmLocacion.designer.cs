@@ -39,22 +39,24 @@
             this.chkIdentificador = new System.Windows.Forms.CheckBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tsMenu = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsMenu = new System.Windows.Forms.ToolStrip();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.txtCodigoDeAlmacenajae = new System.Windows.Forms.TextBox();
+            this.chkCodigoDeAlmacenaje = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -83,8 +85,8 @@
             this.splitContainer1.Panel2.Controls.Add(this.dgvLista);
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
-            this.splitContainer1.Size = new System.Drawing.Size(697, 533);
-            this.splitContainer1.SplitterDistance = 119;
+            this.splitContainer1.Size = new System.Drawing.Size(638, 533);
+            this.splitContainer1.SplitterDistance = 141;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -92,6 +94,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtCodigoDeAlmacenajae);
+            this.groupBox1.Controls.Add(this.chkCodigoDeAlmacenaje);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.chkCodigo);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -100,14 +104,14 @@
             this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(673, 96);
+            this.groupBox1.Size = new System.Drawing.Size(614, 118);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrado de información por la locación dentro de los almacenes";
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(166, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(166, 62);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(237, 20);
             this.txtCodigo.TabIndex = 1;
@@ -115,16 +119,16 @@
             // 
             // chkCodigo
             // 
-            this.chkCodigo.Location = new System.Drawing.Point(21, 33);
+            this.chkCodigo.Location = new System.Drawing.Point(21, 60);
             this.chkCodigo.Name = "chkCodigo";
             this.chkCodigo.Size = new System.Drawing.Size(139, 24);
             this.chkCodigo.TabIndex = 0;
-            this.chkCodigo.Text = "Código:";
+            this.chkCodigo.Text = "Código del Estante:";
             this.chkCodigo.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(166, 61);
+            this.txtNombre.Location = new System.Drawing.Point(166, 88);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(237, 20);
             this.txtNombre.TabIndex = 1;
@@ -132,7 +136,7 @@
             // 
             // chkLocacion
             // 
-            this.chkLocacion.Location = new System.Drawing.Point(21, 59);
+            this.chkLocacion.Location = new System.Drawing.Point(21, 86);
             this.chkLocacion.Name = "chkLocacion";
             this.chkLocacion.Size = new System.Drawing.Size(139, 24);
             this.chkLocacion.TabIndex = 0;
@@ -141,7 +145,7 @@
             // 
             // txtIdentificador
             // 
-            this.txtIdentificador.Location = new System.Drawing.Point(363, 35);
+            this.txtIdentificador.Location = new System.Drawing.Point(363, 62);
             this.txtIdentificador.Name = "txtIdentificador";
             this.txtIdentificador.Size = new System.Drawing.Size(40, 20);
             this.txtIdentificador.TabIndex = 1;
@@ -150,7 +154,7 @@
             // 
             // chkIdentificador
             // 
-            this.chkIdentificador.Location = new System.Drawing.Point(318, 32);
+            this.chkIdentificador.Location = new System.Drawing.Point(318, 59);
             this.chkIdentificador.Name = "chkIdentificador";
             this.chkIdentificador.Size = new System.Drawing.Size(39, 24);
             this.chkIdentificador.TabIndex = 0;
@@ -167,7 +171,7 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 31);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(697, 357);
+            this.dgvLista.Size = new System.Drawing.Size(638, 335);
             this.dgvLista.TabIndex = 2;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -187,49 +191,6 @@
             this.mcsMenu.Name = "mcsMenu";
             this.mcsMenu.Size = new System.Drawing.Size(127, 120);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(697, 22);
-            this.statusStrip1.TabIndex = 1;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // tsbNoRegistros
-            // 
-            this.tsbNoRegistros.Name = "tsbNoRegistros";
-            this.tsbNoRegistros.Size = new System.Drawing.Size(102, 17);
-            this.tsbNoRegistros.Text = "No. de registros: 0";
-            // 
-            // tsMenu
-            // 
-            this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
-            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbFiltrar,
-            this.tsbFiltroAutomatico,
-            this.tsbImprimir,
-            this.tsbNuevoRegistro,
-            this.toolStripSeparator2,
-            this.tsbMarcarTodos,
-            this.tsbSeleccionarTodos});
-            this.tsMenu.Location = new System.Drawing.Point(0, 0);
-            this.tsMenu.Name = "tsMenu";
-            this.tsMenu.Size = new System.Drawing.Size(697, 31);
-            this.tsMenu.TabIndex = 0;
-            this.tsMenu.Text = "Filtrar";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
             // 
             // nuevoToolStripMenuItem
             // 
@@ -255,6 +216,11 @@
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(123, 6);
+            // 
             // visualizarToolStripMenuItem
             // 
             this.visualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.view16x16;
@@ -270,6 +236,39 @@
             this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
             this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNoRegistros});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 366);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(638, 22);
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsbNoRegistros
+            // 
+            this.tsbNoRegistros.Name = "tsbNoRegistros";
+            this.tsbNoRegistros.Size = new System.Drawing.Size(102, 17);
+            this.tsbNoRegistros.Text = "No. de registros: 0";
+            // 
+            // tsMenu
+            // 
+            this.tsMenu.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.tsMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbFiltrar,
+            this.tsbFiltroAutomatico,
+            this.tsbImprimir,
+            this.tsbNuevoRegistro,
+            this.toolStripSeparator2,
+            this.tsbMarcarTodos,
+            this.tsbSeleccionarTodos});
+            this.tsMenu.Location = new System.Drawing.Point(0, 0);
+            this.tsMenu.Name = "tsMenu";
+            this.tsMenu.Size = new System.Drawing.Size(638, 31);
+            this.tsMenu.TabIndex = 0;
+            this.tsMenu.Text = "Filtrar";
             // 
             // tsbFiltrar
             // 
@@ -314,6 +313,11 @@
             this.tsbNuevoRegistro.ToolTipText = "Nuevo Registro (F2)";
             this.tsbNuevoRegistro.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
             // tsbMarcarTodos
             // 
             this.tsbMarcarTodos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -336,11 +340,28 @@
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
+            // txtCodigoDeAlmacenajae
+            // 
+            this.txtCodigoDeAlmacenajae.Location = new System.Drawing.Point(166, 36);
+            this.txtCodigoDeAlmacenajae.Name = "txtCodigoDeAlmacenajae";
+            this.txtCodigoDeAlmacenajae.Size = new System.Drawing.Size(237, 20);
+            this.txtCodigoDeAlmacenajae.TabIndex = 3;
+            this.txtCodigoDeAlmacenajae.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigoDeAlmacenajae_KeyUp);
+            // 
+            // chkCodigoDeAlmacenaje
+            // 
+            this.chkCodigoDeAlmacenaje.Location = new System.Drawing.Point(21, 34);
+            this.chkCodigoDeAlmacenaje.Name = "chkCodigoDeAlmacenaje";
+            this.chkCodigoDeAlmacenaje.Size = new System.Drawing.Size(139, 24);
+            this.chkCodigoDeAlmacenaje.TabIndex = 2;
+            this.chkCodigoDeAlmacenaje.Text = "Código de Almacenaje:";
+            this.chkCodigoDeAlmacenaje.UseVisualStyleBackColor = true;
+            // 
             // frmLocacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 533);
+            this.ClientSize = new System.Drawing.Size(638, 533);
             this.Controls.Add(this.splitContainer1);
             this.Name = "frmLocacion";
             this.Text = "Estante/Caja/Vitrina";
@@ -391,5 +412,7 @@
         private System.Windows.Forms.ToolStripButton tsbSeleccionarTodos;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.CheckBox chkCodigo;
+        private System.Windows.Forms.TextBox txtCodigoDeAlmacenajae;
+        private System.Windows.Forms.CheckBox chkCodigoDeAlmacenaje;
     }
 }

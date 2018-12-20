@@ -30,23 +30,7 @@ namespace Logica
             }
 
         }
-
-        public bool AgregarUtilizandoLaMismaConexion(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oContenedorAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oContenedorAD.Error;
-                return false;
-            }
-
-        }
-
+        
         public bool Actualizar(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -91,18 +75,11 @@ namespace Logica
             }
 
         }
-
-        public bool EliminarUtilizandoLaMismaConexion(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
+        
+        public bool Listado(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (string.IsNullOrEmpty(oREgistroEN.idContenedor.ToString()) || oREgistroEN.idContenedor == 0)
-            {
-
-                this.Error = @"Se debe de seleccionar un elemento de la lista";
-                return false;
-            }
-
-            if (oContenedorAD.EliminarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            if (oContenedorAD.Listado(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -115,10 +92,26 @@ namespace Logica
 
         }
 
-        public bool Listado(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdSeccion(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oContenedorAD.Listado(oREgistroEN, oDatos))
+            if (oContenedorAD.ListadoPorIdSeccion(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oContenedorAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoPorInclusionDeSecciones(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oContenedorAD.ListadoPorInclusionDeSecciones(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -215,6 +208,22 @@ namespace Logica
         {
 
             if (oContenedorAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oContenedorAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool VerificarSiLaEntidadEstaAsociadaAProducto(ContenedorEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oContenedorAD.VerificarSiLaEntidadEstaAsociadaAProducto(oREgistroEN, oDatos, TipoDeOperacion))
             {
                 Error = oContenedorAD.Error;
                 return true;

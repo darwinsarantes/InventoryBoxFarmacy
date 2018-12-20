@@ -30,23 +30,7 @@ namespace Logica
             }
 
         }
-
-        public bool AgregarUtilizandoLaMismaConexion(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oBodegaAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oBodegaAD.Error;
-                return false;
-            }
-
-        }
-
+        
         public bool Actualizar(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -91,18 +75,11 @@ namespace Logica
             }
 
         }
-
-        public bool EliminarUtilizandoLaMismaConexion(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
+        
+        public bool Listado(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (string.IsNullOrEmpty(oREgistroEN.idBodega.ToString()) || oREgistroEN.idBodega == 0)
-            {
-
-                this.Error = @"Se debe de seleccionar un elemento de la lista";
-                return false;
-            }
-
-            if (oBodegaAD.EliminarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            if (oBodegaAD.Listado(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -115,11 +92,42 @@ namespace Logica
 
         }
 
-
-        public bool Listado(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoBodegaPorIdAlmacen(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oBodegaAD.Listado(oREgistroEN, oDatos))
+            if (oBodegaAD.ListadoBodegaPorIdAlmacen(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oBodegaAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoParaAlmacenajeDelProducto(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oBodegaAD.ListadoParaAlmacenajeDelProducto(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oBodegaAD.Error;
+                return false;
+            }
+
+        }
+
+        public bool ListadoDeAlmacenajeDelProducto(BodegaEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oBodegaAD.ListadoDeAlmacenajeDelProducto(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -216,6 +224,22 @@ namespace Logica
         {
 
             if (oBodegaAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oBodegaAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool VerificarSiLaEntidadEstaAsociadaAProducto(BodegaEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oBodegaAD.VerificarSiLaEntidadEstaAsociadaAProducto(oREgistroEN, oDatos, TipoDeOperacion))
             {
                 Error = oBodegaAD.Error;
                 return true;

@@ -272,17 +272,22 @@ namespace InventoryBoxFarmacy.Formularios
             string Where = "";
 
             if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
-                Where += string.Format(" and s.idLocacion like '%{0}%' ", txtIdentificador.Text.Trim());
+                Where += string.Format(" and l.idLocacion like '%{0}%' ", txtIdentificador.Text.Trim());
             }
 
             if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
-                Where += string.Format(" and s.Codigo like '%{0}%' ", txtCodigo.Text.Trim());
+                Where += string.Format(" and l.Codigo like '%{0}%' ", txtCodigo.Text.Trim());
             }
 
             if (Controles.IsNullOEmptyElControl(chkLocacion) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
             {
-                Where += string.Format(" and s.Nombre like '%{0}%' ", txtNombre.Text.Trim());
+                Where += string.Format(" and l.Nombre like '%{0}%' ", txtNombre.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkCodigoDeAlmacenaje) == false && Controles.IsNullOEmptyElControl(txtCodigoDeAlmacenajae) == false)
+            {
+                Where += string.Format(" and concat(a.Codigo,'-',b.Codigo,'-',l.Codigo) like '%{0}%' ", txtCodigoDeAlmacenajae.Text.Trim());
             }
 
             if (AplicarFiltroDeWhereExterno == true)
@@ -398,7 +403,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idLocacion,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idBodega,idLocacion,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -865,6 +870,23 @@ namespace InventoryBoxFarmacy.Formularios
 
         private void imprimirToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void txtCodigoDeAlmacenajae_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (Controles.IsNullOEmptyElControl(txtCodigoDeAlmacenajae))
+            {
+                chkCodigoDeAlmacenaje.CheckState = CheckState.Unchecked;
+            }else
+            {
+                chkCodigoDeAlmacenaje.CheckState = CheckState.Checked;
+            }
+
+            if(chkCodigoDeAlmacenaje.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
+            {
+                LLenarListado();
+            }
 
         }
     }

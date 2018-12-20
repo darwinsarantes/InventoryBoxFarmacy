@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Acceso.dll" size="670208">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Acceso.dll" size="672256">
       <assemblyIdentity name="Acceso" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>GxSz4sd3NG9XeDC+P+mjqdqKsiDk4wPyyLrLbOpYdIc=</dsig:DigestValue>
+        <dsig:DigestValue>vqV11hqaMHmqyQtwYR/SBzct5W+LsQlBM8qFgCYLBos=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -259,14 +259,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidad.dll" size="81920">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Entidad.dll" size="83968">
       <assemblyIdentity name="Entidad" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yf4H5zDEkJBChWi67d/RzDmdk7X85dajrgu5PQtcN14=</dsig:DigestValue>
+        <dsig:DigestValue>lAZ1/J8wxt8AmHMbYraNw8XCxH40GIoUsRZxdWCP3y4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -295,14 +295,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventoryBoxFarmacy.exe" size="1803232">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventoryBoxFarmacy.exe" size="1904608">
       <assemblyIdentity name="InventoryBoxFarmacy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>41yESoNI6w2Fy72k6wTvEl+N5R09h2qT7CsByDtzsi0=</dsig:DigestValue>
+        <dsig:DigestValue>lZXVYM5hFIy3mrZILYY4/XQpaTX1bCPNS4BuQ4kj3L4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -319,14 +319,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Logica.dll" size="80384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Logica.dll" size="80896">
       <assemblyIdentity name="Logica" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MXANX8tFlrb6BYTexH9lv/nq2pbLyMqJuMVruxfH8Dw=</dsig:DigestValue>
+        <dsig:DigestValue>hZnLpTeERAJoEb05iHTJkcEDzEzFYYanxo99rAoT/lc=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

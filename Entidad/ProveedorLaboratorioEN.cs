@@ -14,6 +14,8 @@ namespace Entidad
         public DateTime FechaDeCreacion { set; get; }
         public int IdUsuarioDeModificacion { set; get; }
         public DateTime FechaDeModificacion { set; get; }
+        public string TablaDeReferencia { set; get; }
+        public string ProveedorLaboratorio { set; get; }
 
         public LoginEN oLoginEN = new LoginEN();
         public ProveedorEN oProveedorEN = new ProveedorEN();

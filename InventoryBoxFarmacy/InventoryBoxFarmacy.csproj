@@ -103,6 +103,24 @@
     <Compile Include="Formularios\frmAlmacen.designer.cs">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmGenerarSeccionOContenedores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmGenerarSeccionOContenedores.Designer.cs">
+      <DependentUpon>frmGenerarSeccionOContenedores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmlProveedorLaboratorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmlProveedorLaboratorio.designer.cs">
+      <DependentUpon>frmlProveedorLaboratorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmLocalizacionDelProducto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmLocalizacionDelProducto.designer.cs">
+      <DependentUpon>frmLocalizacionDelProducto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmBodega.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -425,6 +443,15 @@
     </Compile>
     <EmbeddedResource Include="Formularios\frmAlmacen.resx">
       <DependentUpon>frmAlmacen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmGenerarSeccionOContenedores.resx">
+      <DependentUpon>frmGenerarSeccionOContenedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmlProveedorLaboratorio.resx">
+      <DependentUpon>frmlProveedorLaboratorio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmLocalizacionDelProducto.resx">
+      <DependentUpon>frmLocalizacionDelProducto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmBodega.resx">
       <DependentUpon>frmBodega.cs</DependentUpon>
@@ -973,6 +1000,11 @@
     <Content Include="Origen XML\DTOrigenXML.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\generador4.png" />
+    <None Include="Resources\generador3.png" />
+    <None Include="Resources\generador2.png" />
+    <None Include="Resources\generador1.png" />
+    <None Include="Resources\generador.png" />
     <None Include="Resources\LogoRedondoInventario.png" />
     <None Include="Resources\iconfinder_box_49364.png" />
     <None Include="Resources\iconfinder_box_49364 %283%29.png" />

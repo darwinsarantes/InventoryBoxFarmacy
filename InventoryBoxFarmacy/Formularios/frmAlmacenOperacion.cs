@@ -346,10 +346,10 @@ namespace InventoryBoxFarmacy.Formularios
                 return false;
             }
 
-            if (Controles.IsNullOEmptyElControl(txtDescripcion))
+            if (Controles.IsNullOEmptyElControl(txtAlmacen))
             {
-                EP.SetError(txtDescripcion, "Este campo no puede quedar vacío");
-                txtDescripcion.Focus();
+                EP.SetError(txtAlmacen, "Este campo no puede quedar vacío");
+                txtAlmacen.Focus();
                 return false;
             }
 
@@ -430,7 +430,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                     }
 
-                    if (oRegistroLN.AgregarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                     {
 
                         txtIdentificador.Text = oRegistroEN.idAlmacen.ToString();
@@ -507,6 +507,13 @@ namespace InventoryBoxFarmacy.Formularios
 
                     AlmacenEN oRegistroEN = InformacionDelRegistro();
                     AlmacenLN oRegistroLN = new AlmacenLN();
+
+                    if (oRegistroLN.VerificarSiLaEntidadEstaAsociadaAProducto(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                    {
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
@@ -597,6 +604,13 @@ namespace InventoryBoxFarmacy.Formularios
                     AlmacenEN oRegistroEN = InformacionDelRegistro();
                     AlmacenLN oRegistroLN = new AlmacenLN();
 
+                    if (oRegistroLN.VerificarSiLaEntidadEstaAsociadaAProducto(oRegistroEN, Program.oDatosDeConexion, "ELIMINAR"))
+                    {
+                        this.Cursor = Cursors.Default;
+                        MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        return;
+                    }
+
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ELIMINAR"))
                     {
                         this.Cursor = Cursors.Default;
@@ -607,7 +621,7 @@ namespace InventoryBoxFarmacy.Formularios
                     if (InsertarActualizarOEliminarRegistros())
                     {
 
-                        if (oRegistroLN.EliminarUtilizandoLaMismaConexion(oRegistroEN, Program.oDatosDeConexion))
+                        if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
                         {
                             
                             EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Eliminar");
@@ -643,84 +657,32 @@ namespace InventoryBoxFarmacy.Formularios
         {
             LlenarCamposDesdeBaseDatosSegunID();
         }
-
-        private void tsbBuscar_Click(object sender, EventArgs e)
+        
+        private void tsbNuevo_Click(object sender, EventArgs e)
         {
+
             try
             {
-                frmBodega oFrmRegistro = new frmBodega();
-                oFrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-                oFrmRegistro.VariosRegistros = true;
-                oFrmRegistro.ActivarFiltros = true;
-                oFrmRegistro.TituloVentana = "Seleccionar Localizaciones del producto";
 
-                oFrmRegistro.AplicarFiltroDeWhereExterno = true;
-                oFrmRegistro.WhereExterno = WhereDinamicoBodega();
+                frmBodegaOperacion ofrmRegistro = new frmBodegaOperacion();
+                ofrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+                ofrmRegistro.OperacionARealizar = "Local";
+                ofrmRegistro.NombreEntidad = "Agregar información de la bodega";
+                ofrmRegistro.ShowDialog();
 
-                oFrmRegistro.ShowDialog();
-
-                BodegaEN[] oRegistroEN = new BodegaEN[0];
-                oRegistroEN = oFrmRegistro.oBodega;
-
-                if (oRegistroEN.Length > 0)
+                if (ofrmRegistro.VariableLocal == true)
                 {
-                    foreach (BodegaEN oRegistro in oRegistroEN)
-                    {
-                        dgvListar.Rows.Add(false, 0, oRegistro.idBodega, oRegistro.Codigo, oRegistro.Nombre, oRegistro.Descripcion, true);
-                    }
+                    BodegaEN oRegistroEN = ofrmRegistro.oBodega;
+                    int idAlmacen;
+                    int.TryParse(txtIdentificador.Text, out idAlmacen);
+
+                    dgvListar.Rows.Add(false, 0, idAlmacen, oRegistroEN.Codigo, oRegistroEN.Nombre, oRegistroEN.Descripcion, true);
                 }
 
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private string WhereDinamicoBodega()
-        {
-            string Where = "";
-            try
-            {
-                if (dgvListar.Rows.Count > 0)
-                {
-                    String IdBodega = "";
-                    foreach (DataGridViewRow Fila in dgvListar.Rows)
-                    {
-                        int idBodega;
-                        int.TryParse(Fila.Cells["idBodega"].Value.ToString(), out idBodega);
-
-                        if (IdBodega.Trim().Length == 0)
-                        {
-                            if (idBodega > 0)
-                            {
-                                IdBodega = idBodega.ToString();
-                            }
-                        }
-                        else
-                        {
-                            if (idBodega > 0)
-                            {
-                                IdBodega = string.Format("{0}, {1}", IdBodega, idBodega.ToString());
-                            }
-                        }
-                    }
-
-                    if (IdBodega.Trim().Length > 0)
-                    {
-                        Where = string.Format(" and b.idBodega Not in ({0}) ", IdBodega);
-                    }
-                    else { Where = ""; }
-                }
-
-                return Where;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Where dinamico buscar locaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return Where;
-
+                MessageBox.Show(ex.Message, "agregar registro de la locación del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -733,7 +695,7 @@ namespace InventoryBoxFarmacy.Formularios
             try
             {
 
-                string columnas = @" idBodegaAlmacen, idBodega,Codigo, Nombre, Descripcion";
+                string columnas = @"idBodega,idAlmacen,Codigo, Nombre, Descripcion";
 
                 string[] arrayColumnas = columnas.Split(',');
 
@@ -806,7 +768,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvListar.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvListar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idBodega,Actualizar";
+                string OcultarColumnas = "idAlmacen,Actualizar";
                 OcultarColumnasEnELDGV(OcultarColumnas);
 
                 FormatearColumnasDGVListar();
@@ -855,10 +817,10 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
                         {
-                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
+                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "BodegaAlmacen");
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "BodegaLocacion");
+                                oFormato = new FormatoDGV(c1.Name.Trim());
                             }
 
                             if (oFormato != null)
@@ -889,8 +851,8 @@ namespace InventoryBoxFarmacy.Formularios
 
                 List<DataGridViewRow> rows = (from item in dgv.Rows.Cast<DataGridViewRow>()
                                               let Actualizar = Convert.ToBoolean(item.Cells["Actualizar"].Value ?? false)
-                                              let idBodegaAlmacen = Convert.ToInt32(item.Cells["idBodegaAlmacen"].Value)
-                                              where Actualizar.Equals(true) && idBodegaAlmacen == 0
+                                              let idBodega = Convert.ToInt32(item.Cells["idBodega"].Value)
+                                              where Actualizar.Equals(true) && idBodega == 0
                                               select item).ToList<DataGridViewRow>();
                 if (rows.Count > 0)
                 {
@@ -899,8 +861,8 @@ namespace InventoryBoxFarmacy.Formularios
 
                 List<DataGridViewRow> rows1 = (from item in dgv.Rows.Cast<DataGridViewRow>()
                                                let Actualizar = Convert.ToBoolean(item.Cells["Actualizar"].Value ?? false)
-                                               let idBodegaAlmacen = Convert.ToInt32(item.Cells["idBodegaAlmacen"].Value)
-                                               where Actualizar.Equals(true) && idBodegaAlmacen > 0
+                                               let idBodega = Convert.ToInt32(item.Cells["idBodega"].Value)
+                                               where Actualizar.Equals(true) && idBodega > 0
                                                select item).ToList<DataGridViewRow>();
                 if (rows1.Count > 0)
                 {
@@ -938,12 +900,12 @@ namespace InventoryBoxFarmacy.Formularios
             try
             {
 
-                BodegaAlmacenEN oRegistroEN = new BodegaAlmacenEN();
-                BodegaAlmacenLN oRegistroLN = new BodegaAlmacenLN();
+                BodegaEN oRegistroEN = new BodegaEN();
+                BodegaLN oRegistroLN = new BodegaLN();
 
                 oRegistroEN.oAlmacenEN.idAlmacen = ValorLlavePrimariaEntidad;
 
-                if (oRegistroLN.ListadoDeBodegasPorAlmacen(oRegistroEN, Program.oDatosDeConexion))
+                if (oRegistroLN.ListadoBodegaPorIdAlmacen(oRegistroEN, Program.oDatosDeConexion))
                 {
 
                     ODatos = oRegistroLN.TraerDatos();
@@ -982,27 +944,27 @@ namespace InventoryBoxFarmacy.Formularios
                         Boolean valor = false;
                         if (OperacionARealizar == "Eliminar") { valor = true; } else { valor = false; }
 
-                        int idBodegaAlmacen = 0;
                         int idBodega = 0;
+                        int idAlmacen = 0;                       
 
                         foreach (DataRow row in DTOrden.Rows)
                         {
 
                             if (OperacionARealizar.ToUpper() == "NUEVO A PARTIR DE REGISTRO SELECCIONADO".ToUpper())
                             {
-                                idBodegaAlmacen = 0;
+                                idBodega = 0;
                                 idBodega = Convert.ToInt32(row["idBodega"]);
                             }
                             else
                             {
                                 idBodega = Convert.ToInt32(row["idBodega"]);
-                                idBodegaAlmacen = Convert.ToInt32(row["idBodegaAlmacen"]);
+                                idAlmacen = Convert.ToInt32(row["idAlmacen"]);
                             }
 
                             dgvListar.Rows.Add(
                                 valor,
-                                idBodegaAlmacen,
                                 idBodega,
+                                idAlmacen,
                                 row["Codigo"],
                                 row["Nombre"],
                                 row["Descripcion"],
@@ -1031,9 +993,11 @@ namespace InventoryBoxFarmacy.Formularios
             int idBodega;
             int.TryParse(Fila.Cells["idBodega"].Value.ToString(), out idBodega);
             oRegistroEN.idBodega = idBodega;
+            oRegistroEN.oAlmacenEN = InformacionDelRegistro();
             oRegistroEN.Codigo = Fila.Cells["Codigo"].Value.ToString();
             oRegistroEN.Nombre = Fila.Cells["Nombre"].Value.ToString();
             oRegistroEN.Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+            oRegistroEN.PorDefectoParaFacturacion = 0;
             oRegistroEN.oLoginEN = Program.oLoginEN;
             oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
             oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
@@ -1042,26 +1006,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             return oRegistroEN;
         }
-
-        private BodegaAlmacenEN InformacionDeLaBodegaAlmacen(DataGridViewRow Fila)
-        {
-            BodegaAlmacenEN oRegistroEN = new BodegaAlmacenEN();
-
-            int idBodegaAlmacen;
-            int.TryParse(Fila.Cells["idBodegaAlmacen"].Value.ToString(), out idBodegaAlmacen);
-
-            oRegistroEN.idBodegaAlmacen = idBodegaAlmacen;
-            oRegistroEN.oAlmacenEN = InformacionDelRegistro();
-            oRegistroEN.oBodegaEN = InformacionDeLaBodega(Fila);
-            oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
-
-            return oRegistroEN;
-        }
-
+        
         private bool LosDatosIngresadosEnGrillaSonCorrectos(DataGridViewRow Fila)
         {
             try
@@ -1092,7 +1037,7 @@ namespace InventoryBoxFarmacy.Formularios
             catch (Exception ex)
             {
                 Fila.Selected = true;
-                dgvListar.CurrentCell = Fila.Cells["idBodegaAlmacen"];
+                dgvListar.CurrentCell = Fila.Cells["idBodega"];
                 MessageBox.Show("Error al validar datos del Contacto: " + Fila.Cells["Nombre"].Value.ToString() + "\n" + ex.Message, "Buscar Contenedor", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
@@ -1123,7 +1068,7 @@ namespace InventoryBoxFarmacy.Formularios
                     int IndiceProgreso = 0;
                     int TotalDeFilasMarcadasParaEliminar = TotalDeFilasMarcadas(dgvListar, "Eliminar");
                     //Aqui Volvemos dinamica El codigo poniendo el valor de la llave primaria 
-                    string NombreLavePrimariaDetalle = "idBodegaAlmacen";
+                    string NombreLavePrimariaDetalle = "idBodega";
 
                     while (indice <= dgvListar.Rows.Count - 1)
                     {
@@ -1179,21 +1124,17 @@ namespace InventoryBoxFarmacy.Formularios
                             }
                         }
 
-                        BodegaAlmacenEN oRegistroEN = InformacionDeLaBodegaAlmacen(Fila);
-                        BodegaAlmacenLN oRegistroLN = new BodegaAlmacenLN();
+                        BodegaEN oRegistroEN = InformacionDeLaBodega(Fila);
+                        BodegaLN oRegistroLN = new BodegaLN();
 
 
                         //DETERMINAMOS LA OPERACION A REALIZAR
                         string Operacion = "";
-                        int idBodega;
-                        int.TryParse(Fila.Cells["idBodega"].Value.ToString(), out idBodega);
-
+                        
                         //El orden es importante porque si un usuario agrego una nueva persona pero lo marco para eliminar, no hacemos nada, solo lo quitamos de la lista.
-                        if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }
-                        //VALIDAREMOS QUE LA LLAVE PRIMARIA Y EL CONTACTO SEAN CEROS PARA UN NUEVO CONTACTO
-                        else if (ValorDelaLLavePrimaria == 0 && idBodega == 0) { Operacion = "AGREGAR BODEGA"; }
+                        if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }                        
                         //VALIDAREMOS QUE LA LLAVE PRIMARIA SEA CERO Y EL CONTARO SEA MAYOR A CERO PARA UN NUEVO VINCULO ENTRE PROVEEDOR Y CONTACTO
-                        else if (ValorDelaLLavePrimaria == 0 && idBodega > 0) { Operacion = "AGREGAR"; }
+                        else if (ValorDelaLLavePrimaria == 0) { Operacion = "AGREGAR"; }
                         //VALIDAREMOS PARA PODER ELIMINAR EL REGISTRO....
                         else if (ValorDelaLLavePrimaria > 0 && Eliminar == true) { Operacion = "ELIMINAR"; }
                         //VALIDAREMOS PARA PODER ACTUALIZAR EL REGISTRO
@@ -1218,6 +1159,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                         if (Operacion == "AGREGAR")
                         {
+                            
                             if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, Operacion))
                             {
                                 OcultarBarraDeProgreso();
@@ -1225,10 +1167,31 @@ namespace InventoryBoxFarmacy.Formularios
                                 MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 return false;
                             }
+
+                            if (oRegistroLN.ValidarCodigo(oRegistroEN, Program.oDatosDeConexion, Operacion))
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return false;
+                            }
+
                         }
 
                         if (Operacion == "ACTUALIZAR")
                         {
+                            if (oRegistroLN.VerificarSiLaEntidadEstaAsociadaAProducto(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                            {
+                                this.Cursor = Cursors.Default;
+                                DialogResult Respuesta = MessageBox.Show(oRegistroLN.Error + "\n\n¿Desea continuar con el proceso de actualización de las bodegas?", this.OperacionARealizar, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                                if (Respuesta == DialogResult.No)
+                                {
+                                    OcultarBarraDeProgreso();
+                                    return false;
+                                }
+                               
+                            }
+
                             if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, Operacion))
                             {
                                 OcultarBarraDeProgreso();
@@ -1236,60 +1199,44 @@ namespace InventoryBoxFarmacy.Formularios
                                 MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 return false;
                             }
+
+                            if (oRegistroLN.ValidarCodigo(oRegistroEN, Program.oDatosDeConexion, Operacion))
+                            {
+                                OcultarBarraDeProgreso();
+                                this.Cursor = Cursors.Default;
+                                MessageBox.Show(oRegistroLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                return false;
+                            }
+
                         }
 
                         if (Operacion == "ELIMINAR")
                         {
-                            //if (oRegistrosLN.ExisteEmpleadoVinculadoAAuxiliaresDePlanillaGeneralDetalle(oRegistrosEN, Program.oDatosConexionesEN, "ELIMINAR"))
-                            //{
-                            //    this.Cursor = Cursors.Default;
-                            //    DialogResult Respuesta = MessageBox.Show(oRegistrosLN.Error + "\n\n¿Desea continuar con el proceso de eliminación para los empleados restantes?", this.OperacionARealizar, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-                            //    if (Respuesta == DialogResult.No)
-                            //    {
-                            //        OcultarBarraDeProgreso();
-                            //        return false;
-                            //    }
-                            //    else
-                            //    {
-                            //        indice++;
-                            //        indice_progreso++;
-                            //        continue;
-                            //    }
-                            //}
-                        }
-
-                        if (Operacion == "AGREGAR BODEGA")
-                        {
-                            BodegaLN oBodegaLN = new BodegaLN();
-                            if (oBodegaLN.ValidarRegistroDuplicado(oRegistroEN.oBodegaEN, Program.oDatosDeConexion, "AGREGAR"))
+                            if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN, Program.oDatosDeConexion, "ELIMINAR"))
                             {
-                                OcultarBarraDeProgreso();
                                 this.Cursor = Cursors.Default;
-                                MessageBox.Show(oBodegaLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                return false;
-                            }
-
-                            string Codigo = Fila.Cells["Codigo"].Value.ToString();
-                            if (string.IsNullOrEmpty(Codigo) == false || Codigo.Trim().Length > 0)
-                            {
-                                if (oBodegaLN.ValidarCodigo(oRegistroEN.oBodegaEN, Program.oDatosDeConexion, "AGREGAR"))
+                                DialogResult Respuesta = MessageBox.Show(oRegistroLN.Error + "\n\n¿Desea continuar con el proceso de eliminación de las bodegas?", this.OperacionARealizar, MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+                                if (Respuesta == DialogResult.No)
                                 {
                                     OcultarBarraDeProgreso();
-                                    this.Cursor = Cursors.Default;
-                                    MessageBox.Show(oBodegaLN.Error, this.OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                     return false;
                                 }
+                                else
+                                {
+                                    indice++;
+                                    IndiceProgreso++;
+                                    continue;
+                                }
                             }
-
-                            oBodegaLN = null;
                         }
+                                                
 
                         //OPERACIONES
                         if (Operacion == "AGREGAR")
                         {
                             if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                             {
-                                Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistroEN.idBodegaAlmacen;
+                                Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistroEN.idBodega;
                                 Fila.Cells["Actualizar"].Value = false;
                                 oRegistroEN = null;
                                 oRegistroLN = null;
@@ -1356,58 +1303,7 @@ namespace InventoryBoxFarmacy.Formularios
                                 return false;
                             }
                         }
-
-                        //AGREGAR UN NUEVO CONTACTO... ANTE DE SER VINCULADO
-                        if (Operacion == "AGREGAR BODEGA")
-                        {
-
-                            BodegaLN oBodegaLN = new BodegaLN();
-
-                            if (oBodegaLN.AgregarUtilizandoLaMismaConexion(oRegistroEN.oBodegaEN, Program.oDatosDeConexion))
-                            {
-
-                                if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
-                                {
-
-                                    Fila.Cells[NombreLavePrimariaDetalle].Value = oRegistroEN.idBodegaAlmacen;
-                                    Fila.Cells["idBodega"].Value = oRegistroEN.oBodegaEN.idBodega.ToString();
-                                    Fila.Cells["Actualizar"].Value = false;
-                                    oBodegaLN = null;
-                                    oRegistroEN = null;
-                                    oRegistroLN = null;
-                                    indice++;
-                                    IndiceProgreso++;
-                                    continue;
-
-                                }
-                                else
-                                {
-                                    OcultarBarraDeProgreso();
-                                    this.Cursor = Cursors.Default;
-
-                                    MessageBox.Show(oRegistroLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                    oBodegaLN = null;
-                                    oRegistroEN = null;
-                                    oRegistroLN = null;
-                                    return false;
-                                }
-
-                            }
-                            else
-                            {
-
-                                OcultarBarraDeProgreso();
-                                this.Cursor = Cursors.Default;
-                                MessageBox.Show(oBodegaLN.Error, OperacionARealizar, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                                oBodegaLN = null;
-                                oRegistroEN = null;
-                                oRegistroLN = null;
-                                return false;
-
-                            }
-
-                        }
-
+                        
                         this.Cursor = Cursors.Default;
                     }
 
@@ -1490,50 +1386,7 @@ namespace InventoryBoxFarmacy.Formularios
                 return true;
             }
         }
-
-        private string WhereContacto()
-        {
-            string Where = "";
-            try
-            {
-                if (dgvListar.Rows.Count > 0)
-                {
-                    String IdBodega = "";
-                    foreach (DataGridViewRow Fila in dgvListar.Rows)
-                    {
-                        int idBodega;
-                        int.TryParse(Fila.Cells["idBodega"].Value.ToString(), out idBodega);
-
-                        if (IdBodega.Trim().Length == 0)
-                        {
-                            if (idBodega > 0)
-                            {
-                                IdBodega = idBodega.ToString();
-                            }
-                        }
-                        else
-                        {
-                            if (idBodega > 0)
-                            {
-                                IdBodega = string.Format("{0}, {1}", IdBodega, idBodega.ToString());
-                            }
-                        }
-                    }
-
-                    Where = string.Format(" and b.idBodega Not in ({0}) ", IdBodega);
-                }
-
-                return Where;
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Where dinamico para buscar las bodegas", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return Where;
-
-            }
-        }
-
+        
         #region "Barra de Progreso"
 
         private void InicializarBarraDeProgreso(int Maximo, int Minimo)
@@ -1624,13 +1477,13 @@ namespace InventoryBoxFarmacy.Formularios
         {
             try
             {
-                int idBodegaAlmacen;
-                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idBodegaAlmacen"].Value.ToString(), out idBodegaAlmacen);
+                int idBodega;
+                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idBodega"].Value.ToString(), out idBodega);
 
-                if (dgvListar.Rows[e.RowIndex].Cells["idBodegaAlmacen"].Value == null)
+                if (dgvListar.Rows[e.RowIndex].Cells["idBodega"].Value == null)
                     return;
 
-                if (idBodegaAlmacen > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
+                if (idBodega > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
                 {
                     dgvListar.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
                 }
@@ -1662,34 +1515,14 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        #endregion
 
         #endregion
 
-        private void tsbNuevo_Click(object sender, EventArgs e)
+        #endregion
+
+        private void txtCodigo_KeyUp(object sender, KeyEventArgs e)
         {
-
-            try
-            {
-
-                frmBodegaOperacion ofrmRegistro = new frmBodegaOperacion();
-                ofrmRegistro.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-                ofrmRegistro.OperacionARealizar = "Local";
-                ofrmRegistro.NombreEntidad = "Agregar información de la bodega";
-                ofrmRegistro.ShowDialog();
-
-                if (ofrmRegistro.VariableLocal == true)
-                {
-                    BodegaEN oRegistroEN = ofrmRegistro.oBodega;
-
-                    dgvListar.Rows.Add(false, 0, 0, oRegistroEN.Codigo, oRegistroEN.Nombre, oRegistroEN.Descripcion, true);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "agregar registro de la locación del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            txtAlmacen.Text = txtCodigo.Text;
         }
     }
 }

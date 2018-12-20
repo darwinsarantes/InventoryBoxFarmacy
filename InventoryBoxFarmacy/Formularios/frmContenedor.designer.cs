@@ -55,6 +55,8 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
+            this.chkCodigoDeALmacenaje = new System.Windows.Forms.CheckBox();
+            this.txtCodigoDeAlmacenaje = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -84,7 +86,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
             this.splitContainer1.Panel2.Controls.Add(this.tsMenu);
             this.splitContainer1.Size = new System.Drawing.Size(697, 533);
-            this.splitContainer1.SplitterDistance = 119;
+            this.splitContainer1.SplitterDistance = 144;
             this.splitContainer1.TabIndex = 0;
             // 
             // groupBox1
@@ -92,6 +94,8 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtCodigoDeAlmacenaje);
+            this.groupBox1.Controls.Add(this.chkCodigoDeALmacenaje);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.chkCodigo);
             this.groupBox1.Controls.Add(this.txtNombre);
@@ -100,14 +104,14 @@
             this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(673, 96);
+            this.groupBox1.Size = new System.Drawing.Size(673, 121);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtrado de información del contenedor en la sección del amacen.";
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(166, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(166, 61);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(237, 20);
             this.txtCodigo.TabIndex = 1;
@@ -115,16 +119,16 @@
             // 
             // chkCodigo
             // 
-            this.chkCodigo.Location = new System.Drawing.Point(21, 33);
+            this.chkCodigo.Location = new System.Drawing.Point(21, 59);
             this.chkCodigo.Name = "chkCodigo";
             this.chkCodigo.Size = new System.Drawing.Size(139, 24);
             this.chkCodigo.TabIndex = 0;
-            this.chkCodigo.Text = "Código:";
+            this.chkCodigo.Text = "Código de contenedor:";
             this.chkCodigo.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(166, 61);
+            this.txtNombre.Location = new System.Drawing.Point(166, 87);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(237, 20);
             this.txtNombre.TabIndex = 1;
@@ -132,7 +136,7 @@
             // 
             // chkContenedor
             // 
-            this.chkContenedor.Location = new System.Drawing.Point(21, 59);
+            this.chkContenedor.Location = new System.Drawing.Point(21, 85);
             this.chkContenedor.Name = "chkContenedor";
             this.chkContenedor.Size = new System.Drawing.Size(139, 24);
             this.chkContenedor.TabIndex = 0;
@@ -167,7 +171,7 @@
             this.dgvLista.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvLista.Location = new System.Drawing.Point(0, 31);
             this.dgvLista.Name = "dgvLista";
-            this.dgvLista.Size = new System.Drawing.Size(697, 357);
+            this.dgvLista.Size = new System.Drawing.Size(697, 332);
             this.dgvLista.TabIndex = 2;
             this.dgvLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellContentClick);
             this.dgvLista.CellContextMenuStripNeeded += new System.Windows.Forms.DataGridViewCellContextMenuStripNeededEventHandler(this.dgvLista_CellContextMenuStripNeeded);
@@ -237,7 +241,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbNoRegistros});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 388);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 363);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(697, 22);
             this.statusStrip1.TabIndex = 1;
@@ -336,6 +340,23 @@
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
             // 
+            // chkCodigoDeALmacenaje
+            // 
+            this.chkCodigoDeALmacenaje.Location = new System.Drawing.Point(21, 33);
+            this.chkCodigoDeALmacenaje.Name = "chkCodigoDeALmacenaje";
+            this.chkCodigoDeALmacenaje.Size = new System.Drawing.Size(139, 24);
+            this.chkCodigoDeALmacenaje.TabIndex = 0;
+            this.chkCodigoDeALmacenaje.Text = "Código de Almacenaje:";
+            this.chkCodigoDeALmacenaje.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigoDeAlmacenaje
+            // 
+            this.txtCodigoDeAlmacenaje.Location = new System.Drawing.Point(166, 35);
+            this.txtCodigoDeAlmacenaje.Name = "txtCodigoDeAlmacenaje";
+            this.txtCodigoDeAlmacenaje.Size = new System.Drawing.Size(237, 20);
+            this.txtCodigoDeAlmacenaje.TabIndex = 1;
+            this.txtCodigoDeAlmacenaje.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesContenedor_KeyUp);
+            // 
             // frmContenedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -391,5 +412,7 @@
         private System.Windows.Forms.ToolStripButton tsbSeleccionarTodos;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.CheckBox chkCodigo;
+        private System.Windows.Forms.TextBox txtCodigoDeAlmacenaje;
+        private System.Windows.Forms.CheckBox chkCodigoDeALmacenaje;
     }
 }

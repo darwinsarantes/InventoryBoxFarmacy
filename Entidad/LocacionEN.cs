@@ -18,7 +18,8 @@ namespace Entidad
         public int idUsuarioModificacion { set; get; }
         public DateTime FechaDeModificacion { set; get; }
         
-        public LoginEN oLoginEN = new LoginEN();        
+        public LoginEN oLoginEN = new LoginEN();
+        public BodegaEN oBodegaEN = new BodegaEN();    
 
         public string Where { set; get; }
         public string OrderBy { set; get; }

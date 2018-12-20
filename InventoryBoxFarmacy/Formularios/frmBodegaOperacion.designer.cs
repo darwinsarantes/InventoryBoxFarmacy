@@ -30,26 +30,32 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
-            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.txtIdentificador = new System.Windows.Forms.TextBox();
-            this.chkPorDefectoParaFacturacion = new System.Windows.Forms.CheckBox();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtBodega = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtLBodega = new System.Windows.Forms.TextBox();
+            this.txtLCodigo = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtLDescripcion = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dgvListar = new System.Windows.Forms.DataGridView();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.tsbBuscar = new System.Windows.Forms.ToolStripButton();
             this.tsbNueva = new System.Windows.Forms.ToolStripButton();
+            this.gbBodega = new System.Windows.Forms.GroupBox();
+            this.cmbAlmacen = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.chkPorDefectoParaFacturacion = new System.Windows.Forms.CheckBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtBodega = new System.Windows.Forms.TextBox();
+            this.txtIdentificador = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lbaBarradeprogreso = new System.Windows.Forms.ToolStripStatusLabel();
+            this.Barradeprogreso = new System.Windows.Forms.ToolStripProgressBar();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbRegistroLocal = new System.Windows.Forms.ToolStripButton();
@@ -63,16 +69,21 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).BeginInit();
             this.toolStrip2.SuspendLayout();
+            this.gbBodega.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -80,22 +91,255 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.statusStrip1);
-            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.splitContainer1);
             this.panel1.Controls.Add(this.toolStrip1);
             this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(744, 450);
+            this.panel1.Size = new System.Drawing.Size(1198, 455);
             this.panel1.TabIndex = 0;
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabControl1.Location = new System.Drawing.Point(0, 0);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(764, 357);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.label7);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.txtLBodega);
+            this.tabPage1.Controls.Add(this.txtLCodigo);
+            this.tabPage1.Controls.Add(this.label6);
+            this.tabPage1.Controls.Add(this.txtLDescripcion);
+            this.tabPage1.Location = new System.Drawing.Point(4, 27);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(756, 326);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Información de la Bodega:";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label7.Location = new System.Drawing.Point(14, 61);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(171, 24);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Nombre de la Bodega";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label8
+            // 
+            this.label8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label8.Location = new System.Drawing.Point(14, 115);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(171, 24);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Descripción:";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtLBodega
+            // 
+            this.txtLBodega.Location = new System.Drawing.Point(14, 88);
+            this.txtLBodega.Name = "txtLBodega";
+            this.txtLBodega.Size = new System.Drawing.Size(379, 24);
+            this.txtLBodega.TabIndex = 4;
+            // 
+            // txtLCodigo
+            // 
+            this.txtLCodigo.Location = new System.Drawing.Point(14, 34);
+            this.txtLCodigo.Name = "txtLCodigo";
+            this.txtLCodigo.Size = new System.Drawing.Size(379, 24);
+            this.txtLCodigo.TabIndex = 4;
+            this.txtLCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyUp);
+            // 
+            // label6
+            // 
+            this.label6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label6.Location = new System.Drawing.Point(14, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(171, 24);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Código:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // txtLDescripcion
+            // 
+            this.txtLDescripcion.Location = new System.Drawing.Point(14, 142);
+            this.txtLDescripcion.Multiline = true;
+            this.txtLDescripcion.Name = "txtLDescripcion";
+            this.txtLDescripcion.Size = new System.Drawing.Size(379, 148);
+            this.txtLDescripcion.TabIndex = 3;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgvListar);
+            this.tabPage2.Controls.Add(this.toolStrip2);
+            this.tabPage2.Location = new System.Drawing.Point(4, 27);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(756, 326);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Estantes/Vitrinas/Cajas dentro de la bodega";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvListar
+            // 
+            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvListar.Location = new System.Drawing.Point(3, 32);
+            this.dgvListar.Name = "dgvListar";
+            this.dgvListar.Size = new System.Drawing.Size(750, 291);
+            this.dgvListar.TabIndex = 1;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbNueva});
+            this.toolStrip2.Location = new System.Drawing.Point(3, 3);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(750, 29);
+            this.toolStrip2.TabIndex = 0;
+            this.toolStrip2.Text = "toolStrip2";
+            // 
+            // tsbNueva
+            // 
+            this.tsbNueva.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNueva.Image = global::InventoryBoxFarmacy.Properties.Resources.new22x22;
+            this.tsbNueva.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNueva.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNueva.Name = "tsbNueva";
+            this.tsbNueva.Size = new System.Drawing.Size(26, 26);
+            this.tsbNueva.Text = "toolStripButton2";
+            this.tsbNueva.Click += new System.EventHandler(this.tsbNueva_Click);
+            // 
+            // gbBodega
+            // 
+            this.gbBodega.Controls.Add(this.chkPorDefectoParaFacturacion);
+            this.gbBodega.Controls.Add(this.txtCodigo);
+            this.gbBodega.Controls.Add(this.txtBodega);
+            this.gbBodega.Controls.Add(this.cmbAlmacen);
+            this.gbBodega.Controls.Add(this.txtIdentificador);
+            this.gbBodega.Controls.Add(this.label3);
+            this.gbBodega.Controls.Add(this.txtDescripcion);
+            this.gbBodega.Controls.Add(this.label4);
+            this.gbBodega.Controls.Add(this.label1);
+            this.gbBodega.Controls.Add(this.label5);
+            this.gbBodega.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbBodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbBodega.Location = new System.Drawing.Point(0, 0);
+            this.gbBodega.Name = "gbBodega";
+            this.gbBodega.Size = new System.Drawing.Size(430, 384);
+            this.gbBodega.TabIndex = 13;
+            this.gbBodega.TabStop = false;
+            this.gbBodega.Text = "Información de la Bodega";
+            // 
+            // cmbAlmacen
+            // 
+            this.cmbAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAlmacen.FormattingEnabled = true;
+            this.cmbAlmacen.Location = new System.Drawing.Point(180, 86);
+            this.cmbAlmacen.Name = "cmbAlmacen";
+            this.cmbAlmacen.Size = new System.Drawing.Size(228, 26);
+            this.cmbAlmacen.TabIndex = 11;
+            // 
+            // label4
+            // 
+            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label4.Location = new System.Drawing.Point(12, 125);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(168, 24);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Descripción:";
+            // 
+            // label1
+            // 
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label1.Location = new System.Drawing.Point(12, 56);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 24);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Nombre de la Bodega";
+            // 
+            // label3
+            // 
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(12, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(168, 24);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Código:";
+            // 
+            // chkPorDefectoParaFacturacion
+            // 
+            this.chkPorDefectoParaFacturacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.chkPorDefectoParaFacturacion.AutoSize = true;
+            this.chkPorDefectoParaFacturacion.Location = new System.Drawing.Point(12, 304);
+            this.chkPorDefectoParaFacturacion.Name = "chkPorDefectoParaFacturacion";
+            this.chkPorDefectoParaFacturacion.Size = new System.Drawing.Size(194, 24);
+            this.chkPorDefectoParaFacturacion.TabIndex = 9;
+            this.chkPorDefectoParaFacturacion.Text = "Bodega de Facturación";
+            this.chkPorDefectoParaFacturacion.UseVisualStyleBackColor = true;
+            // 
+            // label5
+            // 
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Location = new System.Drawing.Point(12, 86);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(168, 24);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "Almacen:";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigo.Location = new System.Drawing.Point(180, 26);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(228, 24);
+            this.txtCodigo.TabIndex = 4;
+            this.txtCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCodigo_KeyUp);
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Location = new System.Drawing.Point(12, 149);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(393, 149);
+            this.txtDescripcion.TabIndex = 3;
+            // 
+            // txtBodega
+            // 
+            this.txtBodega.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtBodega.Location = new System.Drawing.Point(180, 56);
+            this.txtBodega.Name = "txtBodega";
+            this.txtBodega.Size = new System.Drawing.Size(228, 24);
+            this.txtBodega.TabIndex = 4;
+            // 
+            // txtIdentificador
+            // 
+            this.txtIdentificador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdentificador.Location = new System.Drawing.Point(270, 26);
+            this.txtIdentificador.Name = "txtIdentificador";
+            this.txtIdentificador.Size = new System.Drawing.Size(26, 22);
+            this.txtIdentificador.TabIndex = 4;
+            this.txtIdentificador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lbaBarradeprogreso,
             this.Barradeprogreso});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 357);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 235);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(744, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(753, 22);
             this.statusStrip1.TabIndex = 12;
             this.statusStrip1.Text = "statusStrip1";
             this.statusStrip1.Visible = false;
@@ -111,188 +355,6 @@
             this.Barradeprogreso.Name = "Barradeprogreso";
             this.Barradeprogreso.Size = new System.Drawing.Size(300, 16);
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.AutoScroll = true;
-            this.panel2.Controls.Add(this.tabControl1);
-            this.panel2.Location = new System.Drawing.Point(13, 10);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(713, 340);
-            this.panel2.TabIndex = 1;
-            // 
-            // tabControl1
-            // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(707, 334);
-            this.tabControl1.TabIndex = 10;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.txtIdentificador);
-            this.tabPage1.Controls.Add(this.chkPorDefectoParaFacturacion);
-            this.tabPage1.Controls.Add(this.txtCodigo);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.txtBodega);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtDescripcion);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 27);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(699, 303);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Información de la Bodega";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // txtIdentificador
-            // 
-            this.txtIdentificador.Location = new System.Drawing.Point(13, 31);
-            this.txtIdentificador.Name = "txtIdentificador";
-            this.txtIdentificador.Size = new System.Drawing.Size(151, 24);
-            this.txtIdentificador.TabIndex = 4;
-            this.txtIdentificador.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // chkPorDefectoParaFacturacion
-            // 
-            this.chkPorDefectoParaFacturacion.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.chkPorDefectoParaFacturacion.AutoSize = true;
-            this.chkPorDefectoParaFacturacion.Location = new System.Drawing.Point(13, 262);
-            this.chkPorDefectoParaFacturacion.Name = "chkPorDefectoParaFacturacion";
-            this.chkPorDefectoParaFacturacion.Size = new System.Drawing.Size(267, 22);
-            this.chkPorDefectoParaFacturacion.TabIndex = 9;
-            this.chkPorDefectoParaFacturacion.Text = "Bodega por defecto para facturación";
-            this.chkPorDefectoParaFacturacion.UseVisualStyleBackColor = true;
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(13, 79);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(151, 24);
-            this.txtCodigo.TabIndex = 4;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 154);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 18);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Descripción:";
-            // 
-            // txtBodega
-            // 
-            this.txtBodega.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBodega.Location = new System.Drawing.Point(13, 127);
-            this.txtBodega.Name = "txtBodega";
-            this.txtBodega.Size = new System.Drawing.Size(672, 24);
-            this.txtBodega.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 106);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(151, 18);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Nombe de la Bodega:";
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescripcion.Location = new System.Drawing.Point(13, 175);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(672, 81);
-            this.txtDescripcion.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 58);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 18);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Código:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 18);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Identificador";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgvListar);
-            this.tabPage2.Controls.Add(this.toolStrip2);
-            this.tabPage2.Location = new System.Drawing.Point(4, 27);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(699, 303);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Estantes/Vitrinas/Cajas dentro de la bodega";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // dgvListar
-            // 
-            this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvListar.Location = new System.Drawing.Point(3, 34);
-            this.dgvListar.Name = "dgvListar";
-            this.dgvListar.Size = new System.Drawing.Size(693, 266);
-            this.dgvListar.TabIndex = 1;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbBuscar,
-            this.tsbNueva});
-            this.toolStrip2.Location = new System.Drawing.Point(3, 3);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(693, 31);
-            this.toolStrip2.TabIndex = 0;
-            this.toolStrip2.Text = "toolStrip2";
-            // 
-            // tsbBuscar
-            // 
-            this.tsbBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbBuscar.Image = global::InventoryBoxFarmacy.Properties.Resources.filtrar24x24;
-            this.tsbBuscar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tsbBuscar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbBuscar.Name = "tsbBuscar";
-            this.tsbBuscar.Size = new System.Drawing.Size(28, 28);
-            this.tsbBuscar.Text = "toolStripButton1";
-            this.tsbBuscar.Click += new System.EventHandler(this.tsbBuscar_Click);
-            // 
-            // tsbNueva
-            // 
-            this.tsbNueva.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNueva.Image = global::InventoryBoxFarmacy.Properties.Resources.new22x22;
-            this.tsbNueva.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbNueva.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNueva.Name = "tsbNueva";
-            this.tsbNueva.Size = new System.Drawing.Size(26, 28);
-            this.tsbNueva.Text = "toolStripButton2";
-            this.tsbNueva.Click += new System.EventHandler(this.tsbNueva_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -306,9 +368,9 @@
             this.tsbRecarRegistro,
             this.toolStripSeparator1,
             this.tsbImprimir});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 379);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 384);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(744, 71);
+            this.toolStrip1.Size = new System.Drawing.Size(1198, 71);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -419,7 +481,7 @@
             this.chkCerrarVentana.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.chkCerrarVentana.AutoSize = true;
             this.chkCerrarVentana.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 491);
+            this.chkCerrarVentana.Location = new System.Drawing.Point(12, 496);
             this.chkCerrarVentana.Name = "chkCerrarVentana";
             this.chkCerrarVentana.Size = new System.Drawing.Size(275, 22);
             this.chkCerrarVentana.TabIndex = 1;
@@ -441,12 +503,32 @@
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbBodega);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tabControl1);
+            this.splitContainer1.Panel2.Controls.Add(this.statusStrip1);
+            this.splitContainer1.Size = new System.Drawing.Size(1198, 384);
+            this.splitContainer1.SplitterDistance = 430;
+            this.splitContainer1.TabIndex = 14;
+            // 
             // frmBodegaOperacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(768, 525);
+            this.ClientSize = new System.Drawing.Size(1222, 530);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.panel1);
@@ -456,9 +538,6 @@
             this.Shown += new System.EventHandler(this.frmBodegaOperacion_Shown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
-            this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -467,9 +546,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvListar)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.gbBodega.ResumeLayout(false);
+            this.gbBodega.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,28 +576,35 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbCerrarVentan;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox txtDescripcion;
         private System.Windows.Forms.TextBox txtIdentificador;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ErrorProvider EP;
         private System.Windows.Forms.Label InformacionEntidadOperacion;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtCodigo;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtBodega;
         private System.Windows.Forms.CheckBox chkPorDefectoParaFacturacion;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.DataGridView dgvListar;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton tsbBuscar;
         private System.Windows.Forms.ToolStripButton tsbNueva;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lbaBarradeprogreso;
         private System.Windows.Forms.ToolStripProgressBar Barradeprogreso;
         private System.Windows.Forms.ToolStripButton tsbRegistroLocal;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbBodega;
+        private System.Windows.Forms.ComboBox cmbAlmacen;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtLBodega;
+        private System.Windows.Forms.TextBox txtLCodigo;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtLDescripcion;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }

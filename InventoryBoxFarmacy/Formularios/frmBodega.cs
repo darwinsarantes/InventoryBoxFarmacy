@@ -270,11 +270,7 @@ namespace InventoryBoxFarmacy.Formularios
         private string WhereDinamico() {
 
             string Where = "";
-
-            if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false) {
-                Where += string.Format(" and b.idBodega like '%{0}%' ", txtIdentificador.Text.Trim());
-            }
-
+            
             if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
                 Where += string.Format(" and b.Codigo like '%{0}%' ", txtCodigo.Text.Trim());
@@ -283,6 +279,16 @@ namespace InventoryBoxFarmacy.Formularios
             if (Controles.IsNullOEmptyElControl(chkBodega) == false && Controles.IsNullOEmptyElControl(txtNombre) == false)
             {
                 Where += string.Format(" and b.Nombre like '%{0}%' ", txtNombre.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkCodigoDelAlmacen) == false && Controles.IsNullOEmptyElControl(txtCodigoDeAlmacenaje) == false)
+            {
+                Where += string.Format(" and concat( a.Codigo,'-',b.Codigo) like '%{0}%' ", txtCodigoDeAlmacenaje.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(cmbAlmacen) == false)
+            {
+                Where += string.Format(" and b.idAlmacen = {0} ", cmbAlmacen.SelectedValue);
             }
 
             if (AplicarFiltroDeWhereExterno == true)
@@ -298,12 +304,7 @@ namespace InventoryBoxFarmacy.Formularios
         {
 
             string Titulo = "";
-
-            if (Controles.IsNullOEmptyElControl(chkIdentificador) == false && Controles.IsNullOEmptyElControl(txtIdentificador) == false)
-            {
-                Titulo += string.Format(" Identificador: '{0}', ", txtIdentificador.Text.Trim());
-            }
-
+            
             if (Controles.IsNullOEmptyElControl(chkCodigo) == false && Controles.IsNullOEmptyElControl(txtCodigo) == false)
             {
                 Titulo += string.Format(" Código: '{0}', ", txtCodigo.Text.Trim());
@@ -313,7 +314,17 @@ namespace InventoryBoxFarmacy.Formularios
             {
                 Titulo += string.Format(" Bodega: '{0}', ", txtNombre.Text.Trim());
             }
-                       
+
+            if (Controles.IsNullOEmptyElControl(chkCodigoDelAlmacen) == false && Controles.IsNullOEmptyElControl(txtCodigoDeAlmacenaje) == false)
+            {
+                Titulo += string.Format(" Código de Almacenaje: '{0}', ", txtCodigoDeAlmacenaje.Text.Trim());
+            }
+
+            if (Controles.IsNullOEmptyElControl(chkAlmacen) == false && Controles.IsNullOEmptyElControl(cmbAlmacen) == false)
+            {
+                Titulo += string.Format(" Almacen: '{0}', ", cmbAlmacen.Text.Trim());
+            }
+
             if (Titulo.Length > 0)
             {
                 Titulo = Titulo.Substring(0, Titulo.Length - 2);
@@ -398,7 +409,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idBodega,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idBodega,idAlmacen,idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
@@ -449,10 +460,10 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
                         {
-                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim());
+                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "Bodega");
                             if (oFormato.ValorEncontrado == false)
                             {
-                                oFormato = new FormatoDGV(c1.Name.Trim(), "Bodega");
+                                oFormato = new FormatoDGV(c1.Name.Trim());
                             }
 
                             if (oFormato != null)
@@ -545,6 +556,49 @@ namespace InventoryBoxFarmacy.Formularios
             this.ValorLlavePrimariaEntidad = Convert.ToInt32(this.dgvLista.Rows[this.IndiceSeleccionado].Cells[this.NOMBRE_LLAVE_PRIMARIA].Value);
         }
 
+
+        private void LLenarComboDelAlmacen()
+        {
+            try
+            {
+                AlmacenEN oRegistroEN = new AlmacenEN();
+                AlmacenLN oRegistroLN = new AlmacenLN();
+
+                if (oRegistroLN.ListadoParaCombos(oRegistroEN, Program.oDatosDeConexion))
+                {
+
+                    cmbAlmacen.DataSource = oRegistroLN.TraerDatos();
+                    cmbAlmacen.DisplayMember = "Almacen";
+                    cmbAlmacen.ValueMember = "idAlmacen";
+                    cmbAlmacen.DropDownWidth = 268;
+
+                    if (oRegistroLN.TraerDatos().Rows.Count == 1)
+                    {
+                        cmbAlmacen.SelectedIndex = 0;
+                        chkAlmacen.CheckState = CheckState.Checked;
+                        cmbAlmacen.Enabled = false;
+                        chkAlmacen.Enabled = false;
+                        
+                    }
+                    else
+                    {
+                        cmbAlmacen.SelectedIndex = -1;
+                    }
+
+                }
+                else
+                {
+                    throw new ArgumentException(oRegistroLN.Error);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Informacion del Almacen", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
         #endregion
 
         #region "Eventos del formulario"
@@ -552,10 +606,12 @@ namespace InventoryBoxFarmacy.Formularios
         private void frmBodega_Shown(object sender, EventArgs e)
         {
             dgvLista.ContextMenuStrip = mcsMenu;
+            LLenarComboDelAlmacen();
             CargarPrivilegiosDelUsuario();
 
             ActivarFiltrosDelaBusqueda();
             tsbFiltroAutomatico_Click(null, null);
+            txtCodigo.Focus();
         }
 
         private void tsbFiltrar_Click(object sender, EventArgs e)
@@ -816,21 +872,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             }
         }
-
-        private void txtIdentificador_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (Controles.IsNullOEmptyElControl(txtIdentificador))
-            {
-                chkIdentificador.CheckState = CheckState.Unchecked;
-            }
-            else { chkIdentificador.CheckState = CheckState.Checked; }
-
-            if (chkIdentificador.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
-            {                
-                LLenarListado();
-            }
-        }
-
+        
         private void txtDesBodega_KeyUp(object sender, KeyEventArgs e)
         {
             if (Controles.IsNullOEmptyElControl(txtNombre))

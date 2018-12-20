@@ -30,23 +30,7 @@ namespace Logica
             }
 
         }
-
-        public bool AgregarUtilizandoLaMismaConexion(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
-        {
-
-            if (oUbicacionAD.AgregarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
-            {
-                Error = string.Empty;
-                return true;
-            }
-            else
-            {
-                Error = oUbicacionAD.Error;
-                return false;
-            }
-
-        }
-
+        
         public bool Actualizar(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -91,18 +75,11 @@ namespace Logica
             }
 
         }
-
-        public bool EliminarUtilizandoLaMismaConexion(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
+        
+        public bool Listado(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (string.IsNullOrEmpty(oREgistroEN.idLocacion.ToString()) || oREgistroEN.idLocacion == 0)
-            {
-
-                this.Error = @"Se debe de seleccionar un elemento de la lista";
-                return false;
-            }
-
-            if (oUbicacionAD.EliminarUtilizandoLaMismaConexion(oREgistroEN, oDatos))
+            if (oUbicacionAD.Listado(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -115,10 +92,10 @@ namespace Logica
 
         }
 
-        public bool Listado(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdDeBodega(LocacionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 
-            if (oUbicacionAD.Listado(oREgistroEN, oDatos))
+            if (oUbicacionAD.ListadoPorIdDeBodega(oREgistroEN, oDatos))
             {
                 Error = string.Empty;
                 return true;
@@ -215,6 +192,22 @@ namespace Logica
         {
 
             if (oUbicacionAD.ValidarSiElRegistroEstaVinculado(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oUbicacionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
+        public bool VerificarSiLaEntidadEstaAsociadaAProducto(LocacionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oUbicacionAD.VerificarSiLaEntidadEstaAsociadaAProducto(oREgistroEN, oDatos, TipoDeOperacion))
             {
                 Error = oUbicacionAD.Error;
                 return true;

@@ -25,6 +25,8 @@ namespace InventoryBoxFarmacy.Formularios
         private string NOMBRE_LLAVE_PRIMARIA = "idProducto";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
+        public bool AplicarFiltroDeWhereExterno { set; get; }
+        public string WhereExterno { set; get; }
 
         #region "Funciones del programador"
 
@@ -277,7 +279,12 @@ namespace InventoryBoxFarmacy.Formularios
             {
                 Where += string.Format(" and DesProducto like '%{0}%' ", txtDesProducto.Text.Trim());
             }
-            
+
+            if (AplicarFiltroDeWhereExterno == true)
+            {
+                Where += WhereExterno;
+            }
+
             return Where;
 
         }

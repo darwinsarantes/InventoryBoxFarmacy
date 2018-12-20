@@ -31,12 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbAlmacen = new System.Windows.Forms.ComboBox();
+            this.chkAlmacen = new System.Windows.Forms.CheckBox();
+            this.txtCodigoDeAlmacenaje = new System.Windows.Forms.TextBox();
+            this.chkCodigoDelAlmacen = new System.Windows.Forms.CheckBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.chkCodigo = new System.Windows.Forms.CheckBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.chkBodega = new System.Windows.Forms.CheckBox();
             this.txtIdentificador = new System.Windows.Forms.TextBox();
-            this.chkIdentificador = new System.Windows.Forms.CheckBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -92,24 +95,61 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.cmbAlmacen);
+            this.groupBox1.Controls.Add(this.chkAlmacen);
+            this.groupBox1.Controls.Add(this.txtCodigoDeAlmacenaje);
+            this.groupBox1.Controls.Add(this.chkCodigoDelAlmacen);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.chkCodigo);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.chkBodega);
             this.groupBox1.Controls.Add(this.txtIdentificador);
-            this.groupBox1.Controls.Add(this.chkIdentificador);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(673, 96);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Información de la bodega donde crearemos las diferentes localidades del producto";
+            this.groupBox1.Text = "Información de la bodega.";
+            // 
+            // cmbAlmacen
+            // 
+            this.cmbAlmacen.FormattingEnabled = true;
+            this.cmbAlmacen.Location = new System.Drawing.Point(488, 60);
+            this.cmbAlmacen.Name = "cmbAlmacen";
+            this.cmbAlmacen.Size = new System.Drawing.Size(168, 21);
+            this.cmbAlmacen.TabIndex = 2;
+            // 
+            // chkAlmacen
+            // 
+            this.chkAlmacen.Location = new System.Drawing.Point(340, 58);
+            this.chkAlmacen.Name = "chkAlmacen";
+            this.chkAlmacen.Size = new System.Drawing.Size(142, 24);
+            this.chkAlmacen.TabIndex = 0;
+            this.chkAlmacen.Text = "Almacen:";
+            this.chkAlmacen.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigoDeAlmacenaje
+            // 
+            this.txtCodigoDeAlmacenaje.Location = new System.Drawing.Point(488, 35);
+            this.txtCodigoDeAlmacenaje.Name = "txtCodigoDeAlmacenaje";
+            this.txtCodigoDeAlmacenaje.Size = new System.Drawing.Size(168, 20);
+            this.txtCodigoDeAlmacenaje.TabIndex = 1;
+            this.txtCodigoDeAlmacenaje.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesBodega_KeyUp);
+            // 
+            // chkCodigoDelAlmacen
+            // 
+            this.chkCodigoDelAlmacen.Location = new System.Drawing.Point(340, 33);
+            this.chkCodigoDelAlmacen.Name = "chkCodigoDelAlmacen";
+            this.chkCodigoDelAlmacen.Size = new System.Drawing.Size(142, 24);
+            this.chkCodigoDelAlmacen.TabIndex = 0;
+            this.chkCodigoDelAlmacen.Text = "Código de Almacenaje:";
+            this.chkCodigoDelAlmacen.UseVisualStyleBackColor = true;
             // 
             // txtCodigo
             // 
-            this.txtCodigo.Location = new System.Drawing.Point(166, 35);
+            this.txtCodigo.Location = new System.Drawing.Point(108, 35);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(237, 20);
+            this.txtCodigo.Size = new System.Drawing.Size(219, 20);
             this.txtCodigo.TabIndex = 1;
             this.txtCodigo.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesBodega_KeyUp);
             // 
@@ -117,46 +157,35 @@
             // 
             this.chkCodigo.Location = new System.Drawing.Point(21, 33);
             this.chkCodigo.Name = "chkCodigo";
-            this.chkCodigo.Size = new System.Drawing.Size(139, 24);
+            this.chkCodigo.Size = new System.Drawing.Size(81, 24);
             this.chkCodigo.TabIndex = 0;
             this.chkCodigo.Text = "Código:";
             this.chkCodigo.UseVisualStyleBackColor = true;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(166, 61);
+            this.txtNombre.Location = new System.Drawing.Point(108, 60);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(237, 20);
+            this.txtNombre.Size = new System.Drawing.Size(219, 20);
             this.txtNombre.TabIndex = 1;
             this.txtNombre.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesBodega_KeyUp);
             // 
             // chkBodega
             // 
-            this.chkBodega.Location = new System.Drawing.Point(21, 59);
+            this.chkBodega.Location = new System.Drawing.Point(21, 58);
             this.chkBodega.Name = "chkBodega";
-            this.chkBodega.Size = new System.Drawing.Size(139, 24);
+            this.chkBodega.Size = new System.Drawing.Size(81, 24);
             this.chkBodega.TabIndex = 0;
             this.chkBodega.Text = "Bodega:";
             this.chkBodega.UseVisualStyleBackColor = true;
             // 
             // txtIdentificador
             // 
-            this.txtIdentificador.Location = new System.Drawing.Point(363, 35);
+            this.txtIdentificador.Location = new System.Drawing.Point(278, 35);
             this.txtIdentificador.Name = "txtIdentificador";
             this.txtIdentificador.Size = new System.Drawing.Size(40, 20);
             this.txtIdentificador.TabIndex = 1;
             this.txtIdentificador.Visible = false;
-            this.txtIdentificador.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtIdentificador_KeyUp);
-            // 
-            // chkIdentificador
-            // 
-            this.chkIdentificador.Location = new System.Drawing.Point(318, 32);
-            this.chkIdentificador.Name = "chkIdentificador";
-            this.chkIdentificador.Size = new System.Drawing.Size(39, 24);
-            this.chkIdentificador.TabIndex = 0;
-            this.chkIdentificador.Text = "Identificador:";
-            this.chkIdentificador.UseVisualStyleBackColor = true;
-            this.chkIdentificador.Visible = false;
             // 
             // dgvLista
             // 
@@ -376,7 +405,6 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.CheckBox chkBodega;
         private System.Windows.Forms.TextBox txtIdentificador;
-        private System.Windows.Forms.CheckBox chkIdentificador;
         private System.Windows.Forms.ToolStripButton tsbImprimir;
         private System.Windows.Forms.ToolStripButton tsbNuevoRegistro;
         private System.Windows.Forms.ContextMenuStrip mcsMenu;
@@ -391,5 +419,9 @@
         private System.Windows.Forms.ToolStripButton tsbSeleccionarTodos;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.CheckBox chkCodigo;
+        private System.Windows.Forms.ComboBox cmbAlmacen;
+        private System.Windows.Forms.CheckBox chkAlmacen;
+        private System.Windows.Forms.TextBox txtCodigoDeAlmacenaje;
+        private System.Windows.Forms.CheckBox chkCodigoDelAlmacen;
     }
 }

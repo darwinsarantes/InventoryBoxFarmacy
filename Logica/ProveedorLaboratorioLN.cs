@@ -92,6 +92,22 @@ namespace Logica
 
         }
 
+        public bool ListadoDeProveedoresLaboratorio(ProveedorLaboratorioEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oProveedorLaboratorioAD.ListadoDeProveedoresLaboratorio(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oProveedorLaboratorioAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ListadoPorIdentificador(ProveedorLaboratorioEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 

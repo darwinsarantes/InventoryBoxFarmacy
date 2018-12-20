@@ -642,7 +642,7 @@ Where ls.idLocacionSeccion = {0} ", oRegistroEN.idLocacionSeccion);
 
                 Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idLocacionSeccion";
                 Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idLocacionSeccion;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Seccion'";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

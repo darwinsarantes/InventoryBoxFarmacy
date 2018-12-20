@@ -40,18 +40,19 @@ namespace AccesoDatos
                 Consultas = @"
                                 
                 INSERT INTO almacen
-                (idAlmacen, Codigo,Nombre, Descripcion, PorDefecto, 
+                (Codigo,Nombre, Descripcion, PorDefecto, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
                 VALUES
-                (@idAlmacen, @Codigo,@Nombre, @Descripcion, @PorDefecto, 
+                (@Codigo,@Nombre, @Descripcion, @PorDefecto, 
                 @idUsuarioDeCreacion, current_timestamp(), 
                 @idUsuarioModificacion, current_timestamp());
+
+                Select last_insert_id() as 'ID';
 
                 ";
 
                 Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@idAlmacen", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacen;
+                
                 Comando.Parameters.Add(new MySqlParameter("@Codigo", MySqlDbType.VarChar, oRegistroEN.Codigo.Trim().Length)).Value = oRegistroEN.Codigo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Descripcion", MySqlDbType.VarChar, oRegistroEN.Descripcion.Trim().Length)).Value = oRegistroEN.Descripcion.Trim();
@@ -59,7 +60,12 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
 
-                Comando.ExecuteNonQuery();
+                Adaptador = new MySqlDataAdapter();
+                Adaptador.SelectCommand = Comando;
+                DT = new DataTable();
+                Adaptador.Fill(DT);
+
+                oRegistroEN.idAlmacen = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
                 
                 DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
@@ -103,171 +109,7 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool Agregar(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
-        {
-
-            oTransaccionesAD = new TransaccionesAD();
-
-            try
-            {
-                
-                Comando = new MySqlCommand();
-                Comando.Connection = Cnn_Existente;                
-                Comando.Transaction = Transaccion_Existente;
-                Comando.CommandType = CommandType.Text;
-
-                Consultas = @"
-                                
-                INSERT INTO almacen
-                (idAlmacen,Codigo,Nombre, Descripcion, PorDefecto, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
-                VALUES
-                (@idAlmacen,@Codigo,@Nombre, @Descripcion, @PorDefecto, 
-                @idUsuarioDeCreacion, current_timestamp(), 
-                @idUsuarioModificacion, current_timestamp());
-
-                ";
-
-                Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@idAlmacen", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacen;
-                Comando.Parameters.Add(new MySqlParameter("@Codigo", MySqlDbType.VarChar, oRegistroEN.Codigo.Trim().Length)).Value = oRegistroEN.Codigo.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@Descripcion", MySqlDbType.VarChar, oRegistroEN.Descripcion.Trim().Length)).Value = oRegistroEN.Descripcion.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@PorDefecto", MySqlDbType.Int32)).Value = oRegistroEN.PorDefecto;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
-
-                Comando.ExecuteNonQuery();
-
-                DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return true;
-
-
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-
-                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return false;
-            }
-            finally
-            {
-                Comando = null;
-                Adaptador = null;
-                oTransaccionesAD = null;
-
-            }
-
-        }
-
-        public bool AgregarUtilizandoLaMismaConexion(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos)
-        {
-
-            oTransaccionesAD = new TransaccionesAD();
-            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-            Cnn.Open();
-
-            MySqlTransaction oMySqlTransaction;
-            oMySqlTransaction = Cnn.BeginTransaction();
-
-            try
-            {
-
-                String mensaje = "";
-                string Errores = string.Empty;
-
-                //Debemos agrear la Entidad Correspondiente
-                EntidadEN oEntidadEN = new EntidadEN();
-                oEntidadEN.oTipoDeEntidadEN.Nombre = "Almacen";
-                oEntidadEN.oTipoDeEntidadEN.NombreInterno = "almacen";
-                oEntidadEN.oLoginEN = oRegistroEN.oLoginEN;
-                oEntidadEN.IdUsuarioDeCreacion = oRegistroEN.oLoginEN.idUsuario;
-                oEntidadEN.IdUsuarioDeModificacion = oRegistroEN.oLoginEN.idUsuario;
-                oEntidadEN.FechaDeCreacion = oRegistroEN.FechaDeCreacion;
-                oEntidadEN.FechaDeModificacion = oRegistroEN.FechaDeModificacion;
-
-                EntidadAD oEntidadAD = new EntidadAD();
-
-                if (oEntidadAD.Agregar(oEntidadEN, oDatos, ref Cnn, ref oMySqlTransaction))
-                {
-                    oRegistroEN.idAlmacen = oEntidadEN.idEntidad;
-                    Errores = EvaluarTextoError(Errores, "GUARDAR", oEntidadAD.Error);
-                }
-                else
-                {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información en la Entidad. ", Environment.NewLine, oEntidadAD.Error);
-                    throw new System.ArgumentException(mensaje);
-                }
-
-                if (Agregar(oRegistroEN, oDatos, ref Cnn, ref oMySqlTransaction))
-                {
-                    Errores = EvaluarTextoError(Errores, "GUARDAR", this.Error);
-                }
-                else
-                {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información del almacen. ", Environment.NewLine, this.Error);
-                    throw new System.ArgumentException(mensaje);
-                }
-
-                oMySqlTransaction.Commit();
-
-                this.Error = Errores;
-
-                oEntidadEN = null;
-                oEntidadAD = null;
-                
-                return true;
-                
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-                oMySqlTransaction.Rollback();
-
-                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return false;
-
-            }
-            finally
-            {
-                if (Cnn != null)
-                {
-
-                    if (Cnn.State == ConnectionState.Open)
-                    {
-
-                        Cnn.Close();
-
-                    }
-
-                }
-
-                Cnn = null;
-                Comando = null;
-                Adaptador = null;
-                oTransaccionesAD = null;
-
-            }
-
-        }
-
+        
         public bool Actualizar(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             oTransaccionesAD = new TransaccionesAD();
@@ -482,152 +324,7 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool Eliminar(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
-        {
-            oTransaccionesAD = new TransaccionesAD();
-
-            try
-            {
-                Comando = new MySqlCommand();
-                Comando.Connection = Cnn_Existente;
-                Comando.Transaction = Transaccion_Existente;
-                Comando.CommandType = CommandType.Text;
-
-                Consultas = @"Delete from Almacen Where idAlmacen = @idAlmacen;";
-                Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@idAlmacen", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacen;
-
-                Comando.ExecuteNonQuery();
-
-                DescripcionDeOperacion = string.Format("El registro fue Eliminado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Elminar Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-
-                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al eliminar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Eliminar", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return false;
-            }
-            finally
-            {
-                                                
-                Comando = null;
-                Adaptador = null;
-                oTransaccionesAD = null;
-
-            }
-
-        }
-
-        public bool EliminarUtilizandoLaMismaConexion(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos)
-        {
-
-            oTransaccionesAD = new TransaccionesAD();
-            Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
-            Cnn.Open();
-
-            MySqlTransaction oMySqlTransaction;
-            oMySqlTransaction = Cnn.BeginTransaction();
-
-            try
-            {
-
-                String mensaje = "";
-                string Errores = string.Empty;
-
-                //Debemos agrear la Entidad Correspondiente
-                EntidadEN oEntidadEN = new EntidadEN();
-                oEntidadEN.idEntidad = oRegistroEN.idAlmacen;
-                oEntidadEN.oTipoDeEntidadEN.Nombre = "Almacen";
-                oEntidadEN.oTipoDeEntidadEN.NombreInterno = "almacen";
-                oEntidadEN.oLoginEN = oRegistroEN.oLoginEN;
-                oEntidadEN.IdUsuarioDeCreacion = oRegistroEN.oLoginEN.idUsuario;
-                oEntidadEN.IdUsuarioDeModificacion = oRegistroEN.oLoginEN.idUsuario;
-                oEntidadEN.FechaDeCreacion = oRegistroEN.FechaDeCreacion;
-                oEntidadEN.FechaDeModificacion = oRegistroEN.FechaDeModificacion;
-
-                EntidadAD oEntidadAD = new EntidadAD();
-
-                if (Eliminar(oRegistroEN, oDatos, ref Cnn, ref oMySqlTransaction))
-                {                    
-                    Errores = EvaluarTextoError(Errores, "ELIMINAR", oEntidadAD.Error);
-                }
-                else
-                {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar eliminar la información en el almacen. ", Environment.NewLine, oEntidadAD.Error);
-                    throw new System.ArgumentException(mensaje);
-                }
-
-                if (oEntidadAD.Eliminar(oEntidadEN, oDatos, ref Cnn, ref oMySqlTransaction))
-                {
-                    Errores = EvaluarTextoError(Errores, "ELIMINAR", this.Error);
-                }
-                else
-                {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar eliminar la información de la entidad superior. ", Environment.NewLine, this.Error);
-                    throw new System.ArgumentException(mensaje);
-                }
-
-                oMySqlTransaction.Commit();
-
-                this.Error = Errores;
-
-                oEntidadEN = null;
-                oEntidadAD = null;
-
-                return true;
-
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-                oMySqlTransaction.Rollback();
-
-                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "ELIMINAR", "Eliminar Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return false;
-
-            }
-            finally
-            {
-                if (Cnn != null)
-                {
-
-                    if (Cnn.State == ConnectionState.Open)
-                    {
-
-                        Cnn.Close();
-
-                    }
-
-                }
-
-                Cnn = null;
-                Comando = null;
-                Adaptador = null;
-                oTransaccionesAD = null;
-
-            }
-
-        }
-
+        
         public bool Listado(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
@@ -764,7 +461,7 @@ namespace AccesoDatos
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = string.Format(@"SELECT 
-	                idAlmacen, a.Codigo,a.Nombre, concat(a.Codigo, ' ', a.Nombre) as 'Almacen'
+	                idAlmacen, a.Codigo,a.Nombre, concat(a.Codigo, ' - ', a.Nombre) as 'Almacen'
                 FROM almacen AS a                 
                 Where idAlmacen > 0 {0} {1} ; ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
@@ -922,11 +619,11 @@ namespace AccesoDatos
                 Comando = new MySqlCommand();
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "ValidarSiElRegistroEstaVinculado";
+                Comando.CommandText = "ValidarSiElRegistroEstaVinculadoUnaTabla";
 
                 Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idAlmacen";
                 Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacen;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "'Entidad', 'bodegaalmacen'";
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "Almacen";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -942,6 +639,83 @@ namespace AccesoDatos
                 {
 
                     this.Error = String.Format("La Operación: '{1}', {0} no se puede completar por que el registro: {0} '{2}', {0} se encuentra asociado con: {0} {3}",Environment.NewLine, TipoDeOperacion, InformacionDelRegistro(oRegistroEN), oTransaccionesAD.ConvertirValorDeLaCadena(DT.Rows[0].ItemArray[0].ToString()));
+                    DescripcionDeOperacion = this.Error;
+
+                    //Agregamos la Transacción....
+                    TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "CORRECTO");
+                    oTransaccionesAD.Agregar(oTran, oDatos);
+
+                    return true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "VALIDAR SI EL REGISTRO ESTA VINCULADO", "ERROR");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+                oTransaccionesAD = null;
+
+            }
+
+        }
+        
+        public bool VerificarSiLaEntidadEstaAsociadaAProducto(AlmacenEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+                Comando.CommandText = string.Format(@"Select case when exists(
+                Select idProducto from producto as p
+                where p.TablaDeReferenciaDeAlmacenaje = 'Almacen' and p.idAlmacenEntidad = {0}) then 1 else 0 end as 'ID'", oRegistroEN.idAlmacen);
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                if (Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString()) == 0)
+                {
+                    return false;
+                }
+                else
+                {
+
+                    this.Error = string.Format("La Operacion: '{1}', {0} no se puede completar por que el registro: {0} '{2}', ya tiene asociado un producto", Environment.NewLine, TipoDeOperacion, InformacionDelRegistro(oRegistroEN));
                     DescripcionDeOperacion = this.Error;
 
                     //Agregamos la Transacción....

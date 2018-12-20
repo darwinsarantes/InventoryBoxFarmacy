@@ -550,7 +550,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvLista.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
                 
-                string OcultarColumnas = "idLaboratorio, Observaciones, Correo, FechaDeCumpleanos, Messenger, Skype, Twitter, Facebook, Estado, Foto, idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+                string OcultarColumnas = "idLaboratorio,Observaciones,Correo,FechaDeCumpleanos,Messenger,Skype,Twitter,Facebook,Estado,Foto,idUsuarioDeCreacion,FechaDeCreacion,idUsuarioModificacion,FechaDeModificacion";
                 OcultarColumnasEnElDGV(OcultarColumnas);
 
                 FormatearColumnasDelDGV();
