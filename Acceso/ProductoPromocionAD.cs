@@ -129,12 +129,10 @@ namespace AccesoDatos
                                 
                 insert into productopromocion
                 (idProducto, PrecioDelProducto, FechaDeInicio, FechaDeFinalizacion, Estado, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                Descripcion)
+                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, Descripcion)
                 values
                 (@idProducto, @PrecioDelProducto, @FechaDeInicio, @FechaDeFinalizacion, @Estado, 
-                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @Descripcion)
+                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), @Descripcion);
 
                 Select last_insert_id() as 'ID';";
 

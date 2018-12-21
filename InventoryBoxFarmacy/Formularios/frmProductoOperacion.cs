@@ -885,7 +885,17 @@ namespace InventoryBoxFarmacy.Formularios
 
             oRegistroEN.idAlmacenEntidad = Convert.ToInt32(txtAlmacenIdentidad.Text);
             oRegistroEN.idPLEntidad = Convert.ToInt32(txtIdProveedorLaboratorio.Text);
+            oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio = txtTablaDeReferenciaPL.Text.Trim();
+            oRegistroEN.TablaDeReferenciaDeAlmacenaje = txtTablaDeReferencia.Text.Trim();
             oRegistroEN.Observaciones = txtObservacion.Text.Trim();
+            
+            if(chkProductoDescontinuado.CheckState == CheckState.Checked)
+            {
+                oRegistroEN.Estado = "INACTIVO";
+            }else
+            {
+                oRegistroEN.Estado = "ACTIVO";
+            }
 
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
@@ -903,29 +913,50 @@ namespace InventoryBoxFarmacy.Formularios
         {
             ProductoPrecioEN oRegistroEN = new ProductoPrecioEN();
 
-            oRegistroEN.idProductoPrecio = Convert.ToInt32(txtIdPrecio.Text);
+            int idProductoPrecio;
+            int.TryParse(txtIdPrecio.Text, out idProductoPrecio);
+            oRegistroEN.idProductoPrecio = idProductoPrecio;
             decimal Costo;
             decimal.TryParse(txtCosto.Text, out Costo);
+            oRegistroEN.Costo = Costo;
             decimal Porcentaje1;
             decimal.TryParse(txtPorcentaje1.Text, out Porcentaje1);
+            oRegistroEN.PorcentajeDelPrecio1 = Porcentaje1;
             decimal Porcentaje2;
             decimal.TryParse(txtPorcentaje2.Text, out Porcentaje2);
+            oRegistroEN.PorcentajeDelPrecio2 = Porcentaje2;
             decimal Porcentaje3;
             decimal.TryParse(txtPorcentaje3.Text, out Porcentaje3);
+            oRegistroEN.PorcentajeDelPrecio3 = Porcentaje3;
             decimal Porcentaje4;
             decimal.TryParse(txtPorcentaje4.Text, out Porcentaje4);
+            oRegistroEN.PorcentajeDelPrecio4 = Porcentaje4;
             decimal Porcentaje5;
             decimal.TryParse(txtPorcentaje5.Text, out Porcentaje5);
+            oRegistroEN.PorcentajeDelPrecio5 = Porcentaje5;
             decimal Precio1;
             decimal.TryParse(txtPrecio1.Text, out Precio1);
+            oRegistroEN.Precio1 = Precio1;
             decimal Precio2;
             decimal.TryParse(txtPrecio2.Text, out Precio2);
+            oRegistroEN.Precio2 = Precio2;
             decimal Precio3;
             decimal.TryParse(txtPrecio3.Text, out Precio3);
+            oRegistroEN.Precio3 = Precio3;
             decimal Precio4;
             decimal.TryParse(txtPrecio4.Text, out Precio4);
+            oRegistroEN.Precio4 = Precio4;
             decimal Precio5;
             decimal.TryParse(txtPrecio5.Text, out Precio5);
+            oRegistroEN.Precio5 = Precio5;
+
+            decimal UnidadesXPrecentacion;
+            decimal.TryParse(txtUnidadesXPresentacion.Text, out UnidadesXPrecentacion);
+            oRegistroEN.UnidadesXPrecentacion = UnidadesXPrecentacion;
+
+            decimal PrecioXUnidad;
+            decimal.TryParse(txtPrecioXUnidad.Text, out PrecioXUnidad);
+            oRegistroEN.PrecioXUnidad = PrecioXUnidad;
 
             oRegistroEN.AplicarElIva = 0;
             if (chkAplicarIVA.CheckState == CheckState.Checked)
@@ -937,6 +968,7 @@ namespace InventoryBoxFarmacy.Formularios
             decimal.TryParse(txtIVA.Text, out ValorDelIVA);
             oRegistroEN.ValorDelIvaEnProcentaje = ValorDelIVA;
             oRegistroEN.Estado = "ACTIVO";
+            
             oRegistroEN.oProductoEN = InformacionDelRegistro();
 
             //partes generales.            
@@ -954,7 +986,9 @@ namespace InventoryBoxFarmacy.Formularios
         {
 
             ProductoConfiguracionEN oRegistroEN = new ProductoConfiguracionEN();
-            oRegistroEN.idProductoConfiguracion = Convert.ToInt32(txtidProductoConfiguracion.Text);
+            int idProductoConfiguracion;
+            int.TryParse(txtidProductoConfiguracion.Text, out idProductoConfiguracion);
+            oRegistroEN.idProductoConfiguracion = idProductoConfiguracion;
             oRegistroEN.oProductoEN = InformacionDelRegistro();
             oRegistroEN.AplicarComisiones = chkAplicarComision.CheckState == CheckState.Checked ? 1 : 0;
             oRegistroEN.MostrarContenidoDeObservacionesENFactura = chkMostrarObservacionesDelProducto.CheckState == CheckState.Checked ? 1: 0;
@@ -975,6 +1009,9 @@ namespace InventoryBoxFarmacy.Formularios
             decimal.TryParse(txtComisionMaxima.Text, out ComisionMaxima);
             oRegistroEN.ComisionMaxima = ComisionMaxima;
             oRegistroEN.ActivarPromocion = chkAplicarPromocion.CheckState == CheckState.Checked ? 1 : 0;
+            oRegistroEN.MarcaDelProducto = txtMarcaDelProducto.Text.Trim();
+            oRegistroEN.ModeloDelProducto = txtModelo.Text.Trim();
+            oRegistroEN.NumeroDeSerie = txtNumeroDeCerie.Text.Trim();
             
             //partes generales.            
             oRegistroEN.oLoginEN = Program.oLoginEN;
@@ -991,7 +1028,9 @@ namespace InventoryBoxFarmacy.Formularios
         {
             ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
 
-            oRegistroEN.idProductoPromocion = Convert.ToInt32(txtidProductoPromocion.Text);
+            int idProductoPromocion;
+            int.TryParse(txtidProductoPromocion.Text, out idProductoPromocion);
+            oRegistroEN.idProductoPromocion = idProductoPromocion;
             oRegistroEN.oProductoEN = InformacionDelRegistro();
             decimal PrecioDelProducto;
             decimal.TryParse(txtPrecioPromocional.Text, out PrecioDelProducto);
@@ -2783,6 +2822,109 @@ namespace InventoryBoxFarmacy.Formularios
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Buscar registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtPorcentaje1_KeyUp(object sender, KeyEventArgs e)
+        {
+            decimal Costo, Porcentaje, valortotal= 0;
+            if (Controles.IsNullOEmptyElControl(txtCosto)) Costo = 0; else decimal.TryParse(txtCosto.Text, out Costo);
+            if (Controles.IsNullOEmptyElControl(txtPorcentaje1)) Porcentaje = 0; else decimal.TryParse(txtPorcentaje1.Text, out Porcentaje);
+             
+            if(Costo > 0 && Porcentaje > 0)
+            {
+                valortotal = Costo + ((Costo * Porcentaje) / 100);
+            }
+
+            txtPrecio1.Text = string.Format("{0:###,###,##0.00}", valortotal.ToString());
+
+            CalcularPRecioUnidad();
+        }
+
+        private void txtPrecio1_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                decimal Costo, Precio, Porcentaje = 0, Valor = 0;
+                if (Controles.IsNullOEmptyElControl(txtCosto)) Costo = 0; else decimal.TryParse(txtCosto.Text, out Costo);
+                if (Controles.IsNullOEmptyElControl(txtPrecio1)) Precio = 0; else decimal.TryParse(txtPrecio1.Text, out Precio);
+                if (Controles.IsNullOEmptyElControl(txtPorcentaje1)) Porcentaje = 0; else decimal.TryParse(txtPorcentaje1.Text, out Porcentaje);
+
+                if (Costo > 0 && Precio > 0 )
+                {
+                    Porcentaje = (Precio / Costo);
+                    Valor = (Porcentaje - 1) * 100;
+                    txtPorcentaje1.Text = string.Format("{0:###,###,##0.00}", Valor);
+                }
+                else if (Costo > 0 && Precio == 0 && Porcentaje > 0)
+                {
+                    Precio = Costo + ((Costo * Porcentaje) / 100);
+                    txtPrecio1.Text = string.Format("{0:###,###,##0.00}", Precio);
+                }
+
+                CalcularPRecioUnidad();
+
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Calculo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtCosto_KeyUp(object sender, KeyEventArgs e)
+        {
+
+            decimal Costo = 0, Precio = 0, Porcentaje = 0, Valor = 0;
+
+            if (Controles.IsNullOEmptyElControl(txtCosto)) Costo = 0; else decimal.TryParse(txtCosto.Text, out Costo);
+            if (Controles.IsNullOEmptyElControl(txtPorcentaje1)) Porcentaje = 0; else decimal.TryParse(txtPorcentaje1.Text, out Porcentaje);
+            if (Controles.IsNullOEmptyElControl(txtPrecio1)) Precio = 0; else decimal.TryParse(txtPrecio1.Text, out Precio);
+
+            if (Costo > 0 && Precio > 0 )
+            {
+                Porcentaje = (Precio / Costo);
+                Valor = (Porcentaje - 1) / 100;
+                txtPorcentaje1.Text = string.Format("{0:###,###,##0.00}", Valor);
+            }else if (Costo > 0 && Precio == 0 && Porcentaje > 0)
+            {
+                Precio = Costo + ((Costo * Porcentaje) / 100);
+                txtPrecio1.Text = string.Format("{0:###,###,##0.00}", Precio);
+            }else if (Costo == 0 && Precio > 0 && Porcentaje > 0)
+            {
+                Costo = Precio / (1 + (1 / Porcentaje));
+                txtCosto.Text = string.Format("{0:###,###,##0.00}", Costo);
+            }else if (Costo > 0 && Precio > 0 && Porcentaje > 0)
+            {
+                Precio = Costo + ((Costo * Porcentaje) / 100);
+                txtPrecio1.Text = string.Format("{0:###,###,##0.00}", Precio);
+            }
+
+            CalcularPRecioUnidad();
+
+        }
+
+        private void txtUnidadesXPresentacion_KeyUp(object sender, KeyEventArgs e)
+        {
+            CalcularPRecioUnidad();
+        }
+
+        private void CalcularPRecioUnidad()
+        {
+            
+            decimal Unidades = 0;
+            decimal Precio = 0;
+
+            decimal.TryParse(txtPrecio1.Text, out Precio);
+            decimal.TryParse(txtUnidadesXPresentacion.Text, out Unidades);
+
+            if (Unidades > 0 && Precio > 0)
+            {
+                decimal valor = Precio / Unidades;
+                txtPrecioXUnidad.Text = string.Format("{0:###,###,##0.00}", valor);
+            }else
+            {
+                decimal valor = 0;
+                txtPrecioXUnidad.Text = string.Format("{0:###,###,##0.00}", valor);
             }
         }
     }

@@ -142,23 +142,23 @@ namespace AccesoDatos
 
                 Consultas = @"
                                 
-                insert into productoprecio
-                (idProducto, Costo, PorcentajeDelPrecio1, PorcentajeDelPrecio2, 
-                PorcentajeDelPrecio3, PorcentajeDelPrecio4, PorcentajeDelPrecio5, 
-                Precio1, Precio2, Precio3, Precio4, Precio5, AplicarElIva, 
-                idUsuarioDeCreacion, FechaDeCreacion, 
-                idUsuarioModificacion, FechaDeModificacion, ValorDelIvaEnProcentaje, ValorDelIva, Estado)
+                Insert into productoprecio
+                (idProducto, Costo, PorcentajeDelPrecio1, PorcentajeDelPrecio2, PorcentajeDelPrecio3, 
+                PorcentajeDelPrecio4, PorcentajeDelPrecio5, Precio1, Precio2, Precio3, Precio4, Precio5, 
+                AplicarElIva, idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
+                ValorDelIvaEnProcentaje, ValorDelIva, Estado, PrecioXUnidad, UnidadesXPrecentacion)
                 values
-                (@idProducto, @Costo, @PorcentajeDelPrecio1, @PorcentajeDelPrecio2, 
-                @PorcentajeDelPrecio3, @PorcentajeDelPrecio4, @PorcentajeDelPrecio5, 
-                @Precio1, @Precio2, @Precio3, @Precio4, @Precio5, @AplicarElIva, 
-                @idUsuarioDeCreacion, current_timestamp(), 
-                @idUsuarioModificacion, current_timestamp(), @ValorDelIvaEnProcentaje, @ValorDelIva, @Estado);
+                (@idProducto, @Costo, @PorcentajeDelPrecio1, @PorcentajeDelPrecio2, @PorcentajeDelPrecio3, 
+                @PorcentajeDelPrecio4, @PorcentajeDelPrecio5, @Precio1, @Precio2, @Precio3, @Precio4, @Precio5, 
+                @AplicarElIva, @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
+                @ValorDelIvaEnProcentaje, @ValorDelIva, @Estado, @PrecioXUnidad, @UnidadesXPrecentacion);
 
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
 
+                Comando.Parameters.Add(new MySqlParameter("@UnidadesXPrecentacion", MySqlDbType.Decimal)).Value = oRegistroEN.UnidadesXPrecentacion;
+                Comando.Parameters.Add(new MySqlParameter("@PrecioXUnidad", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioXUnidad;
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar,oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado;
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIva", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIva;
                 Comando.Parameters.Add(new MySqlParameter("@ValorDelIvaEnProcentaje", MySqlDbType.Decimal)).Value = oRegistroEN.ValorDelIvaEnProcentaje;
@@ -768,15 +768,17 @@ namespace AccesoDatos
 
 
         private string InformacionDelRegistro(ProductoPrecioEN oRegistroEN) {
-            string Cadena = @"idProductoPrecio: {0}, idProducto: {1}, Costo: {2}, PorcentajeDelPrecio1: {3}, PorcentajeDelPrecio2: {4}, 
-            PorcentajeDelPrecio3: {5}, PorcentajeDelPrecio4: {6}, PorcentajeDelPrecio5: {7}, Precio1: {8}, Precio2: {9}, Precio3: {10},
-            Precio4: {11}, Precio5: {12}, AplicarElIva: {13}, idUsuarioDeCreacion: {14}, FechaDeCreacion: {15}, idUsuarioModificacion: {16}, 
-            FechaDeModificacion: {17}, ValorDelIvaEnProcentaje: {18}, ValorDelIva: {20}";
-            Cadena = string.Format(Cadena, oRegistroEN.idProductoPrecio, oRegistroEN.Costo, oRegistroEN.PorcentajeDelPrecio1, 
+            string Cadena = @"idProductoPrecio: {20},idProducto: {0}, Costo: {1}, 
+PorcentajeDelPrecio1: {2}, PorcentajeDelPrecio2: {3}, PorcentajeDelPrecio3: {4}, 
+PorcentajeDelPrecio4: {5}, PorcentajeDelPrecio5: {6}, Precio1: {7}, Precio2: {8}, Precio3: {9}, Precio4: {10}, Precio5: {11}, 
+AplicarElIva: {12}, idUsuarioDeCreacion: {13}, FechaDeCreacion: {14}, idUsuarioModificacion: {15}, FechaDeModificacion: {16}, 
+ValorDelIvaEnProcentaje: {17}, ValorDelIva: {18}, Estado: {19}, PrecioXUnidad: {21}, UnidadesXPrecentacion: {22}";
+            Cadena = string.Format(Cadena, oRegistroEN.oProductoEN.idProducto,oRegistroEN.Costo, oRegistroEN.PorcentajeDelPrecio1, 
                 oRegistroEN.PorcentajeDelPrecio2, oRegistroEN.PorcentajeDelPrecio3, oRegistroEN.PorcentajeDelPrecio4, oRegistroEN.PorcentajeDelPrecio5,
                 oRegistroEN.Precio1, oRegistroEN.Precio2, oRegistroEN.Precio3, oRegistroEN.Precio4, oRegistroEN.Precio5,
                 oRegistroEN.AplicarElIva,oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, 
-                oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion, oRegistroEN.ValorDelIvaEnProcentaje, oRegistroEN.ValorDelIva);
+                oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion, oRegistroEN.ValorDelIvaEnProcentaje, 
+                oRegistroEN.ValorDelIva,oRegistroEN.Estado, oRegistroEN.idProductoPrecio, oRegistroEN.PrecioXUnidad, oRegistroEN.UnidadesXPrecentacion);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
         }

@@ -140,24 +140,23 @@ namespace AccesoDatos
 
                 Consultas = @"
                                 
-                insert into producto
+                insert into producto 
                 (Codigo, CodigoDeBarra, Nombre, NombreGenerico, NombreComun, 
                 Descripcion, Observaciones, Existencias, Minimo, Maximo, 
                 idProductoUnidadDeMedida, idProductoPresentacion, idCategoria, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                idAlmacenEntidad, idPLEntidad)
+                idAlmacenEntidad, idPLEntidad, TablaDeReferenciaDeAlmacenaje, TablaDeRefereciaDeProveedorOLaboratorio, Estado)
                 values
                 (GenerarCodigoDelProducto(), @CodigoDeBarra, @Nombre, @NombreGenerico, @NombreComun, 
                 @Descripcion, @Observaciones, @Existencias, @Minimo, @Maximo, 
                 @idProductoUnidadDeMedida, @idProductoPresentacion, @idCategoria, 
                 @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @idAlmacenEntidad, @idPLEntidad);
+                @idAlmacenEntidad, @idPLEntidad, @TablaDeReferenciaDeAlmacenaje, @TablaDeRefereciaDeProveedorOLaboratorio, @Estado);
 
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@Codigo", MySqlDbType.VarChar, oRegistroEN.Codigo.Trim().Length)).Value = oRegistroEN.Codigo.Trim();
+                                
                 Comando.Parameters.Add(new MySqlParameter("@CodigoDeBarra", MySqlDbType.VarChar, oRegistroEN.CodigoDeBarra.Trim().Length)).Value = oRegistroEN.CodigoDeBarra.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NombreGenerico", MySqlDbType.VarChar, oRegistroEN.NombreGenerico.Trim().Length)).Value = oRegistroEN.NombreGenerico.Trim();
@@ -174,6 +173,9 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
                 Comando.Parameters.Add(new MySqlParameter("@idAlmacenEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacenEntidad;
                 Comando.Parameters.Add(new MySqlParameter("@idPLEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idPLEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeReferenciaDeAlmacenaje", MySqlDbType.VarChar, oRegistroEN.TablaDeReferenciaDeAlmacenaje.Length)).Value = oRegistroEN.TablaDeReferenciaDeAlmacenaje.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeRefereciaDeProveedorOLaboratorio", MySqlDbType.VarChar, oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Length)).Value = oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado.Trim();
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -237,12 +239,12 @@ namespace AccesoDatos
                 }
                 else
                 {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información de la Bodega. ", Environment.NewLine, this.Error);
+                    mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información del producto. ", Environment.NewLine, this.Error);
                     throw new System.ArgumentException(mensaje);
                 }
 
                 ProductoConfiguracionAD oConfiguracionAD = new ProductoConfiguracionAD();
-                oRegistroEN.oConfiguracionEN.oProductoEN.idProducto = oRegistroEN.oProductoEN.idProducto;
+                oRegistroEN.oConfiguracionEN.oProductoEN = oRegistroEN.oProductoEN;
 
                 if (oConfiguracionAD.Agregar(oRegistroEN.oConfiguracionEN, oDatos, ref Cnn, ref oMySqlTransaction))
                 {
@@ -255,7 +257,7 @@ namespace AccesoDatos
                 }
 
                 ProductoPromocionAD oPromocionAD = new ProductoPromocionAD();
-                oRegistroEN.oPromocionEN.oProductoEN.idProducto = oRegistroEN.oProductoEN.idProducto;
+                oRegistroEN.oPromocionEN.oProductoEN = oRegistroEN.oProductoEN;
 
                 if (oPromocionAD.Agregar(oRegistroEN.oPromocionEN, oDatos, ref Cnn, ref oMySqlTransaction))
                 {
@@ -268,6 +270,7 @@ namespace AccesoDatos
                 }
 
                 ProductoPrecioAD oPrecioAD = new ProductoPrecioAD();
+                oRegistroEN.oPrecioEN.oProductoEN = oRegistroEN.oProductoEN;
 
                 if (oPrecioAD.Agregar(oRegistroEN.oPrecioEN, oDatos, ref Cnn, ref oMySqlTransaction))
                 {
@@ -1179,14 +1182,17 @@ Where idProducto > 0 {0} {1} ; ", oRegistroEN.Where, oRegistroEN.OrderBy);
 
         private string InformacionDelRegistro(ProductoEN oRegistroEN) {
             string Cadena = @"idProducto: {0}, Codigo: {1}, CodigoDeBarra: {2}, Nombre: {3}, NombreGenerico: {4}, 
-            NombreComun: {5}, Descripcion: {6}, Observaciones: {7}, Existencias: {8}, Minimo: {9}, Maximo: {10}, 
-            idProductoUnidadDeMedida: {11}, idProductoPresentacion: {12}, idCategoria: {13}, idUsuarioDeCreacion: {14}, 
-            FechaDeCreacion: {15}, idUsuarioModificacion: {16}, FechaDeModificacion: {17}";
+NombreComun: {5}, Descripcion: {6}, Observaciones: {7}, Existencias: {8}, Minimo: {9}, Maximo: {10}, 
+idProductoUnidadDeMedida: {11}, idProductoPresentacion: {12}, idCategoria: {13}, idUsuarioDeCreacion: {14}, 
+FechaDeCreacion: {15}, idUsuarioModificacion: {16}, FechaDeModificacion: {17}, idAlmacenEntidad: {18}, idPLEntidad: {19}, 
+TablaDeReferenciaDeAlmacenaje: {20}, TablaDeRefereciaDeProveedorOLaboratorio: {21}, Estado: {22}";
             Cadena = string.Format(Cadena, oRegistroEN.idProducto,oRegistroEN.Codigo,oRegistroEN.CodigoDeBarra,
                 oRegistroEN.Nombre, oRegistroEN.NombreGenerico, oRegistroEN.NombreComun, oRegistroEN.Descripcion, 
                 oRegistroEN.Observaciones,oRegistroEN.Existencias,oRegistroEN.Minimo,oRegistroEN.Maximo,
                 oRegistroEN.oUnidadDeMedida.idProductoUnidadDeMedida, oRegistroEN.oPresentacion.idProductoPresentacion,
-                oRegistroEN.oCategoria.idCategoria,oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion);
+                oRegistroEN.oCategoria.idCategoria,oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.idUsuarioModificacion, 
+                oRegistroEN.FechaDeModificacion,oRegistroEN.idAlmacenEntidad, oRegistroEN.idPLEntidad, oRegistroEN.TablaDeReferenciaDeAlmacenaje,
+                oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio, oRegistroEN.Estado);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
         }

@@ -142,20 +142,19 @@ namespace AccesoDatos
 
                 Consultas = @"
                                 
-                insert into productoconfiguracion
+                insert into productoconfiguracion 
                 (idProducto, ActivarPromocion, AplicarComisiones, MostrarContenidoDeObservacionesENFactura, 
-                MostrarImagenAlFacturar, PreguntarNumeroDeSerieAlFacturar, 
-                PreguntarFechaDeVencimientoAlFacturar, PreguntarPorResetaAlFacturar, 
-                NoUsarComisionesParaEsteProducto, UsarComisionesDefinidasEnElregistroDelVendedor, 
+                MostrarImagenAlFacturar, PreguntarNumeroDeSerieAlFacturar, PreguntarFechaDeVencimientoAlFacturar, 
+                PreguntarPorResetaAlFacturar, NoUsarComisionesParaEsteProducto, UsarComisionesDefinidasEnElregistroDelVendedor, 
                 MontoFijoPorVenta, PorcentajeDeLaVenta, PorcentajeDeLaGanacia, Comision, ComisionMaxima, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
+                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, MarcaDelProducto, ModeloDelProducto, NumeroDeSerie)
                 values
                 (@idProducto, @ActivarPromocion, @AplicarComisiones, @MostrarContenidoDeObservacionesENFactura, 
-                @MostrarImagenAlFacturar, @PreguntarNumeroDeSerieAlFacturar, 
-                @PreguntarFechaDeVencimientoAlFacturar, @PreguntarPorResetaAlFacturar, 
-                @NoUsarComisionesParaEsteProducto, @UsarComisionesDefinidasEnElregistroDelVendedor, 
+                @MostrarImagenAlFacturar, @PreguntarNumeroDeSerieAlFacturar, @PreguntarFechaDeVencimientoAlFacturar, 
+                @PreguntarPorResetaAlFacturar, @NoUsarComisionesParaEsteProducto, @UsarComisionesDefinidasEnElregistroDelVendedor, 
                 @MontoFijoPorVenta, @PorcentajeDeLaVenta, @PorcentajeDeLaGanacia, @Comision, @ComisionMaxima, 
-                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp());
+                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
+                @MarcaDelProducto, @ModeloDelProducto, @NumeroDeSerie);
 
                 Select last_insert_id() as 'ID';";
 
@@ -178,6 +177,9 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@ComisionMaxima", MySqlDbType.Decimal)).Value = oRegistroEN.ComisionMaxima;
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
+                Comando.Parameters.Add(new MySqlParameter("@MarcaDelProducto", MySqlDbType.VarChar,oRegistroEN.MarcaDelProducto.Length)).Value = oRegistroEN.MarcaDelProducto;
+                Comando.Parameters.Add(new MySqlParameter("@ModeloDelProducto", MySqlDbType.VarChar, oRegistroEN.ModeloDelProducto.Length)).Value = oRegistroEN.ModeloDelProducto;
+                Comando.Parameters.Add(new MySqlParameter("@NumeroDeSerie", MySqlDbType.VarChar, oRegistroEN.NumeroDeSerie.Length)).Value = oRegistroEN.NumeroDeSerie;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();

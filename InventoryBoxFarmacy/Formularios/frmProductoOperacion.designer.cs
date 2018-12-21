@@ -42,7 +42,6 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.txtIdPrecio = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -63,6 +62,7 @@
             this.txtPrecio1 = new System.Windows.Forms.TextBox();
             this.txtPorcentaje1 = new System.Windows.Forms.TextBox();
             this.txtCosto = new System.Windows.Forms.TextBox();
+            this.txtIdPrecio = new System.Windows.Forms.TextBox();
             this.gbLaboratorio = new System.Windows.Forms.GroupBox();
             this.btnBuscarLaboratorio = new System.Windows.Forms.Button();
             this.txtProveedorLaboratorio = new System.Windows.Forms.TextBox();
@@ -267,9 +267,9 @@
             this.groupBox6.Controls.Add(this.chkProductoDescontinuado);
             this.groupBox6.Controls.Add(this.chkAplicarIVA);
             this.groupBox6.Controls.Add(this.txtIVA);
-            this.groupBox6.Location = new System.Drawing.Point(604, 268);
+            this.groupBox6.Location = new System.Drawing.Point(604, 263);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(319, 171);
+            this.groupBox6.Size = new System.Drawing.Size(319, 176);
             this.groupBox6.TabIndex = 18;
             this.groupBox6.TabStop = false;
             // 
@@ -380,14 +380,6 @@
             this.label24.TabIndex = 17;
             this.label24.Text = "Porcentaje de utilidad";
             this.label24.Visible = false;
-            // 
-            // txtIdPrecio
-            // 
-            this.txtIdPrecio.Location = new System.Drawing.Point(144, 27);
-            this.txtIdPrecio.Name = "txtIdPrecio";
-            this.txtIdPrecio.Size = new System.Drawing.Size(16, 22);
-            this.txtIdPrecio.TabIndex = 4;
-            this.txtIdPrecio.Visible = false;
             // 
             // label23
             // 
@@ -590,6 +582,7 @@
             this.txtPrecio1.Text = "0.00";
             this.txtPrecio1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPrecio1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio1_KeyPress);
+            this.txtPrecio1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPrecio1_KeyUp);
             // 
             // txtPorcentaje1
             // 
@@ -601,6 +594,7 @@
             this.txtPorcentaje1.Text = "0.00";
             this.txtPorcentaje1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtPorcentaje1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPorcentaje1_KeyPress);
+            this.txtPorcentaje1.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtPorcentaje1_KeyUp);
             // 
             // txtCosto
             // 
@@ -612,6 +606,15 @@
             this.txtCosto.Text = "0.00";
             this.txtCosto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCosto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCosto_KeyPress);
+            this.txtCosto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCosto_KeyUp);
+            // 
+            // txtIdPrecio
+            // 
+            this.txtIdPrecio.Location = new System.Drawing.Point(144, 27);
+            this.txtIdPrecio.Name = "txtIdPrecio";
+            this.txtIdPrecio.Size = new System.Drawing.Size(16, 22);
+            this.txtIdPrecio.TabIndex = 4;
+            this.txtIdPrecio.Visible = false;
             // 
             // gbLaboratorio
             // 
@@ -807,6 +810,7 @@
             this.txtUnidadesXPresentacion.Size = new System.Drawing.Size(70, 22);
             this.txtUnidadesXPresentacion.TabIndex = 14;
             this.txtUnidadesXPresentacion.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidadesXPresentacion_KeyPress);
+            this.txtUnidadesXPresentacion.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtUnidadesXPresentacion_KeyUp);
             // 
             // groupBox1
             // 

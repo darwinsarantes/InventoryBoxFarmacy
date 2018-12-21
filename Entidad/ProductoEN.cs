@@ -20,19 +20,22 @@ namespace Entidad
         public decimal Existencias { set; get; }
         public decimal Minimo { set; get; }
         public decimal Maximo { set; get; }
+        public string Estado { set; get; }
 
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
         public int idUsuarioModificacion { set; get; }
         public DateTime FechaDeModificacion { set; get; }
-        
+
         public LoginEN oLoginEN = new LoginEN();
         public ProductoUnidadDeMedidaEN oUnidadDeMedida = new ProductoUnidadDeMedidaEN();
         public ProductoPresentacionEN oPresentacion = new ProductoPresentacionEN();
         public CategoriaEN oCategoria = new CategoriaEN();
-        
+
         public decimal idAlmacenEntidad { set; get; }
         public decimal idPLEntidad { set; get; }
+        public string TablaDeReferenciaDeAlmacenaje { set; get; }
+        public string TablaDeRefereciaDeProveedorOLaboratorio { set; get; }
 
         public string Where { set; get; }
         public string OrderBy { set; get; }
@@ -40,4 +43,5 @@ namespace Entidad
         public String SubTituloDelReporte { set; get; }
 
     }
+
 }

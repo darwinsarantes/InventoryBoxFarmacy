@@ -23,7 +23,10 @@ namespace Entidad
         public int PorcentajeDeLaGanacia { set; get; }
         public decimal Comision { set; get; }
         public decimal ComisionMaxima { set; get; }
-        
+        public string MarcaDelProducto { set; get; }
+        public string ModeloDelProducto { set; get; }
+        public string NumeroDeSerie { set; get; }
+
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
         public int idUsuarioModificacion { set; get; }

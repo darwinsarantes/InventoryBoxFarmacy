@@ -32,9 +32,11 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
+            this.txtAbreviatura = new System.Windows.Forms.TextBox();
             this.txtProductoUnidadDeMedida = new System.Windows.Forms.TextBox();
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -49,8 +51,6 @@
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
-            this.txtAbreviatura = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -59,8 +59,8 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.toolStrip1);
@@ -71,8 +71,8 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.label3);
@@ -98,15 +98,25 @@
             this.label3.TabIndex = 8;
             this.label3.Text = "Descripción:";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(18, 81);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(94, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Abreviatura:";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(18, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(199, 20);
+            this.label2.Size = new System.Drawing.Size(142, 20);
             this.label2.TabIndex = 8;
-            this.label2.Text = "Presentación del Producto:";
+            this.label2.Text = "Unidad de Medida:";
             // 
             // label1
             // 
@@ -127,6 +137,14 @@
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.txtDescripcion.Size = new System.Drawing.Size(354, 98);
             this.txtDescripcion.TabIndex = 3;
+            // 
+            // txtAbreviatura
+            // 
+            this.txtAbreviatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAbreviatura.Location = new System.Drawing.Point(217, 78);
+            this.txtAbreviatura.Name = "txtAbreviatura";
+            this.txtAbreviatura.Size = new System.Drawing.Size(354, 26);
+            this.txtAbreviatura.TabIndex = 3;
             // 
             // txtProductoUnidadDeMedida
             // 
@@ -277,24 +295,6 @@
             this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
             this.InformacionEntidadOperacion.Size = new System.Drawing.Size(0, 16);
             this.InformacionEntidadOperacion.TabIndex = 3;
-            // 
-            // txtAbreviatura
-            // 
-            this.txtAbreviatura.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAbreviatura.Location = new System.Drawing.Point(217, 78);
-            this.txtAbreviatura.Name = "txtAbreviatura";
-            this.txtAbreviatura.Size = new System.Drawing.Size(354, 26);
-            this.txtAbreviatura.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 81);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Abreviatura:";
             // 
             // frmProductoUnidadDeMedidaOperacion
             // 

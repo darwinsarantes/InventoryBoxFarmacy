@@ -24,6 +24,8 @@ namespace Entidad
         public decimal ValorDelIvaEnProcentaje { set; get; }
         public decimal ValorDelIva { set; get; }
         public string Estado { set; get; }
+        public decimal PrecioXUnidad { set; get; }
+        public decimal UnidadesXPrecentacion { set; get; }
 
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
