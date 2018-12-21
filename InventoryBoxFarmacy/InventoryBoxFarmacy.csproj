@@ -996,6 +996,7 @@
     <None Include="Resources\viw20x20.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="BaseDatos\Dump20181221InventarioDelTrabajo.sql" />
     <Content Include="LogSistemas.ico" />
     <Content Include="Origen XML\DTOrigenXML.xml">
       <SubType>Designer</SubType>
