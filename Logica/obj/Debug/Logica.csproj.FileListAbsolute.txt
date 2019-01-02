@@ -42,3 +42,14 @@ C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFa
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.dll
+G:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.dll
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.pdb
+G:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.pdb
+G:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
+G:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+G:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
+G:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb

@@ -321,7 +321,7 @@ namespace AccesoDatos
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = string.Format(@"SELECT ps.idProductoSustitutos, ps.idProducto, ps.idSustituto, 
-	                p.Nombre as 'Producto', NombreGenerico, NombreComun, Descripcion,
+	                p.Nombre as 'Producto', NombreGenerico, NombreComun, Descripcion, p.Codigo, p.CodigoDeBarra,
                     ps.idUsuarioDeCreacion, ps.FechaDeCreacion, u.Nombre as 'UsuarioDeCreacion',
 	                ps.idUsuarioModificacion, ps.FechaDeModificacion, u1.Nombre as 'UsuarioDeModificacion'
                  FROM  productosustitutos as ps

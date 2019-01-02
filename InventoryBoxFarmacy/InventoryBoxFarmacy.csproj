@@ -151,6 +151,18 @@
     <Compile Include="Formularios\frmLocacionOperacion.designer.cs">
       <DependentUpon>frmLocacionOperacion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmProductoGaleriaDeImagenes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductoGaleriaDeImagenes.Designer.cs">
+      <DependentUpon>frmProductoGaleriaDeImagenes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\frmProductosAsociados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductosAsociados.Designer.cs">
+      <DependentUpon>frmProductosAsociados.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmSeccionOperacion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +479,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmLocacionOperacion.resx">
       <DependentUpon>frmLocacionOperacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProductoGaleriaDeImagenes.resx">
+      <DependentUpon>frmProductoGaleriaDeImagenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProductosAsociados.resx">
+      <DependentUpon>frmProductosAsociados.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmSeccionOperacion.resx">
       <DependentUpon>frmSeccionOperacion.cs</DependentUpon>
@@ -996,7 +1014,6 @@
     <None Include="Resources\viw20x20.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BaseDatos\Dump20181221InventarioDelTrabajo.sql" />
     <Content Include="LogSistemas.ico" />
     <Content Include="Origen XML\DTOrigenXML.xml">
       <SubType>Designer</SubType>

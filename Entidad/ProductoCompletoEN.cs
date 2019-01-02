@@ -13,6 +13,7 @@ namespace Entidad
         public ProductoConfiguracionEN oConfiguracionEN = new ProductoConfiguracionEN();
         public ProductoPrecioEN oPrecioEN = new ProductoPrecioEN();
         public ProductoPromocionEN oPromocionEN = new ProductoPromocionEN();
+        public ProductoLoteEN oProductoLote = new ProductoLoteEN();
 
         public LoginEN oLoginEN = new LoginEN();
 

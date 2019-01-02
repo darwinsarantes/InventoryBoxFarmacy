@@ -384,6 +384,7 @@ namespace AccesoDatos
                 inner join modulo as m on m.idModulo = mi.idModulo
                 where miu.idModuloInterfazUsuario > 0 and miu.idUsuario = {0} and upper(trim( i.Nombre)) = upper('{1}') ", oRegistroEN.oUsuarioEN.idUsuario, oRegistroEN.oPrivilegioEN.oModuloInterfazEN.oInterfazEN.Nombre.Trim());
 
+                System.Diagnostics.Debug.Print(Consultas);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();                

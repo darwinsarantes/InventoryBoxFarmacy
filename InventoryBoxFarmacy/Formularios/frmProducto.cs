@@ -25,6 +25,7 @@ namespace InventoryBoxFarmacy.Formularios
         private string NOMBRE_LLAVE_PRIMARIA = "idProducto";
         private int ValorLlavePrimariaEntidad;
         private int IndiceSeleccionado;
+        
         public bool AplicarFiltroDeWhereExterno { set; get; }
         public string WhereExterno { set; get; }
 
@@ -475,15 +476,23 @@ namespace InventoryBoxFarmacy.Formularios
                 if (oRegistroLN.ListadoPrivilegiosDelUsuariosPorIntefaz(oRegistroEN, Program.oDatosDeConexion))
                 {
 
-                    foreach (ToolStripItem item in mcsMenu.Items)
+                    if (oRegistroLN.TraerDatos().Rows.Count > 0)
                     {
-                        if (item.Tag != null)
+
+                        foreach (ToolStripItem item in mcsMenu.Items)
                         {
-                            if (item.GetType() == typeof(ToolStripMenuItem))
+                            if (item.Tag != null)
                             {
-                                item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
+                                if (item.GetType() == typeof(ToolStripMenuItem))
+                                {
+                                    item.Enabled = oRegistroLN.VerificarSiTengoAcceso(item.Tag.ToString());
+                                }
                             }
                         }
+
+                    }else
+                    {
+                        mcsMenu.Enabled = true;
                     }
 
                     tsbImprimir.Enabled = oRegistroLN.VerificarSiTengoAcceso("Imprimir");
@@ -578,9 +587,13 @@ namespace InventoryBoxFarmacy.Formularios
 
                             oProducto[a - 1] = new ProductoEN();
                             oProducto[a - 1].idProducto = Convert.ToInt32(Fila.Cells["idProducto"].Value);
-                            oProducto[a - 1].Nombre = Fila.Cells["Producto"].Value.ToString();
+                            oProducto[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                            oProducto[a - 1].CodigoDeBarra = Fila.Cells["CodigoDeBarra"].Value.ToString();
+                            oProducto[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                             oProducto[a - 1].NombreComun = Fila.Cells["NombreComun"].Value.ToString();
                             oProducto[a - 1].NombreGenerico = Fila.Cells["NombreGenerico"].Value.ToString();
+                            oProducto[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+                            oProducto[a - 1].Observaciones = Fila.Cells["Observaciones"].Value.ToString();
 
                         }
                     }
@@ -640,13 +653,16 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         a++;
                         Array.Resize(ref oProducto, a);
-                        
+
                         oProducto[a - 1] = new ProductoEN();
                         oProducto[a - 1].idProducto = Convert.ToInt32(Fila.Cells["idProducto"].Value);
-                        oProducto[a - 1].Nombre = Fila.Cells["Producto"].Value.ToString();
+                        oProducto[a - 1].Codigo = Fila.Cells["Codigo"].Value.ToString();
+                        oProducto[a - 1].CodigoDeBarra = Fila.Cells["CodigoDeBarra"].Value.ToString();
+                        oProducto[a - 1].Nombre = Fila.Cells["Nombre"].Value.ToString();
                         oProducto[a - 1].NombreComun = Fila.Cells["NombreComun"].Value.ToString();
                         oProducto[a - 1].NombreGenerico = Fila.Cells["NombreGenerico"].Value.ToString();
-
+                        oProducto[a - 1].Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+                        oProducto[a - 1].Observaciones = Fila.Cells["Observaciones"].Value.ToString();
 
                     }
                 }
@@ -895,6 +911,69 @@ namespace InventoryBoxFarmacy.Formularios
             if (chkNombreGenerico.CheckState == CheckState.Checked && tsbFiltroAutomatico.CheckState == CheckState.Checked)
             {
                 LLenarListado();
+            }
+        }
+
+        private void tsbGaleriaDeImagenes_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if(dgvLista.Rows.Count > 0)
+                {
+                    
+                    if(dgvLista.CurrentRow != null)
+                    {
+
+                        DataGridViewRow Fila = dgvLista.CurrentRow;
+                        string NombreProducto = string.Format("{0}-{1}", Fila.Cells["Codigo"].Value.ToString(), Fila.Cells["Nombre"].Value.ToString());
+                        frmProductoGaleriaDeImagenes oFrmGaleria = new frmProductoGaleriaDeImagenes();
+                        oFrmGaleria.TituloDeLaVentana = string.Format("Galeria de imagenes para '{0}'", NombreProducto);
+                        oFrmGaleria.InformacionDeLaOperacion = NombreProducto;
+                        oFrmGaleria.ValorLlavePrimariaEntidad = Convert.ToInt32(Fila.Cells["idProducto"].Value.ToString());
+
+                        oFrmGaleria.ShowDialog();
+
+                    }
+                }
+
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Galeria de imagenes del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void tsbProductosSustitutos_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dgvLista.Rows.Count > 0)
+                {
+
+                    if (dgvLista.CurrentRow != null)
+                    {
+
+                        DataGridViewRow Fila = dgvLista.CurrentRow;
+                        string NombreProducto = string.Format("{0} {3} {2}-{1}", Fila.Cells["Codigo"].Value.ToString(), Fila.Cells["Nombre"].Value.ToString(), Fila.Cells["CodigoDeBarra"].Value.ToString(), Environment.NewLine);
+
+                        frmProductosAsociados ofrmSustitutos = new frmProductosAsociados();
+                        ofrmSustitutos.TituloDeLaVentana = string.Format("Lista de Productos sutitutos de: '{0}'", NombreProducto);
+                        ofrmSustitutos.InformacionDeLaOperacion = NombreProducto;
+                        ofrmSustitutos.CodigoProducto = Fila.Cells["Codigo"].Value.ToString();
+                        ofrmSustitutos.CodigoDeBarraDelProducto = Fila.Cells["CodigoDeBarra"].Value.ToString();
+                        ofrmSustitutos.NombreDelProducto = Fila.Cells["Nombre"].Value.ToString();
+                        ofrmSustitutos.ValorLlavePrimariaEntidad = Convert.ToInt32(Fila.Cells["idProducto"].Value.ToString());
+
+                        ofrmSustitutos.ShowDialog();
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Galeria de imagenes del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

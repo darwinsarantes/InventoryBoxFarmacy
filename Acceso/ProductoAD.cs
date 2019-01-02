@@ -39,24 +39,23 @@ namespace AccesoDatos
 
                 Consultas = @"
                                 
-                insert into producto
+                insert into producto 
                 (Codigo, CodigoDeBarra, Nombre, NombreGenerico, NombreComun, 
                 Descripcion, Observaciones, Existencias, Minimo, Maximo, 
                 idProductoUnidadDeMedida, idProductoPresentacion, idCategoria, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                idAlmacenEntidad, idPLEntidad)
+                idAlmacenEntidad, idPLEntidad, TablaDeReferenciaDeAlmacenaje, TablaDeRefereciaDeProveedorOLaboratorio, Estado, ProductoControlado, Foto)
                 values
-                (@Codigo, @CodigoDeBarra, @Nombre, @NombreGenerico, @NombreComun, 
+                (GenerarCodigoDelProducto(), @CodigoDeBarra, @Nombre, @NombreGenerico, @NombreComun, 
                 @Descripcion, @Observaciones, @Existencias, @Minimo, @Maximo, 
                 @idProductoUnidadDeMedida, @idProductoPresentacion, @idCategoria, 
                 @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @idAlmacenEntidad, @idPLEntidad);
+                @idAlmacenEntidad, @idPLEntidad, @TablaDeReferenciaDeAlmacenaje, @TablaDeRefereciaDeProveedorOLaboratorio, @Estado, @ProductoControlado, @Foto);
 
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@Codigo", MySqlDbType.VarChar, oRegistroEN.Codigo.Trim().Length)).Value = oRegistroEN.Codigo.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@CodigoDeBarra", MySqlDbType.VarChar, oRegistroEN.CodigoDeBarra.Trim().Length)).Value = oRegistroEN.CodigoDeBarra.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NombreGenerico", MySqlDbType.VarChar, oRegistroEN.NombreGenerico.Trim().Length)).Value = oRegistroEN.NombreGenerico.Trim();
@@ -73,6 +72,11 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
                 Comando.Parameters.Add(new MySqlParameter("@idAlmacenEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacenEntidad;
                 Comando.Parameters.Add(new MySqlParameter("@idPLEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idPLEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeReferenciaDeAlmacenaje", MySqlDbType.VarChar, oRegistroEN.TablaDeReferenciaDeAlmacenaje.Length)).Value = oRegistroEN.TablaDeReferenciaDeAlmacenaje.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeRefereciaDeProveedorOLaboratorio", MySqlDbType.VarChar, oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Length)).Value = oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@ProductoControlado", MySqlDbType.Int32)).Value = oRegistroEN.ProductoControlado;
+                Comando.Parameters.Add(new MySqlParameter("@Foto", MySqlDbType.Binary)).Value = oRegistroEN.AFoto;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -145,18 +149,18 @@ namespace AccesoDatos
                 Descripcion, Observaciones, Existencias, Minimo, Maximo, 
                 idProductoUnidadDeMedida, idProductoPresentacion, idCategoria, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                idAlmacenEntidad, idPLEntidad, TablaDeReferenciaDeAlmacenaje, TablaDeRefereciaDeProveedorOLaboratorio, Estado)
+                idAlmacenEntidad, idPLEntidad, TablaDeReferenciaDeAlmacenaje, TablaDeRefereciaDeProveedorOLaboratorio, Estado, ProductoControlado, Foto)
                 values
                 (GenerarCodigoDelProducto(), @CodigoDeBarra, @Nombre, @NombreGenerico, @NombreComun, 
                 @Descripcion, @Observaciones, @Existencias, @Minimo, @Maximo, 
                 @idProductoUnidadDeMedida, @idProductoPresentacion, @idCategoria, 
                 @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @idAlmacenEntidad, @idPLEntidad, @TablaDeReferenciaDeAlmacenaje, @TablaDeRefereciaDeProveedorOLaboratorio, @Estado);
+                @idAlmacenEntidad, @idPLEntidad, @TablaDeReferenciaDeAlmacenaje, @TablaDeRefereciaDeProveedorOLaboratorio, @Estado, @ProductoControlado, @Foto);
 
                 Select last_insert_id() as 'ID';";
 
                 Comando.CommandText = Consultas;
-                                
+
                 Comando.Parameters.Add(new MySqlParameter("@CodigoDeBarra", MySqlDbType.VarChar, oRegistroEN.CodigoDeBarra.Trim().Length)).Value = oRegistroEN.CodigoDeBarra.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Nombre", MySqlDbType.VarChar, oRegistroEN.Nombre.Trim().Length)).Value = oRegistroEN.Nombre.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@NombreGenerico", MySqlDbType.VarChar, oRegistroEN.NombreGenerico.Trim().Length)).Value = oRegistroEN.NombreGenerico.Trim();
@@ -176,6 +180,8 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@TablaDeReferenciaDeAlmacenaje", MySqlDbType.VarChar, oRegistroEN.TablaDeReferenciaDeAlmacenaje.Length)).Value = oRegistroEN.TablaDeReferenciaDeAlmacenaje.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@TablaDeRefereciaDeProveedorOLaboratorio", MySqlDbType.VarChar, oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Length)).Value = oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Trim();
                 Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@ProductoControlado", MySqlDbType.Int32)).Value = oRegistroEN.ProductoControlado;
+                Comando.Parameters.Add(new MySqlParameter("@Foto", MySqlDbType.Binary)).Value = oRegistroEN.AFoto;
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -282,6 +288,24 @@ namespace AccesoDatos
                     throw new System.ArgumentException(mensaje);
                 }
 
+                if(oRegistroEN.oProductoLote.AplicarCambio == true)
+                {
+                    oRegistroEN.oProductoLote.oProductoEN = oRegistroEN.oProductoEN;
+                    ProductoLoteAD oProductoLoteAD = new ProductoLoteAD();
+                    if(oProductoLoteAD.Agregar(oRegistroEN.oProductoLote, oDatos,ref Cnn, ref oMySqlTransaction))
+                    {
+                        Errores = EvaluarTextoError(Errores, "GUARDAR", oProductoLoteAD.Error);
+                    }
+                    else
+                    {
+                        mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información del Lote del producto. ", Environment.NewLine, oProductoLoteAD.Error);
+                        throw new System.ArgumentException(mensaje);
+                    }
+
+                    oProductoLoteAD = null;
+
+                }
+
                 oMySqlTransaction.Commit();
 
                 oConfiguracionAD = null;
@@ -342,16 +366,20 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = @"update producto set
+                Consultas = @"UPDATE producto SET
 	                Codigo = @Codigo, CodigoDeBarra = @CodigoDeBarra, 
                     Nombre = @Nombre, NombreGenerico = @NombreGenerico, 
-	                NombreComun = @NombreComun, Descripcion = @Descripcion, 
-                    Observaciones = @Observaciones, Existencias = @Existencias,
-                    Minimo = @Minimo, Maximo = @Maximo, 
-                idProductoUnidadDeMedida = @idProductoUnidadDeMedida, 
-                idProductoPresentacion = @idProductoPresentacion, idCategoria = @idCategoria, 
-                idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp()
-                where idProducto = @idProducto;";
+                    NombreComun = @NombreComun, 
+                    Descripcion = @Descripcion, Observaciones = @Observaciones, 
+                    Existencias = @Existencias, Minimo = @Minimo, 
+                    Maximo = @Maximo, idProductoUnidadDeMedida = @idProductoUnidadDeMedida, 
+                    idProductoPresentacion = @idProductoPresentacion, idCategoria = @idCategoria, 
+                    idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp(), 
+                    idAlmacenEntidad = @idAlmacenEntidad, idPLEntidad = @idPLEntidad, 
+                    TablaDeReferenciaDeAlmacenaje = @TablaDeReferenciaDeAlmacenaje, 
+                    TablaDeRefereciaDeProveedorOLaboratorio = @TablaDeRefereciaDeProveedorOLaboratorio, 
+                    Estado = @Estado, ProductoControlado = @ProductoControlado
+                WHERE idProducto = @idProducto;";
 
                 Comando.CommandText = Consultas;
 
@@ -370,7 +398,12 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@idProductoPresentacion", MySqlDbType.Int32)).Value = oRegistroEN.oPresentacion.idProductoPresentacion;
                 Comando.Parameters.Add(new MySqlParameter("@idCategoria", MySqlDbType.Int32)).Value = oRegistroEN.oCategoria.idCategoria;                
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-
+                Comando.Parameters.Add(new MySqlParameter("@idAlmacenEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacenEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@idPLEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idPLEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeReferenciaDeAlmacenaje", MySqlDbType.VarChar, oRegistroEN.TablaDeReferenciaDeAlmacenaje.Length)).Value = oRegistroEN.TablaDeReferenciaDeAlmacenaje.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeRefereciaDeProveedorOLaboratorio", MySqlDbType.VarChar, oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Length)).Value = oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@ProductoControlado", MySqlDbType.Int32)).Value = oRegistroEN.ProductoControlado;
 
                 Comando.ExecuteNonQuery();
                 
@@ -431,16 +464,20 @@ namespace AccesoDatos
                 Comando.Transaction = Transaccion_Existente;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = @"update producto set
+                Consultas = @"UPDATE producto SET
 	                Codigo = @Codigo, CodigoDeBarra = @CodigoDeBarra, 
                     Nombre = @Nombre, NombreGenerico = @NombreGenerico, 
-	                NombreComun = @NombreComun, Descripcion = @Descripcion, 
-                    Observaciones = @Observaciones, Existencias = @Existencias,
-                    Minimo = @Minimo, Maximo = @Maximo, 
-                idProductoUnidadDeMedida = @idProductoUnidadDeMedida, 
-                idProductoPresentacion = @idProductoPresentacion, idCategoria = @idCategoria, 
-                idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp()
-                where idProducto = @idProducto;";
+                    NombreComun = @NombreComun, 
+                    Descripcion = @Descripcion, Observaciones = @Observaciones, 
+                    Existencias = @Existencias, Minimo = @Minimo, 
+                    Maximo = @Maximo, idProductoUnidadDeMedida = @idProductoUnidadDeMedida, 
+                    idProductoPresentacion = @idProductoPresentacion, idCategoria = @idCategoria, 
+                    idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp(), 
+                    idAlmacenEntidad = @idAlmacenEntidad, idPLEntidad = @idPLEntidad, 
+                    TablaDeReferenciaDeAlmacenaje = @TablaDeReferenciaDeAlmacenaje, 
+                    TablaDeRefereciaDeProveedorOLaboratorio = @TablaDeRefereciaDeProveedorOLaboratorio, 
+                    Estado = @Estado, ProductoControlado = @ProductoControlado
+                WHERE idProducto = @idProducto;";
 
                 Comando.CommandText = Consultas;
 
@@ -459,7 +496,12 @@ namespace AccesoDatos
                 Comando.Parameters.Add(new MySqlParameter("@idProductoPresentacion", MySqlDbType.Int32)).Value = oRegistroEN.oPresentacion.idProductoPresentacion;
                 Comando.Parameters.Add(new MySqlParameter("@idCategoria", MySqlDbType.Int32)).Value = oRegistroEN.oCategoria.idCategoria;
                 Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-
+                Comando.Parameters.Add(new MySqlParameter("@idAlmacenEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idAlmacenEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@idPLEntidad", MySqlDbType.Int32)).Value = oRegistroEN.idPLEntidad;
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeReferenciaDeAlmacenaje", MySqlDbType.VarChar, oRegistroEN.TablaDeReferenciaDeAlmacenaje.Length)).Value = oRegistroEN.TablaDeReferenciaDeAlmacenaje.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@TablaDeRefereciaDeProveedorOLaboratorio", MySqlDbType.VarChar, oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Length)).Value = oRegistroEN.TablaDeRefereciaDeProveedorOLaboratorio.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Length)).Value = oRegistroEN.Estado.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@ProductoControlado", MySqlDbType.Int32)).Value = oRegistroEN.ProductoControlado;
 
                 Comando.ExecuteNonQuery();
 
@@ -694,28 +736,36 @@ Where p.idProducto > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select p.idProducto,p.idProductoUnidadDeMedida, p.idProductoPresentacion, p.idCategoria, ppc.idProductoPrecio, 
-                pcg.idProductoConfiguracion,p.Codigo, p.CodigoDeBarra, p.Nombre, p.NombreGenerico, p.NombreComun, 
-                p.Descripcion, p.Observaciones,pps.Nombre as 'Presentacion', ppc.Costo, ppc.PorcentajeDelPrecio1, ppc.PorcentajeDelPrecio2, 
-                ppc.PorcentajeDelPrecio3, ppc.PorcentajeDelPrecio4, ppc.PorcentajeDelPrecio5, ppc.Precio1, ppc.Precio2, ppc.Precio3, 
-                ppc.Precio4, ppc.Precio5, ppc.AplicarElIva, ppc.ValorDelIvaEnProcentaje, ppc.ValorDelIva, 
-                pum.Nombre as 'UnidadDeMedida', p.Existencias, p.Minimo, p.Maximo,
-                pcg.ActivarPromocion, pcg.AplicarComisiones, pcg.MostrarContenidoDeObservacionesENFactura, pcg.MostrarImagenAlFacturar, 
-                pcg.PreguntarNumeroDeSerieAlFacturar, pcg.PreguntarFechaDeVencimientoAlFacturar, pcg.PreguntarPorResetaAlFacturar, 
-                pcg.NoUsarComisionesParaEsteProducto, pcg.UsarComisionesDefinidasEnElregistroDelVendedor, pcg.MontoFijoPorVenta, 
-                pcg.PorcentajeDeLaVenta, pcg.PorcentajeDeLaGanacia, pcg.Comision, pcg.ComisionMaxima,
-                ctg.Nombre as 'Categoria',                 
-                p.idUsuarioDeCreacion, p.FechaDeCreacion, u.Nombre as 'UsuarioDeCreacion',
-                p.idUsuarioModificacion, p.FechaDeModificacion, u1.Nombre as 'UsuarioDeModificacion'
-                from Producto as p
-                inner join productounidaddemedida as pum on pum.idProductoUnidadDeMedida = p.idProductoUnidadDeMedida
-                inner join productopresentacion as pps on pps.idProductoPresentacion = p.idProductoPresentacion
-                inner join productoprecio as ppc on ppc.idProducto =  p.idProducto and ppc.Estado = 'ACTIVO'
-                inner join productoconfiguracion as pcg on pcg.idProducto = p.idProducto                
-                inner join usuario as u on u.idUsuario = p.idUsuarioDeCreacion                
-                inner join categoria as ctg on ctg.idCategoria = p.idCategoria
-                left join usuario as u1 on u1.idUsuario = p.idUsuarioModificacion
-                Where p.idProducto = {0} ", oRegistroEN.idProducto);
+                Consultas = string.Format(@"SELECT 
+p.idProducto,p.idCategoria, p.idAlmacenEntidad, p.idPLEntidad,pp.idProductoPrecio, 
+p.Codigo, p.CodigoDeBarra, p.Nombre AS 'ProductoNombre', p.NombreGenerico, 
+p.NombreComun, p.Descripcion, p.Observaciones, p.Existencias, p.Minimo,
+p.Maximo, p.idProductoUnidadDeMedida, p.idProductoPresentacion, 
+p.TablaDeReferenciaDeAlmacenaje, 
+p.TablaDeRefereciaDeProveedorOLaboratorio, p.Estado,
+pp.idProductoPrecio, pp.Costo, pp.PorcentajeDelPrecio1, 
+pp.PorcentajeDelPrecio2, pp.PorcentajeDelPrecio3, 
+pp.PorcentajeDelPrecio4, pp.PorcentajeDelPrecio5, pp.Precio1, 
+pp.Precio2, pp.Precio3, pp.Precio4, pp.Precio5, pp.AplicarElIva, 
+pp.ValorDelIvaEnProcentaje, pp.ValorDelIva, pp.Estado as 'EstadoDelProducto', 
+pp.PrecioXUnidad, pp.UnidadesXPrecentacion,
+pc.idProductoConfiguracion, pc.ActivarPromocion, pc.AplicarComisiones,
+pc.MostrarContenidoDeObservacionesENFactura, 
+pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
+pc.PreguntarFechaDeVencimientoAlFacturar, 
+pc.PreguntarPorResetaAlFacturar, 
+pc.NoUsarComisionesParaEsteProducto, 
+pc.UsarComisionesDefinidasEnElregistroDelVendedor, 
+pc.MontoFijoPorVenta, pc.PorcentajeDeLaVenta, pc.PorcentajeDeLaGanacia, pc.Comision, 
+pc.ComisionMaxima, pc.MarcaDelProducto, pc.ModeloDelProducto, 
+pc.NumeroDeSerie, p.Foto
+FROM producto as p 
+inner join categoria as c on c.idCategoria = p.idCategoria
+inner join productopresentacion as ps on ps.idProductoPresentacion = p.idProductoPresentacion
+inner join productounidaddemedida as pu on pu.idProductoUnidadDeMedida = p.idProductoUnidadDeMedida
+inner join productoprecio as pp on pp.idProducto = p.idProducto and UPPER(pp.Estado) = 'ACTIVO'
+INNER JOIN productoconfiguracion AS pc on pc.idProducto = p.idProducto
+where p.idProducto = {0} ", oRegistroEN.idProducto);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();

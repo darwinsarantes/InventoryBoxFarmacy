@@ -56,6 +56,7 @@
     <Compile Include="BancosEN.cs" />
     <Compile Include="CuentaDeBancosEN.cs" />
     <Compile Include="ContenedorEN.cs" />
+    <Compile Include="ProductoLoteEN.cs" />
     <Compile Include="SeccionContenedorEN.cs" />
     <Compile Include="TiposDeEntradasEN.cs" />
     <Compile Include="TipoDeSalidaEN.cs" />

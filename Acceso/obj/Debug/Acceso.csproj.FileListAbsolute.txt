@@ -33,3 +33,11 @@ C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFa
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb
+G:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
+G:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
+G:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
+G:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.pdb
+G:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
+G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
+G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb

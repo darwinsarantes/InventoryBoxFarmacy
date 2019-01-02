@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 using Entidad;
 namespace AccesoDatos
 {
-    public class ProductoImagenesAD
+    public class ProductoLoteAD
     {
 
         public string Error { set; get; }
@@ -23,7 +23,7 @@ namespace AccesoDatos
 
         #region "Funciones para datos dll"
 
-        public bool Agregar(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos) {
+        public bool Agregar(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos) {
 
             oTransaccionesAD = new TransaccionesAD();
 
@@ -38,26 +38,31 @@ namespace AccesoDatos
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = @"                                
-                insert into productoimagenes
-                (idProducto, Foto, idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
+                insert into productolote
+                (idProducto, FechaDeVencimiento, CantidadDelLote, 
+                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
                 values
-                (@idProducto, @Foto, @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp());
-                Select last_insert_id() as 'ID';";
+                (@idProducto, @FechaDeVencimiento, @CantidadDelLote, 
+                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp());
+
+                Select last_insert_id() as 'ID';
+
+                ";
 
                 Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;               
-                Comando.Parameters.Add(new MySqlParameter("@Foto", MySqlDbType.Binary)).Value = oRegistroEN.AFoto;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
+                
+                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeVencimiento", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeVencimiento;
+                Comando.Parameters.Add(new MySqlParameter("@CantidadDelLote", MySqlDbType.Decimal)).Value = oRegistroEN.CantidadDelLote;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
 
                 Adaptador = new MySqlDataAdapter();
-                DT = new DataTable();
-
                 Adaptador.SelectCommand = Comando;
+                DT = new DataTable();
                 Adaptador.Fill(DT);
 
-                oRegistroEN.idProductoImagenes = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
+                oRegistroEN.idLoteDelProducto = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
                 
                 DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
 
@@ -101,8 +106,80 @@ namespace AccesoDatos
             }
 
         }
-        
-        public bool Actualizar(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos)
+
+        public bool Agregar(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
+        {
+
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+                
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn_Existente;
+                Comando.Transaction = Transaccion_Existente;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = @"                                
+                insert into productolote
+                (idProducto, FechaDeVencimiento, CantidadDelLote, 
+                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
+                values
+                (@idProducto, @FechaDeVencimiento, @CantidadDelLote, 
+                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp());
+
+                Select last_insert_id() as 'ID';
+
+                ";
+
+                Comando.CommandText = Consultas;
+
+                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeVencimiento", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeVencimiento;
+                Comando.Parameters.Add(new MySqlParameter("@CantidadDelLote", MySqlDbType.Decimal)).Value = oRegistroEN.CantidadDelLote;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
+
+                Adaptador = new MySqlDataAdapter();
+                Adaptador.SelectCommand = Comando;
+                DT = new DataTable();
+                Adaptador.Fill(DT);
+
+                oRegistroEN.idLoteDelProducto = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
+
+                DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return true;
+                
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return false;
+            }
+            finally
+            {
+                
+                Comando = null;
+                Adaptador = null;
+                oTransaccionesAD = null;
+
+            }
+
+        }
+
+        public bool Actualizar(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -116,16 +193,17 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = @"update productoimagenes set
-	                Foto = @Foto,idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp()
-                where idProductoImagenes = @idProductoImagenes;";
+                Consultas = @"update productolote set
+                FechaDeVencimiento = @FechaDeVencimiento,
+                idUsuarioModificacion = @idUsuarioModificacion, FechaDeModificacion = current_timestamp()
+                where idLoteDelProducto = @idLoteDelProducto;";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@idProductoImagenes", MySqlDbType.Int32)).Value = oRegistroEN.idProductoImagenes;
-                Comando.Parameters.Add(new MySqlParameter("@Foto", MySqlDbType.Binary)).Value = oRegistroEN.AFoto;                
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-                
+                Comando.Parameters.Add(new MySqlParameter("@idLoteDelProducto", MySqlDbType.Int32)).Value = oRegistroEN.idLoteDelProducto;                
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeVencimiento", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeVencimiento;                
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.oLoginEN.idUsuario;
+
                 Comando.ExecuteNonQuery();
                 
                 DescripcionDeOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
@@ -172,8 +250,8 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool Eliminar(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos)
+        
+        public bool Eliminar(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -187,10 +265,10 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = @"Delete from ProductoImagenes Where idProductoImagenes = @idProductoImagenes;";
+                Consultas = @"Delete from ProductoLote Where idLoteDelProducto = @idLoteDelProducto;";
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@idProductoImagenes", MySqlDbType.Int32)).Value = oRegistroEN.idProductoImagenes;
+                Comando.Parameters.Add(new MySqlParameter("@idLoteDelProducto", MySqlDbType.Int32)).Value = oRegistroEN.idLoteDelProducto;
                 
                 Comando.ExecuteNonQuery();
 
@@ -238,8 +316,8 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool Listado(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos)
+        
+        public bool Listado(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -252,10 +330,9 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select 
-	                idProductoImagenes, idProducto, Foto
-                from productoimagenes as pi
-                Where idProductoImagenes > 0  {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote
+                from productolote as pl
+                where idLoteDelProducto > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
                 
                 Adaptador = new MySqlDataAdapter();
@@ -296,7 +373,7 @@ namespace AccesoDatos
 
         }
 
-        public bool ListadoPorIdentificador(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos)
+        public bool ListadoPorIdentificador(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -309,10 +386,9 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select 
-	                idProductoImagenes, idProducto, Foto
-                from productoimagenes as pi
-                Where idProductoImagenes = {0}", oRegistroEN.idProductoImagenes);
+                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote
+                from productolote as pl
+                where idLoteDelProducto = {0} ", oRegistroEN.idLoteDelProducto);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -352,8 +428,8 @@ namespace AccesoDatos
             }
 
         }
-       
-        public bool ListadoParaReportes(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos)
+
+        public bool ListadoParaCombos(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 
             try
@@ -366,10 +442,67 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select 
-	                idProductoImagenes, idProducto, Foto
-                from productoimagenes as pi
-                Where idProductoImagenes > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote
+                from productolote as pl
+                where idLoteDelProducto > 0 {0} {1} ; ", oRegistroEN.Where, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                System.Diagnostics.Debug.Print("Consultas de Tipo de transaccion: " + Consultas);
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+               
+        public bool ListadoParaReportes(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote
+                from productolote as pl
+                where idLoteDelProducto > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();
@@ -407,6 +540,41 @@ namespace AccesoDatos
                 Adaptador = null;
 
             }
+
+        }
+
+        private string EvaluarTextoError(string Cadena, string operacion, string StringError)
+        {
+            string valor = string.Empty;
+
+            if (string.IsNullOrEmpty(StringError) || StringError.Trim().Length == 0)
+            {
+                valor = string.Empty;
+
+            }
+            else
+            {
+                valor = string.Format("Error producido al Momento de '{0}', la Transacción no se completo: {1} {2}", operacion, Environment.NewLine, StringError);
+            }
+
+            if (Cadena.Trim().Length == 0 || string.IsNullOrEmpty(Cadena))
+            {
+                if (string.IsNullOrEmpty(valor))
+                {
+                    Cadena = string.Empty;
+                }
+                else { Cadena = valor; }
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(valor) == false)
+                {
+                    Cadena = string.Format("{0} {1} {2}", Cadena, System.Environment.NewLine, valor);
+                }
+
+            }
+
+            return Cadena;
 
         }
 
@@ -414,7 +582,7 @@ namespace AccesoDatos
 
         #region "Funciones de Validación"
 
-        public bool ValidarSiElRegistroEstaVinculado(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        public bool ValidarSiElRegistroEstaVinculado(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -427,11 +595,11 @@ namespace AccesoDatos
                 Comando = new MySqlCommand();
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.StoredProcedure;
-                Comando.CommandText = "ValidarSiElRegistroEstaVinculado";
+                Comando.CommandText = "ValidarSiElRegistroEstaVinculadoUnaTabla";
 
-                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idProductoImagenes";
-                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idProductoImagenes;
-                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = string.Empty;
+                Comando.Parameters.Add(new MySqlParameter("@CampoABuscar_", MySqlDbType.VarChar, 200)).Value = "idLoteDelProducto";
+                Comando.Parameters.Add(new MySqlParameter("@ValorCampoABuscar", MySqlDbType.Int32)).Value = oRegistroEN.idLoteDelProducto;
+                Comando.Parameters.Add(new MySqlParameter("@ExcluirTabla_", MySqlDbType.VarChar, 200)).Value = "ProductoLote";
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -492,8 +660,8 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool ValidarRegistroDuplicado(ProductoImagenesEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        
+        public bool ValidarRegistroDuplicado(ProductoLoteEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
             oTransaccionesAD = new TransaccionesAD();
 
@@ -511,16 +679,16 @@ namespace AccesoDatos
 
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoImagenes from ProductoImagenes where idProducto = @idProducto) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select idLoteDelProducto from ProductoLote where SoloFecha(FechaDeVencimiento) = SoloFecha(@FechaDeVencimiento)) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeVencimiento", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeVencimiento;
 
                         break;
 
                     case "ACTUALIZAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(Select idProductoImagenes from ProductoImagenes where idProducto = @idProducto and idProductoImagenes <> @idProductoImagenes) THEN 1 ELSE 0 END AS 'RES'";
-                        Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                        Comando.Parameters.Add(new MySqlParameter("@idProductoImagenes", MySqlDbType.Int32)).Value = oRegistroEN.idProductoImagenes;
+                        Consultas = @"SELECT CASE WHEN EXISTS(Select idLoteDelProducto from ProductoLote where SoloFecha(FechaDeVencimiento) = SoloFecha(@FechaDeVencimiento) and idLoteDelProducto <> @idLoteDelProducto) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeVencimiento", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeVencimiento;
+                        Comando.Parameters.Add(new MySqlParameter("@idLoteDelProducto", MySqlDbType.Int32)).Value = oRegistroEN.idLoteDelProducto;
 
                         break;
 
@@ -583,35 +751,34 @@ namespace AccesoDatos
             }
 
         }
-
+        
         #endregion
 
         #region "Funciones que retornan información"
 
-        private TransaccionesEN InformacionDelaTransaccion(ProductoImagenesEN oProductoImagenes, String TipoDeOperacion, String Descripcion, String Estado)
+        private TransaccionesEN InformacionDelaTransaccion(ProductoLoteEN oProductoLote, String TipoDeOperacion, String Descripcion, String Estado)
         {
             TransaccionesEN oRegistroEN = new TransaccionesEN();
 
-            oRegistroEN.idregistro = oProductoImagenes.idProductoImagenes;
-            oRegistroEN.Modelo = "ProductoImagenesAD";
-            oRegistroEN.Modulo = "Producto";
-            oRegistroEN.Tabla = "ProductoImagenes";
+            oRegistroEN.idregistro = oProductoLote.idLoteDelProducto;
+            oRegistroEN.Modelo = "ProductoLoteAD";
+            oRegistroEN.Modulo = "Ubicacion";
+            oRegistroEN.Tabla = "ProductoLote";
             oRegistroEN.tipodeoperacion = TipoDeOperacion;
             oRegistroEN.Estado = Estado;
-            oRegistroEN.ip = oProductoImagenes.oLoginEN.NumeroIP;
-            oRegistroEN.idusuario = oProductoImagenes.oLoginEN.idUsuario;
-            oRegistroEN.idusuarioaprueba = oProductoImagenes.oLoginEN.idUsuario;
+            oRegistroEN.ip = oProductoLote.oLoginEN.NumeroIP;
+            oRegistroEN.idusuario = oProductoLote.oLoginEN.idUsuario;
+            oRegistroEN.idusuarioaprueba = oProductoLote.oLoginEN.idUsuario;
             oRegistroEN.descripciondelusuario = DescripcionDeOperacion;
             oRegistroEN.descripcioninterna = Descripcion;
-            oRegistroEN.NombreDelEquipo = oProductoImagenes.oLoginEN.NombreDelComputador;
+            oRegistroEN.NombreDelEquipo = oProductoLote.oLoginEN.NombreDelComputador;
 
             return oRegistroEN;
         }
-
-
-        private string InformacionDelRegistro(ProductoImagenesEN oRegistroEN) {
-            string Cadena = @"idProductoImagenes, idProducto, idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
-            Cadena = string.Format(Cadena, oRegistroEN.idProductoImagenes, oRegistroEN.oProductoEN.idProducto, oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion);
+        
+        private string InformacionDelRegistro(ProductoLoteEN oRegistroEN) {
+            string Cadena = @"idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote, idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion";
+            Cadena = string.Format(Cadena, oRegistroEN.idLoteDelProducto,oRegistroEN.oProductoEN.idProducto, oRegistroEN.FechaDeVencimiento, oRegistroEN.CantidadDelLote, oRegistroEN.IdUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.IdUsuarioDeModificacion, oRegistroEN.FechaDeModificacion);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
         }
@@ -626,7 +793,6 @@ namespace AccesoDatos
         }
 
         #endregion
-
-
+        
     }
 }

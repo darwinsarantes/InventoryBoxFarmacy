@@ -21,11 +21,21 @@ namespace Entidad
         public decimal Minimo { set; get; }
         public decimal Maximo { set; get; }
         public string Estado { set; get; }
+        public int ProductoControlado { set; get; }
 
         public int idUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
         public int idUsuarioModificacion { set; get; }
         public DateTime FechaDeModificacion { set; get; }
+
+        /// <summary>
+        /// Variable tipo objeto para el objeto de la imagen del producto
+        /// </summary>
+        public Object oFoto { set; get; }
+        /// <summary>
+        /// Arreglo de datos para la imagen del producto
+        /// </summary>
+        public byte[] AFoto { set; get; }
 
         public LoginEN oLoginEN = new LoginEN();
         public ProductoUnidadDeMedidaEN oUnidadDeMedida = new ProductoUnidadDeMedidaEN();
