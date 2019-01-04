@@ -64,7 +64,7 @@ namespace InventoryBoxFarmacy.Formularios
                 dgvListar.Columns.Insert(j, col2);
                 dgvListar.Columns[j].Name = "Actualizar";
 
-                FormatearDGVProductoSustitutos();
+                FomatearDGVPromociones();
 
             }
             catch (Exception ex)
@@ -73,7 +73,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private void FormatearDGVProductoSustitutos()
+        private void FomatearDGVPromociones()
         {
             try
             {
@@ -103,7 +103,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvListar.RowHeadersWidth = 25;
 
                 this.dgvListar.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                this.dgvListar.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+                this.dgvListar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
                 this.dgvListar.StandardTab = true;
                 this.dgvListar.ReadOnly = false;
                 this.dgvListar.CellBorderStyle = DataGridViewCellBorderStyle.Single;
@@ -175,7 +175,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private DataTable InformacionDeLosContendoresPorSeccion()
+        private DataTable InformacionDePromocionesAsociadasAlProducto()
         {
             DataTable ODatos = null;
             try
@@ -215,7 +215,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                 CrearColumnasDGVRegistros();
 
-                DataTable DTOrden = InformacionDeLosContendoresPorSeccion();
+                DataTable DTOrden = InformacionDePromocionesAsociadasAlProducto();
 
                 if (DTOrden != null)
                 {
@@ -432,6 +432,314 @@ namespace InventoryBoxFarmacy.Formularios
 
         }
 
+        private void Eliminar()
+        {
+            try
+            {
+                if (dgvListar.Rows.Count > 0)
+                {
+                    if (EvaluarDataGridView(dgvListar))
+                    {
+                        string Mensaje = DescripcionDetallaDGV(dgvListar);
+                        MessageBox.Show(Mensaje, "Registros a procesar", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        int RowsProcesar = dgvListar.Rows.Count;
+
+                        if (RowsProcesar > 0)
+                        {
+
+                            int indice = 0;                           
+                            int TotalDeFilasMarcadasParaEliminar = TotalDeFilasMarcadas(dgvListar, "Eliminar");
+                            //Aqui Volvemos dinamica El codigo poniendo el valor de la llave primaria 
+                            string NombreLavePrimariaDetalle = "idProductoPromocion";
+
+                            while (indice <= dgvListar.Rows.Count - 1)
+                            {
+
+                                DataGridViewRow Fila = dgvListar.Rows[indice];
+
+                                int ValorDelaLLavePrimaria;
+
+                                int.TryParse(Fila.Cells[NombreLavePrimariaDetalle].Value.ToString(), out ValorDelaLLavePrimaria);                                
+                                Boolean Eliminar = Convert.ToBoolean(Fila.Cells["Eliminar"].Value);
+
+                                if (ValorDelaLLavePrimaria == 0 && Eliminar == false)
+                                {
+                                    
+                                    indice++;                                    
+                                    continue;
+
+                                }
+                                
+                                ProductoPromocionEN oRegistroEN = InformacionDeLaPromocion(Fila);
+                                ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
+
+                                string Operacion = "";
+
+                                //El orden es importante porque si un usuario agrego una nueva persona pero lo marco para eliminar, no hacemos nada, solo lo quitamos de la lista.
+                                if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }                                
+                                //VALIDAREMOS PARA PODER ELIMINAR EL REGISTRO....
+                                else if (ValorDelaLLavePrimaria > 0 && Eliminar == true) { Operacion = "ELIMINAR"; }
+                                
+                                else if (ValorDelaLLavePrimaria >= 0 && Eliminar == false) { Operacion = "NINGUNA"; }
+
+                                //Validaciones 
+                                if (Operacion == "ELIMINAR FILA EN GRILLA")
+                                {
+                                    dgvListar.Rows.Remove(Fila);
+                                    if (dgvListar.RowCount <= 0) { indice++;}
+                                    continue;
+                                }
+
+                                if (Operacion == "NINGUNA")
+                                {
+                                    indice++;                                   
+                                    continue;
+                                }
+
+                                if (Operacion == "ELIMINAR")
+                                {
+
+                                    if (oRegistroLN.Eliminar(oRegistroEN, Program.oDatosDeConexion))
+                                    {
+                                        dgvListar.Rows.Remove(Fila);
+                                        oRegistroEN = null;
+                                        oRegistroLN = null;
+                                        if (dgvListar.RowCount <= 0) { indice++; }                                        
+                                        continue;
+
+                                    }
+                                    else
+                                    {                                        
+                                        this.Cursor = Cursors.Default;
+                                        throw new ArgumentException(oRegistroLN.Error);
+                                                                                
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                    }
+                }
+            }catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private ProductoPromocionEN InformacionDeLaPromocion(DataGridViewRow Fila)
+        {
+            ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
+            
+            int idProductoPromocion;
+            int.TryParse(Fila.Cells["idProductoPromocion"].Value.ToString(), out idProductoPromocion);
+            oRegistroEN.idProductoPromocion = idProductoPromocion;
+            oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
+            oRegistroEN.oProductoEN.Codigo = CodigoProducto;
+            oRegistroEN.oProductoEN.CodigoDeBarra = CodigoDeBarraDelProducto;
+            oRegistroEN.oProductoEN.Nombre = NombreDelProducto;
+
+            decimal PrecioDelProducto;
+            decimal.TryParse(Fila.Cells["PrecioDelProducto"].Value.ToString(), out PrecioDelProducto);
+
+            oRegistroEN.PrecioDelProducto = PrecioDelProducto;
+            oRegistroEN.FechaDeInicio = Convert.ToDateTime(Fila.Cells["FechaDeInicio"].Value.ToString());
+            oRegistroEN.FechaDeFinalizacion = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value.ToString());
+            oRegistroEN.Estado = Fila.Cells["Estado"].Value.ToString();
+            oRegistroEN.Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+            return oRegistroEN;
+        }
+
+        private int TotalDeFilasMarcadas(DataGridView odgvGrid, String Columna)
+        {
+            try
+            {
+                int numero = 0;
+                foreach (DataGridViewRow Fila in odgvGrid.Rows)
+                {
+                    if (Convert.ToBoolean(Fila.Cells[Columna].Value) == true)
+                    {
+                        numero++;
+                    }
+                }
+                return (numero);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al contabilizar las columnas (" + Columna + ") marcadas. \n" + ex.Message, "TotalDeFilasMarcadas", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return (0);
+            }
+        }
+
+        private bool EvaluarDataGridView(DataGridView dgv)
+        {
+            if (dgv.Rows.Count > 0)
+            {
+
+                List<DataGridViewRow> rows = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                              let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)                                              
+                                              where Eliminar.Equals(true)
+                                              select item).ToList<DataGridViewRow>();
+
+                if (rows.Count > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+
+
+        private string DescripcionDetallaDGV(DataGridView dgv)
+        {
+            string Mensaje = "";
+
+            if (dgv.Rows.Count > 0)
+            {
+                
+                List<DataGridViewRow> rows2 = (from item in dgv.Rows.Cast<DataGridViewRow>()
+                                               let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)
+                                               where Eliminar.Equals(true)
+                                               select item).ToList<DataGridViewRow>();
+
+                if (rows2.Count > 0)
+                {
+                    Mensaje += string.Format(" Se va a Eliminar: {1} Registros", Environment.NewLine, rows2.Count);
+                }
+
+            }
+            else
+            {
+                Mensaje = "";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje) == false || Mensaje.Trim().Length > 0)
+            {
+                Mensaje = string.Format("Información de las promociones: {0}", Mensaje);
+            }
+
+            return Mensaje;
+
+        }
+
+        #endregion
+
+        #region ""
+
+        private void dgvListar_SelectionChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvListar.RowCount > 0 && dgvListar.SelectedRows.Count > 0)
+                {
+                    if (Convert.ToBoolean(dgvListar.Rows[dgvListar.SelectedRows[0].Index].Cells["Eliminar"].Value) == true)
+                    {
+                        dgvListar.Rows[dgvListar.SelectedRows[0].Index].DefaultCellStyle.SelectionForeColor = Color.Red;
+                    }
+                    else
+                    {
+                        dgvListar.Rows[dgvListar.SelectedRows[0].Index].DefaultCellStyle.SelectionForeColor = Color.Black;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error:" + ex.Message, "Formato de fila", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_MouseDown(object sender, MouseEventArgs e)
+        {
+            try
+            {
+                if (e.Button == MouseButtons.Right && dgvListar.CurrentCell != null)
+                {
+                    //Este código permite seleccionar una fila del DatagridView al presionar click derecho
+                    DataGridView.HitTestInfo Hitest = dgvListar.HitTest(e.X, e.Y);
+
+                    if (Hitest.Type == DataGridViewHitTestType.Cell)
+                    {
+                        dgvListar.CurrentCell = dgvListar.Rows[Hitest.RowIndex].Cells[Hitest.ColumnIndex];
+                        dgvListar.Rows[dgvListar.CurrentCell.RowIndex].Selected = true;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Mouse down del Listado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (dgvListar.IsCurrentCellDirty)
+            {
+                dgvListar.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
+        }
+
+        private void dgvListar_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                int idProductoPromocion;
+                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idProductoPromocion"].Value.ToString(), out idProductoPromocion);
+
+                if (dgvListar.Rows[e.RowIndex].Cells["idProductoPromocion"].Value == null)
+                    return;
+
+                if (idProductoPromocion > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
+                {
+                    dgvListar.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al ingresar dato en la celda 'dgvLista_CellEndEdit'. \n" + ex.Message, "Listas de contactos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvListar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvListar.CurrentCell != null && dgvListar.Columns[dgvListar.CurrentCell.ColumnIndex].Name == "Eliminar")
+            {
+                if (Convert.ToBoolean(dgvListar.Rows[dgvListar.CurrentCell.RowIndex].Cells["Eliminar"].Value) == true)
+                {
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Strikeout);
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.ForeColor = Color.Red;
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+                else
+                {
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.Font = new Font(Font.Name, Font.Size, FontStyle.Regular);
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.ForeColor = Color.Black;
+                    dgvListar.Rows[dgvListar.CurrentCell.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+                }
+
+            }
+        }
+        
         #endregion
 
         private void frmProductoPromociones_Shown(object sender, EventArgs e)
@@ -455,6 +763,41 @@ namespace InventoryBoxFarmacy.Formularios
                 Actualizar();
             }
 
+        }
+
+        private void dgvListar_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(dgvListar.Rows.Count > 0)
+            {
+                if(dgvListar.SelectedRows != null)
+                {
+
+                    DataGridViewRow Fila = dgvListar.SelectedRows[0];
+                    txtidProductoPromocion.Text = Fila.Cells["idProductoPromocion"].Value.ToString();
+                    txtPrecioPromocional.Text = string.Format("{0:###,###,##0.00}",Convert.ToDecimal( Fila.Cells["PrecioDelProducto"].Value.ToString()));
+                    txtDescripcionDeLaPromocion.Text = Fila.Cells["Descripcion"].Value.ToString();
+                    cmbEstado.Text = Fila.Cells["Estado"].Value.ToString();
+                    dtpkDesdePromocion.Value = Convert.ToDateTime(Fila.Cells["FechaDeInicio"].Value);
+                    dtpkHastaPromocional.Value = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value);
+
+                }
+            }
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+        }
+
+        private void tsbCerrarVentan_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void tsbRecarRegistro_Click(object sender, EventArgs e)
+        {
+            CrearyYPoblarColumnasDGVLaboratorio();
+            LimpiarControles();
         }
     }
 }

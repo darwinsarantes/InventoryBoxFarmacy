@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>QS72gytkdriIEVPgwQ4Gd4SE56cs7LcbAMekoGFZ9W0=</dsig:DigestValue>
+        <dsig:DigestValue>/Ei36CGTdG/En3wxduKvJQsfwC2Nh9qX+kruZWbCSc4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -295,14 +295,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventoryBoxFarmacy.exe" size="1940960">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="InventoryBoxFarmacy.exe" size="1946080">
       <assemblyIdentity name="InventoryBoxFarmacy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ClQzQxaGq80QUr2ozL+OyOcwk/zVJAmMqVnd+FsUKNM=</dsig:DigestValue>
+        <dsig:DigestValue>R5CryxdZyeBlLjzOPc5XPxkhaI163LvwtEfF4gttREU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -326,7 +326,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>xxbjZgoOGcJs1TJ/b1/AyDa2OhtM45TY6j6pvSyGGWU=</dsig:DigestValue>
+        <dsig:DigestValue>Qi2EgorJjvR/pqPNm5tfasfF64p8l8dulGkS9nldEVE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

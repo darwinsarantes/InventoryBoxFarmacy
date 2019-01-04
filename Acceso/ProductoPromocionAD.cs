@@ -709,7 +709,7 @@ or (SoloFecha(FechaDeFinalizacion) >= SoloFecha(@FechaDeInicio) and SoloFecha(Fe
                 if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
                 {
 
-                    DescripcionDeOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    DescripcionDeOperacion = string.Format("Ya existe información de la Fecha del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
                     this.Error = DescripcionDeOperacion;
                     return true;
 

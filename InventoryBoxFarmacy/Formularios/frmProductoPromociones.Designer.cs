@@ -247,6 +247,7 @@
             this.tsbCerrarVentan.Size = new System.Drawing.Size(52, 68);
             this.tsbCerrarVentan.Text = "Salir";
             this.tsbCerrarVentan.ToolTipText = "Cerrar la ventana y retornar";
+            this.tsbCerrarVentan.Click += new System.EventHandler(this.tsbCerrarVentan_Click);
             // 
             // tsbRecarRegistro
             // 
@@ -259,6 +260,7 @@
             this.tsbRecarRegistro.Size = new System.Drawing.Size(52, 68);
             this.tsbRecarRegistro.Text = "Recargar ";
             this.tsbRecarRegistro.ToolTipText = "Recargar  registro";
+            this.tsbRecarRegistro.Click += new System.EventHandler(this.tsbRecarRegistro_Click);
             // 
             // toolStripSeparator1
             // 
@@ -290,6 +292,12 @@
             this.dgvListar.Name = "dgvListar";
             this.dgvListar.Size = new System.Drawing.Size(551, 117);
             this.dgvListar.TabIndex = 2;
+            this.dgvListar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellClick);
+            this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
+            this.dgvListar.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellEndEdit);
+            this.dgvListar.CurrentCellDirtyStateChanged += new System.EventHandler(this.dgvListar_CurrentCellDirtyStateChanged);
+            this.dgvListar.SelectionChanged += new System.EventHandler(this.dgvListar_SelectionChanged);
+            this.dgvListar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvListar_MouseDown);
             // 
             // toolStrip2
             // 
@@ -309,6 +317,7 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(78, 28);
             this.toolStripButton4.Text = "Eliminar";
+            this.toolStripButton4.Click += new System.EventHandler(this.toolStripButton4_Click);
             // 
             // chkCerrarVentana
             // 
