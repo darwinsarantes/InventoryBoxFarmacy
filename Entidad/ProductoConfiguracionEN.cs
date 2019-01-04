@@ -8,8 +8,7 @@ namespace Entidad
 {
     public class ProductoConfiguracionEN
     {
-        public int idProductoConfiguracion { set; get; }
-        public int ActivarPromocion { set; get; }
+        public int idProductoConfiguracion { set; get; }        
         public int AplicarComisiones { set; get; }
         public int MostrarContenidoDeObservacionesENFactura { set; get; }
         public int MostrarImagenAlFacturar { set; get; } 

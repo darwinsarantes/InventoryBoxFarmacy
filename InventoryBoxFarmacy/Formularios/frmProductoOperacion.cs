@@ -445,8 +445,7 @@ namespace InventoryBoxFarmacy.Formularios
                         groupBox6.Enabled = false;
                         gbLaboratorio.Enabled = false;
                         groupBox7.Enabled = false;
-                        groupBox8.Enabled = false;
-                        groupBox9.Enabled = false;
+                        groupBox8.Enabled = false;                        
 
                         txtObservacion.ReadOnly = true;
                        
@@ -518,26 +517,22 @@ namespace InventoryBoxFarmacy.Formularios
             txtPrecio2.Text = "0.00";
             txtPrecio3.Text = "0.00";
             txtPrecio4.Text = "0.00";
-            txtPrecio5.Text = "0.00";
-            txtPrecioPromocional.Text = "0.00";
+            txtPrecio5.Text = "0.00";            
             txtPrecioXUnidad.Text = "";
             txtTablaDeReferencia.Text = string.Empty;
             txtTablaDeReferenciaPL.Text = string.Empty;
             txtExistencias.Text = string.Empty;
             txtIdentificador.Text = string.Empty;
             txtIdPrecio.Text = string.Empty;
-            txtidProductoConfiguracion.Text = string.Empty;
-            txtidProductoPromocion.Text = string.Empty;
+            txtidProductoConfiguracion.Text = string.Empty;            
             txtIVA.Text = string.Empty;
             txtProveedorLaboratorio.Text = string.Empty;
             txtUnidadesXPresentacion.Text = "0.00";
-            cmbCategoria.SelectedIndex = -1;
-            cmbEstadoDeLaPromocion.SelectedIndex = -1;
+            cmbCategoria.SelectedIndex = -1;            
             cmbPresentacion.SelectedIndex = -1;
             cmbUnidadDeMedida.SelectedIndex = -1;
             chkAplicarComision.CheckState = CheckState.Unchecked;
-            chkAplicarIVA.CheckState = CheckState.Unchecked;
-            chkAplicarPromocion.CheckState = CheckState.Unchecked;
+            chkAplicarIVA.CheckState = CheckState.Unchecked;            
             chkMostarImagenAlFacturar.CheckState = CheckState.Unchecked;
             chkMostrarObservacionesDelProducto.CheckState = CheckState.Unchecked;
             chkPreguntarPorElNumeroDeSerieALFacturar.CheckState = CheckState.Unchecked;
@@ -677,45 +672,7 @@ namespace InventoryBoxFarmacy.Formularios
                 }
 
             }
-
-            if (Controles.IsNullOEmptyElControl(chkAplicarPromocion) == false)
-            {
-
-                decimal PrecioDePromocion;
-                decimal.TryParse(txtPrecioPromocional.Text, out PrecioDePromocion);
-                if (PrecioDePromocion == 0)
-                {
-                    EP.SetError(txtPrecioPromocional, "Este valor no puede ser cero o menor que cero");
-                    txtPrecioPromocional.Focus();
-                    return false;
-                }
-
-
-                DateTime FechaActual = System.DateTime.Now;
-
-                if (dtpkDesdePromocion.Value < FechaActual)
-                {
-                    EP.SetError(dtpkDesdePromocion, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
-                    dtpkDesdePromocion.Focus();
-                    return false;
-                }
-
-                if (dtpkHastaPromocional.Value < dtpkDesdePromocion.Value)
-                {
-                    EP.SetError(dtpkHastaPromocional, string.Format("La fecha Ingresada de finalización de la promoción no puede ser {0} menor que la fecha de inicio de la promocion", Environment.NewLine));
-                    dtpkHastaPromocional.Focus();
-                    return false;
-                }
-
-                if (Controles.IsNullOEmptyElControl(txtDescripcionDeLaPromocion))
-                {
-                    EP.SetError(txtDescripcionDeLaPromocion, "Agrege una descripcíon de la promoción que se le va aplicar al producto");
-                    txtDescripcionDeLaPromocion.Focus();
-                    return false;
-                }
-
-            }
-
+            
             if (dtpkFechaDeVencimiento.Checked == true)
             {
                 DateTime FechaActual = new DateTime();
@@ -903,8 +860,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             decimal ComisionMaxima;
             decimal.TryParse(txtComisionMaxima.Text, out ComisionMaxima);
-            oRegistroEN.ComisionMaxima = ComisionMaxima;
-            oRegistroEN.ActivarPromocion = chkAplicarPromocion.CheckState == CheckState.Checked ? 1 : 0;
+            oRegistroEN.ComisionMaxima = ComisionMaxima;            
             oRegistroEN.MarcaDelProducto = txtMarcaDelProducto.Text.Trim();
             oRegistroEN.ModeloDelProducto = txtModelo.Text.Trim();
             oRegistroEN.NumeroDeSerie = txtNumeroDeCerie.Text.Trim();
@@ -919,34 +875,7 @@ namespace InventoryBoxFarmacy.Formularios
             return oRegistroEN;
 
         }
-
-        private ProductoPromocionEN InformacionDeLaPromocionDelProducto()
-        {
-            ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
-
-            int idProductoPromocion;
-            int.TryParse(txtidProductoPromocion.Text, out idProductoPromocion);
-            oRegistroEN.idProductoPromocion = idProductoPromocion;
-            oRegistroEN.oProductoEN = InformacionDelRegistro();
-            decimal PrecioDelProducto;
-            decimal.TryParse(txtPrecioPromocional.Text, out PrecioDelProducto);
-            oRegistroEN.PrecioDelProducto = PrecioDelProducto;
-            oRegistroEN.FechaDeInicio = dtpkDesdePromocion.Value;
-            oRegistroEN.FechaDeFinalizacion = dtpkHastaPromocional.Value;
-            oRegistroEN.Estado = cmbEstadoDeLaPromocion.Text.Trim();
-            oRegistroEN.Descripcion = txtDescripcionDeLaPromocion.Text.Trim();
-
-            //partes generales.            
-            oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
-
-            return oRegistroEN;
-
-        }
-
+                
         private ProductoLoteEN InformacionDelLote()
         {
             ProductoLoteEN oRegistroEN = new ProductoLoteEN();
@@ -961,7 +890,7 @@ namespace InventoryBoxFarmacy.Formularios
             oRegistroEN.FechaDeCreacion = System.DateTime.Now;
             oRegistroEN.FechaDeModificacion = System.DateTime.Now;
 
-            if (dtpkDesdePromocion.Checked == true)
+            if (dtpkFechaDeVencimiento.Checked == true)
                 oRegistroEN.AplicarCambio = true;
             else
                 oRegistroEN.AplicarCambio = false;

@@ -140,21 +140,6 @@
             this.label31 = new System.Windows.Forms.Label();
             this.tbpObservaciones = new System.Windows.Forms.TabPage();
             this.txtObservacion = new System.Windows.Forms.TextBox();
-            this.tbpPromociones = new System.Windows.Forms.TabPage();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.cmbEstadoDeLaPromocion = new System.Windows.Forms.ComboBox();
-            this.txtidProductoPromocion = new System.Windows.Forms.TextBox();
-            this.txtDescripcionDeLaPromocion = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.chkAplicarPromocion = new System.Windows.Forms.CheckBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dtpkHastaPromocional = new System.Windows.Forms.DateTimePicker();
-            this.label40 = new System.Windows.Forms.Label();
-            this.dtpkDesdePromocion = new System.Windows.Forms.DateTimePicker();
-            this.label39 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txtPrecioPromocional = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbActualizar = new System.Windows.Forms.ToolStripButton();
@@ -185,8 +170,6 @@
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.tbpObservaciones.SuspendLayout();
-            this.tbpPromociones.SuspendLayout();
-            this.groupBox9.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).BeginInit();
             this.SuspendLayout();
@@ -223,7 +206,6 @@
             this.tbOperaciones.Controls.Add(this.tpGeneral);
             this.tbOperaciones.Controls.Add(this.tbComision);
             this.tbOperaciones.Controls.Add(this.tbpObservaciones);
-            this.tbOperaciones.Controls.Add(this.tbpPromociones);
             this.tbOperaciones.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbOperaciones.Location = new System.Drawing.Point(3, 3);
             this.tbOperaciones.Name = "tbOperaciones";
@@ -1429,163 +1411,6 @@
             this.txtObservacion.Size = new System.Drawing.Size(1076, 367);
             this.txtObservacion.TabIndex = 0;
             // 
-            // tbpPromociones
-            // 
-            this.tbpPromociones.Controls.Add(this.groupBox9);
-            this.tbpPromociones.Location = new System.Drawing.Point(4, 25);
-            this.tbpPromociones.Name = "tbpPromociones";
-            this.tbpPromociones.Size = new System.Drawing.Size(1096, 391);
-            this.tbpPromociones.TabIndex = 5;
-            this.tbpPromociones.Text = "Promoción";
-            this.tbpPromociones.UseVisualStyleBackColor = true;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.cmbEstadoDeLaPromocion);
-            this.groupBox9.Controls.Add(this.txtidProductoPromocion);
-            this.groupBox9.Controls.Add(this.txtDescripcionDeLaPromocion);
-            this.groupBox9.Controls.Add(this.label17);
-            this.groupBox9.Controls.Add(this.chkAplicarPromocion);
-            this.groupBox9.Controls.Add(this.label16);
-            this.groupBox9.Controls.Add(this.dtpkHastaPromocional);
-            this.groupBox9.Controls.Add(this.label40);
-            this.groupBox9.Controls.Add(this.dtpkDesdePromocion);
-            this.groupBox9.Controls.Add(this.label39);
-            this.groupBox9.Controls.Add(this.label19);
-            this.groupBox9.Controls.Add(this.label38);
-            this.groupBox9.Controls.Add(this.txtPrecioPromocional);
-            this.groupBox9.Location = new System.Drawing.Point(7, 6);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(647, 369);
-            this.groupBox9.TabIndex = 2;
-            this.groupBox9.TabStop = false;
-            // 
-            // cmbEstadoDeLaPromocion
-            // 
-            this.cmbEstadoDeLaPromocion.FormattingEnabled = true;
-            this.cmbEstadoDeLaPromocion.Items.AddRange(new object[] {
-            "ACTIVA",
-            "INACTIVA"});
-            this.cmbEstadoDeLaPromocion.Location = new System.Drawing.Point(344, 93);
-            this.cmbEstadoDeLaPromocion.Name = "cmbEstadoDeLaPromocion";
-            this.cmbEstadoDeLaPromocion.Size = new System.Drawing.Size(279, 24);
-            this.cmbEstadoDeLaPromocion.TabIndex = 31;
-            // 
-            // txtidProductoPromocion
-            // 
-            this.txtidProductoPromocion.Location = new System.Drawing.Point(625, 21);
-            this.txtidProductoPromocion.Name = "txtidProductoPromocion";
-            this.txtidProductoPromocion.Size = new System.Drawing.Size(16, 22);
-            this.txtidProductoPromocion.TabIndex = 30;
-            this.txtidProductoPromocion.Visible = false;
-            // 
-            // txtDescripcionDeLaPromocion
-            // 
-            this.txtDescripcionDeLaPromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcionDeLaPromocion.Location = new System.Drawing.Point(18, 224);
-            this.txtDescripcionDeLaPromocion.Multiline = true;
-            this.txtDescripcionDeLaPromocion.Name = "txtDescripcionDeLaPromocion";
-            this.txtDescripcionDeLaPromocion.Size = new System.Drawing.Size(605, 127);
-            this.txtDescripcionDeLaPromocion.TabIndex = 28;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(18, 205);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(183, 16);
-            this.label17.TabIndex = 29;
-            this.label17.Text = "Descripción de la promoción:";
-            // 
-            // chkAplicarPromocion
-            // 
-            this.chkAplicarPromocion.AutoSize = true;
-            this.chkAplicarPromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkAplicarPromocion.Location = new System.Drawing.Point(6, -2);
-            this.chkAplicarPromocion.Name = "chkAplicarPromocion";
-            this.chkAplicarPromocion.Size = new System.Drawing.Size(206, 20);
-            this.chkAplicarPromocion.TabIndex = 27;
-            this.chkAplicarPromocion.Text = "Aplicar promoción al producto";
-            this.chkAplicarPromocion.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(130, 31);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(341, 20);
-            this.label16.TabIndex = 26;
-            this.label16.Text = "Información de la promocion del producto";
-            // 
-            // dtpkHastaPromocional
-            // 
-            this.dtpkHastaPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkHastaPromocional.Location = new System.Drawing.Point(341, 164);
-            this.dtpkHastaPromocional.Name = "dtpkHastaPromocional";
-            this.dtpkHastaPromocional.Size = new System.Drawing.Size(282, 26);
-            this.dtpkHastaPromocional.TabIndex = 25;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(341, 145);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(44, 16);
-            this.label40.TabIndex = 24;
-            this.label40.Text = "Hasta";
-            // 
-            // dtpkDesdePromocion
-            // 
-            this.dtpkDesdePromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDesdePromocion.Location = new System.Drawing.Point(18, 164);
-            this.dtpkDesdePromocion.Name = "dtpkDesdePromocion";
-            this.dtpkDesdePromocion.Size = new System.Drawing.Size(266, 26);
-            this.dtpkDesdePromocion.TabIndex = 23;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(18, 145);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(52, 16);
-            this.label39.TabIndex = 22;
-            this.label39.Text = "Desde:";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(341, 73);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(152, 16);
-            this.label19.TabIndex = 22;
-            this.label19.Text = "Estado de la Promoción";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(18, 73);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(213, 16);
-            this.label38.TabIndex = 22;
-            this.label38.Text = "Precio del producto en promoción:";
-            // 
-            // txtPrecioPromocional
-            // 
-            this.txtPrecioPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecioPromocional.Location = new System.Drawing.Point(18, 93);
-            this.txtPrecioPromocional.Name = "txtPrecioPromocional";
-            this.txtPrecioPromocional.Size = new System.Drawing.Size(213, 31);
-            this.txtPrecioPromocional.TabIndex = 21;
-            this.txtPrecioPromocional.Text = "0.00";
-            this.txtPrecioPromocional.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtPrecioPromocional.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioPromocional_KeyPress);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -1763,9 +1588,6 @@
             this.groupBox7.PerformLayout();
             this.tbpObservaciones.ResumeLayout(false);
             this.tbpObservaciones.PerformLayout();
-            this.tbpPromociones.ResumeLayout(false);
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.EP)).EndInit();
@@ -1875,14 +1697,6 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.TabPage tbpObservaciones;
         private System.Windows.Forms.TextBox txtObservacion;
-        private System.Windows.Forms.TabPage tbpPromociones;
-        private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.DateTimePicker dtpkHastaPromocional;
-        private System.Windows.Forms.Label label40;
-        private System.Windows.Forms.DateTimePicker dtpkDesdePromocion;
-        private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label38;
-        private System.Windows.Forms.TextBox txtPrecioPromocional;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.TextBox txtPrecioXUnidad;
         private System.Windows.Forms.Button btnBuscarAlmacen;
@@ -1900,13 +1714,6 @@
         private System.Windows.Forms.CheckBox chkMostarImagenAlFacturar;
         private System.Windows.Forms.CheckBox chkMostrarObservacionesDelProducto;
         private System.Windows.Forms.CheckBox chkPreguntarPorElNumeroDeSerieALFacturar;
-        private System.Windows.Forms.TextBox txtDescripcionDeLaPromocion;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.CheckBox chkAplicarPromocion;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox txtidProductoPromocion;
-        private System.Windows.Forms.ComboBox cmbEstadoDeLaPromocion;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ToolStrip toolStrip3;
