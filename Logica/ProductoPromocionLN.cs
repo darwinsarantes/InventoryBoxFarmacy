@@ -92,6 +92,22 @@ namespace Logica
 
         }
 
+        public bool ListadoPromocionesXProducto(ProductoPromocionEN oREgistroEN, DatosDeConexionEN oDatos)
+        {
+
+            if (oProductoPromocionAD.ListadoPromocionesXProducto(oREgistroEN, oDatos))
+            {
+                Error = string.Empty;
+                return true;
+            }
+            else
+            {
+                Error = oProductoPromocionAD.Error;
+                return false;
+            }
+
+        }
+
         public bool ListadoPorIdentificador(ProductoPromocionEN oREgistroEN, DatosDeConexionEN oDatos)
         {
 

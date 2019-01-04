@@ -976,5 +976,39 @@ namespace InventoryBoxFarmacy.Formularios
                 MessageBox.Show(ex.Message, "Galeria de imagenes del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void tsbPromociones_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dgvLista.Rows.Count > 0)
+                {
+
+                    if (dgvLista.CurrentRow != null)
+                    {
+
+                        DataGridViewRow Fila = dgvLista.CurrentRow;
+                        string NombreProducto = string.Format("{0} {3} {2}-{1}", Fila.Cells["Codigo"].Value.ToString(), Fila.Cells["Nombre"].Value.ToString(), Fila.Cells["CodigoDeBarra"].Value.ToString(), Environment.NewLine);
+
+                        frmProductoPromociones ofrmSustitutos = new frmProductoPromociones();
+                        ofrmSustitutos.TituloDeLaVentana = string.Format("Promociones del: '{0}'", NombreProducto);
+                        ofrmSustitutos.InformacionDeLaOperacion = NombreProducto;
+                        ofrmSustitutos.CodigoProducto = Fila.Cells["Codigo"].Value.ToString();
+                        ofrmSustitutos.CodigoDeBarraDelProducto = Fila.Cells["CodigoDeBarra"].Value.ToString();
+                        ofrmSustitutos.NombreDelProducto = Fila.Cells["Nombre"].Value.ToString();
+                        ofrmSustitutos.ValorLlavePrimariaEntidad = Convert.ToInt32(Fila.Cells["idProducto"].Value.ToString());
+
+                        ofrmSustitutos.ShowDialog();
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Promociones del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

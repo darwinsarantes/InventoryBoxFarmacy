@@ -207,6 +207,65 @@ namespace InventoryBoxFarmacy.Formularios
             
             switch (Tabla)//ProductoSustitutos
             {
+                case "ProductosPromocion":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "Estado":
+                            this.Descripcion = "Estado";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "FechaDeFinalizacion":
+                            this.Descripcion = "Finaliza";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "FechaDeInicio":
+                            this.Descripcion = "Inicio";
+                            this.Tamano = 130;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "PrecioDelProducto":
+                            this.Descripcion = "Precio en Promoción";
+                            this.Tamano = 100;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idProductoPromocion":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "ProductoLaboratorio":
 
                     this.ValorEncontrado = true;

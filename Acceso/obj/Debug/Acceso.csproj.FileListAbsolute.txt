@@ -41,3 +41,12 @@ G:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
 G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
 G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
 G:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.dll
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.pdb
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
+D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb

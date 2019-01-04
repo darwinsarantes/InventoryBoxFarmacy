@@ -394,6 +394,65 @@ namespace AccesoDatos
 
         }
 
+
+        public bool ListadoPromocionesXProducto(ProductoPromocionEN oRegistroEN, DatosDeConexionEN oDatos)
+        {
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                Consultas = string.Format(@"Select idProductoPromocion, idProducto, PrecioDelProducto, FechaDeInicio,
+                 FechaDeFinalizacion, Estado, Descripcion
+                from productopromocion 
+                where idProductoPromocion > 0 and idProducto = {0} {1} ", oRegistroEN.oProductoEN.idProducto, oRegistroEN.OrderBy);
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+
+            }
+
+        }
+
+
         public bool ListadoPorIdentificador(ProductoPromocionEN oRegistroEN, DatosDeConexionEN oDatos)
         {
 

@@ -43,25 +43,26 @@
             this.chkCodigo = new System.Windows.Forms.CheckBox();
             this.dgvLista = new System.Windows.Forms.DataGridView();
             this.mcsMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbGaleriaDeImagenes = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsbNoRegistros = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsMenu = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.actualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.visualizarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbGaleriaDeImagenes = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbProductosSustitutos = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPromociones = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
             this.tsbNuevoRegistro = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMarcarTodos = new System.Windows.Forms.ToolStripButton();
             this.tsbSeleccionarTodos = new System.Windows.Forms.ToolStripButton();
-            this.tsbProductosSustitutos = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -239,69 +240,21 @@
             this.imprimirToolStripMenuItem,
             this.toolStripSeparator3,
             this.tsbGaleriaDeImagenes,
-            this.tsbProductosSustitutos});
+            this.tsbProductosSustitutos,
+            this.tsbPromociones});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(184, 192);
+            this.mcsMenu.Size = new System.Drawing.Size(184, 214);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
-            // 
-            // nuevoToolStripMenuItem
-            // 
-            this.nuevoToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.New16x16;
-            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.nuevoToolStripMenuItem.Text = "Nuevo";
-            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
-            // 
-            // actualizarToolStripMenuItem
-            // 
-            this.actualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Edit16x16;
-            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.actualizarToolStripMenuItem.Text = "Actualizar";
-            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
-            // 
-            // eliminarToolStripMenuItem
-            // 
-            this.eliminarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Eliminar16x16;
-            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.eliminarToolStripMenuItem.Text = "Eliminar";
-            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
             // 
-            // visualizarToolStripMenuItem
-            // 
-            this.visualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.view16x16;
-            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.visualizarToolStripMenuItem.Text = "Visualizar";
-            this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
-            // 
-            // imprimirToolStripMenuItem
-            // 
-            this.imprimirToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.printer16x16;
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
-            this.imprimirToolStripMenuItem.Text = "Imprimir";
-            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(180, 6);
-            // 
-            // tsbGaleriaDeImagenes
-            // 
-            this.tsbGaleriaDeImagenes.Image = global::InventoryBoxFarmacy.Properties.Resources.if_icon_33_667338;
-            this.tsbGaleriaDeImagenes.Name = "tsbGaleriaDeImagenes";
-            this.tsbGaleriaDeImagenes.Size = new System.Drawing.Size(183, 22);
-            this.tsbGaleriaDeImagenes.Tag = "Actualizar";
-            this.tsbGaleriaDeImagenes.Text = "Galeria de Imagenes";
-            this.tsbGaleriaDeImagenes.Click += new System.EventHandler(this.tsbGaleriaDeImagenes_Click);
             // 
             // statusStrip1
             // 
@@ -335,6 +288,76 @@
             this.tsMenu.Size = new System.Drawing.Size(1128, 31);
             this.tsMenu.TabIndex = 0;
             this.tsMenu.Text = "Filtrar";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
+            // 
+            // nuevoToolStripMenuItem
+            // 
+            this.nuevoToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.New16x16;
+            this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.nuevoToolStripMenuItem.Text = "Nuevo";
+            this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
+            // 
+            // actualizarToolStripMenuItem
+            // 
+            this.actualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Edit16x16;
+            this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.actualizarToolStripMenuItem.Text = "Actualizar";
+            this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Eliminar16x16;
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
+            // 
+            // visualizarToolStripMenuItem
+            // 
+            this.visualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.view16x16;
+            this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
+            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.visualizarToolStripMenuItem.Text = "Visualizar";
+            this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
+            // 
+            // imprimirToolStripMenuItem
+            // 
+            this.imprimirToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.printer16x16;
+            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.imprimirToolStripMenuItem.Text = "Imprimir";
+            this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
+            // 
+            // tsbGaleriaDeImagenes
+            // 
+            this.tsbGaleriaDeImagenes.Image = global::InventoryBoxFarmacy.Properties.Resources.if_icon_33_667338;
+            this.tsbGaleriaDeImagenes.Name = "tsbGaleriaDeImagenes";
+            this.tsbGaleriaDeImagenes.Size = new System.Drawing.Size(183, 22);
+            this.tsbGaleriaDeImagenes.Tag = "Actualizar";
+            this.tsbGaleriaDeImagenes.Text = "Galeria de Imagenes";
+            this.tsbGaleriaDeImagenes.Click += new System.EventHandler(this.tsbGaleriaDeImagenes_Click);
+            // 
+            // tsbProductosSustitutos
+            // 
+            this.tsbProductosSustitutos.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_box_49364;
+            this.tsbProductosSustitutos.Name = "tsbProductosSustitutos";
+            this.tsbProductosSustitutos.Size = new System.Drawing.Size(183, 22);
+            this.tsbProductosSustitutos.Text = "Productos Sustitutos";
+            this.tsbProductosSustitutos.Click += new System.EventHandler(this.tsbProductosSustitutos_Click);
+            // 
+            // tsbPromociones
+            // 
+            this.tsbPromociones.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_advantage_sale_1034365;
+            this.tsbPromociones.Name = "tsbPromociones";
+            this.tsbPromociones.Size = new System.Drawing.Size(183, 22);
+            this.tsbPromociones.Text = "Promociones";
+            this.tsbPromociones.Click += new System.EventHandler(this.tsbPromociones_Click);
             // 
             // tsbFiltrar
             // 
@@ -379,11 +402,6 @@
             this.tsbNuevoRegistro.ToolTipText = "Nuevo Registro (F2)";
             this.tsbNuevoRegistro.Click += new System.EventHandler(this.tsbNuevoRegistro_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 31);
-            // 
             // tsbMarcarTodos
             // 
             this.tsbMarcarTodos.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -405,14 +423,6 @@
             this.tsbSeleccionarTodos.Size = new System.Drawing.Size(23, 28);
             this.tsbSeleccionarTodos.Text = "Seleccionar";
             this.tsbSeleccionarTodos.Click += new System.EventHandler(this.tsbSeleccionarTodos_Click);
-            // 
-            // tsbProductosSustitutos
-            // 
-            this.tsbProductosSustitutos.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_box_49364;
-            this.tsbProductosSustitutos.Name = "tsbProductosSustitutos";
-            this.tsbProductosSustitutos.Size = new System.Drawing.Size(183, 22);
-            this.tsbProductosSustitutos.Text = "Productos Sustitutos";
-            this.tsbProductosSustitutos.Click += new System.EventHandler(this.tsbProductosSustitutos_Click);
             // 
             // frmProducto
             // 
@@ -476,5 +486,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem tsbGaleriaDeImagenes;
         private System.Windows.Forms.ToolStripMenuItem tsbProductosSustitutos;
+        private System.Windows.Forms.ToolStripMenuItem tsbPromociones;
     }
 }

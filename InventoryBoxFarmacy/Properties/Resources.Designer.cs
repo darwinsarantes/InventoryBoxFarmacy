@@ -523,6 +523,16 @@ namespace InventoryBoxFarmacy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_advantage_sale_1034365 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_advantage_sale_1034365", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_box_49364 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_box_49364", resourceCulture);
@@ -556,6 +566,26 @@ namespace InventoryBoxFarmacy.Properties {
         internal static System.Drawing.Bitmap iconfinder_box_49364__3_ {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_box_49364 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_free_24_463005 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_free-24_463005", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_price_87454 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_price_87454", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
