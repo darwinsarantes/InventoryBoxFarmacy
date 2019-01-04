@@ -35,31 +35,20 @@ namespace AccesoDatos
 
                 Comando = new MySqlCommand();
                 Comando.Connection = Cnn;
-                Comando.CommandType = CommandType.Text;
+                Comando.CommandType = CommandType.StoredProcedure;
 
-                Consultas = @"
-                                
-                insert into productopromocion
-                (idProducto, PrecioDelProducto, FechaDeInicio, FechaDeFinalizacion, Estado, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, 
-                Descripcion)
-                values
-                (@idProducto, @PrecioDelProducto, @FechaDeInicio, @FechaDeFinalizacion, @Estado, 
-                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), 
-                @Descripcion)
-
-                Select last_insert_id() as 'ID';";
+                Consultas = @"AgregarPromocionDelProducto";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@PrecioDelProducto", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioDelProducto;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
-                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-                Comando.Parameters.Add(new MySqlParameter("@Descripcion", MySqlDbType.VarChar, oRegistroEN.Descripcion.Trim().Length)).Value = oRegistroEN.Descripcion.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@idProducto_", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                Comando.Parameters.Add(new MySqlParameter("@PrecioDelProducto_", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioDelProducto;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio_", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion_", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
+                Comando.Parameters.Add(new MySqlParameter("@Estado_", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion_", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion_", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
+                Comando.Parameters.Add(new MySqlParameter("@Descripcion_", MySqlDbType.VarChar, oRegistroEN.Descripcion.Trim().Length)).Value = oRegistroEN.Descripcion.Trim();
 
                 Adaptador = new MySqlDataAdapter();
                 DT = new DataTable();
@@ -111,83 +100,7 @@ namespace AccesoDatos
             }
 
         }
-
-        public bool Agregar(ProductoPromocionEN oRegistroEN, DatosDeConexionEN oDatos, ref MySqlConnection Cnn_Existente, ref MySqlTransaction Transaccion_Existente)
-        {
-
-            oTransaccionesAD = new TransaccionesAD();
-
-            try
-            {
-                                
-                Comando = new MySqlCommand();
-                Comando.Connection = Cnn_Existente;
-                Comando.Transaction = Transaccion_Existente;
-                Comando.CommandType = CommandType.Text;
-
-                Consultas = @"
-                                
-                insert into productopromocion
-                (idProducto, PrecioDelProducto, FechaDeInicio, FechaDeFinalizacion, Estado, 
-                idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, Descripcion)
-                values
-                (@idProducto, @PrecioDelProducto, @FechaDeInicio, @FechaDeFinalizacion, @Estado, 
-                @idUsuarioDeCreacion, current_timestamp(), @idUsuarioModificacion, current_timestamp(), @Descripcion);
-
-                Select last_insert_id() as 'ID';";
-
-                Comando.CommandText = Consultas;
-
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@PrecioDelProducto", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioDelProducto;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
-                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioDeCreacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioDeCreacion;
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-                Comando.Parameters.Add(new MySqlParameter("@Descripcion", MySqlDbType.VarChar, oRegistroEN.Descripcion.Trim().Length)).Value = oRegistroEN.Descripcion.Trim();
-
-                Adaptador = new MySqlDataAdapter();
-                DT = new DataTable();
-
-                Adaptador.SelectCommand = Comando;
-                Adaptador.Fill(DT);
-
-                oRegistroEN.idProductoPromocion = Convert.ToInt32(DT.Rows[0].ItemArray[0].ToString());
-
-                DescripcionDeOperacion = string.Format("El registro fue Insertado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "CORRECTO");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return true;
-
-
-            }
-            catch (Exception ex)
-            {
-                this.Error = ex.Message;
-
-                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al insertar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
-
-                //Agregamos la Transacción....
-                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "Agregar", "Agregar Nuevo Registro", "ERROR");
-                oTransaccionesAD.Agregar(oTran, oDatos);
-
-                return false;
-            }
-            finally
-            {
-                                
-                Comando = null;
-                Adaptador = null;
-                oTransaccionesAD = null;
-
-            }
-
-        }
-
+        
         public bool Actualizar(ProductoPromocionEN oRegistroEN, DatosDeConexionEN oDatos)
         {
             oTransaccionesAD = new TransaccionesAD();
@@ -200,26 +113,20 @@ namespace AccesoDatos
 
                 Comando = new MySqlCommand();
                 Comando.Connection = Cnn;
-                Comando.CommandType = CommandType.Text;
+                Comando.CommandType = CommandType.StoredProcedure;
 
-                Consultas = @"update productopromocion set
-	                idProducto = @idProducto, PrecioDelProducto = @PrecioDelProducto, 
-                    FechaDeInicio = @FechaDeInicio, FechaDeFinalizacion = @FechaDeFinalizacion, 
-	                Estado = @Estado, idUsuarioModificacion = @idUsuarioModificacion, 
-                    FechaDeModificacion = current_timestamp()
-                where idProductoPromocion = @idProductoPromocion";
+                Consultas = @"ActualizarPromocionDelProducto";
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@idProductoPromocion", MySqlDbType.Int32)).Value = oRegistroEN.idProductoPromocion;
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@PrecioDelProducto", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioDelProducto;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
-                Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
-                Comando.Parameters.Add(new MySqlParameter("@Estado", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();                
-                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
-
-
+                Comando.Parameters.Add(new MySqlParameter("@idProductoPromocion_", MySqlDbType.Int32)).Value = oRegistroEN.idProductoPromocion;
+                Comando.Parameters.Add(new MySqlParameter("@idProducto_", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                Comando.Parameters.Add(new MySqlParameter("@PrecioDelProducto_", MySqlDbType.Decimal)).Value = oRegistroEN.PrecioDelProducto;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio_", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
+                Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion_", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
+                Comando.Parameters.Add(new MySqlParameter("@Estado_", MySqlDbType.VarChar, oRegistroEN.Estado.Trim().Length)).Value = oRegistroEN.Estado.Trim();                
+                Comando.Parameters.Add(new MySqlParameter("@idUsuarioModificacion_", MySqlDbType.Int32)).Value = oRegistroEN.idUsuarioModificacion;
+                
                 Comando.ExecuteNonQuery();
                 
                 DescripcionDeOperacion = string.Format("El registro fue Actualizado Correctamente. {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
@@ -704,6 +611,104 @@ namespace AccesoDatos
 
                 if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0) {
                     
+                    DescripcionDeOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
+                    this.Error = DescripcionDeOperacion;
+                    return true;
+
+                }
+
+                return false;
+
+            }
+            catch (Exception ex)
+            {
+                this.Error = ex.Message;
+
+                DescripcionDeOperacion = string.Format("Se produjo el seguiente error: '{2}' al validar el registro. {0} {1} ", Environment.NewLine, InformacionDelRegistro(oRegistroEN), ex.Message);
+
+                //Agregamos la Transacción....
+                TransaccionesEN oTran = InformacionDelaTransaccion(oRegistroEN, "VALIDAR", "REGISTRO DUPLICADO DENTRO DE LA BASE DE DATOS", "ERROR");
+                oTransaccionesAD.Agregar(oTran, oDatos);
+
+                return false;
+            }
+            finally
+            {
+
+                if (Cnn != null)
+                {
+
+                    if (Cnn.State == ConnectionState.Open)
+                    {
+
+                        Cnn.Close();
+
+                    }
+
+                }
+
+                Cnn = null;
+                Comando = null;
+                Adaptador = null;
+                oTransaccionesAD = null;
+
+            }
+
+        }
+
+        public bool ValidarFechaDelRegistro(ProductoPromocionEN oRegistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+            oTransaccionesAD = new TransaccionesAD();
+
+            try
+            {
+
+                Cnn = new MySqlConnection(TraerCadenaDeConexion(oDatos));
+                Cnn.Open();
+
+                Comando = new MySqlCommand();
+                Comando.Connection = Cnn;
+                Comando.CommandType = CommandType.Text;
+
+                switch (TipoDeOperacion.Trim().ToUpper())
+                {
+
+                    case "AGREGAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idProductoPromocion FROM productopromocion where (SoloFecha(FechaDeInicio) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeInicio) <= SoloFecha(@FechaDeFinalizacion)) 
+or (SoloFecha(FechaDeFinalizacion) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeFinalizacion) <= SoloFecha(@FechaDeFinalizacion)) and idProducto = @idProducto) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
+
+                        break;
+
+                    case "ACTUALIZAR":
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idProductoPromocion FROM productopromocion where (SoloFecha(FechaDeInicio) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeInicio) <= SoloFecha(@FechaDeFinalizacion)) 
+or (SoloFecha(FechaDeFinalizacion) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeFinalizacion) <= SoloFecha(@FechaDeFinalizacion)) and idProducto = @idProducto and idProductoPromocion <> @idProductoPromocion) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Comando.Parameters.Add(new MySqlParameter("@idProductoPromocion", MySqlDbType.Int32)).Value = oRegistroEN.idProductoPromocion;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;
+                        break;
+
+                    default:
+                        throw new ArgumentException("La aperación solicitada no esta disponible");
+
+                }
+
+                Comando.CommandText = Consultas;
+
+                Adaptador = new MySqlDataAdapter();
+                DT = new DataTable();
+
+                Adaptador.SelectCommand = Comando;
+                Adaptador.Fill(DT);
+
+                if (Convert.ToInt32(DT.Rows[0]["RES"].ToString()) > 0)
+                {
+
                     DescripcionDeOperacion = string.Format("Ya existe información del Registro dentro de nuestro sistema: {0} {1}", Environment.NewLine, InformacionDelRegistro(oRegistroEN));
                     this.Error = DescripcionDeOperacion;
                     return true;

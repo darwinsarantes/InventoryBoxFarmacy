@@ -31,27 +31,27 @@
             this.components = new System.ComponentModel.Container();
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.gbGaleriaDeImagenes = new System.Windows.Forms.GroupBox();
-            this.dgvListar = new System.Windows.Forms.DataGridView();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtidProductoPromocion = new System.Windows.Forms.TextBox();
+            this.txtDescripcionDeLaPromocion = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.txtPrecioPromocional = new System.Windows.Forms.TextBox();
             this.dtpkHastaPromocional = new System.Windows.Forms.DateTimePicker();
             this.label40 = new System.Windows.Forms.Label();
             this.dtpkDesdePromocion = new System.Windows.Forms.DateTimePicker();
             this.label39 = new System.Windows.Forms.Label();
-            this.label38 = new System.Windows.Forms.Label();
-            this.txtPrecioPromocional = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.txtDescripcionDeLaPromocion = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbCerrarVentan = new System.Windows.Forms.ToolStripButton();
             this.tsbRecarRegistro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.gbGaleriaDeImagenes = new System.Windows.Forms.GroupBox();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.txtidProductoPromocion = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.cmbEstado = new System.Windows.Forms.ComboBox();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
             this.groupBox1.SuspendLayout();
@@ -98,6 +98,118 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
+            // cmbEstado
+            // 
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Items.AddRange(new object[] {
+            "ACTIVA",
+            "INACTIVA"});
+            this.cmbEstado.Location = new System.Drawing.Point(79, 152);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(192, 21);
+            this.cmbEstado.TabIndex = 36;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.Location = new System.Drawing.Point(22, 133);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(152, 16);
+            this.label19.TabIndex = 35;
+            this.label19.Text = "Estado de la Promoción";
+            // 
+            // txtidProductoPromocion
+            // 
+            this.txtidProductoPromocion.Location = new System.Drawing.Point(50, 106);
+            this.txtidProductoPromocion.Name = "txtidProductoPromocion";
+            this.txtidProductoPromocion.Size = new System.Drawing.Size(23, 20);
+            this.txtidProductoPromocion.TabIndex = 34;
+            this.txtidProductoPromocion.Visible = false;
+            // 
+            // txtDescripcionDeLaPromocion
+            // 
+            this.txtDescripcionDeLaPromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcionDeLaPromocion.Location = new System.Drawing.Point(302, 36);
+            this.txtDescripcionDeLaPromocion.Multiline = true;
+            this.txtDescripcionDeLaPromocion.Name = "txtDescripcionDeLaPromocion";
+            this.txtDescripcionDeLaPromocion.Size = new System.Drawing.Size(257, 137);
+            this.txtDescripcionDeLaPromocion.TabIndex = 33;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.Location = new System.Drawing.Point(302, 17);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(183, 16);
+            this.label17.TabIndex = 32;
+            this.label17.Text = "Descripción de la promoción:";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(22, 85);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(213, 16);
+            this.label38.TabIndex = 31;
+            this.label38.Text = "Precio del producto en promoción:";
+            // 
+            // txtPrecioPromocional
+            // 
+            this.txtPrecioPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPrecioPromocional.Location = new System.Drawing.Point(79, 105);
+            this.txtPrecioPromocional.Name = "txtPrecioPromocional";
+            this.txtPrecioPromocional.Size = new System.Drawing.Size(192, 22);
+            this.txtPrecioPromocional.TabIndex = 30;
+            this.txtPrecioPromocional.Text = "0.00";
+            this.txtPrecioPromocional.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // dtpkHastaPromocional
+            // 
+            this.dtpkHastaPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkHastaPromocional.Location = new System.Drawing.Point(79, 49);
+            this.dtpkHastaPromocional.Name = "dtpkHastaPromocional";
+            this.dtpkHastaPromocional.Size = new System.Drawing.Size(192, 22);
+            this.dtpkHastaPromocional.TabIndex = 29;
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label40.Location = new System.Drawing.Point(22, 55);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(44, 16);
+            this.label40.TabIndex = 28;
+            this.label40.Text = "Hasta";
+            // 
+            // dtpkDesdePromocion
+            // 
+            this.dtpkDesdePromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkDesdePromocion.Location = new System.Drawing.Point(79, 17);
+            this.dtpkDesdePromocion.Name = "dtpkDesdePromocion";
+            this.dtpkDesdePromocion.Size = new System.Drawing.Size(192, 22);
+            this.dtpkDesdePromocion.TabIndex = 27;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(22, 22);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(52, 16);
+            this.label39.TabIndex = 26;
+            this.label39.Text = "Desde:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 2;
+            // 
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -111,6 +223,42 @@
             this.toolStrip1.Size = new System.Drawing.Size(563, 71);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tsbGuardar
+            // 
+            this.tsbGuardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbGuardar.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
+            this.tsbGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGuardar.Name = "tsbGuardar";
+            this.tsbGuardar.Size = new System.Drawing.Size(68, 68);
+            this.tsbGuardar.Text = "Guardar";
+            this.tsbGuardar.ToolTipText = "Guardar registro";
+            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
+            // 
+            // tsbCerrarVentan
+            // 
+            this.tsbCerrarVentan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrarVentan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCerrarVentan.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Log_Out_27856;
+            this.tsbCerrarVentan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbCerrarVentan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrarVentan.Name = "tsbCerrarVentan";
+            this.tsbCerrarVentan.Size = new System.Drawing.Size(52, 68);
+            this.tsbCerrarVentan.Text = "Salir";
+            this.tsbCerrarVentan.ToolTipText = "Cerrar la ventana y retornar";
+            // 
+            // tsbRecarRegistro
+            // 
+            this.tsbRecarRegistro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRecarRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRecarRegistro.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Synchronize_27883__1_;
+            this.tsbRecarRegistro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRecarRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecarRegistro.Name = "tsbRecarRegistro";
+            this.tsbRecarRegistro.Size = new System.Drawing.Size(52, 68);
+            this.tsbRecarRegistro.Text = "Recargar ";
+            this.tsbRecarRegistro.ToolTipText = "Recargar  registro";
             // 
             // toolStripSeparator1
             // 
@@ -154,124 +302,6 @@
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 16);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 2;
-            // 
-            // dtpkHastaPromocional
-            // 
-            this.dtpkHastaPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkHastaPromocional.Location = new System.Drawing.Point(79, 49);
-            this.dtpkHastaPromocional.Name = "dtpkHastaPromocional";
-            this.dtpkHastaPromocional.Size = new System.Drawing.Size(192, 22);
-            this.dtpkHastaPromocional.TabIndex = 29;
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label40.Location = new System.Drawing.Point(22, 55);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(44, 16);
-            this.label40.TabIndex = 28;
-            this.label40.Text = "Hasta";
-            // 
-            // dtpkDesdePromocion
-            // 
-            this.dtpkDesdePromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkDesdePromocion.Location = new System.Drawing.Point(79, 17);
-            this.dtpkDesdePromocion.Name = "dtpkDesdePromocion";
-            this.dtpkDesdePromocion.Size = new System.Drawing.Size(192, 22);
-            this.dtpkDesdePromocion.TabIndex = 27;
-            // 
-            // label39
-            // 
-            this.label39.AutoSize = true;
-            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label39.Location = new System.Drawing.Point(22, 22);
-            this.label39.Name = "label39";
-            this.label39.Size = new System.Drawing.Size(52, 16);
-            this.label39.TabIndex = 26;
-            this.label39.Text = "Desde:";
-            // 
-            // label38
-            // 
-            this.label38.AutoSize = true;
-            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label38.Location = new System.Drawing.Point(22, 85);
-            this.label38.Name = "label38";
-            this.label38.Size = new System.Drawing.Size(213, 16);
-            this.label38.TabIndex = 31;
-            this.label38.Text = "Precio del producto en promoción:";
-            // 
-            // txtPrecioPromocional
-            // 
-            this.txtPrecioPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPrecioPromocional.Location = new System.Drawing.Point(79, 105);
-            this.txtPrecioPromocional.Name = "txtPrecioPromocional";
-            this.txtPrecioPromocional.Size = new System.Drawing.Size(192, 22);
-            this.txtPrecioPromocional.TabIndex = 30;
-            this.txtPrecioPromocional.Text = "0.00";
-            this.txtPrecioPromocional.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(302, 17);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(183, 16);
-            this.label17.TabIndex = 32;
-            this.label17.Text = "Descripción de la promoción:";
-            // 
-            // txtDescripcionDeLaPromocion
-            // 
-            this.txtDescripcionDeLaPromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcionDeLaPromocion.Location = new System.Drawing.Point(302, 36);
-            this.txtDescripcionDeLaPromocion.Multiline = true;
-            this.txtDescripcionDeLaPromocion.Name = "txtDescripcionDeLaPromocion";
-            this.txtDescripcionDeLaPromocion.Size = new System.Drawing.Size(257, 137);
-            this.txtDescripcionDeLaPromocion.TabIndex = 33;
-            // 
-            // tsbGuardar
-            // 
-            this.tsbGuardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGuardar.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
-            this.tsbGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGuardar.Name = "tsbGuardar";
-            this.tsbGuardar.Size = new System.Drawing.Size(68, 68);
-            this.tsbGuardar.Text = "Guardar";
-            this.tsbGuardar.ToolTipText = "Guardar registro";
-            // 
-            // tsbCerrarVentan
-            // 
-            this.tsbCerrarVentan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrarVentan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCerrarVentan.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Log_Out_27856;
-            this.tsbCerrarVentan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCerrarVentan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrarVentan.Name = "tsbCerrarVentan";
-            this.tsbCerrarVentan.Size = new System.Drawing.Size(52, 68);
-            this.tsbCerrarVentan.Text = "Salir";
-            this.tsbCerrarVentan.ToolTipText = "Cerrar la ventana y retornar";
-            // 
-            // tsbRecarRegistro
-            // 
-            this.tsbRecarRegistro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbRecarRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRecarRegistro.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Synchronize_27883__1_;
-            this.tsbRecarRegistro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRecarRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRecarRegistro.Name = "tsbRecarRegistro";
-            this.tsbRecarRegistro.Size = new System.Drawing.Size(52, 68);
-            this.tsbRecarRegistro.Text = "Recargar ";
-            this.tsbRecarRegistro.ToolTipText = "Recargar  registro";
-            // 
             // toolStripButton4
             // 
             this.toolStripButton4.Image = global::InventoryBoxFarmacy.Properties.Resources.Eliminar24x24;
@@ -279,35 +309,6 @@
             this.toolStripButton4.Name = "toolStripButton4";
             this.toolStripButton4.Size = new System.Drawing.Size(78, 28);
             this.toolStripButton4.Text = "Eliminar";
-            // 
-            // txtidProductoPromocion
-            // 
-            this.txtidProductoPromocion.Location = new System.Drawing.Point(50, 106);
-            this.txtidProductoPromocion.Name = "txtidProductoPromocion";
-            this.txtidProductoPromocion.Size = new System.Drawing.Size(23, 20);
-            this.txtidProductoPromocion.TabIndex = 34;
-            this.txtidProductoPromocion.Visible = false;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.Location = new System.Drawing.Point(22, 133);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(152, 16);
-            this.label19.TabIndex = 35;
-            this.label19.Text = "Estado de la Promoción";
-            // 
-            // cmbEstado
-            // 
-            this.cmbEstado.FormattingEnabled = true;
-            this.cmbEstado.Items.AddRange(new object[] {
-            "ACTIVA",
-            "INACTIVA"});
-            this.cmbEstado.Location = new System.Drawing.Point(79, 152);
-            this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(192, 21);
-            this.cmbEstado.TabIndex = 36;
             // 
             // chkCerrarVentana
             // 

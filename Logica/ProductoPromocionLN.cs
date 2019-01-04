@@ -140,6 +140,22 @@ namespace Logica
 
         }
         
+        public bool ValidarFechaDelRegistro(ProductoPromocionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
+        {
+
+            if (oProductoPromocionAD.ValidarFechaDelRegistro(oREgistroEN, oDatos, TipoDeOperacion))
+            {
+                Error = oProductoPromocionAD.Error;
+                return true;
+            }
+            else
+            {
+                Error = string.Empty;
+                return false;
+            }
+
+        }
+
         public bool ValidarRegistroDuplicado(ProductoPromocionEN oREgistroEN, DatosDeConexionEN oDatos, string TipoDeOperacion)
         {
 

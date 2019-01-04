@@ -353,10 +353,15 @@ namespace InventoryBoxFarmacy.Formularios
                     ProductoPromocionEN oRegistroEN = InformacionDeLaPromocionDelProducto();
                     ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
 
+                    if(oRegistroLN.ValidarFechaDelRegistro(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
+                    {
+                        MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     if(oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                     {
-
-                        txtidProductoPromocion.Text = oRegistroEN.idProductoPromocion.ToString();
+                                                
                         if(chkCerrarVentana.Checked == true)
                         {
                             this.Close();
@@ -380,6 +385,53 @@ namespace InventoryBoxFarmacy.Formularios
 
         }
 
+        private void Actualizar()
+        {
+
+            try
+            {
+
+                if (LosDatosIngresadosSonCorrectos())
+                {
+
+                    ProductoPromocionEN oRegistroEN = InformacionDeLaPromocionDelProducto();
+                    ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
+
+                    if (oRegistroLN.ValidarFechaDelRegistro(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                    {
+                        MessageBox.Show(oRegistroLN.Error, "Actualizar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexion))
+                    {
+                        
+                        if (chkCerrarVentana.Checked == true)
+                        {
+                            this.Close();
+                        }
+                        else
+                        {
+                            CrearyYPoblarColumnasDGVLaboratorio();
+                            LimpiarControles();
+                        }
+
+                    }
+                    else
+                    {
+                        throw new ArgumentException(oRegistroLN.Error);
+                    }
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Guardar el registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
+        }
+
         #endregion
 
         private void frmProductoPromociones_Shown(object sender, EventArgs e)
@@ -388,6 +440,21 @@ namespace InventoryBoxFarmacy.Formularios
             CrearyYPoblarColumnasDGVLaboratorio();
             LimpiarControles();
             chkCerrarVentana.Checked = CerrarVentana;
+        }
+
+        private void tsbGuardar_Click(object sender, EventArgs e)
+        {
+            int idProductoPromocion;
+            int.TryParse(txtidProductoPromocion.Text, out idProductoPromocion);
+
+            if(idProductoPromocion == 0)
+            {
+                Guardar();
+            }else
+            {
+                Actualizar();
+            }
+
         }
     }
 }

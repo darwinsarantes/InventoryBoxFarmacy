@@ -262,19 +262,6 @@ namespace AccesoDatos
                     throw new System.ArgumentException(mensaje);
                 }
 
-                ProductoPromocionAD oPromocionAD = new ProductoPromocionAD();
-                oRegistroEN.oPromocionEN.oProductoEN = oRegistroEN.oProductoEN;
-
-                if (oPromocionAD.Agregar(oRegistroEN.oPromocionEN, oDatos, ref Cnn, ref oMySqlTransaction))
-                {
-                    Errores = EvaluarTextoError(Errores, "GUARDAR", this.Error);
-                }
-                else
-                {
-                    mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información de la promoción del producto. ", Environment.NewLine, this.Error);
-                    throw new System.ArgumentException(mensaje);
-                }
-
                 ProductoPrecioAD oPrecioAD = new ProductoPrecioAD();
                 oRegistroEN.oPrecioEN.oProductoEN = oRegistroEN.oProductoEN;
 
@@ -309,7 +296,6 @@ namespace AccesoDatos
                 oMySqlTransaction.Commit();
 
                 oConfiguracionAD = null;
-                oPromocionAD = null;
 
                 this.Error = Errores;
                 
