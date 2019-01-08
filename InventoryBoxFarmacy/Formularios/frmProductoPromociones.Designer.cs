@@ -54,6 +54,7 @@
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
             this.chkCerrarVentana = new System.Windows.Forms.CheckBox();
             this.EP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.gbGaleriaDeImagenes.SuspendLayout();
@@ -70,7 +71,7 @@
             this.InformacionEntidadOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.InformacionEntidadOperacion.Location = new System.Drawing.Point(19, 30);
             this.InformacionEntidadOperacion.Name = "InformacionEntidadOperacion";
-            this.InformacionEntidadOperacion.Size = new System.Drawing.Size(559, 41);
+            this.InformacionEntidadOperacion.Size = new System.Drawing.Size(609, 41);
             this.InformacionEntidadOperacion.TabIndex = 8;
             // 
             // groupBox1
@@ -94,7 +95,7 @@
             this.groupBox1.Controls.Add(this.gbGaleriaDeImagenes);
             this.groupBox1.Location = new System.Drawing.Point(12, 76);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(569, 441);
+            this.groupBox1.Size = new System.Drawing.Size(619, 441);
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             // 
@@ -106,7 +107,7 @@
             "INACTIVA"});
             this.cmbEstado.Location = new System.Drawing.Point(79, 152);
             this.cmbEstado.Name = "cmbEstado";
-            this.cmbEstado.Size = new System.Drawing.Size(192, 21);
+            this.cmbEstado.Size = new System.Drawing.Size(223, 21);
             this.cmbEstado.TabIndex = 36;
             // 
             // label19
@@ -130,7 +131,7 @@
             // txtDescripcionDeLaPromocion
             // 
             this.txtDescripcionDeLaPromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcionDeLaPromocion.Location = new System.Drawing.Point(302, 36);
+            this.txtDescripcionDeLaPromocion.Location = new System.Drawing.Point(336, 36);
             this.txtDescripcionDeLaPromocion.Multiline = true;
             this.txtDescripcionDeLaPromocion.Name = "txtDescripcionDeLaPromocion";
             this.txtDescripcionDeLaPromocion.Size = new System.Drawing.Size(257, 137);
@@ -140,7 +141,7 @@
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(302, 17);
+            this.label17.Location = new System.Drawing.Point(336, 17);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(183, 16);
             this.label17.TabIndex = 32;
@@ -161,17 +162,19 @@
             this.txtPrecioPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecioPromocional.Location = new System.Drawing.Point(79, 105);
             this.txtPrecioPromocional.Name = "txtPrecioPromocional";
-            this.txtPrecioPromocional.Size = new System.Drawing.Size(192, 22);
+            this.txtPrecioPromocional.Size = new System.Drawing.Size(223, 22);
             this.txtPrecioPromocional.TabIndex = 30;
             this.txtPrecioPromocional.Text = "0.00";
             this.txtPrecioPromocional.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dtpkHastaPromocional
             // 
+            this.dtpkHastaPromocional.CustomFormat = "dd - MMM - yyyy hh:mm:ss tt";
             this.dtpkHastaPromocional.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkHastaPromocional.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpkHastaPromocional.Location = new System.Drawing.Point(79, 49);
             this.dtpkHastaPromocional.Name = "dtpkHastaPromocional";
-            this.dtpkHastaPromocional.Size = new System.Drawing.Size(192, 22);
+            this.dtpkHastaPromocional.Size = new System.Drawing.Size(223, 22);
             this.dtpkHastaPromocional.TabIndex = 29;
             // 
             // label40
@@ -186,10 +189,12 @@
             // 
             // dtpkDesdePromocion
             // 
+            this.dtpkDesdePromocion.CustomFormat = "dd - MMM - yyyy hh:mm:ss tt";
             this.dtpkDesdePromocion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpkDesdePromocion.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpkDesdePromocion.Location = new System.Drawing.Point(79, 17);
             this.dtpkDesdePromocion.Name = "dtpkDesdePromocion";
-            this.dtpkDesdePromocion.Size = new System.Drawing.Size(192, 22);
+            this.dtpkDesdePromocion.Size = new System.Drawing.Size(223, 22);
             this.dtpkDesdePromocion.TabIndex = 27;
             // 
             // label39
@@ -217,10 +222,11 @@
             this.tsbGuardar,
             this.tsbCerrarVentan,
             this.tsbRecarRegistro,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.tsbNuevo});
             this.toolStrip1.Location = new System.Drawing.Point(3, 367);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(563, 71);
+            this.toolStrip1.Size = new System.Drawing.Size(613, 71);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -276,7 +282,7 @@
             this.gbGaleriaDeImagenes.Controls.Add(this.toolStrip2);
             this.gbGaleriaDeImagenes.Location = new System.Drawing.Point(6, 191);
             this.gbGaleriaDeImagenes.Name = "gbGaleriaDeImagenes";
-            this.gbGaleriaDeImagenes.Size = new System.Drawing.Size(563, 173);
+            this.gbGaleriaDeImagenes.Size = new System.Drawing.Size(613, 173);
             this.gbGaleriaDeImagenes.TabIndex = 0;
             this.gbGaleriaDeImagenes.TabStop = false;
             this.gbGaleriaDeImagenes.Text = "Promociones del Producto";
@@ -290,7 +296,7 @@
             this.dgvListar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListar.Location = new System.Drawing.Point(6, 50);
             this.dgvListar.Name = "dgvListar";
-            this.dgvListar.Size = new System.Drawing.Size(551, 117);
+            this.dgvListar.Size = new System.Drawing.Size(601, 117);
             this.dgvListar.TabIndex = 2;
             this.dgvListar.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellClick);
             this.dgvListar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListar_CellContentClick);
@@ -306,7 +312,7 @@
             this.toolStripButton4});
             this.toolStrip2.Location = new System.Drawing.Point(3, 16);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(557, 31);
+            this.toolStrip2.Size = new System.Drawing.Size(607, 31);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -333,11 +339,22 @@
             // 
             this.EP.ContainerControl = this;
             // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Plus_1891033__1_;
+            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(52, 68);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
+            // 
             // frmProductoPromociones
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(593, 529);
+            this.ClientSize = new System.Drawing.Size(643, 529);
             this.Controls.Add(this.chkCerrarVentana);
             this.Controls.Add(this.InformacionEntidadOperacion);
             this.Controls.Add(this.groupBox1);
@@ -386,5 +403,6 @@
         private System.Windows.Forms.ComboBox cmbEstado;
         private System.Windows.Forms.CheckBox chkCerrarVentana;
         private System.Windows.Forms.ErrorProvider EP;
+        private System.Windows.Forms.ToolStripButton tsbNuevo;
     }
 }

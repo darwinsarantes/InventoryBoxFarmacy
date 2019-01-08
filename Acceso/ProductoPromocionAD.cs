@@ -675,8 +675,14 @@ namespace AccesoDatos
 
                     case "AGREGAR":
 
-                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idProductoPromocion FROM productopromocion where (SoloFecha(FechaDeInicio) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeInicio) <= SoloFecha(@FechaDeFinalizacion)) 
+                        /*Consultas = @"SELECT CASE WHEN EXISTS(SELECT idProductoPromocion FROM productopromocion where (SoloFecha(FechaDeInicio) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeInicio) <= SoloFecha(@FechaDeFinalizacion)) 
 or (SoloFecha(FechaDeFinalizacion) >= SoloFecha(@FechaDeInicio) and SoloFecha(FechaDeFinalizacion) <= SoloFecha(@FechaDeFinalizacion)) and idProducto = @idProducto) THEN 1 ELSE 0 END AS 'RES'";
+                        Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
+                        Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;*/
+
+                        Consultas = @"SELECT CASE WHEN EXISTS(SELECT idProductoPromocion FROM productopromocion where (@FechaDeInicio between FechaDeInicio and FechaDeFinalizacion) or
+(@FechaDeFinalizacion between FechaDeInicio and FechaDeFinalizacion) and idProducto = @idProducto) THEN 1 ELSE 0 END AS 'RES'";
                         Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
                         Comando.Parameters.Add(new MySqlParameter("@FechaDeInicio", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeInicio;
                         Comando.Parameters.Add(new MySqlParameter("@FechaDeFinalizacion", MySqlDbType.DateTime)).Value = oRegistroEN.FechaDeFinalizacion;

@@ -238,8 +238,8 @@ namespace InventoryBoxFarmacy.Formularios
                                 valor,
                                 idProductoPromocion,
                                 idProducto,
-                                Convert.ToDateTime(row["FechaDeInicio"]).ToLongDateString(),
-                                Convert.ToDateTime( row["FechaDeFinalizacion"]).ToLongDateString(),
+                                Convert.ToDateTime(row["FechaDeInicio"]),
+                                Convert.ToDateTime( row["FechaDeFinalizacion"]),
                                 string.Format("{0:###,###,##0.00}",Convert.ToDecimal(row["PrecioDelProducto"])),
                                 row["Descripcion"],
                                 row["Estado"],
@@ -276,14 +276,14 @@ namespace InventoryBoxFarmacy.Formularios
 
             DateTime FechaActual = System.DateTime.Now;
 
-            if (dtpkDesdePromocion.Value < FechaActual)
+            if (FechaActual.CompareTo(dtpkDesdePromocion.Value) < 0 )
             {
                 EP.SetError(dtpkDesdePromocion, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
                 dtpkDesdePromocion.Focus();
                 return false;
             }
 
-            if (dtpkHastaPromocional.Value < dtpkDesdePromocion.Value)
+            if (dtpkHastaPromocional.Value.CompareTo(dtpkDesdePromocion.Value) < 0)
             {
                 EP.SetError(dtpkHastaPromocional, string.Format("La fecha Ingresada de finalización de la promoción no puede ser {0} menor que la fecha de inicio de la promocion", Environment.NewLine));
                 dtpkHastaPromocional.Focus();
@@ -338,7 +338,7 @@ namespace InventoryBoxFarmacy.Formularios
             txtPrecioPromocional.Text = "0.00";
             dtpkDesdePromocion.Value = System.DateTime.Now;
             dtpkHastaPromocional.Value = System.DateTime.Now;
-            cmbEstado.SelectedIndex = -1;
+            cmbEstado.SelectedIndex = 0;
         }
 
         private void Guardar()
@@ -797,6 +797,11 @@ namespace InventoryBoxFarmacy.Formularios
         private void tsbRecarRegistro_Click(object sender, EventArgs e)
         {
             CrearyYPoblarColumnasDGVLaboratorio();
+            LimpiarControles();
+        }
+
+        private void tsbNuevo_Click(object sender, EventArgs e)
+        {
             LimpiarControles();
         }
     }

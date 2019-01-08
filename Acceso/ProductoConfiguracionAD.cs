@@ -40,14 +40,14 @@ namespace AccesoDatos
                 Consultas = @"
                                 
                 insert into productoconfiguracion
-                (idProducto, ActivarPromocion, AplicarComisiones, MostrarContenidoDeObservacionesENFactura, 
+                (idProducto, AplicarComisiones, MostrarContenidoDeObservacionesENFactura, 
                 MostrarImagenAlFacturar, PreguntarNumeroDeSerieAlFacturar, 
                 PreguntarFechaDeVencimientoAlFacturar, PreguntarPorResetaAlFacturar, 
                 NoUsarComisionesParaEsteProducto, UsarComisionesDefinidasEnElregistroDelVendedor, 
                 MontoFijoPorVenta, PorcentajeDeLaVenta, PorcentajeDeLaGanacia, Comision, ComisionMaxima, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion)
                 values
-                (@idProducto, @ActivarPromocion, @AplicarComisiones, @MostrarContenidoDeObservacionesENFactura, 
+                (@idProducto, @AplicarComisiones, @MostrarContenidoDeObservacionesENFactura, 
                 @MostrarImagenAlFacturar, @PreguntarNumeroDeSerieAlFacturar, 
                 @PreguntarFechaDeVencimientoAlFacturar, @PreguntarPorResetaAlFacturar, 
                 @NoUsarComisionesParaEsteProducto, @UsarComisionesDefinidasEnElregistroDelVendedor, 
@@ -58,8 +58,7 @@ namespace AccesoDatos
 
                 Comando.CommandText = Consultas;
 
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@ActivarPromocion", MySqlDbType.Int32)).Value = oRegistroEN.ActivarPromocion;
+                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;                
                 Comando.Parameters.Add(new MySqlParameter("@AplicarComisiones", MySqlDbType.Int32)).Value = oRegistroEN.AplicarComisiones;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarImagenAlFacturar", MySqlDbType.Int32)).Value = oRegistroEN.MostrarImagenAlFacturar;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarContenidoDeObservacionesENFactura", MySqlDbType.Int32)).Value = oRegistroEN.MostrarContenidoDeObservacionesENFactura;
@@ -143,13 +142,13 @@ namespace AccesoDatos
                 Consultas = @"
                                 
                 insert into productoconfiguracion 
-                (idProducto, ActivarPromocion, AplicarComisiones, MostrarContenidoDeObservacionesENFactura, 
+                (idProducto, AplicarComisiones, MostrarContenidoDeObservacionesENFactura, 
                 MostrarImagenAlFacturar, PreguntarNumeroDeSerieAlFacturar, PreguntarFechaDeVencimientoAlFacturar, 
                 PreguntarPorResetaAlFacturar, NoUsarComisionesParaEsteProducto, UsarComisionesDefinidasEnElregistroDelVendedor, 
                 MontoFijoPorVenta, PorcentajeDeLaVenta, PorcentajeDeLaGanacia, Comision, ComisionMaxima, 
                 idUsuarioDeCreacion, FechaDeCreacion, idUsuarioModificacion, FechaDeModificacion, MarcaDelProducto, ModeloDelProducto, NumeroDeSerie)
                 values
-                (@idProducto, @ActivarPromocion, @AplicarComisiones, @MostrarContenidoDeObservacionesENFactura, 
+                (@idProducto, @AplicarComisiones, @MostrarContenidoDeObservacionesENFactura, 
                 @MostrarImagenAlFacturar, @PreguntarNumeroDeSerieAlFacturar, @PreguntarFechaDeVencimientoAlFacturar, 
                 @PreguntarPorResetaAlFacturar, @NoUsarComisionesParaEsteProducto, @UsarComisionesDefinidasEnElregistroDelVendedor, 
                 @MontoFijoPorVenta, @PorcentajeDeLaVenta, @PorcentajeDeLaGanacia, @Comision, @ComisionMaxima, 
@@ -161,7 +160,6 @@ namespace AccesoDatos
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@ActivarPromocion", MySqlDbType.Int32)).Value = oRegistroEN.ActivarPromocion;
                 Comando.Parameters.Add(new MySqlParameter("@AplicarComisiones", MySqlDbType.Int32)).Value = oRegistroEN.AplicarComisiones;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarImagenAlFacturar", MySqlDbType.Int32)).Value = oRegistroEN.MostrarImagenAlFacturar;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarContenidoDeObservacionesENFactura", MySqlDbType.Int32)).Value = oRegistroEN.MostrarContenidoDeObservacionesENFactura;
@@ -237,7 +235,7 @@ namespace AccesoDatos
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = @"UPDATE productoconfiguracion SET
-	                idProducto = @idProducto, ActivarPromocion = @ActivarPromocion, AplicarComisiones = @AplicarComisiones, 
+	                idProducto = @idProducto, AplicarComisiones = @AplicarComisiones, 
 	                MostrarContenidoDeObservacionesENFactura = @MostrarContenidoDeObservacionesENFactura,
                     MostrarImagenAlFacturar = @MostrarImagenAlFacturar, 
 	                PreguntarNumeroDeSerieAlFacturar = @PreguntarNumeroDeSerieAlFacturar, 
@@ -254,8 +252,7 @@ namespace AccesoDatos
                 Comando.CommandText = Consultas;
 
                 Comando.Parameters.Add(new MySqlParameter("@idProductoConfiguracion", MySqlDbType.Int32)).Value = oRegistroEN.idProductoConfiguracion;
-                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;
-                Comando.Parameters.Add(new MySqlParameter("@ActivarPromocion", MySqlDbType.Int32)).Value = oRegistroEN.ActivarPromocion;
+                Comando.Parameters.Add(new MySqlParameter("@idProducto", MySqlDbType.Int32)).Value = oRegistroEN.oProductoEN.idProducto;                
                 Comando.Parameters.Add(new MySqlParameter("@AplicarComisiones", MySqlDbType.Int32)).Value = oRegistroEN.AplicarComisiones;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarImagenAlFacturar", MySqlDbType.Int32)).Value = oRegistroEN.MostrarImagenAlFacturar;
                 Comando.Parameters.Add(new MySqlParameter("@MostrarContenidoDeObservacionesENFactura", MySqlDbType.Int32)).Value = oRegistroEN.MostrarContenidoDeObservacionesENFactura;
@@ -398,7 +395,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto, pc.ActivarPromocion, 
+                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto, 
                 pc.AplicarComisiones, pc.MostrarContenidoDeObservacionesENFactura, 
                 pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
                 pc.PreguntarFechaDeVencimientoAlFacturar, pc.PreguntarPorResetaAlFacturar, 
@@ -464,7 +461,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto, pc.ActivarPromocion, 
+                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto, 
                 pc.AplicarComisiones, pc.MostrarContenidoDeObservacionesENFactura, 
                 pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
                 pc.PreguntarFechaDeVencimientoAlFacturar, pc.PreguntarPorResetaAlFacturar, 
@@ -530,7 +527,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto, pc.ActivarPromocion, 
+                Consultas = string.Format(@"SELECT idProductoConfiguracion, pc.idProducto,
                 pc.AplicarComisiones, pc.MostrarContenidoDeObservacionesENFactura, 
                 pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
                 pc.PreguntarFechaDeVencimientoAlFacturar, pc.PreguntarPorResetaAlFacturar, 
@@ -783,8 +780,8 @@ namespace AccesoDatos
 
 
         private string InformacionDelRegistro(ProductoConfiguracionEN oRegistroEN) {
-            string Cadena = @"idProductoConfiguracion: {0}, idProducto: {1}, ActivarPromocion: {2}, AplicarComisiones: {3}, MostrarContenidoDeObservacionesENFactura: {4}, MostrarImagenAlFacturar: {5}, PreguntarNumeroDeSerieAlFacturar: {6}, PreguntarFechaDeVencimientoAlFacturar: {7}, PreguntarPorResetaAlFacturar: {8}, NoUsarComisionesParaEsteProducto: {9}, UsarComisionesDefinidasEnElregistroDelVendedor: {10}, MontoFijoPorVenta: {11}, PorcentajeDeLaVenta: {12}, PorcentajeDeLaGanacia: {13}, Comision: {14}, ComisionMaxima: {15}, idUsuarioDeCreacion: {16}, FechaDeCreacion: {17}, idUsuarioModificacion: {18}, FechaDeModificacion: {19}";
-            Cadena = string.Format(Cadena, oRegistroEN.idProductoConfiguracion, oRegistroEN.oProductoEN.idProducto, oRegistroEN.ActivarPromocion, oRegistroEN.AplicarComisiones, oRegistroEN.MostrarContenidoDeObservacionesENFactura, oRegistroEN.MostrarImagenAlFacturar,oRegistroEN.PreguntarNumeroDeSerieAlFacturar,oRegistroEN.PreguntarFechaDeVencimientoAlFacturar,oRegistroEN.PreguntarPorResetaAlFacturar, oRegistroEN.NoUsarComisionesParaEsteProducto, oRegistroEN.UsarComisionesDefinidasEnElregistroDelVendedor, oRegistroEN.MontoFijoPorVenta, oRegistroEN.PorcentajeDeLaVenta, oRegistroEN.PorcentajeDeLaGanacia, oRegistroEN.Comision, oRegistroEN.ComisionMaxima, oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion);
+            string Cadena = @"idProductoConfiguracion: {0}, idProducto: {1}, AplicarComisiones: {2}, MostrarContenidoDeObservacionesENFactura: {3}, MostrarImagenAlFacturar: {4}, PreguntarNumeroDeSerieAlFacturar: {5}, PreguntarFechaDeVencimientoAlFacturar: {6}, PreguntarPorResetaAlFacturar: {7}, NoUsarComisionesParaEsteProducto: {8}, UsarComisionesDefinidasEnElregistroDelVendedor: {9}, MontoFijoPorVenta: {10}, PorcentajeDeLaVenta: {11}, PorcentajeDeLaGanacia: {12}, Comision: {13}, ComisionMaxima: {14}, idUsuarioDeCreacion: {15}, FechaDeCreacion: {16}, idUsuarioModificacion: {17}, FechaDeModificacion: {18}";
+            Cadena = string.Format(Cadena, oRegistroEN.idProductoConfiguracion, oRegistroEN.oProductoEN.idProducto, oRegistroEN.AplicarComisiones, oRegistroEN.MostrarContenidoDeObservacionesENFactura, oRegistroEN.MostrarImagenAlFacturar,oRegistroEN.PreguntarNumeroDeSerieAlFacturar,oRegistroEN.PreguntarFechaDeVencimientoAlFacturar,oRegistroEN.PreguntarPorResetaAlFacturar, oRegistroEN.NoUsarComisionesParaEsteProducto, oRegistroEN.UsarComisionesDefinidasEnElregistroDelVendedor, oRegistroEN.MontoFijoPorVenta, oRegistroEN.PorcentajeDeLaVenta, oRegistroEN.PorcentajeDeLaGanacia, oRegistroEN.Comision, oRegistroEN.ComisionMaxima, oRegistroEN.idUsuarioDeCreacion, oRegistroEN.FechaDeCreacion, oRegistroEN.idUsuarioModificacion, oRegistroEN.FechaDeModificacion);
             Cadena = Cadena.Replace(",", Environment.NewLine);
             return Cadena;            
         }

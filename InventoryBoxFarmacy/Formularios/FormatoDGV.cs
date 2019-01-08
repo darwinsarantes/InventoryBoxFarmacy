@@ -231,7 +231,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                         case "FechaDeFinalizacion":
                             this.Descripcion = "Finaliza";
-                            this.Tamano = 130;
+                            this.Tamano = 150;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
                             this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
@@ -239,7 +239,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                         case "FechaDeInicio":
                             this.Descripcion = "Inicio";
-                            this.Tamano = 130;
+                            this.Tamano = 150;
                             this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
                             this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
                             this.SoloLectura = true;
