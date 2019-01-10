@@ -7,15 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Funciones;
 using Entidad;
 using Logica;
+using Funciones;
 
 namespace InventoryBoxFarmacy.Formularios
 {
-    public partial class frmProductoPromociones : Form
+    public partial class frmProductoLote : Form
     {
-        public frmProductoPromociones()
+        public frmProductoLote()
         {
             InitializeComponent();
         }
@@ -31,18 +31,19 @@ namespace InventoryBoxFarmacy.Formularios
 
         #region "Funciones del programador"
 
+
         private void EstablecerTituloDeVentana()
         {
             this.Text = TituloDeLaVentana;
             this.InformacionEntidadOperacion.Text = InformacionDeLaOperacion;
         }
-        
+
         private void CrearColumnasDGVRegistros()
         {
             try
             {
 
-                string columnas = @"idProductoPromocion, idProducto, FechaDeInicio, FechaDeFinalizacion, PrecioDelProducto, Descripcion, Estado";
+                string columnas = @"idLoteDelProducto, FechaDeVencimiento, CantidadDelLote, NumeroDeLote, Descripcion";
 
                 string[] arrayColumnas = columnas.Split(',');
 
@@ -64,7 +65,7 @@ namespace InventoryBoxFarmacy.Formularios
                 dgvListar.Columns.Insert(j, col2);
                 dgvListar.Columns[j].Name = "Actualizar";
 
-                FomatearDGVPromociones();
+                FomatearDGVLoteDelProducto();
 
             }
             catch (Exception ex)
@@ -73,7 +74,7 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private void FomatearDGVPromociones()
+        private void FomatearDGVLoteDelProducto()
         {
             try
             {
@@ -91,7 +92,7 @@ namespace InventoryBoxFarmacy.Formularios
                 this.dgvListar.BackgroundColor = System.Drawing.SystemColors.Window;
                 this.dgvListar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
 
-                string OcultarColumnas = "idProductoPromocion, idProducto,Actualizar";
+                string OcultarColumnas = "idLoteDelProducto, Actualizar";
                 OcultarColumnasEnELDGV(OcultarColumnas);
 
                 FormatearColumnasDGVListar();
@@ -126,7 +127,7 @@ namespace InventoryBoxFarmacy.Formularios
                     {
                         if (c1.Name.Trim().ToUpper() != "Seleccionar".ToUpper())
                         {
-                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "ProductosPromocion");
+                            FormatoDGV oFormato = new FormatoDGV(c1.Name.Trim(), "ProductosLote");
                             if (oFormato.ValorEncontrado == false)
                             {
                                 oFormato = new FormatoDGV(c1.Name.Trim());
@@ -175,19 +176,18 @@ namespace InventoryBoxFarmacy.Formularios
             }
         }
 
-        private DataTable InformacionDePromocionesAsociadasAlProducto()
+        private DataTable InformacionDeLoteProducto()
         {
             DataTable ODatos = null;
             try
             {
 
-                ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
-                ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
+                 ProductoLoteEN oRegistroEN = new  ProductoLoteEN();
+                 ProductoLoteLN oRegistroLN = new  ProductoLoteLN();
 
                 oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
-                oRegistroEN.OrderBy = " Order By FechaDeFinalizacion desc ";
-
-                if (oRegistroLN.ListadoPromocionesXProducto(oRegistroEN, Program.oDatosDeConexion))
+                
+                if (oRegistroLN.ListadoDePruductosDelLotePorIdProducto(oRegistroEN, Program.oDatosDeConexion))
                 {
 
                     ODatos = oRegistroLN.TraerDatos();
@@ -208,14 +208,14 @@ namespace InventoryBoxFarmacy.Formularios
 
         }
 
-        private void CrearyYPoblarColumnasDGVPromociones()
+        private void CrearyYPoblarColumnasDGVlotes()
         {
             try
             {
 
                 CrearColumnasDGVRegistros();
 
-                DataTable DTOrden = InformacionDePromocionesAsociadasAlProducto();
+                DataTable DTOrden = InformacionDeLoteProducto();
 
                 if (DTOrden != null)
                 {
@@ -225,24 +225,20 @@ namespace InventoryBoxFarmacy.Formularios
                         int i = 1;
                         Boolean valor = false;
 
-                        int idProductoPromocion = 0;
-                        int idProducto = 0;
+                        int idLoteDelProducto = 0;                        
 
                         foreach (DataRow row in DTOrden.Rows)
                         {
-
-                            idProducto = Convert.ToInt32(row["idProducto"]);
-                            idProductoPromocion = Convert.ToInt32(row["idProductoPromocion"]);
+                                                        
+                            idLoteDelProducto = Convert.ToInt32(row["idLoteDelProducto"]);
 
                             dgvListar.Rows.Add(
                                 valor,
-                                idProductoPromocion,
-                                idProducto,
-                                Convert.ToDateTime(row["FechaDeInicio"]),
-                                Convert.ToDateTime( row["FechaDeFinalizacion"]),
-                                string.Format("{0:###,###,##0.00}",Convert.ToDecimal(row["PrecioDelProducto"])),
-                                row["Descripcion"],
-                                row["Estado"],
+                                idLoteDelProducto,
+                                Convert.ToDateTime(row["FechaDeVencimiento"]),                               
+                                string.Format("{0:###,###,##0.00}", Convert.ToDecimal(row["CantidadDelLote"])),
+                                row["NumeroDeLote"].ToString(),
+                                row["Descripcion"],                             
                                 valor
                                 );
 
@@ -257,88 +253,48 @@ namespace InventoryBoxFarmacy.Formularios
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Crear y Poblar Columnas, de los diferentes productos sustitutos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Crear y Poblar Columnas de los diferentes lotes del producto", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private Boolean LosDatosIngresadosSonCorrectos()
         {
 
-            decimal PrecioDePromocion;
-            decimal.TryParse(txtPrecioPromocional.Text, out PrecioDePromocion);
-            if (PrecioDePromocion == 0)
+            decimal Cantidad;
+            decimal.TryParse(txtCantidad.Text, out Cantidad);
+            if (Cantidad == 0)
             {
-                EP.SetError(txtPrecioPromocional, "Este valor no puede ser cero o menor que cero");
-                txtPrecioPromocional.Focus();
+                EP.SetError(txtCantidad, "El valor no puede ser cero");
+                txtCantidad.Focus();
                 return false;
             }
-
-
+            
             DateTime FechaActual = System.DateTime.Now;
 
-            if (FechaActual.CompareTo(dtpkDesdePromocion.Value) < 0 )
+            if (dtpkFechaVencimiento.Checked == false)
             {
-                EP.SetError(dtpkDesdePromocion, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
-                dtpkDesdePromocion.Focus();
+                EP.SetError(dtpkFechaVencimiento, "No se ha seleccionado una fecha de vencimiento del lote del producto");
+                dtpkFechaVencimiento.Focus();
                 return false;
             }
 
-            if (dtpkHastaPromocional.Value.CompareTo(dtpkDesdePromocion.Value) < 0)
+            if (FechaActual.CompareTo(dtpkFechaVencimiento.Value) < 0)
             {
-                EP.SetError(dtpkHastaPromocional, string.Format("La fecha Ingresada de finalización de la promoción no puede ser {0} menor que la fecha de inicio de la promocion", Environment.NewLine));
-                dtpkHastaPromocional.Focus();
+                EP.SetError(dtpkFechaVencimiento, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
+                dtpkFechaVencimiento.Focus();
                 return false;
             }
-
-            if (Controles.IsNullOEmptyElControl(txtDescripcionDeLaPromocion))
-            {
-                EP.SetError(txtDescripcionDeLaPromocion, "Agrege una descripcíon de la promoción que se le va aplicar al producto");
-                txtDescripcionDeLaPromocion.Focus();
-                return false;
-            }
-
+                      
             return true;
-        }
-
-        private ProductoPromocionEN InformacionDeLaPromocionDelProducto()
-        {
-            ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
-
-            int idProductoPromocion;
-            int.TryParse(txtidProductoPromocion.Text, out idProductoPromocion);
-
-            oRegistroEN.idProductoPromocion = idProductoPromocion;
-            oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
-            oRegistroEN.oProductoEN.Nombre = NombreDelProducto;
-            oRegistroEN.oProductoEN.Codigo = CodigoProducto;
-            oRegistroEN.oProductoEN.CodigoDeBarra = CodigoDeBarraDelProducto;
-
-            decimal PrecioDelProducto;
-            decimal.TryParse(txtPrecioPromocional.Text, out PrecioDelProducto);
-            oRegistroEN.PrecioDelProducto = PrecioDelProducto;
-            oRegistroEN.FechaDeInicio = dtpkDesdePromocion.Value;
-            oRegistroEN.FechaDeFinalizacion = dtpkHastaPromocional.Value;
-            oRegistroEN.Estado = cmbEstado.Text.Trim();
-            oRegistroEN.Descripcion = txtDescripcionDeLaPromocion.Text.Trim();
-
-            //partes generales.            
-            oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
-
-            return oRegistroEN;
 
         }
-
+        
         private void LimpiarControles()
         {
-            txtDescripcionDeLaPromocion.Clear();
-            txtPrecioPromocional.Text = "0.00";
-            dtpkDesdePromocion.Value = System.DateTime.Now;
-            dtpkHastaPromocional.Value = System.DateTime.Now;
-            cmbEstado.SelectedIndex = 0;
+            txtDescripcion.Clear();
+            txtNumeroDeLote.Clear();
+            dtpkFechaVencimiento.Value = System.DateTime.Now;
+            txtCantidad.Text = "0.00";
         }
 
         private void Guardar()
@@ -350,35 +306,38 @@ namespace InventoryBoxFarmacy.Formularios
                 if (LosDatosIngresadosSonCorrectos())
                 {
 
-                    ProductoPromocionEN oRegistroEN = InformacionDeLaPromocionDelProducto();
-                    ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
+                     ProductoLoteEN oRegistroEN = InformacionDelLoteDelProducto();
+                     ProductoLoteLN oRegistroLN = new  ProductoLoteLN();
 
-                    if(oRegistroLN.ValidarFechaDelRegistro(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
+                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
                     {
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
 
-                    if(oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
+                    if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                     {
-                                                
-                        if(chkCerrarVentana.Checked == true)
+
+                        if (chkCerrarVentana.Checked == true)
                         {
                             this.Close();
-                        }else
+                        }
+                        else
                         {
-                            CrearyYPoblarColumnasDGVPromociones();
+                            CrearyYPoblarColumnasDGVlotes();
                             LimpiarControles();
                         }
 
-                    }else
+                    }
+                    else
                     {
                         throw new ArgumentException(oRegistroLN.Error);
                     }
 
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Guardar el registro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -393,11 +352,11 @@ namespace InventoryBoxFarmacy.Formularios
 
                 if (LosDatosIngresadosSonCorrectos())
                 {
+                   
+                     ProductoLoteEN oRegistroEN = InformacionDelLoteDelProducto();
+                     ProductoLoteLN oRegistroLN = new  ProductoLoteLN();
 
-                    ProductoPromocionEN oRegistroEN = InformacionDeLaPromocionDelProducto();
-                    ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
-
-                    if (oRegistroLN.ValidarFechaDelRegistro(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
+                    if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "ACTUALIZAR"))
                     {
                         MessageBox.Show(oRegistroLN.Error, "Actualizar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
@@ -405,14 +364,14 @@ namespace InventoryBoxFarmacy.Formularios
 
                     if (oRegistroLN.Actualizar(oRegistroEN, Program.oDatosDeConexion))
                     {
-                        
+
                         if (chkCerrarVentana.Checked == true)
                         {
                             this.Close();
                         }
                         else
                         {
-                            CrearyYPoblarColumnasDGVPromociones();
+                            CrearyYPoblarColumnasDGVlotes();
                             LimpiarControles();
                         }
 
@@ -448,10 +407,10 @@ namespace InventoryBoxFarmacy.Formularios
                         if (RowsProcesar > 0)
                         {
 
-                            int indice = 0;                           
+                            int indice = 0;
                             int TotalDeFilasMarcadasParaEliminar = TotalDeFilasMarcadas(dgvListar, "Eliminar");
                             //Aqui Volvemos dinamica El codigo poniendo el valor de la llave primaria 
-                            string NombreLavePrimariaDetalle = "idProductoPromocion";
+                            string NombreLavePrimariaDetalle = "id ProductoLote";
 
                             while (indice <= dgvListar.Rows.Count - 1)
                             {
@@ -460,40 +419,40 @@ namespace InventoryBoxFarmacy.Formularios
 
                                 int ValorDelaLLavePrimaria;
 
-                                int.TryParse(Fila.Cells[NombreLavePrimariaDetalle].Value.ToString(), out ValorDelaLLavePrimaria);                                
+                                int.TryParse(Fila.Cells[NombreLavePrimariaDetalle].Value.ToString(), out ValorDelaLLavePrimaria);
                                 Boolean Eliminar = Convert.ToBoolean(Fila.Cells["Eliminar"].Value);
 
                                 if (ValorDelaLLavePrimaria == 0 && Eliminar == false)
                                 {
-                                    
-                                    indice++;                                    
+
+                                    indice++;
                                     continue;
 
                                 }
-                                
-                                ProductoPromocionEN oRegistroEN = InformacionDeLaPromocion(Fila);
-                                ProductoPromocionLN oRegistroLN = new ProductoPromocionLN();
+
+                                 ProductoLoteEN oRegistroEN = InformacionDeLaPromocionEnElDGV(Fila);
+                                 ProductoLoteLN oRegistroLN = new  ProductoLoteLN();
 
                                 string Operacion = "";
 
                                 //El orden es importante porque si un usuario agrego una nueva persona pero lo marco para eliminar, no hacemos nada, solo lo quitamos de la lista.
-                                if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }                                
+                                if (ValorDelaLLavePrimaria == 0 && Eliminar == true) { Operacion = "ELIMINAR FILA EN GRILLA"; }
                                 //VALIDAREMOS PARA PODER ELIMINAR EL REGISTRO....
                                 else if (ValorDelaLLavePrimaria > 0 && Eliminar == true) { Operacion = "ELIMINAR"; }
-                                
+
                                 else if (ValorDelaLLavePrimaria >= 0 && Eliminar == false) { Operacion = "NINGUNA"; }
 
                                 //Validaciones 
                                 if (Operacion == "ELIMINAR FILA EN GRILLA")
                                 {
                                     dgvListar.Rows.Remove(Fila);
-                                    if (dgvListar.RowCount <= 0) { indice++;}
+                                    if (dgvListar.RowCount <= 0) { indice++; }
                                     continue;
                                 }
 
                                 if (Operacion == "NINGUNA")
                                 {
-                                    indice++;                                   
+                                    indice++;
                                     continue;
                                 }
 
@@ -505,15 +464,15 @@ namespace InventoryBoxFarmacy.Formularios
                                         dgvListar.Rows.Remove(Fila);
                                         oRegistroEN = null;
                                         oRegistroLN = null;
-                                        if (dgvListar.RowCount <= 0) { indice++; }                                        
+                                        if (dgvListar.RowCount <= 0) { indice++; }
                                         continue;
 
                                     }
                                     else
-                                    {                                        
+                                    {
                                         this.Cursor = Cursors.Default;
                                         throw new ArgumentException(oRegistroLN.Error);
-                                                                                
+
                                     }
                                 }
 
@@ -523,40 +482,73 @@ namespace InventoryBoxFarmacy.Formularios
 
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private ProductoPromocionEN InformacionDeLaPromocion(DataGridViewRow Fila)
+        private  ProductoLoteEN InformacionDeLaPromocionEnElDGV(DataGridViewRow Fila)
         {
-            ProductoPromocionEN oRegistroEN = new ProductoPromocionEN();
-            
-            int idProductoPromocion;
-            int.TryParse(Fila.Cells["idProductoPromocion"].Value.ToString(), out idProductoPromocion);
-            oRegistroEN.idProductoPromocion = idProductoPromocion;
+             ProductoLoteEN oRegistroEN = new  ProductoLoteEN();
+
+            int idLoteDelProducto;
+            int.TryParse(Fila.Cells["idLoteDelProducto"].Value.ToString(), out idLoteDelProducto);
+            oRegistroEN.idLoteDelProducto = idLoteDelProducto;
+
             oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
             oRegistroEN.oProductoEN.Codigo = CodigoProducto;
             oRegistroEN.oProductoEN.CodigoDeBarra = CodigoDeBarraDelProducto;
             oRegistroEN.oProductoEN.Nombre = NombreDelProducto;
 
-            decimal PrecioDelProducto;
-            decimal.TryParse(Fila.Cells["PrecioDelProducto"].Value.ToString(), out PrecioDelProducto);
+            decimal Cantidad;
+            decimal.TryParse(Fila.Cells["CantidadDelLote"].Value.ToString(), out Cantidad);
 
-            oRegistroEN.PrecioDelProducto = PrecioDelProducto;
-            oRegistroEN.FechaDeInicio = Convert.ToDateTime(Fila.Cells["FechaDeInicio"].Value.ToString());
-            oRegistroEN.FechaDeFinalizacion = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value.ToString());
-            oRegistroEN.Estado = Fila.Cells["Estado"].Value.ToString();
-            oRegistroEN.Descripcion = Fila.Cells["Descripcion"].Value.ToString();
+            oRegistroEN.NumeroDeLote = Fila.Cells["NumeroDeLote"].Value.ToString();
+            oRegistroEN.CantidadDelLote = Cantidad;
+            oRegistroEN.FechaDeCreacion = Convert.ToDateTime(Fila.Cells["FechaDeVencimiento"].Value);
+            oRegistroEN.Descripcion = txtDescripcion.Text.Trim();            
 
             oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.idUsuarioDeCreacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.idUsuarioModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.idUsuario;
             oRegistroEN.FechaDeCreacion = System.DateTime.Now;
             oRegistroEN.FechaDeModificacion = System.DateTime.Now;
 
             return oRegistroEN;
+
+        }
+
+        private ProductoLoteEN InformacionDelLoteDelProducto()
+        {
+            ProductoLoteEN oRegistroEN = new ProductoLoteEN();
+
+            int idLoteDelProducto;
+            int.TryParse(txtidLoteDelProducto.Text, out idLoteDelProducto);
+            oRegistroEN.idLoteDelProducto = idLoteDelProducto;
+
+            oRegistroEN.oProductoEN.idProducto = ValorLlavePrimariaEntidad;
+            oRegistroEN.oProductoEN.Codigo = CodigoProducto;
+            oRegistroEN.oProductoEN.CodigoDeBarra = CodigoDeBarraDelProducto;
+            oRegistroEN.oProductoEN.Nombre = NombreDelProducto;
+
+            decimal Cantidad;
+            decimal.TryParse(txtCantidad.Text, out Cantidad);
+
+            oRegistroEN.NumeroDeLote = txtNumeroDeLote.Text.Trim();
+            oRegistroEN.CantidadDelLote = Cantidad;
+            oRegistroEN.FechaDeCreacion = dtpkFechaVencimiento.Value;
+            oRegistroEN.Descripcion = txtDescripcion.Text.Trim();
+
+            oRegistroEN.oLoginEN = Program.oLoginEN;
+            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.idUsuario;
+            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
+            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
+
+            return oRegistroEN;
+
         }
 
         private int TotalDeFilasMarcadas(DataGridView odgvGrid, String Columna)
@@ -586,7 +578,7 @@ namespace InventoryBoxFarmacy.Formularios
             {
 
                 List<DataGridViewRow> rows = (from item in dgv.Rows.Cast<DataGridViewRow>()
-                                              let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)                                              
+                                              let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)
                                               where Eliminar.Equals(true)
                                               select item).ToList<DataGridViewRow>();
 
@@ -607,14 +599,14 @@ namespace InventoryBoxFarmacy.Formularios
                 return false;
             }
         }
-        
+
         private string DescripcionDetallaDGV(DataGridView dgv)
         {
             string Mensaje = "";
 
             if (dgv.Rows.Count > 0)
             {
-                
+
                 List<DataGridViewRow> rows2 = (from item in dgv.Rows.Cast<DataGridViewRow>()
                                                let Eliminar = Convert.ToBoolean(item.Cells["Eliminar"].Value ?? false)
                                                where Eliminar.Equals(true)
@@ -639,6 +631,7 @@ namespace InventoryBoxFarmacy.Formularios
             return Mensaje;
 
         }
+
 
         #endregion
 
@@ -701,13 +694,13 @@ namespace InventoryBoxFarmacy.Formularios
         {
             try
             {
-                int idProductoPromocion;
-                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idProductoPromocion"].Value.ToString(), out idProductoPromocion);
+                int idLoteDelProducto;
+                int.TryParse(dgvListar.Rows[e.RowIndex].Cells["idLoteDelProducto"].Value.ToString(), out idLoteDelProducto);
 
-                if (dgvListar.Rows[e.RowIndex].Cells["idProductoPromocion"].Value == null)
+                if (dgvListar.Rows[e.RowIndex].Cells["idLoteDelProducto"].Value == null)
                     return;
 
-                if (idProductoPromocion > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
+                if (idLoteDelProducto > 0 && dgvListar.Columns[e.ColumnIndex].Name != "Eliminar")
                 {
                     dgvListar.Rows[e.RowIndex].Cells["Actualizar"].Value = true;
                 }
@@ -747,12 +740,11 @@ namespace InventoryBoxFarmacy.Formularios
                 {
 
                     DataGridViewRow Fila = dgvListar.SelectedRows[0];
-                    txtidProductoPromocion.Text = Fila.Cells["idProductoPromocion"].Value.ToString();
-                    txtPrecioPromocional.Text = string.Format("{0:###,###,##0.00}", Convert.ToDecimal(Fila.Cells["PrecioDelProducto"].Value.ToString()));
-                    txtDescripcionDeLaPromocion.Text = Fila.Cells["Descripcion"].Value.ToString();
-                    cmbEstado.Text = Fila.Cells["Estado"].Value.ToString();
-                    dtpkDesdePromocion.Value = Convert.ToDateTime(Fila.Cells["FechaDeInicio"].Value);
-                    dtpkHastaPromocional.Value = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value);
+                    txtidLoteDelProducto.Text = Fila.Cells["idLoteDelProducto"].Value.ToString();
+                    txtCantidad.Text = string.Format("{0:###,###,##0.00}", Convert.ToDecimal(Fila.Cells["CantidadDelLote"].Value.ToString()));
+                    txtDescripcion.Text = Fila.Cells["Descripcion"].Value.ToString();                                        
+                    dtpkFechaVencimiento.Value = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value);
+                    txtNumeroDeLote.Text = Fila.Cells["NumeroDeLote"].Value.ToString();
 
                 }
             }
@@ -760,49 +752,53 @@ namespace InventoryBoxFarmacy.Formularios
 
         #endregion
 
-        private void frmProductoPromociones_Shown(object sender, EventArgs e)
+        #region "Eventos del Formulario"
+
+        private void frmProductoLote_Shown(object sender, EventArgs e)
         {
             EstablecerTituloDeVentana();
-            CrearyYPoblarColumnasDGVPromociones();
+            CrearyYPoblarColumnasDGVlotes();
             LimpiarControles();
             chkCerrarVentana.Checked = CerrarVentana;
         }
 
         private void tsbGuardar_Click(object sender, EventArgs e)
         {
-            int idProductoPromocion;
-            int.TryParse(txtidProductoPromocion.Text, out idProductoPromocion);
+            int idLoteDelProducto;
+            int.TryParse(txtidLoteDelProducto.Text, out idLoteDelProducto);
 
-            if(idProductoPromocion == 0)
+            if (idLoteDelProducto == 0)
             {
                 Guardar();
-            }else
+            }
+            else
             {
                 Actualizar();
             }
-
-        }
-
-        private void toolStripButton4_Click(object sender, EventArgs e)
-        {
-            Eliminar();
-        }
-
-        private void tsbCerrarVentan_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void tsbRecarRegistro_Click(object sender, EventArgs e)
-        {
-            CrearyYPoblarColumnasDGVPromociones();
-            LimpiarControles();
         }
 
         private void tsbNuevo_Click(object sender, EventArgs e)
         {
             LimpiarControles();
         }
+
+        private void tsbEliminar_Click(object sender, EventArgs e)
+        {
+            Eliminar();
+        }
+
+        private void tsbRecarRegistro_Click(object sender, EventArgs e)
+        {
+            CrearyYPoblarColumnasDGVlotes();
+            LimpiarControles();
+        }
+
+        private void tsbCerrarVentan_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        
+        #endregion
 
     }
 }

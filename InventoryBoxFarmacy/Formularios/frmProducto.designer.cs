@@ -57,6 +57,7 @@
             this.tsbGaleriaDeImagenes = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbProductosSustitutos = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbPromociones = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbFechaDeVencimiento = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbFiltrar = new System.Windows.Forms.ToolStripButton();
             this.tsbFiltroAutomatico = new System.Windows.Forms.ToolStripButton();
             this.tsbImprimir = new System.Windows.Forms.ToolStripButton();
@@ -241,20 +242,21 @@
             this.toolStripSeparator3,
             this.tsbGaleriaDeImagenes,
             this.tsbProductosSustitutos,
-            this.tsbPromociones});
+            this.tsbPromociones,
+            this.tsbFechaDeVencimiento});
             this.mcsMenu.Name = "mcsMenu";
-            this.mcsMenu.Size = new System.Drawing.Size(184, 214);
+            this.mcsMenu.Size = new System.Drawing.Size(246, 236);
             this.mcsMenu.Opened += new System.EventHandler(this.mcsMenu_Opened);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(242, 6);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(180, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(242, 6);
             // 
             // statusStrip1
             // 
@@ -298,7 +300,7 @@
             // 
             this.nuevoToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.New16x16;
             this.nuevoToolStripMenuItem.Name = "nuevoToolStripMenuItem";
-            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
             // 
@@ -306,7 +308,7 @@
             // 
             this.actualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Edit16x16;
             this.actualizarToolStripMenuItem.Name = "actualizarToolStripMenuItem";
-            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.actualizarToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.actualizarToolStripMenuItem.Text = "Actualizar";
             this.actualizarToolStripMenuItem.Click += new System.EventHandler(this.actualizarToolStripMenuItem_Click);
             // 
@@ -314,7 +316,7 @@
             // 
             this.eliminarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.Eliminar16x16;
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
-            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
             this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
@@ -322,7 +324,7 @@
             // 
             this.visualizarToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.view16x16;
             this.visualizarToolStripMenuItem.Name = "visualizarToolStripMenuItem";
-            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.visualizarToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.visualizarToolStripMenuItem.Text = "Visualizar";
             this.visualizarToolStripMenuItem.Click += new System.EventHandler(this.visualizarToolStripMenuItem_Click);
             // 
@@ -330,7 +332,7 @@
             // 
             this.imprimirToolStripMenuItem.Image = global::InventoryBoxFarmacy.Properties.Resources.printer16x16;
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(245, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir";
             this.imprimirToolStripMenuItem.Click += new System.EventHandler(this.imprimirToolStripMenuItem_Click);
             // 
@@ -338,7 +340,7 @@
             // 
             this.tsbGaleriaDeImagenes.Image = global::InventoryBoxFarmacy.Properties.Resources.if_icon_33_667338;
             this.tsbGaleriaDeImagenes.Name = "tsbGaleriaDeImagenes";
-            this.tsbGaleriaDeImagenes.Size = new System.Drawing.Size(183, 22);
+            this.tsbGaleriaDeImagenes.Size = new System.Drawing.Size(245, 22);
             this.tsbGaleriaDeImagenes.Tag = "Actualizar";
             this.tsbGaleriaDeImagenes.Text = "Galeria de Imagenes";
             this.tsbGaleriaDeImagenes.Click += new System.EventHandler(this.tsbGaleriaDeImagenes_Click);
@@ -347,7 +349,7 @@
             // 
             this.tsbProductosSustitutos.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_box_49364;
             this.tsbProductosSustitutos.Name = "tsbProductosSustitutos";
-            this.tsbProductosSustitutos.Size = new System.Drawing.Size(183, 22);
+            this.tsbProductosSustitutos.Size = new System.Drawing.Size(245, 22);
             this.tsbProductosSustitutos.Text = "Productos Sustitutos";
             this.tsbProductosSustitutos.Click += new System.EventHandler(this.tsbProductosSustitutos_Click);
             // 
@@ -355,9 +357,17 @@
             // 
             this.tsbPromociones.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_advantage_sale_1034365;
             this.tsbPromociones.Name = "tsbPromociones";
-            this.tsbPromociones.Size = new System.Drawing.Size(183, 22);
+            this.tsbPromociones.Size = new System.Drawing.Size(245, 22);
             this.tsbPromociones.Text = "Promociones";
             this.tsbPromociones.Click += new System.EventHandler(this.tsbPromociones_Click);
+            // 
+            // tsbFechaDeVencimiento
+            // 
+            this.tsbFechaDeVencimiento.Image = global::InventoryBoxFarmacy.Properties.Resources.iconfinder_calendar_1287530;
+            this.tsbFechaDeVencimiento.Name = "tsbFechaDeVencimiento";
+            this.tsbFechaDeVencimiento.Size = new System.Drawing.Size(245, 22);
+            this.tsbFechaDeVencimiento.Text = "Fecha Vencimiento del producto";
+            this.tsbFechaDeVencimiento.Click += new System.EventHandler(this.tsbFechaDeVencimiento_Click);
             // 
             // tsbFiltrar
             // 
@@ -487,5 +497,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsbGaleriaDeImagenes;
         private System.Windows.Forms.ToolStripMenuItem tsbProductosSustitutos;
         private System.Windows.Forms.ToolStripMenuItem tsbPromociones;
+        private System.Windows.Forms.ToolStripMenuItem tsbFechaDeVencimiento;
     }
 }

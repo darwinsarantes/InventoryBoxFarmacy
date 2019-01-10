@@ -7,10 +7,14 @@ using System.Threading.Tasks;
 namespace Entidad
 {
     public class ProductoLoteEN
-    {   
+    {
+        
         public int idLoteDelProducto { set; get; }
         public DateTime FechaDeVencimiento { set; get; }
         public decimal CantidadDelLote { set; get; }
+        public string NumeroDeLote { set; get; }
+        public string Descripcion { set; get; }
+        
         public int IdUsuarioDeCreacion { set; get; }
         public DateTime FechaDeCreacion { set; get; }
         public int IdUsuarioDeModificacion { set; get; }
@@ -23,8 +27,6 @@ namespace Entidad
         public string OrderBy { set; get; }
         public string TituloDelReporte { set; get; }
         public string SubTituloDelReporte { set; get; }
-
-        public Boolean AplicarCambio { set; get; }
 
     }
 }

@@ -207,6 +207,57 @@ namespace InventoryBoxFarmacy.Formularios
             
             switch (Tabla)//ProductoSustitutos
             {
+                case "ProductosLote":
+
+                    this.ValorEncontrado = true;
+
+                    switch (Columna)
+                    {
+                        case "NumeroDeLote":
+                            this.Descripcion = "Numero del Lote";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "Descripcion":
+                            this.Descripcion = "Descripción";
+                            this.Tamano = 200;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+                        
+                        case "FechaDeVencimiento":
+                            this.Descripcion = "Fecha de Vencimiento";
+                            this.Tamano = 150;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleLeft;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "CantidadDelLote":
+                            this.Descripcion = "Cantidad";
+                            this.Tamano = 80;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleRight;
+                            this.SoloLectura = true;
+                            break;
+
+                        case "idLoteDelProducto":
+                            this.Descripcion = "ID";
+                            this.Tamano = 50;
+                            this.AlineacionDelEncabezado = DataGridViewContentAlignment.MiddleCenter;
+                            this.Alineacion = DataGridViewContentAlignment.MiddleCenter;
+                            this.SoloLectura = true;
+                            break;
+
+                        default: this.ValorEncontrado = false; break;
+                    }
+
+                    break;
+
                 case "ProductosPromocion":
 
                     this.ValorEncontrado = true;

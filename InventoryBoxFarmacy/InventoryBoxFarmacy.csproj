@@ -157,6 +157,12 @@
     <Compile Include="Formularios\frmProductoGaleriaDeImagenes.Designer.cs">
       <DependentUpon>frmProductoGaleriaDeImagenes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\frmProductoLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\frmProductoLote.Designer.cs">
+      <DependentUpon>frmProductoLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\frmProductoPromociones.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -488,6 +494,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoGaleriaDeImagenes.resx">
       <DependentUpon>frmProductoGaleriaDeImagenes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\frmProductoLote.resx">
+      <DependentUpon>frmProductoLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\frmProductoPromociones.resx">
       <DependentUpon>frmProductoPromociones.cs</DependentUpon>
@@ -1027,6 +1036,10 @@
     <Content Include="Origen XML\DTOrigenXML.xml">
       <SubType>Designer</SubType>
     </Content>
+    <None Include="Resources\iconfinder_calendar_1287530.png" />
+    <None Include="Resources\iconfinder_calendar_1287530 %283%29.png" />
+    <None Include="Resources\iconfinder_calendar_1287530 %282%29.png" />
+    <None Include="Resources\iconfinder_calendar_1287530 %281%29.png" />
     <None Include="Resources\iconfinder_advantage_sale_1034365.png" />
     <None Include="Resources\iconfinder_price_87454.png" />
     <None Include="Resources\iconfinder_free-24_463005.png" />

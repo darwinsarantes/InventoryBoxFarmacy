@@ -1010,5 +1010,39 @@ namespace InventoryBoxFarmacy.Formularios
                 MessageBox.Show(ex.Message, "Promociones del producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void tsbFechaDeVencimiento_Click(object sender, EventArgs e)
+        {
+            try
+            {
+
+                if (dgvLista.Rows.Count > 0)
+                {
+
+                    if (dgvLista.CurrentRow != null)
+                    {
+
+                        DataGridViewRow Fila = dgvLista.CurrentRow;
+                        string NombreProducto = string.Format("Fechas de Vencimiento para el Lote de Producto: {3} {0} {3} {2}-{1}", Fila.Cells["Codigo"].Value.ToString(), Fila.Cells["Nombre"].Value.ToString(), Fila.Cells["CodigoDeBarra"].Value.ToString(), Environment.NewLine);
+
+                        frmProductoLote ofrmSustitutos = new frmProductoLote();
+                        ofrmSustitutos.TituloDeLaVentana = string.Format("Producto: '{0}'", NombreProducto);
+                        ofrmSustitutos.InformacionDeLaOperacion = NombreProducto;
+                        ofrmSustitutos.CodigoProducto = Fila.Cells["Codigo"].Value.ToString();
+                        ofrmSustitutos.CodigoDeBarraDelProducto = Fila.Cells["CodigoDeBarra"].Value.ToString();
+                        ofrmSustitutos.NombreDelProducto = Fila.Cells["Nombre"].Value.ToString();
+                        ofrmSustitutos.ValorLlavePrimariaEntidad = Convert.ToInt32(Fila.Cells["idProducto"].Value.ToString());
+
+                        ofrmSustitutos.ShowDialog();
+
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lotes del Producto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

@@ -81,7 +81,6 @@
             this.txtPrecioXUnidad = new System.Windows.Forms.TextBox();
             this.txtUnidadesXPresentacion = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtpkFechaDeVencimiento = new System.Windows.Forms.DateTimePicker();
             this.chkProductoDescontinuado = new System.Windows.Forms.CheckBox();
             this.chkProductoControlado = new System.Windows.Forms.CheckBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -95,7 +94,6 @@
             this.txtIdentificador = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -760,7 +758,6 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.Transparent;
-            this.groupBox1.Controls.Add(this.dtpkFechaDeVencimiento);
             this.groupBox1.Controls.Add(this.chkProductoDescontinuado);
             this.groupBox1.Controls.Add(this.chkProductoControlado);
             this.groupBox1.Controls.Add(this.groupBox4);
@@ -771,7 +768,6 @@
             this.groupBox1.Controls.Add(this.txtIdentificador);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.txtNombre);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label20);
@@ -795,18 +791,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Información general del producto:";
             // 
-            // dtpkFechaDeVencimiento
-            // 
-            this.dtpkFechaDeVencimiento.Location = new System.Drawing.Point(449, 279);
-            this.dtpkFechaDeVencimiento.Name = "dtpkFechaDeVencimiento";
-            this.dtpkFechaDeVencimiento.Size = new System.Drawing.Size(173, 22);
-            this.dtpkFechaDeVencimiento.TabIndex = 19;
-            // 
             // chkProductoDescontinuado
             // 
             this.chkProductoDescontinuado.AutoSize = true;
             this.chkProductoDescontinuado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkProductoDescontinuado.Location = new System.Drawing.Point(449, 333);
+            this.chkProductoDescontinuado.Location = new System.Drawing.Point(449, 308);
             this.chkProductoDescontinuado.Name = "chkProductoDescontinuado";
             this.chkProductoDescontinuado.Size = new System.Drawing.Size(175, 20);
             this.chkProductoDescontinuado.TabIndex = 0;
@@ -817,7 +806,7 @@
             // 
             this.chkProductoControlado.AutoSize = true;
             this.chkProductoControlado.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkProductoControlado.Location = new System.Drawing.Point(449, 309);
+            this.chkProductoControlado.Location = new System.Drawing.Point(449, 279);
             this.chkProductoControlado.Name = "chkProductoControlado";
             this.chkProductoControlado.Size = new System.Drawing.Size(150, 20);
             this.chkProductoControlado.TabIndex = 0;
@@ -930,16 +919,6 @@
             this.label10.Size = new System.Drawing.Size(107, 16);
             this.label10.TabIndex = 15;
             this.label10.Text = "Linea/Categoria:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(446, 260);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(143, 16);
-            this.label9.TabIndex = 15;
-            this.label9.Text = "Fecha de vencimiento:";
             // 
             // txtNombre
             // 
@@ -1617,7 +1596,6 @@
         private System.Windows.Forms.Label InformacionEntidadOperacion;
         private System.Windows.Forms.TabControl tbOperaciones;
         private System.Windows.Forms.TabPage tpGeneral;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtExistencias;
@@ -1719,7 +1697,6 @@
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.DateTimePicker dtpkFechaDeVencimiento;
         private System.Windows.Forms.Label label20;
     }
 }

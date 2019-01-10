@@ -673,29 +673,6 @@ namespace InventoryBoxFarmacy.Formularios
 
             }
             
-            if (dtpkFechaDeVencimiento.Checked == true)
-            {
-                DateTime FechaActual = new DateTime();
-                FechaActual = System.DateTime.Now;
-                if (dtpkFechaDeVencimiento.Value < FechaActual)
-                {
-                    EP.SetError(dtpkFechaDeVencimiento, "La fecha de vencimiento del item es menor que la que tiene el sistema actualmente");
-                    dtpkFechaDeVencimiento.Focus();
-                    return false;
-                } else if (dtpkFechaDeVencimiento.Value == FechaActual)
-                {
-                    if (MessageBox.Show("La fecha del vencimiento del item es igual a la del Sistema \n Desea continuar guardando la información", "Validar fecha de vencimiento", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning) == DialogResult.OK)
-                    {
-                        return true;
-                    }else
-                    {
-                        return false;
-                    }
-
-                }
-
-            }
-
             return true;
 
         }
@@ -875,30 +852,7 @@ namespace InventoryBoxFarmacy.Formularios
             return oRegistroEN;
 
         }
-                
-        private ProductoLoteEN InformacionDelLote()
-        {
-            ProductoLoteEN oRegistroEN = new ProductoLoteEN();
-            oRegistroEN.idLoteDelProducto = idLoteProducto;
-            oRegistroEN.oProductoEN = InformacionDelRegistro();
-            oRegistroEN.CantidadDelLote = Convert.ToDecimal(txtExistencias.Text);
-            oRegistroEN.FechaDeVencimiento = dtpkFechaDeVencimiento.Value;
-
-            oRegistroEN.oLoginEN = Program.oLoginEN;
-            oRegistroEN.IdUsuarioDeCreacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.idUsuario;
-            oRegistroEN.FechaDeCreacion = System.DateTime.Now;
-            oRegistroEN.FechaDeModificacion = System.DateTime.Now;
-
-            if (dtpkFechaDeVencimiento.Checked == true)
-                oRegistroEN.AplicarCambio = true;
-            else
-                oRegistroEN.AplicarCambio = false;
-
-            return oRegistroEN;
-
-        }
-
+        
         #endregion
 
         #region "Eventos del Formulario"
@@ -935,8 +889,7 @@ namespace InventoryBoxFarmacy.Formularios
                     oProductoCompletoEN.oProductoEN = InformacionDelRegistro();
                     oProductoCompletoEN.oPrecioEN = InformacionDelPrecioDelProducto();                    
                     oProductoCompletoEN.oConfiguracionEN = InformacionDeLaConfiguracionDelProducto();
-                    oProductoCompletoEN.oProductoLote = InformacionDelLote();
-
+                   
                     ProductoLN oRegistroLN = new ProductoLN();
 
                     if (oRegistroLN.ValidarRegistroDuplicado(oProductoCompletoEN.oProductoEN, Program.oDatosDeConexion, "AGREGAR"))
@@ -954,12 +907,7 @@ namespace InventoryBoxFarmacy.Formularios
                         ValorLlavePrimariaEntidad = oProductoCompletoEN.oProductoEN.idProducto;
                         txtIdPrecio.Text = oProductoCompletoEN.oPrecioEN.idProductoPrecio.ToString();
                         txtidProductoConfiguracion.Text = oProductoCompletoEN.oConfiguracionEN.idProductoConfiguracion.ToString();
-                                                
-                        if(oProductoCompletoEN.oProductoLote.AplicarCambio == true)
-                        {
-                            idLoteProducto = oProductoCompletoEN.oProductoLote.idLoteDelProducto;
-                        }
-
+                        
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Guardar");
 
                         oProductoCompletoEN = null;
@@ -1023,8 +971,7 @@ namespace InventoryBoxFarmacy.Formularios
                     oRegistroEN.oProductoEN = InformacionDelRegistro();
                     oRegistroEN.oPrecioEN = InformacionDelPrecioDelProducto();
                     oRegistroEN.oConfiguracionEN = InformacionDeLaConfiguracionDelProducto();
-                    oRegistroEN.oProductoLote = InformacionDelLote();
-
+                    
                     ProductoLN oRegistroLN = new ProductoLN();
 
                     if (oRegistroLN.ValidarSiElRegistroEstaVinculado(oRegistroEN.oProductoEN, Program.oDatosDeConexion, "ACTUALIZAR"))
@@ -1050,12 +997,7 @@ namespace InventoryBoxFarmacy.Formularios
 
                         txtIdPrecio.Text = oRegistroEN.oPrecioEN.idProductoPrecio.ToString();
                         txtidProductoConfiguracion.Text = oRegistroEN.oConfiguracionEN.idProductoConfiguracion.ToString();
-
-                        if (oRegistroEN.oProductoLote.AplicarCambio == true)
-                        {
-                            idLoteProducto = oRegistroEN.oProductoLote.idLoteDelProducto;
-                        }
-
+                        
                         EvaluarErrorParaMensajeAPantalla(oRegistroLN.Error, "Actualizar");
 
                         oRegistroEN = null;

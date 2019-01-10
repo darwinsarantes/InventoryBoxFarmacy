@@ -274,25 +274,7 @@ namespace AccesoDatos
                     mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información del precio del producto. ", Environment.NewLine, this.Error);
                     throw new System.ArgumentException(mensaje);
                 }
-
-                if(oRegistroEN.oProductoLote.AplicarCambio == true)
-                {
-                    oRegistroEN.oProductoLote.oProductoEN = oRegistroEN.oProductoEN;
-                    ProductoLoteAD oProductoLoteAD = new ProductoLoteAD();
-                    if(oProductoLoteAD.Agregar(oRegistroEN.oProductoLote, oDatos,ref Cnn, ref oMySqlTransaction))
-                    {
-                        Errores = EvaluarTextoError(Errores, "GUARDAR", oProductoLoteAD.Error);
-                    }
-                    else
-                    {
-                        mensaje = String.Format("Error : '{1}', {0} producido al intentar guardar la información del Lote del producto. ", Environment.NewLine, oProductoLoteAD.Error);
-                        throw new System.ArgumentException(mensaje);
-                    }
-
-                    oProductoLoteAD = null;
-
-                }
-
+                
                 oMySqlTransaction.Commit();
 
                 oConfiguracionAD = null;

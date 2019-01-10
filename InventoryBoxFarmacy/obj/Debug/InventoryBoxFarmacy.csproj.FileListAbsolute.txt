@@ -551,3 +551,7 @@ D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmac
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.exe.manifest
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.application
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmProductoPromociones.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmProductoGaleriaDeImagenes.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmProductoLote.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmProductoPromociones.resources
+F:\InventoryBoxFarmacy\InventoryBoxFarmacy\obj\Debug\InventoryBoxFarmacy.Formularios.frmProductosAsociados.resources

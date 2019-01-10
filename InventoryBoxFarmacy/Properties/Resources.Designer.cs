@@ -573,6 +573,46 @@ namespace InventoryBoxFarmacy.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_calendar_1287530 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_calendar_1287530", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_calendar_1287530__1_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_calendar_1287530 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_calendar_1287530__2_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_calendar_1287530 (2)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_calendar_1287530__3_ {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder_calendar_1287530 (3)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconfinder_free_24_463005 {
             get {
                 object obj = ResourceManager.GetObject("iconfinder_free-24_463005", resourceCulture);
