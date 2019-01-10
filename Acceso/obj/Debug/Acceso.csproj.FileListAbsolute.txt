@@ -16,15 +16,6 @@ E:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
 E:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
 E:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
 E:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.dll
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.pdb
-F:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
-F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
-F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
-F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
@@ -50,3 +41,12 @@ D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmac
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.dll
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\Acceso.pdb
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.dll
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.dll
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\Entidad.pdb
+F:\InventoryBoxFarmacy\Acceso\bin\Debug\MySql.Data.xml
+F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.csprojResolveAssemblyReference.cache
+F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.dll
+F:\InventoryBoxFarmacy\Acceso\obj\Debug\Acceso.pdb

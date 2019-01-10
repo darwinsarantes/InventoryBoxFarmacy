@@ -8,16 +8,11 @@ E:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
 E:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 E:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
 E:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
-F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
-F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
-F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
-F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
-F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 G:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
 G:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
 G:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
@@ -28,3 +23,7 @@ D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmac
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.csprojResolveAssemblyReference.cache
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb
+F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.dll
+F:\InventoryBoxFarmacy\Entidad\bin\Debug\Entidad.pdb
+F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.dll
+F:\InventoryBoxFarmacy\Entidad\obj\Debug\Entidad.pdb

@@ -235,7 +235,7 @@ namespace InventoryBoxFarmacy.Formularios
                             dgvListar.Rows.Add(
                                 valor,
                                 idLoteDelProducto,
-                                Convert.ToDateTime(row["FechaDeVencimiento"]),                               
+                                row["FechaDeVencimiento"],                               
                                 string.Format("{0:###,###,##0.00}", Convert.ToDecimal(row["CantidadDelLote"])),
                                 row["NumeroDeLote"].ToString(),
                                 row["Descripcion"],                             
@@ -278,7 +278,7 @@ namespace InventoryBoxFarmacy.Formularios
                 return false;
             }
 
-            if (FechaActual.CompareTo(dtpkFechaVencimiento.Value) < 0)
+            if (dtpkFechaVencimiento.Value.CompareTo(FechaActual) < 0)
             {
                 EP.SetError(dtpkFechaVencimiento, "La fecha Ingresada de inicio de la promoción no puede ser menor que la fecha actual del SO");
                 dtpkFechaVencimiento.Focus();
@@ -309,12 +309,14 @@ namespace InventoryBoxFarmacy.Formularios
                      ProductoLoteEN oRegistroEN = InformacionDelLoteDelProducto();
                      ProductoLoteLN oRegistroLN = new  ProductoLoteLN();
 
+                    MessageBox.Show(oRegistroEN.FechaDeVencimiento.ToString());
+
                     if (oRegistroLN.ValidarRegistroDuplicado(oRegistroEN, Program.oDatosDeConexion, "AGREGAR"))
                     {
                         MessageBox.Show(oRegistroLN.Error, "Guardar información", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
-
+                    
                     if (oRegistroLN.Agregar(oRegistroEN, Program.oDatosDeConexion))
                     {
 
@@ -410,7 +412,7 @@ namespace InventoryBoxFarmacy.Formularios
                             int indice = 0;
                             int TotalDeFilasMarcadasParaEliminar = TotalDeFilasMarcadas(dgvListar, "Eliminar");
                             //Aqui Volvemos dinamica El codigo poniendo el valor de la llave primaria 
-                            string NombreLavePrimariaDetalle = "id ProductoLote";
+                            string NombreLavePrimariaDetalle = "idLoteDelProducto";
 
                             while (indice <= dgvListar.Rows.Count - 1)
                             {
@@ -538,7 +540,7 @@ namespace InventoryBoxFarmacy.Formularios
 
             oRegistroEN.NumeroDeLote = txtNumeroDeLote.Text.Trim();
             oRegistroEN.CantidadDelLote = Cantidad;
-            oRegistroEN.FechaDeCreacion = dtpkFechaVencimiento.Value;
+            oRegistroEN.FechaDeVencimiento = dtpkFechaVencimiento.Value;
             oRegistroEN.Descripcion = txtDescripcion.Text.Trim();
 
             oRegistroEN.oLoginEN = Program.oLoginEN;
@@ -546,7 +548,7 @@ namespace InventoryBoxFarmacy.Formularios
             oRegistroEN.IdUsuarioDeModificacion = Program.oLoginEN.idUsuario;
             oRegistroEN.FechaDeCreacion = System.DateTime.Now;
             oRegistroEN.FechaDeModificacion = System.DateTime.Now;
-
+            
             return oRegistroEN;
 
         }
@@ -743,7 +745,7 @@ namespace InventoryBoxFarmacy.Formularios
                     txtidLoteDelProducto.Text = Fila.Cells["idLoteDelProducto"].Value.ToString();
                     txtCantidad.Text = string.Format("{0:###,###,##0.00}", Convert.ToDecimal(Fila.Cells["CantidadDelLote"].Value.ToString()));
                     txtDescripcion.Text = Fila.Cells["Descripcion"].Value.ToString();                                        
-                    dtpkFechaVencimiento.Value = Convert.ToDateTime(Fila.Cells["FechaDeFinalizacion"].Value);
+                    dtpkFechaVencimiento.Value = Convert.ToDateTime(Fila.Cells["FechaDeVencimiento"].Value);
                     txtNumeroDeLote.Text = Fila.Cells["NumeroDeLote"].Value.ToString();
 
                 }

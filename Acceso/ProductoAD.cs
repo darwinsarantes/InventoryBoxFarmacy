@@ -705,35 +705,35 @@ Where p.idProducto > 0 {0} {1} ", oRegistroEN.Where, oRegistroEN.OrderBy);
                 Comando.CommandType = CommandType.Text;
 
                 Consultas = string.Format(@"SELECT 
-p.idProducto,p.idCategoria, p.idAlmacenEntidad, p.idPLEntidad,pp.idProductoPrecio, 
-p.Codigo, p.CodigoDeBarra, p.Nombre AS 'ProductoNombre', p.NombreGenerico, 
-p.NombreComun, p.Descripcion, p.Observaciones, p.Existencias, p.Minimo,
-p.Maximo, p.idProductoUnidadDeMedida, p.idProductoPresentacion, 
-p.TablaDeReferenciaDeAlmacenaje, 
-p.TablaDeRefereciaDeProveedorOLaboratorio, p.Estado,
-pp.idProductoPrecio, pp.Costo, pp.PorcentajeDelPrecio1, 
-pp.PorcentajeDelPrecio2, pp.PorcentajeDelPrecio3, 
-pp.PorcentajeDelPrecio4, pp.PorcentajeDelPrecio5, pp.Precio1, 
-pp.Precio2, pp.Precio3, pp.Precio4, pp.Precio5, pp.AplicarElIva, 
-pp.ValorDelIvaEnProcentaje, pp.ValorDelIva, pp.Estado as 'EstadoDelProducto', 
-pp.PrecioXUnidad, pp.UnidadesXPrecentacion,
-pc.idProductoConfiguracion, pc.ActivarPromocion, pc.AplicarComisiones,
-pc.MostrarContenidoDeObservacionesENFactura, 
-pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
-pc.PreguntarFechaDeVencimientoAlFacturar, 
-pc.PreguntarPorResetaAlFacturar, 
-pc.NoUsarComisionesParaEsteProducto, 
-pc.UsarComisionesDefinidasEnElregistroDelVendedor, 
-pc.MontoFijoPorVenta, pc.PorcentajeDeLaVenta, pc.PorcentajeDeLaGanacia, pc.Comision, 
-pc.ComisionMaxima, pc.MarcaDelProducto, pc.ModeloDelProducto, 
-pc.NumeroDeSerie, p.Foto
-FROM producto as p 
-inner join categoria as c on c.idCategoria = p.idCategoria
-inner join productopresentacion as ps on ps.idProductoPresentacion = p.idProductoPresentacion
-inner join productounidaddemedida as pu on pu.idProductoUnidadDeMedida = p.idProductoUnidadDeMedida
-inner join productoprecio as pp on pp.idProducto = p.idProducto and UPPER(pp.Estado) = 'ACTIVO'
-INNER JOIN productoconfiguracion AS pc on pc.idProducto = p.idProducto
-where p.idProducto = {0} ", oRegistroEN.idProducto);
+                p.idProducto,p.idCategoria, p.idAlmacenEntidad, p.idPLEntidad,pp.idProductoPrecio, 
+                p.Codigo, p.CodigoDeBarra, p.Nombre AS 'ProductoNombre', p.NombreGenerico, 
+                p.NombreComun, p.Descripcion, p.Observaciones, p.Existencias, p.Minimo,
+                p.Maximo, p.idProductoUnidadDeMedida, p.idProductoPresentacion, 
+                p.TablaDeReferenciaDeAlmacenaje, 
+                p.TablaDeRefereciaDeProveedorOLaboratorio, p.Estado,
+                pp.idProductoPrecio, pp.Costo, pp.PorcentajeDelPrecio1, 
+                pp.PorcentajeDelPrecio2, pp.PorcentajeDelPrecio3, 
+                pp.PorcentajeDelPrecio4, pp.PorcentajeDelPrecio5, pp.Precio1, 
+                pp.Precio2, pp.Precio3, pp.Precio4, pp.Precio5, pp.AplicarElIva, 
+                pp.ValorDelIvaEnProcentaje, pp.ValorDelIva, pp.Estado as 'EstadoDelProducto', 
+                pp.PrecioXUnidad, pp.UnidadesXPrecentacion,
+                pc.idProductoConfiguracion, pc.AplicarComisiones,
+                pc.MostrarContenidoDeObservacionesENFactura, 
+                pc.MostrarImagenAlFacturar, pc.PreguntarNumeroDeSerieAlFacturar, 
+                pc.PreguntarFechaDeVencimientoAlFacturar, 
+                pc.PreguntarPorResetaAlFacturar, 
+                pc.NoUsarComisionesParaEsteProducto, 
+                pc.UsarComisionesDefinidasEnElregistroDelVendedor, 
+                pc.MontoFijoPorVenta, pc.PorcentajeDeLaVenta, pc.PorcentajeDeLaGanacia, pc.Comision, 
+                pc.ComisionMaxima, pc.MarcaDelProducto, pc.ModeloDelProducto, 
+                pc.NumeroDeSerie, p.Foto
+                FROM producto as p 
+                inner join categoria as c on c.idCategoria = p.idCategoria
+                inner join productopresentacion as ps on ps.idProductoPresentacion = p.idProductoPresentacion
+                inner join productounidaddemedida as pu on pu.idProductoUnidadDeMedida = p.idProductoUnidadDeMedida
+                inner join productoprecio as pp on pp.idProducto = p.idProducto and UPPER(pp.Estado) = 'ACTIVO'
+                INNER JOIN productoconfiguracion AS pc on pc.idProducto = p.idProducto
+                where p.idProducto = {0} ", oRegistroEN.idProducto);
                 Comando.CommandText = Consultas;
 
                 Adaptador = new MySqlDataAdapter();

@@ -33,26 +33,26 @@
             this.InformacionEntidadOperacion = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtidLoteDelProducto = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.txtNumeroDeLote = new System.Windows.Forms.TextBox();
-            this.dtpkFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.label39 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.gbGaleriaDeImagenes = new System.Windows.Forms.GroupBox();
-            this.dgvListar = new System.Windows.Forms.DataGridView();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.EP = new System.Windows.Forms.ErrorProvider(this.components);
-            this.txtCantidad = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
             this.tsbGuardar = new System.Windows.Forms.ToolStripButton();
             this.tsbCerrarVentan = new System.Windows.Forms.ToolStripButton();
             this.tsbRecarRegistro = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbNuevo = new System.Windows.Forms.ToolStripButton();
+            this.gbGaleriaDeImagenes = new System.Windows.Forms.GroupBox();
+            this.dgvListar = new System.Windows.Forms.DataGridView();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.tsbEliminar = new System.Windows.Forms.ToolStripButton();
+            this.EP = new System.Windows.Forms.ErrorProvider(this.components);
+            this.dtpkFechaVencimiento = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.gbGaleriaDeImagenes.SuspendLayout();
@@ -88,6 +88,7 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.dtpkFechaVencimiento);
             this.groupBox1.Controls.Add(this.txtidLoteDelProducto);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label3);
@@ -95,7 +96,6 @@
             this.groupBox1.Controls.Add(this.txtCantidad);
             this.groupBox1.Controls.Add(this.txtDescripcion);
             this.groupBox1.Controls.Add(this.txtNumeroDeLote);
-            this.groupBox1.Controls.Add(this.dtpkFechaVencimiento);
             this.groupBox1.Controls.Add(this.label39);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.toolStrip1);
@@ -114,6 +114,26 @@
             this.txtidLoteDelProducto.TabIndex = 34;
             this.txtidLoteDelProducto.Visible = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(18, 116);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 16);
+            this.label2.TabIndex = 31;
+            this.label2.Text = "Cantidad de Lote:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(348, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(107, 16);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Número de Lote:";
+            // 
             // label38
             // 
             this.label38.AutoSize = true;
@@ -124,6 +144,27 @@
             this.label38.TabIndex = 31;
             this.label38.Text = "Número de Lote:";
             // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(75, 136);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(223, 22);
+            this.txtCantidad.TabIndex = 30;
+            this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // txtDescripcion
+            // 
+            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescripcion.Location = new System.Drawing.Point(351, 41);
+            this.txtDescripcion.Multiline = true;
+            this.txtDescripcion.Name = "txtDescripcion";
+            this.txtDescripcion.Size = new System.Drawing.Size(229, 117);
+            this.txtDescripcion.TabIndex = 30;
+            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // txtNumeroDeLote
             // 
             this.txtNumeroDeLote.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,16 +173,6 @@
             this.txtNumeroDeLote.Size = new System.Drawing.Size(223, 22);
             this.txtNumeroDeLote.TabIndex = 30;
             this.txtNumeroDeLote.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // dtpkFechaVencimiento
-            // 
-            this.dtpkFechaVencimiento.CustomFormat = "dddd - dd - MMM - yyyy";
-            this.dtpkFechaVencimiento.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtpkFechaVencimiento.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpkFechaVencimiento.Location = new System.Drawing.Point(75, 47);
-            this.dtpkFechaVencimiento.Name = "dtpkFechaVencimiento";
-            this.dtpkFechaVencimiento.Size = new System.Drawing.Size(223, 22);
-            this.dtpkFechaVencimiento.TabIndex = 27;
             // 
             // label39
             // 
@@ -176,10 +207,59 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // tsbGuardar
+            // 
+            this.tsbGuardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbGuardar.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
+            this.tsbGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbGuardar.Name = "tsbGuardar";
+            this.tsbGuardar.Size = new System.Drawing.Size(68, 68);
+            this.tsbGuardar.Text = "Guardar";
+            this.tsbGuardar.ToolTipText = "Guardar registro";
+            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
+            // 
+            // tsbCerrarVentan
+            // 
+            this.tsbCerrarVentan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbCerrarVentan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbCerrarVentan.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Log_Out_27856;
+            this.tsbCerrarVentan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbCerrarVentan.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbCerrarVentan.Name = "tsbCerrarVentan";
+            this.tsbCerrarVentan.Size = new System.Drawing.Size(52, 68);
+            this.tsbCerrarVentan.Text = "Salir";
+            this.tsbCerrarVentan.ToolTipText = "Cerrar la ventana y retornar";
+            this.tsbCerrarVentan.Click += new System.EventHandler(this.tsbCerrarVentan_Click);
+            // 
+            // tsbRecarRegistro
+            // 
+            this.tsbRecarRegistro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRecarRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRecarRegistro.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Synchronize_27883__1_;
+            this.tsbRecarRegistro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbRecarRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRecarRegistro.Name = "tsbRecarRegistro";
+            this.tsbRecarRegistro.Size = new System.Drawing.Size(52, 68);
+            this.tsbRecarRegistro.Text = "Recargar ";
+            this.tsbRecarRegistro.ToolTipText = "Recargar  registro";
+            this.tsbRecarRegistro.Click += new System.EventHandler(this.tsbRecarRegistro_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 71);
+            // 
+            // tsbNuevo
+            // 
+            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbNuevo.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Plus_1891033__1_;
+            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbNuevo.Name = "tsbNuevo";
+            this.tsbNuevo.Size = new System.Drawing.Size(52, 68);
+            this.tsbNuevo.Text = "Nuevo";
+            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
             // 
             // gbGaleriaDeImagenes
             // 
@@ -224,100 +304,6 @@
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // EP
-            // 
-            this.EP.ContainerControl = this;
-            // 
-            // txtCantidad
-            // 
-            this.txtCantidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCantidad.Location = new System.Drawing.Point(75, 136);
-            this.txtCantidad.Name = "txtCantidad";
-            this.txtCantidad.Size = new System.Drawing.Size(223, 22);
-            this.txtCantidad.TabIndex = 30;
-            this.txtCantidad.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(18, 116);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(113, 16);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "Cantidad de Lote:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(348, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 16);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Número de Lote:";
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtDescripcion.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescripcion.Location = new System.Drawing.Point(351, 41);
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.Size = new System.Drawing.Size(229, 117);
-            this.txtDescripcion.TabIndex = 30;
-            this.txtDescripcion.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tsbGuardar
-            // 
-            this.tsbGuardar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbGuardar.Image = global::InventoryBoxFarmacy.Properties.Resources.if_floppy_285657;
-            this.tsbGuardar.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbGuardar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbGuardar.Name = "tsbGuardar";
-            this.tsbGuardar.Size = new System.Drawing.Size(68, 68);
-            this.tsbGuardar.Text = "Guardar";
-            this.tsbGuardar.ToolTipText = "Guardar registro";
-            this.tsbGuardar.Click += new System.EventHandler(this.tsbGuardar_Click);
-            // 
-            // tsbCerrarVentan
-            // 
-            this.tsbCerrarVentan.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbCerrarVentan.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbCerrarVentan.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Log_Out_27856;
-            this.tsbCerrarVentan.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbCerrarVentan.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCerrarVentan.Name = "tsbCerrarVentan";
-            this.tsbCerrarVentan.Size = new System.Drawing.Size(52, 68);
-            this.tsbCerrarVentan.Text = "Salir";
-            this.tsbCerrarVentan.ToolTipText = "Cerrar la ventana y retornar";
-            this.tsbCerrarVentan.Click += new System.EventHandler(this.tsbCerrarVentan_Click);
-            // 
-            // tsbRecarRegistro
-            // 
-            this.tsbRecarRegistro.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbRecarRegistro.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRecarRegistro.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Synchronize_27883__1_;
-            this.tsbRecarRegistro.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbRecarRegistro.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRecarRegistro.Name = "tsbRecarRegistro";
-            this.tsbRecarRegistro.Size = new System.Drawing.Size(52, 68);
-            this.tsbRecarRegistro.Text = "Recargar ";
-            this.tsbRecarRegistro.ToolTipText = "Recargar  registro";
-            this.tsbRecarRegistro.Click += new System.EventHandler(this.tsbRecarRegistro_Click);
-            // 
-            // tsbNuevo
-            // 
-            this.tsbNuevo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbNuevo.Image = global::InventoryBoxFarmacy.Properties.Resources.if_Plus_1891033__1_;
-            this.tsbNuevo.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.tsbNuevo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbNuevo.Name = "tsbNuevo";
-            this.tsbNuevo.Size = new System.Drawing.Size(52, 68);
-            this.tsbNuevo.Text = "Nuevo";
-            this.tsbNuevo.Click += new System.EventHandler(this.tsbNuevo_Click);
-            // 
             // tsbEliminar
             // 
             this.tsbEliminar.Image = global::InventoryBoxFarmacy.Properties.Resources.Eliminar24x24;
@@ -326,6 +312,17 @@
             this.tsbEliminar.Size = new System.Drawing.Size(78, 28);
             this.tsbEliminar.Text = "Eliminar";
             this.tsbEliminar.Click += new System.EventHandler(this.tsbEliminar_Click);
+            // 
+            // EP
+            // 
+            this.EP.ContainerControl = this;
+            // 
+            // dtpkFechaVencimiento
+            // 
+            this.dtpkFechaVencimiento.Location = new System.Drawing.Point(75, 47);
+            this.dtpkFechaVencimiento.Name = "dtpkFechaVencimiento";
+            this.dtpkFechaVencimiento.Size = new System.Drawing.Size(223, 20);
+            this.dtpkFechaVencimiento.TabIndex = 35;
             // 
             // frmProductoLote
             // 
@@ -361,7 +358,6 @@
         private System.Windows.Forms.TextBox txtidLoteDelProducto;
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.TextBox txtNumeroDeLote;
-        private System.Windows.Forms.DateTimePicker dtpkFechaVencimiento;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStrip toolStrip1;
@@ -379,5 +375,6 @@
         private System.Windows.Forms.TextBox txtCantidad;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtDescripcion;
+        private System.Windows.Forms.DateTimePicker dtpkFechaVencimiento;
     }
 }

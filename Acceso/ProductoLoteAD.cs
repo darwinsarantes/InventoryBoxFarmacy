@@ -322,7 +322,7 @@ namespace AccesoDatos
                 Comando.Connection = Cnn;
                 Comando.CommandType = CommandType.Text;
 
-                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, FechaDeVencimiento, CantidadDelLote
+                Consultas = string.Format(@"Select idLoteDelProducto, idProducto, SoloFecha(FechaDeVencimiento) as 'FechaDeVencimiento', NumeroDeLote, CantidadDelLote, Descripcion
                 from productolote as pl
                 where idProducto = {0} Order by FechaDeVencimiento asc ; ", oRegistroEN.oProductoEN.idProducto);
                 Comando.CommandText = Consultas;

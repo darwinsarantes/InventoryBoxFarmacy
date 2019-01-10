@@ -20,17 +20,6 @@ E:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
 E:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 E:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
 E:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.dll
-F:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.dll
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.pdb
-F:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.pdb
-F:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
-F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
-F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
-F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
 C:\Users\Darwin R. Sarantes\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
@@ -64,3 +53,14 @@ D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmac
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
 D:\Perfiles\STDeveloper\Documents\Visual Studio 2015\Projects\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.dll
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Logica.pdb
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.dll
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.dll
+F:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.dll
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Acceso.pdb
+F:\InventoryBoxFarmacy\Logica\bin\Debug\Entidad.pdb
+F:\InventoryBoxFarmacy\Logica\bin\Debug\MySql.Data.xml
+F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.dll
+F:\InventoryBoxFarmacy\Logica\obj\Debug\Logica.pdb
